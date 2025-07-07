@@ -24,7 +24,11 @@ public class GhostBehaviour : MonoBehaviour
                 TryUseStairs(key == 'w');
             transform.position += DirFromKey(key) * speed;
         }
-        if (records.Count == 0) Destroy(gameObject);
+        if (records.Count == 0)
+        {
+            Destroy(gameObject);
+            GameManager.Instance.OnGhostFinished();
+        }
     }
 
     Vector3 DirFromKey(char key) => key switch
