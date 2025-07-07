@@ -16,8 +16,6 @@ public class HeroBehaviour : MonoBehaviour
     void HandleMovement()
     {
         Vector3 move = Vector3.zero;
-        if (Input.GetKey(KeyCode.W)) move += Vector3.up;
-        if (Input.GetKey(KeyCode.S)) move += Vector3.down;
         if (Input.GetKey(KeyCode.A)) move += Vector3.left;
         if (Input.GetKey(KeyCode.D)) move += Vector3.right;
 
@@ -29,8 +27,6 @@ public class HeroBehaviour : MonoBehaviour
         List<char> keys = new();
         if (Input.GetKey(KeyCode.A)) keys.Add('a');
         if (Input.GetKey(KeyCode.D)) keys.Add('d');
-        if (Input.GetKey(KeyCode.W)) keys.Add('w');
-        if (Input.GetKey(KeyCode.S)) keys.Add('s');
         return keys;
     }
 }
