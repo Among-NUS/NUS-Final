@@ -70,7 +70,7 @@ public class RewindBehaviour : MonoBehaviour
         clone.StartReplay(new Queue<char>(_inputs));   // 深拷贝！
 
         // 你可以选择清空原队列，或继续累积新的操作
-        _inputs.Clear();
+        //_inputs.Clear();
     }
 
     // 供外部调用的初始化
