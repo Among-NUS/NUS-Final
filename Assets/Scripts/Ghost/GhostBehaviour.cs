@@ -20,6 +20,8 @@ public class GhostBehaviour : MonoBehaviour
         Record frame = records.Dequeue();
         foreach (char key in frame.keys)
         {
+            if (key == 'w' || key == 's')
+                TryUseStairs(key == 'w');
             transform.position += DirFromKey(key) * speed;
         }
         if (records.Count == 0) Destroy(gameObject);
@@ -29,8 +31,22 @@ public class GhostBehaviour : MonoBehaviour
     {
         'a' => Vector3.left,
         'd' => Vector3.right,
-        'w' => Vector3.up,
-        's' => Vector3.down,
+        //'w' => Vector3.up,
+        //'s' => Vector3.down,
         _ => Vector3.zero
     };
+    void TryUseStairs(bool commandUp)
+    {
+        // 用极小半径采样当前位置可能重叠到的楼梯触发器
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 0.05f);
+        foreach (var h in hits)
+        {
+            StairsBehaviour stairs = h.GetComponent<StairsBehaviour>();
+            if (stairs != null)
+            {
+                stairs.TryTeleport(transform, commandUp);
+                break;                      // 一次只找最近一段楼梯即可
+            }
+        }
+    }
 }
