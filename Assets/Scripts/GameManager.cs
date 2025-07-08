@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
     {
         if (currentPhase != GamePhase.Recording) return;
 
-        messageDisplay.ShowMessageForOneSecond();
+        //messageDisplay.ShowMessageForOneSecond();
 
         snapshot.Restore();
         currentPhase = GamePhase.Normal;

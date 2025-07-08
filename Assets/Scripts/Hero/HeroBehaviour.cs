@@ -31,6 +31,7 @@ public class HeroBehaviour : MonoBehaviour
         if (Input.GetKey(KeyCode.D)) keys.Add('d');
         if (Input.GetKey(KeyCode.W)) keys.Add('w');   // ⬅ 新增
         if (Input.GetKey(KeyCode.S)) keys.Add('s');   // ⬅ 新增
+        if (Input.GetKey(KeyCode.E)) keys.Add('e');   // ⬅ 新增
         return keys;
     }
     

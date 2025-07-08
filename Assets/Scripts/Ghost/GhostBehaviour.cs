@@ -22,7 +22,10 @@ public class GhostBehaviour : MonoBehaviour
         {
             if (key == 'w' || key == 's')
                 TryUseStairs(key == 'w');
-            transform.position += DirFromKey(key) * speed ;
+            if (key == 'e')
+                TryDestroyTurret();
+
+            transform.position += DirFromKey(key) * speed;
         }
         if (records.Count == 0)
         {
@@ -50,6 +53,20 @@ public class GhostBehaviour : MonoBehaviour
             {
                 stairs.TryTeleport(transform, commandUp);
                 break;                      // 一次只找最近一段楼梯即可
+            }
+        }
+    }
+    void TryDestroyTurret()
+    {
+        // 用极小半径采样当前位置可能重叠到的炮塔触发器
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 0.05f);
+        foreach (var h in hits)
+        {
+            TurretController2D turret = h.GetComponent<TurretController2D>();
+            if (turret != null && turret.turretAlive)
+            {
+                turret.DestroyTurret();
+                break;                      // 一次只找最近一座炮塔即可
             }
         }
     }
