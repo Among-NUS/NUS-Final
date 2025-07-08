@@ -2,19 +2,19 @@ using UnityEngine;
 
 public class CooldownBarBehaviour : MonoBehaviour
 {
-    [Header("UI×é¼ş")]
-    public RectTransform baseBar;        // ÄÜÁ¿Ìõ±¾Ìå£¨±³¾°£©
-    public RectTransform currentBar;     // µ±Ç°¿ÉÓÃÄÜÁ¿Ìõ£¨À¶É«£©
-    public RectTransform usedBar;        // ÕıÔÚÊ¹ÓÃµÄÄÜÁ¿Ìõ£¨ºìÉ«ÕÚÕÖ£©
+    [Header("UIï¿½ï¿½ï¿½")]
+    public RectTransform baseBar;        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½å£¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public RectTransform currentBar;     // ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½
+    public RectTransform usedBar;        // ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½Ö£ï¿½
 
-    [Header("ÄÜÁ¿ÉèÖÃ")]
-    public int maxEnergy = 300;          // ×î´óÄÜÁ¿Öµ
-    public int energyRegenRate = 1;      // Ã¿Ö¡»Ö¸´µÄÄÜÁ¿
-    public int energyConsumeRate = 1;    // Ã¿Ö¡ÏûºÄµÄÄÜÁ¿
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
+    public int maxEnergy = 300;          // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
+    public int energyRegenRate = 1;      // Ã¿Ö¡ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public int energyConsumeRate = 1;    // Ã¿Ö¡ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½
 
-    private int currentEnergy = 300;     // µ±Ç°¿ÉÓÃÄÜÁ¿
-    private int usedEnergy = 0;          // ÕıÔÚÊ¹ÓÃµÄÄÜÁ¿£¨Â¼ÖÆÊ±£©
-    private bool isRecording = false;    // ÊÇ·ñÕıÔÚÂ¼ÖÆ
+    private int currentEnergy = 300;     // ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    private int usedEnergy = 0;          // ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ê±ï¿½ï¿½
+    private bool isRecording = false;    // ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½
 
     public bool CanStartRecording => currentEnergy > 0;
     public bool IsEnergyDepleted => currentEnergy <= 0;
@@ -23,14 +23,14 @@ public class CooldownBarBehaviour : MonoBehaviour
 
     void Start()
     {
-        // ³õÊ¼»¯ÄÜÁ¿ÎªÂú
+        // ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½
         currentEnergy = maxEnergy;
         usedEnergy = 0;
         UpdateBarVisual();
     }
 
     /// <summary>
-    /// ¿ªÊ¼Â¼ÖÆ
+    /// ï¿½ï¿½Ê¼Â¼ï¿½ï¿½
     /// </summary>
     public void StartRecording()
     {
@@ -42,28 +42,28 @@ public class CooldownBarBehaviour : MonoBehaviour
     }
 
     /// <summary>
-    /// Â¼ÖÆÊ±Ã¿Ö¡µ÷ÓÃ
+    /// Â¼ï¿½ï¿½Ê±Ã¿Ö¡ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     public void TickRecording()
     {
         if (!isRecording) return;
 
-        // Ôö¼ÓÊ¹ÓÃµÄÄÜÁ¿
+        // ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½
         usedEnergy += energyConsumeRate;
 
-        // ¼ì²éÊÇ·ñ³¬¹ıµ±Ç°¿ÉÓÃÄÜÁ¿
+        // ï¿½ï¿½ï¿½ï¿½Ç·ñ³¬¹ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (usedEnergy >= currentEnergy)
         {
             usedEnergy = currentEnergy;
             UpdateBarVisual();
-            return; // ÄÜÁ¿ºÄ¾¡£¬Ó¦¸ÃÍ£Ö¹Â¼ÖÆ
+            return; // ï¿½ï¿½ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Í£Ö¹Â¼ï¿½ï¿½
         }
 
         UpdateBarVisual();
     }
 
     /// <summary>
-    /// Í£Ö¹Â¼ÖÆ²¢ÏûºÄÄÜÁ¿
+    /// Í£Ö¹Â¼ï¿½Æ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     public void StopRecording()
     {
@@ -71,7 +71,7 @@ public class CooldownBarBehaviour : MonoBehaviour
 
         isRecording = false;
 
-        // ÏûºÄÊµ¼ÊÊ¹ÓÃµÄÄÜÁ¿
+        // ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½Ê¹ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½
         currentEnergy -= usedEnergy;
         if (currentEnergy < 0) currentEnergy = 0;
 
@@ -80,17 +80,23 @@ public class CooldownBarBehaviour : MonoBehaviour
     }
 
     /// <summary>
-    /// È¡ÏûÂ¼ÖÆ
+    /// È¡ï¿½ï¿½Â¼ï¿½ï¿½
     /// </summary>
     public void CancelRecording()
     {
+        //åªæœ‰åœ¨å½•åˆ¶æ—¶æŠŠå·²ç”¨èƒ½é‡æ‰£é™¤
+        if (isRecording)
+        {
+            currentEnergy -= usedEnergy;
+            if (currentEnergy < 0) currentEnergy = 0;
+        }
         isRecording = false;
         usedEnergy = 0;
         UpdateBarVisual();
     }
 
     /// <summary>
-    /// Ã¿Ö¡»Ö¸´ÄÜÁ¿£¨·ÇÂ¼ÖÆÊ±£©
+    /// Ã¿Ö¡ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ê±ï¿½ï¿½
     /// </summary>
     public void RegenerateEnergy()
     {
@@ -104,7 +110,7 @@ public class CooldownBarBehaviour : MonoBehaviour
     }
 
     /// <summary>
-    /// ´©Ô½Ê±ÏûºÄÄÜÁ¿
+    /// ï¿½ï¿½Ô½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     public void ConsumeEnergyForTravel()
     {
@@ -114,13 +120,13 @@ public class CooldownBarBehaviour : MonoBehaviour
     }
 
     /// <summary>
-    /// ¸üĞÂUIÏÔÊ¾
+    /// ï¿½ï¿½ï¿½ï¿½UIï¿½ï¿½Ê¾
     /// </summary>
     private void UpdateBarVisual()
     {
         if (isRecording)
         {
-            // Â¼ÖÆÊ±£ºcurrentBarÏÔÊ¾Ê£Óà£¬usedBarÏÔÊ¾ÏûºÄ
+            // Â¼ï¿½ï¿½Ê±ï¿½ï¿½currentBarï¿½ï¿½Ê¾Ê£ï¿½à£¬usedBarï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
             float availableEnergy = currentEnergy - usedEnergy;
             float usedRatio = Mathf.Clamp01((float)usedEnergy / maxEnergy);
             float availableRatio = Mathf.Clamp01((float)availableEnergy / maxEnergy);
@@ -132,17 +138,17 @@ public class CooldownBarBehaviour : MonoBehaviour
 
             if (usedBar != null)
             {
-                // ÈÃusedBar´ÓcurrentBarµÄÓÒ¶Ë¿ªÊ¼
+                // ï¿½ï¿½usedBarï¿½ï¿½currentBarï¿½ï¿½ï¿½Ò¶Ë¿ï¿½Ê¼
                 usedBar.localScale = new Vector3(usedRatio, 1f, 1f);
                 usedBar.anchoredPosition = new Vector2(availableRatio * baseBar.rect.width, 0);
                 usedBar.gameObject.SetActive(true);
             }
 
-            Debug.Log($"Â¼ÖÆÖĞ - Ê£ÓàÄÜÁ¿: {availableEnergy}/{currentEnergy}, Ê¹ÓÃ: {usedEnergy}, Ê£Óà±ÈÀı: {availableRatio}, Ê¹ÓÃ±ÈÀı: {usedRatio}");
+            Debug.Log($"Â¼ï¿½ï¿½ï¿½ï¿½ - Ê£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: {availableEnergy}/{currentEnergy}, Ê¹ï¿½ï¿½: {usedEnergy}, Ê£ï¿½ï¿½ï¿½ï¿½ï¿½: {availableRatio}, Ê¹ï¿½Ã±ï¿½ï¿½ï¿½: {usedRatio}");
         }
         else
         {
-            // ·ÇÂ¼ÖÆÊ±£ºÖ»ÏÔÊ¾currentBar
+            // ï¿½ï¿½Â¼ï¿½ï¿½Ê±ï¿½ï¿½Ö»ï¿½ï¿½Ê¾currentBar
             if (currentBar != null)
             {
                 float currentRatio = Mathf.Clamp01((float)currentEnergy / maxEnergy);
@@ -154,12 +160,12 @@ public class CooldownBarBehaviour : MonoBehaviour
                 usedBar.gameObject.SetActive(false);
             }
 
-            Debug.Log($"·ÇÂ¼ÖÆ - µ±Ç°ÄÜÁ¿: {currentEnergy}/{maxEnergy}");
+            Debug.Log($"ï¿½ï¿½Â¼ï¿½ï¿½ - ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½: {currentEnergy}/{maxEnergy}");
         }
     }
 
     /// <summary>
-    /// ¼ì²éÊÇ·ñÄÜÁ¿ºÄ¾¡
+    /// ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¾ï¿½
     /// </summary>
     public bool IsRecordingEnergyDepleted()
     {

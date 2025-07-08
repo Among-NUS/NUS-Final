@@ -124,6 +124,7 @@ public class GameManager : MonoBehaviour
     void CancelRecording()
     {
         isRecording = false;
+        currentPhase = GamePhase.Normal;
 
         if (previewGhost != null)
         {
