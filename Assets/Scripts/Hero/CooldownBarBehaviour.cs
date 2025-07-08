@@ -3,18 +3,18 @@ using UnityEngine;
 public class CooldownBarBehaviour : MonoBehaviour
 {
     [Header("UI���")]
-    public RectTransform baseBar;        // ���������壨������
-    public RectTransform currentBar;     // ��ǰ��������������ɫ��
-    public RectTransform usedBar;        // ����ʹ�õ�����������ɫ���֣�
+    public RectTransform baseBar;        // 能量条本体（背景）
+    public RectTransform currentBar;     // 当前可用能量条（蓝色）
+    public RectTransform usedBar;        // 正在使用的能量条（红色遮罩）
 
     [Header("��������")]
-    public int maxEnergy = 300;          // �������ֵ
-    public int energyRegenRate = 1;      // ÿ֡�ָ�������
-    public int energyConsumeRate = 1;    // ÿ֡���ĵ�����
+    public int maxEnergy = 300;          // 最大能量值
+    public int energyRegenRate = 1;      // 每帧恢复的能量
+    public int energyConsumeRate = 1;    // 每帧消耗的能量
 
-    private int currentEnergy = 300;     // ��ǰ��������
-    private int usedEnergy = 0;          // ����ʹ�õ�������¼��ʱ��
-    private bool isRecording = false;    // �Ƿ�����¼��
+    private int currentEnergy = 300;     // 当前可用能量
+    private int usedEnergy = 0;          // 正在使用的能量（录制时）
+    private bool isRecording = false;    // 是否正在录制
 
     public bool CanStartRecording => currentEnergy > 0;
     public bool IsEnergyDepleted => currentEnergy <= 0;
@@ -23,14 +23,14 @@ public class CooldownBarBehaviour : MonoBehaviour
 
     void Start()
     {
-        // ��ʼ������Ϊ��
+        // 初始化能量为满
         currentEnergy = maxEnergy;
         usedEnergy = 0;
         UpdateBarVisual();
     }
 
     /// <summary>
-    /// ��ʼ¼��
+    /// 开始录制
     /// </summary>
     public void StartRecording()
     {
@@ -42,28 +42,28 @@ public class CooldownBarBehaviour : MonoBehaviour
     }
 
     /// <summary>
-    /// ¼��ʱÿ֡����
+    /// 录制时每帧调用
     /// </summary>
     public void TickRecording()
     {
         if (!isRecording) return;
 
-        // ����ʹ�õ�����
+        // 增加使用的能量
         usedEnergy += energyConsumeRate;
 
-        // ����Ƿ񳬹���ǰ��������
+        // 检查是否超过当前可用能量
         if (usedEnergy >= currentEnergy)
         {
             usedEnergy = currentEnergy;
             UpdateBarVisual();
-            return; // �����ľ���Ӧ��ֹͣ¼��
+            return; // 能量耗尽，应该停止录制
         }
 
         UpdateBarVisual();
     }
 
     /// <summary>
-    /// ֹͣ¼�Ʋ���������
+    /// ֹͣ停止录制并消耗能量
     /// </summary>
     public void StopRecording()
     {
@@ -71,7 +71,7 @@ public class CooldownBarBehaviour : MonoBehaviour
 
         isRecording = false;
 
-        // ����ʵ��ʹ�õ�����
+        // 消耗实际使用的能量
         currentEnergy -= usedEnergy;
         if (currentEnergy < 0) currentEnergy = 0;
 
@@ -80,7 +80,7 @@ public class CooldownBarBehaviour : MonoBehaviour
     }
 
     /// <summary>
-    /// ȡ��¼��
+    /// 取消录制
     /// </summary>
     public void CancelRecording()
     {
@@ -96,7 +96,7 @@ public class CooldownBarBehaviour : MonoBehaviour
     }
 
     /// <summary>
-    /// ÿ֡�ָ���������¼��ʱ��
+    /// 每帧恢复能量（非录制时）
     /// </summary>
     public void RegenerateEnergy()
     {
@@ -110,7 +110,7 @@ public class CooldownBarBehaviour : MonoBehaviour
     }
 
     /// <summary>
-    /// ��Խʱ��������
+    /// 穿越时消耗能量
     /// </summary>
     public void ConsumeEnergyForTravel()
     {
@@ -120,13 +120,13 @@ public class CooldownBarBehaviour : MonoBehaviour
     }
 
     /// <summary>
-    /// ����UI��ʾ
+    /// 更新UI显示ʾ
     /// </summary>
     private void UpdateBarVisual()
     {
         if (isRecording)
         {
-            // ¼��ʱ��currentBar��ʾʣ�࣬usedBar��ʾ����
+            // 录制时：currentBar显示剩余，usedBar显示消耗
             float availableEnergy = currentEnergy - usedEnergy;
             float usedRatio = Mathf.Clamp01((float)usedEnergy / maxEnergy);
             float availableRatio = Mathf.Clamp01((float)availableEnergy / maxEnergy);
@@ -138,17 +138,17 @@ public class CooldownBarBehaviour : MonoBehaviour
 
             if (usedBar != null)
             {
-                // ��usedBar��currentBar���Ҷ˿�ʼ
+                // 让usedBar从currentBar的右端开始
                 usedBar.localScale = new Vector3(usedRatio, 1f, 1f);
                 usedBar.anchoredPosition = new Vector2(availableRatio * baseBar.rect.width, 0);
                 usedBar.gameObject.SetActive(true);
             }
 
-            Debug.Log($"¼���� - ʣ������: {availableEnergy}/{currentEnergy}, ʹ��: {usedEnergy}, ʣ�����: {availableRatio}, ʹ�ñ���: {usedRatio}");
+            Debug.Log($"录制中 - 剩余能量: {availableEnergy}/{currentEnergy}, 使用: {usedEnergy}, 剩余比例: {availableRatio}, 使用比例: {usedRatio}");
         }
         else
         {
-            // ��¼��ʱ��ֻ��ʾcurrentBar
+            // 非录制时：只显示currentBar
             if (currentBar != null)
             {
                 float currentRatio = Mathf.Clamp01((float)currentEnergy / maxEnergy);
@@ -160,12 +160,12 @@ public class CooldownBarBehaviour : MonoBehaviour
                 usedBar.gameObject.SetActive(false);
             }
 
-            Debug.Log($"��¼�� - ��ǰ����: {currentEnergy}/{maxEnergy}");
+            Debug.Log($"非录制 - 当前能量: {currentEnergy}/{maxEnergy}");
         }
     }
 
     /// <summary>
-    /// ����Ƿ������ľ�
+    /// 检查是否能量耗尽
     /// </summary>
     public bool IsRecordingEnergyDepleted()
     {

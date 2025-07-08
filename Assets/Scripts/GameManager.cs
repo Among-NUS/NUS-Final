@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     Queue<Record> inputRecords = new();
 
     bool isRecording = false;
-    bool isGhostActive = false;  // �Ƿ��������ڻ����Խ״̬��
+    bool isGhostActive = false;  // 是否有幽灵在活动（穿越状态）
 
     public bool IsRecording => isRecording;
     public bool IsGhostActive => isGhostActive;
@@ -53,19 +53,19 @@ public class GameManager : MonoBehaviour
 
         if (isRecording)
         {
-            // ¼��ʱ������ʹ�õ�����
+            // 录制时，增加使用的能量
             cooldownBar.TickRecording();
 
-            // ��������Ƿ�ľ�
+            // 检查能量是否耗尽
             if (cooldownBar.IsRecordingEnergyDepleted())
             {
                 CancelRecording();
-                Debug.Log("�����ľ���¼�Ʊ�ȡ��");
+                Debug.Log("能量耗尽，录制被取消");
             }
         }
         else
         {
-            // ��¼��ʱ�ָ������������������ʱ��
+            // 非录制时恢复能量（包括幽灵存在时）
             cooldownBar.RegenerateEnergy();
         }
     }
@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
         currentPhase = GamePhase.Recording;
         if (!cooldownBar.CanStartRecording)
         {
-            Debug.Log("�������㣬�޷���ʼ¼��");
+            Debug.Log("能量不足，无法开始录制");
             return;
         }
 
@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
         previewGhost = Instantiate(previewGhostPrefab, snapshot.position, Quaternion.identity);
         cooldownBar.StartRecording();
 
-        Debug.Log("��ʼ¼��");
+        Debug.Log("开始录制");
     }
 
     public void StopRecordingAndFreeze()
@@ -108,14 +108,14 @@ public class GameManager : MonoBehaviour
             previewGhost = null;
         }
 
-        // ��������
+        // 消耗能量
         cooldownBar.StopRecording();
 
         //GameObject ghost = Instantiate(ghostPrefab, snapshot.position, Quaternion.identity);
         //GhostBehaviour ghostScript = ghost.GetComponent<GhostBehaviour>();
         //ghostScript.StartReplay(new Queue<Record>(inputRecords));
 
-        // ��������״̬
+        // 设置幽灵活动状态
         //isGhostActive = true;
 
         Debug.Log("ֹͣ停止录制,进入timestop");
@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
 
         inputRecords.Clear();
         cooldownBar.CancelRecording();
-        Debug.Log("¼�Ʊ�ȡ��");
+        Debug.Log("录制被取消");
     }
 
     public void RecordKeyInput(List<char> keys)
@@ -144,13 +144,13 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ����������ط�ʱ����
+    /// 当幽灵结束回放时调用
     /// </summary>
     public void OnGhostFinished()
     {
         isGhostActive = false;
         currentPhase = GamePhase.Normal;
-        Debug.Log("����طŽ���");
+        Debug.Log("幽灵回放结束");
     }
     
     public void BeginReplay()
