@@ -14,6 +14,8 @@ public class TestTime : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(GameManager.Instance.currentPhase == GameManager.GamePhase.TimeStop)
+            return;
         //let the object rotate around(0,0,0) z is rotate axis
         transform.RotateAround(Vector3.zero, Vector3.forward, 1f);
         

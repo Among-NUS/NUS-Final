@@ -22,7 +22,7 @@ public class GhostBehaviour : MonoBehaviour
         {
             if (key == 'w' || key == 's')
                 TryUseStairs(key == 'w');
-            transform.position += DirFromKey(key) * speed * Time.fixedDeltaTime;
+            transform.position += DirFromKey(key) * speed ;
         }
         if (records.Count == 0)
         {

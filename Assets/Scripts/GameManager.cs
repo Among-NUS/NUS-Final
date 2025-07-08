@@ -37,25 +37,25 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.U) && currentPhase == GamePhase.Normal) StartRecording();
         if (Input.GetKeyDown(KeyCode.I) && currentPhase == GamePhase.Recording) StopRecordingAndFreeze();
+    }
+
+    void FixedUpdate()
+    {
+        if (cooldownBar == null) return;
+        
         if (currentPhase == GamePhase.TimeStop)
         {
-            cooldownBar.ConsumeEnergyForTravel(Time.unscaledDeltaTime);
+            cooldownBar.ConsumeEnergyForTravel();
             if (cooldownBar.IsEnergyDepleted)
             {
                 BeginReplay();
             }
         }
-    }
-
-    void FixedUpdate()
-    {
-        float dt = Time.fixedDeltaTime;
-        if (cooldownBar == null) return;
 
         if (isRecording)
         {
             // 录制时，增加使用的能量
-            cooldownBar.TickRecording(dt);
+            cooldownBar.TickRecording();
 
             // 检查能量是否耗尽
             if (cooldownBar.IsRecordingEnergyDepleted())
@@ -64,10 +64,10 @@ public class GameManager : MonoBehaviour
                 Debug.Log("能量耗尽，录制被取消");
             }
         }
-        else
+        else if(currentPhase == GamePhase.Normal|| currentPhase == GamePhase.Replaying)
         {
             // 非录制时恢复能量（包括幽灵存在时）
-            cooldownBar.RegenerateEnergy(dt);
+            cooldownBar.RegenerateEnergy();
         }
     }
 
@@ -102,12 +102,11 @@ public class GameManager : MonoBehaviour
 
         isRecording = false;
         currentPhase = GamePhase.TimeStop;
-        Time.timeScale = 0f;//进入时停，暂停全局时间
-        if (previewGhost != null)
-        {
-            Destroy(previewGhost);
-            previewGhost = null;
-        }
+        //if (previewGhost != null)
+        //{
+        //    Destroy(previewGhost);
+        //    previewGhost = null;
+        //}
 
         // 消耗能量
         cooldownBar.StopRecording();
@@ -155,10 +154,13 @@ public class GameManager : MonoBehaviour
     }
     
     public void BeginReplay()
-    {
-        Time.timeScale = 1f;                               // 恢复时间
+    {                   
         currentPhase = GamePhase.Replaying;
-
+        if (previewGhost != null)
+        {
+            Destroy(previewGhost);
+            previewGhost = null;
+        }
         // 在 snapshot 处生成幽灵
         GameObject ghost = Instantiate(ghostPrefab, snapshot.position, Quaternion.identity);
         ghost.GetComponent<GhostBehaviour>().StartReplay(new Queue<Record>(inputRecords)); // 把已录指令给幽灵
