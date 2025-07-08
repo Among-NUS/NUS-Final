@@ -24,7 +24,7 @@ public class StairsBehaviour : MonoBehaviour
     {
         if (cooldown > 0f)           // 冷却中
             cooldown -= Time.deltaTime;
-            
+
         if (!playerInside || cooldown > 0f) // 玩家不在触发器内或冷却中
             return;
 

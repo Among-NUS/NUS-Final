@@ -50,7 +50,6 @@ public class GameManager : MonoBehaviour
     void FixedUpdate()
     {
         float dt = Time.fixedDeltaTime;
-        
         if (cooldownBar == null) return;
 
         if (isRecording)
