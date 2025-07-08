@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I) && currentPhase == GamePhase.Recording) StopRecordingAndFreeze();
         if (currentPhase == GamePhase.TimeStop)
         {
-            cooldownBar.ConsumeEnergyForTravel();
+            cooldownBar.ConsumeEnergyForTravel(Time.unscaledDeltaTime);
             if (cooldownBar.IsEnergyDepleted)
             {
                 BeginReplay();
@@ -49,12 +49,14 @@ public class GameManager : MonoBehaviour
 
     void FixedUpdate()
     {
+        float dt = Time.fixedDeltaTime;
+        
         if (cooldownBar == null) return;
 
         if (isRecording)
         {
             // 录制时，增加使用的能量
-            cooldownBar.TickRecording();
+            cooldownBar.TickRecording(dt);
 
             // 检查能量是否耗尽
             if (cooldownBar.IsRecordingEnergyDepleted())
@@ -66,7 +68,7 @@ public class GameManager : MonoBehaviour
         else
         {
             // 非录制时恢复能量（包括幽灵存在时）
-            cooldownBar.RegenerateEnergy();
+            cooldownBar.RegenerateEnergy(dt);
         }
     }
 

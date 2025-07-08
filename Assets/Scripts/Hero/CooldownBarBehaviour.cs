@@ -8,18 +8,18 @@ public class CooldownBarBehaviour : MonoBehaviour
     public RectTransform usedBar;        // 正在使用的能量条（红色遮罩）
 
     [Header("��������")]
-    public int maxEnergy = 300;          // 最大能量值
-    public int energyRegenRate = 1;      // 每帧恢复的能量
-    public int energyConsumeRate = 1;    // 每帧消耗的能量
+    public float maxEnergy = 300f;          // 最大能量值
+    public float energyRegenRate = 1f;      // 每帧恢复的能量
+    public float energyConsumeRate = 1f;    // 每帧消耗的能量
 
-    private int currentEnergy = 300;     // 当前可用能量
-    private int usedEnergy = 0;          // 正在使用的能量（录制时）
+    private float currentEnergy = 300f;     // 当前可用能量
+    private float usedEnergy = 0f;          // 正在使用的能量（录制时）
     private bool isRecording = false;    // 是否正在录制
 
     public bool CanStartRecording => currentEnergy > 0;
     public bool IsEnergyDepleted => currentEnergy <= 0;
-    public int CurrentEnergy => currentEnergy;
-    public int UsedEnergy => usedEnergy;
+    public float CurrentEnergy => currentEnergy;
+    public float UsedEnergy => usedEnergy;
 
     void Start()
     {
@@ -44,12 +44,12 @@ public class CooldownBarBehaviour : MonoBehaviour
     /// <summary>
     /// 录制时每帧调用
     /// </summary>
-    public void TickRecording()
+    public void TickRecording(float dt)
     {
         if (!isRecording) return;
 
         // 增加使用的能量
-        usedEnergy += energyConsumeRate;
+        usedEnergy += energyConsumeRate * dt;
 
         // 检查是否超过当前可用能量
         if (usedEnergy >= currentEnergy)
@@ -98,11 +98,11 @@ public class CooldownBarBehaviour : MonoBehaviour
     /// <summary>
     /// 每帧恢复能量（非录制时）
     /// </summary>
-    public void RegenerateEnergy()
+    public void RegenerateEnergy(float dt)
     {
         if (isRecording) return;
 
-        currentEnergy += energyRegenRate;
+        currentEnergy += energyRegenRate * dt;
         if (currentEnergy > maxEnergy)
             currentEnergy = maxEnergy;
 
@@ -112,9 +112,9 @@ public class CooldownBarBehaviour : MonoBehaviour
     /// <summary>
     /// 穿越时消耗能量
     /// </summary>
-    public void ConsumeEnergyForTravel()
+    public void ConsumeEnergyForTravel(float dt)
     {
-        currentEnergy -= energyConsumeRate;
+        currentEnergy -= energyConsumeRate * dt;
         if (currentEnergy < 0) currentEnergy = 0;
         UpdateBarVisual();
     }

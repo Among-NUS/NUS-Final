@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class HeroBehaviour : MonoBehaviour
 {
-    public float speed = 0.1f;
+    public float speed = 3f;
 
     void FixedUpdate()
     {
@@ -31,10 +31,8 @@ public class HeroBehaviour : MonoBehaviour
         if (Input.GetKey(KeyCode.A)) move += Vector3.left;
         if (Input.GetKey(KeyCode.D)) move += Vector3.right;
 
-        float dt = (GameManager.Instance.currentPhase == GameManager.GamePhase.TimeStop)
-               ? Time.unscaledDeltaTime                // ★ 停时用真实帧长
-               : Time.deltaTime;
-        transform.position += move * speed ;
+        float dt = (GameManager.Instance.currentPhase == GameManager.GamePhase.TimeStop)? Time.unscaledDeltaTime : Time.deltaTime; // ★ 停时用真实帧长
+        transform.position += move * speed * dt;
     }
 
     List<char> CollectKeyInputs()
