@@ -98,9 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97fc703777571c047a3929ffa98a37a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
-  maxDistance: 5
-  direction: {x: 0, y: -1}
+  prefabName: Prefabs/Bullet
+  direction: {x: 0, y: 0, z: 0}
+  speed: 1
+  maxDistance: 1000
 --- !u!58 &7417335623041414153
 CircleCollider2D:
   m_ObjectHideFlags: 0

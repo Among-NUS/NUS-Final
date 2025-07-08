@@ -62,7 +62,7 @@ public class GhostBehaviour : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 0.05f);
         foreach (var h in hits)
         {
-            TurretController2D turret = h.GetComponent<TurretController2D>();
+            TurretBehaviour turret = h.GetComponent<TurretBehaviour>();
             if (turret != null && turret.turret.isAlive)
             {
                 turret.DestroyTurret();

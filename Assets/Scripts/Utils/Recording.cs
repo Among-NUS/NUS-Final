@@ -19,6 +19,8 @@ public class Snapshot
         objectStates = new List<ObjectState>();
         foreach (var obj in GameObject.FindObjectsOfType<RecordableObject>())
             objectStates.Add(obj.CaptureState());
+
+        DynamicObjectManager.Instance.Capture();
     }
 
     public void Restore()
@@ -33,6 +35,8 @@ public class Snapshot
                 obj.RestoreState(state);
             }
         }
+
+        DynamicObjectManager.Instance.Restore();
     }
 }
 

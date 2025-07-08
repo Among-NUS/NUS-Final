@@ -19,6 +19,5 @@ public class Turret : RecordableObject
         {
             isAlive = (bool)value;
         }
-        Debug.Log(isAlive);
     }
 }
