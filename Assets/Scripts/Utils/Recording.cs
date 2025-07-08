@@ -2,22 +2,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
+
 public class Snapshot
 {
     public Vector3 playerPosition;
     public List<ObjectState> objectStates;
 
-    public Snapshot(Vector3 pos)
+    public Snapshot()
     {
-        playerPosition = pos;
+        GameObject hero = GameObject.FindWithTag("Player");
+        playerPosition = hero ? hero.transform.position : Vector3.zero;
 
         objectStates = new List<ObjectState>();
-
         foreach (var obj in GameObject.FindObjectsOfType<RecordableObject>())
-        {
             objectStates.Add(obj.CaptureState());
-        }
     }
+
 
     public void Restore()
     {

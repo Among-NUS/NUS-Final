@@ -16,13 +16,10 @@ public class GameManager : MonoBehaviour
     Snapshot snapshot;
     Queue<Record> inputRecords = new();
 
-    bool isRecording = false;
-    bool isGhostActive = false;  // 是否有幽灵在活动（穿越状态）
+    public MessageDisplay messageDisplay;
 
     bool travellingMode = false;
-
-    public bool IsRecording => isRecording;
-    public bool IsGhostActive => isGhostActive;
+    public bool IsRecording => currentPhase == GamePhase.Recording;
 
     void Awake()
     {
@@ -38,20 +35,18 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.T) && currentPhase == GamePhase.Normal) travellingMode = !travellingMode;
-
         if (Input.GetKeyDown(KeyCode.U) && currentPhase == GamePhase.Normal) StartRecording();
-        
         if (Input.GetKeyDown(KeyCode.I) && currentPhase == GamePhase.Recording)
         {
             if (travellingMode) StopRecordingAndFreeze();
             else StopAndReplay();
-
-            SimpleScaleAnimation scaleAnim = GetComponent<SimpleScaleAnimation>();
-            if (scaleAnim != null)
-            {
-                scaleAnim.PlayAnimation();
-            }
         }
+    }
+
+    void FixedUpdate()
+    {
+        if (cooldownBar == null) return;
+
         if (currentPhase == GamePhase.TimeStop)
         {
             cooldownBar.ConsumeEnergyForTravel();
@@ -59,10 +54,9 @@ public class GameManager : MonoBehaviour
             {
                 BeginReplay();
             }
-        }        
-    }
+        }
 
-        if (isRecording)
+        if (currentPhase == GamePhase.Recording)
         {
             // 录制时，增加使用的能量
             cooldownBar.TickRecording();
@@ -74,7 +68,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("能量耗尽，录制被取消");
             }
         }
-        else if(currentPhase == GamePhase.Normal|| currentPhase == GamePhase.Replaying)
+        else if (currentPhase == GamePhase.Normal)
         {
             // 非录制时恢复能量（包括幽灵存在时）
             cooldownBar.RegenerateEnergy();
@@ -83,19 +77,16 @@ public class GameManager : MonoBehaviour
 
     public void StartRecording()
     {
-        currentPhase = GamePhase.Recording;
         if (!cooldownBar.CanStartRecording)
         {
             Debug.Log("能量不足，无法开始录制");
             return;
         }
 
+        currentPhase = GamePhase.Recording;
         inputRecords.Clear();
-        isRecording = true;
 
-        GameObject hero = GameObject.FindWithTag("Player");
-        if (hero != null)
-            snapshot = new Snapshot(hero.transform.position);
+        snapshot = new Snapshot();
 
         if (previewGhost != null)
             Destroy(previewGhost);
@@ -105,64 +96,32 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("开始录制");
     }
-
     public void StopAndReplay()
     {
-        if (!isRecording) return;
+        if (currentPhase != GamePhase.Recording) return;
 
-        isRecording = false;
-
-        if (previewGhost != null)
-        {
-            Destroy(previewGhost);
-            previewGhost = null;
-        }
-
-        // 消耗能量
-        cooldownBar.StopRecording();
-
-        GameObject ghost = Instantiate(ghostPrefab, snapshot.playerPosition, Quaternion.identity);
-        GhostBehaviour ghostScript = ghost.GetComponent<GhostBehaviour>();
-        ghostScript.StartReplay(new Queue<Record>(inputRecords));
-
-        // 设置幽灵活动状态
-        isGhostActive = true;
+        messageDisplay.ShowMessageForOneSecond();
 
         snapshot.Restore();
+        currentPhase = GamePhase.Normal;
 
-        Debug.Log("停止录制，开始回放");
+        cooldownBar.StopRecording();
+        
+        BeginReplay();
     }
 
     public void StopRecordingAndFreeze()
     {
         if (currentPhase != GamePhase.Recording) return;
 
-        isRecording = false;
-        currentPhase = GamePhase.TimeStop;
-        //if (previewGhost != null)
-        //{
-        //    Destroy(previewGhost);
-        //    previewGhost = null;
-        //}
-
-        // 消耗能量
-        cooldownBar.StopRecording();
-
-        //GameObject ghost = Instantiate(ghostPrefab, snapshot.position, Quaternion.identity);
-        //GhostBehaviour ghostScript = ghost.GetComponent<GhostBehaviour>();
-        //ghostScript.StartReplay(new Queue<Record>(inputRecords));
-
-        // 设置幽灵活动状态
-        //isGhostActive = true;
-
         snapshot.Restore();
+        currentPhase = GamePhase.TimeStop;
 
-        Debug.Log("ֹͣ停止录制,进入timestop");
+        cooldownBar.StopRecording();
     }
 
     void CancelRecording()
     {
-        isRecording = false;
         currentPhase = GamePhase.Normal;
 
         if (previewGhost != null)
@@ -178,7 +137,7 @@ public class GameManager : MonoBehaviour
 
     public void RecordKeyInput(List<char> keys)
     {
-        if (!isRecording) return;
+        if (currentPhase != GamePhase.Recording) return;
         inputRecords.Enqueue(new Record(keys));
     }
 
@@ -187,14 +146,13 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void OnGhostFinished()
     {
-        isGhostActive = false;
         currentPhase = GamePhase.Normal;
         Debug.Log("幽灵回放结束");
     }
-    
+
     public void BeginReplay()
-    {                   
-        currentPhase = GamePhase.Replaying;
+    {
+        currentPhase = GamePhase.Normal;
         if (previewGhost != null)
         {
             Destroy(previewGhost);
@@ -204,7 +162,5 @@ public class GameManager : MonoBehaviour
         GameObject ghost = Instantiate(ghostPrefab, snapshot.playerPosition, Quaternion.identity);
         ghost.GetComponent<GhostBehaviour>().StartReplay(new Queue<Record>(inputRecords)); // 把已录指令给幽灵
 
-        isGhostActive = true;
-        Debug.Log("能量耗尽 → 开始 Ghost 回放");
     }
 }

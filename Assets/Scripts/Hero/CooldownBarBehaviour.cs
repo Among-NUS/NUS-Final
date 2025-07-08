@@ -143,8 +143,6 @@ public class CooldownBarBehaviour : MonoBehaviour
                 usedBar.anchoredPosition = new Vector2(availableRatio * baseBar.rect.width, 0);
                 usedBar.gameObject.SetActive(true);
             }
-
-            Debug.Log($"录制中 - 剩余能量: {availableEnergy}/{currentEnergy}, 使用: {usedEnergy}, 剩余比例: {availableRatio}, 使用比例: {usedRatio}");
         }
         else
         {
@@ -160,7 +158,6 @@ public class CooldownBarBehaviour : MonoBehaviour
                 usedBar.gameObject.SetActive(false);
             }
 
-            Debug.Log($"非录制 - 当前能量: {currentEnergy}/{maxEnergy}");
         }
     }
 
