@@ -7,19 +7,34 @@ public class HeroBehaviour : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(GameManager.Instance.currentPhase == GameManager.GamePhase.TimeStop)
+        {
+            // 停止时不处理输入
+            return;
+        }
         HandleMovement();
 
-        if (GameManager.Instance.IsRecording)
+        if (GameManager.Instance.currentPhase == GameManager.GamePhase.Recording)
             GameManager.Instance.RecordKeyInput(CollectKeyInputs());
     }
 
+    void Update()
+    {
+        if (GameManager.Instance.currentPhase == GameManager.GamePhase.TimeStop)
+        {
+            HandleMovement();  // 停止时仍然允许移动
+        }
+    }
     void HandleMovement()
     {
         Vector3 move = Vector3.zero;
         if (Input.GetKey(KeyCode.A)) move += Vector3.left;
         if (Input.GetKey(KeyCode.D)) move += Vector3.right;
 
-        transform.position += move * speed;
+        float dt = (GameManager.Instance.currentPhase == GameManager.GamePhase.TimeStop)
+               ? Time.unscaledDeltaTime                // ★ 停时用真实帧长
+               : Time.deltaTime;
+        transform.position += move * speed ;
     }
 
     List<char> CollectKeyInputs()

@@ -3,7 +3,10 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
+    public enum GamePhase { Normal, Recording, TimeStop, Replaying }
+
     public static GameManager Instance { get; private set; }
+    public GamePhase currentPhase = GamePhase.Normal;
 
     public GameObject ghostPrefab;
     public GameObject previewGhostPrefab;
@@ -14,7 +17,7 @@ public class GameManager : MonoBehaviour
     Queue<Record> inputRecords = new();
 
     bool isRecording = false;
-    bool isGhostActive = false;  // ÊÇ·ñÓĞÓÄÁéÔÚ»î¶¯£¨´©Ô½×´Ì¬£©
+    bool isGhostActive = false;  // ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú»î¶¯ï¿½ï¿½ï¿½ï¿½Ô½×´Ì¬ï¿½ï¿½
 
     public bool IsRecording => isRecording;
     public bool IsGhostActive => isGhostActive;
@@ -32,8 +35,16 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.U)) StartRecording();
-        if (Input.GetKeyDown(KeyCode.I)) StopAndReplay();
+        if (Input.GetKeyDown(KeyCode.U) && currentPhase == GamePhase.Normal) StartRecording();
+        if (Input.GetKeyDown(KeyCode.I) && currentPhase == GamePhase.Recording) StopRecordingAndFreeze();
+        if (currentPhase == GamePhase.TimeStop)
+        {
+            cooldownBar.ConsumeEnergyForTravel();
+            if (cooldownBar.IsEnergyDepleted)
+            {
+                BeginReplay();
+            }
+        }
     }
 
     void FixedUpdate()
@@ -42,28 +53,29 @@ public class GameManager : MonoBehaviour
 
         if (isRecording)
         {
-            // Â¼ÖÆÊ±£¬Ôö¼ÓÊ¹ÓÃµÄÄÜÁ¿
+            // Â¼ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½
             cooldownBar.TickRecording();
 
-            // ¼ì²éÄÜÁ¿ÊÇ·ñºÄ¾¡
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Ä¾ï¿½
             if (cooldownBar.IsRecordingEnergyDepleted())
             {
                 CancelRecording();
-                Debug.Log("ÄÜÁ¿ºÄ¾¡£¬Â¼ÖÆ±»È¡Ïû");
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½Â¼ï¿½Æ±ï¿½È¡ï¿½ï¿½");
             }
         }
         else
         {
-            // ·ÇÂ¼ÖÆÊ±»Ö¸´ÄÜÁ¿£¨°üÀ¨ÓÄÁé´æÔÚÊ±£©
+            // ï¿½ï¿½Â¼ï¿½ï¿½Ê±ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
             cooldownBar.RegenerateEnergy();
         }
     }
 
     public void StartRecording()
     {
+        currentPhase = GamePhase.Recording;
         if (!cooldownBar.CanStartRecording)
         {
-            Debug.Log("ÄÜÁ¿²»×ã£¬ÎŞ·¨¿ªÊ¼Â¼ÖÆ");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã£¬ï¿½Ş·ï¿½ï¿½ï¿½Ê¼Â¼ï¿½ï¿½");
             return;
         }
 
@@ -80,32 +92,33 @@ public class GameManager : MonoBehaviour
         previewGhost = Instantiate(previewGhostPrefab, snapshot.position, Quaternion.identity);
         cooldownBar.StartRecording();
 
-        Debug.Log("¿ªÊ¼Â¼ÖÆ");
+        Debug.Log("ï¿½ï¿½Ê¼Â¼ï¿½ï¿½");
     }
 
-    public void StopAndReplay()
+    public void StopRecordingAndFreeze()
     {
-        if (!isRecording) return;
+        if (currentPhase != GamePhase.Recording) return;
 
         isRecording = false;
-
+        currentPhase = GamePhase.TimeStop;
+        Time.timeScale = 0f;//è¿›å…¥æ—¶åœï¼Œæš‚åœå…¨å±€æ—¶é—´
         if (previewGhost != null)
         {
             Destroy(previewGhost);
             previewGhost = null;
         }
 
-        // ÏûºÄÄÜÁ¿
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         cooldownBar.StopRecording();
 
-        GameObject ghost = Instantiate(ghostPrefab, snapshot.position, Quaternion.identity);
-        GhostBehaviour ghostScript = ghost.GetComponent<GhostBehaviour>();
-        ghostScript.StartReplay(new Queue<Record>(inputRecords));
+        //GameObject ghost = Instantiate(ghostPrefab, snapshot.position, Quaternion.identity);
+        //GhostBehaviour ghostScript = ghost.GetComponent<GhostBehaviour>();
+        //ghostScript.StartReplay(new Queue<Record>(inputRecords));
 
-        // ÉèÖÃÓÄÁé»î¶¯×´Ì¬
-        isGhostActive = true;
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½î¶¯×´Ì¬
+        //isGhostActive = true;
 
-        Debug.Log("Í£Ö¹Â¼ÖÆ£¬¿ªÊ¼»Ø·Å");
+        Debug.Log("Í£Ö¹åœæ­¢å½•åˆ¶,è¿›å…¥timestop");
     }
 
     void CancelRecording()
@@ -120,7 +133,7 @@ public class GameManager : MonoBehaviour
 
         inputRecords.Clear();
         cooldownBar.CancelRecording();
-        Debug.Log("Â¼ÖÆ±»È¡Ïû");
+        Debug.Log("Â¼ï¿½Æ±ï¿½È¡ï¿½ï¿½");
     }
 
     public void RecordKeyInput(List<char> keys)
@@ -130,11 +143,25 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// µ±ÓÄÁé½áÊø»Ø·ÅÊ±µ÷ÓÃ
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø·ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     public void OnGhostFinished()
     {
         isGhostActive = false;
-        Debug.Log("ÓÄÁé»Ø·Å½áÊø");
+        currentPhase = GamePhase.Normal;
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½Ø·Å½ï¿½ï¿½ï¿½");
+    }
+    
+    public void BeginReplay()
+    {
+        Time.timeScale = 1f;                               // æ¢å¤æ—¶é—´
+        currentPhase = GamePhase.Replaying;
+
+        // åœ¨ snapshot å¤„ç”Ÿæˆå¹½çµ
+        GameObject ghost = Instantiate(ghostPrefab, snapshot.position, Quaternion.identity);
+        ghost.GetComponent<GhostBehaviour>().StartReplay(new Queue<Record>(inputRecords)); // æŠŠå·²å½•æŒ‡ä»¤ç»™å¹½çµ
+
+        isGhostActive = true;
+        Debug.Log("èƒ½é‡è€—å°½ â†’ å¼€å§‹ Ghost å›æ”¾");
     }
 }
