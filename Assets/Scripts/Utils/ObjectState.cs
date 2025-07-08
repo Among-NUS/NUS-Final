@@ -8,4 +8,6 @@ public class ObjectState
     public Vector3 position;
     public Quaternion rotation;
     public Vector3 scale;
+
+    public Dictionary<string, object> extraData;
 }

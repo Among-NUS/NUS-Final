@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public class TurretController2D : MonoBehaviour
 {
@@ -7,26 +6,26 @@ public class TurretController2D : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform target;
     public bool playerInside = false;
-    public bool turretAlive = true;   // 炮塔是否存活
-
     public float fireInterval = 0.5f;
     public float detectDistance = 8f;
     public float detectAngle = 45f;
     public float interactDistance = 5f;
 
-    private bool isDisabled = false;
-    private Coroutine fireCoroutine = null;
+    private float fireCooldown = 0f;  // 冷却时间计时器
+
+    public Turret turret;          // ← 只有这一份状态
+    void Awake() => turret = GetComponent<Turret>();
 
     void FixedUpdate()
     {
-        if (turretAlive)
+        if (GameManager.Instance.currentPhase == GameManager.GamePhase.TimeStop) return;
+
+        if (turret.isAlive)
         {
             gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.white; // 炮塔存活时显示正常颜色
-            
         }
         else
         {
-             
             return; // 如果炮塔已被销毁，则不执行后续逻辑
         }
 
@@ -38,31 +37,18 @@ public class TurretController2D : MonoBehaviour
             return;
         }
 
-        // 正常检测并发射
+        // 更新冷却时间
+        if (fireCooldown > 0f)
+        {
+            fireCooldown -= Time.fixedDeltaTime;
+        }
+
+        // 检测并发射
         bool inSight = TargetInSight();
-
-        if (inSight && fireCoroutine == null)
+        if (inSight && fireCooldown <= 0f)
         {
-            fireCoroutine = StartCoroutine(FireContinuously());
-        }
-        else if (!inSight && fireCoroutine != null)
-        {
-            StopCoroutine(fireCoroutine);
-            fireCoroutine = null;
-        }
-    }
-
-
-
-    IEnumerator FireContinuously()
-    {
-        while (true)
-        {
-            if (target == null)
-                yield break;
-
             Fire();
-            yield return new WaitForSeconds(fireInterval);
+            fireCooldown = fireInterval; // 重置冷却时间
         }
     }
 
@@ -122,12 +108,8 @@ public class TurretController2D : MonoBehaviour
 
     public void DestroyTurret()
     {
-        if (fireCoroutine != null)
-        {
-            StopCoroutine(fireCoroutine);
-            fireCoroutine = null;
-        }
+        fireCooldown = 0f; // 清除冷却时间
         gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.red;
-        turretAlive = false; // 设置炮塔为不可用状态
+        turret.isAlive = false; // 设置炮塔为不可用状态
     }
 }
