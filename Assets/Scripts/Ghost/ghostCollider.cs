@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ghostCollider : MonoBehaviour
+public class GhostCollider : MonoBehaviour
 {
     [Header("need to drag")]
     public GameObject father;

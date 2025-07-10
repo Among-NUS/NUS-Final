@@ -30,13 +30,13 @@ public class Door : RecordableObject
         switch (st) 
         { 
             case SwitchType.AND:
-                isOn = allSwitchOn();
+                isOn = AllSwitchOn();
                 break;
             case SwitchType.OR:
-                isOn = oneSwitchOn();
+                isOn = OneSwitchOn();
                 break;
             case SwitchType.CHANGE:
-                if (switchChange())
+                if (SwitchChange())
                 {
                     isOn = !isOn;
                 }
@@ -51,7 +51,7 @@ public class Door : RecordableObject
         }
         GetComponent<SpriteRenderer>().color = isOn?Color.green : Color.red;
     }
-    bool allSwitchOn()
+    bool AllSwitchOn()
     {
         for (int i = 0;i<switchs.Count;i++)
         {
@@ -62,7 +62,7 @@ public class Door : RecordableObject
         }
         return true;
     }
-    bool oneSwitchOn()
+    bool OneSwitchOn()
     {
         for (int i = 0; i < switchs.Count; i++)
         {
@@ -73,7 +73,7 @@ public class Door : RecordableObject
         }
         return false;
     }
-    bool switchChange()
+    bool SwitchChange()
     {
         for (int i = 0; i < switchs.Count; i++)
         {

@@ -9,7 +9,7 @@ public class SceneRecorder: MonoBehaviour
     List<ObjectState> dynamicSceneRecode = new List<ObjectState>();
     public ObjectState heroState = new StaticObjectState();
 
-    public void recordCurrentScene()
+    public void RecordCurrentScene()
     {//只会记录继承了RecordableObject的类，并单独记录hero，注意hero在列表中会被重复记录
         GameObject hero = GameObject.FindWithTag("Player");
         if (hero!=null)
@@ -34,7 +34,7 @@ public class SceneRecorder: MonoBehaviour
             }
         }
     }
-    public void loadSavedScene()
+    public void LoadSavedScene()
     {//会加载除hero之外的所有物体
         foreach (StaticObjectState state in staticSceneRecode)
         {
@@ -43,15 +43,17 @@ public class SceneRecorder: MonoBehaviour
                 state.RestoreState(state.recordableObject);
             }
         }
+        //去除新生成的物体
+        foreach (RecordableObject recordableObject in GameObject.FindObjectsOfType<RecordableObject>())
+        {
+            if (recordableObject.objectState.recordableObject!=recordableObject)
+            {//该物体未被记录
+                Debug.Log("destory " + (recordableObject.name));
+                Destroy(recordableObject.gameObject);
+            }
+        }
         foreach (DynamicObjectState state in dynamicSceneRecode)
         {
-            //去除新生成的物体
-            foreach (RecordableObject recordableObject in GameObject.FindObjectsOfType<RecordableObject>()) {
-                if (recordableObject.objectState==null)
-                {//该物体未被记录
-                    Destroy(recordableObject.gameObject);
-                }
-            }
             //恢复被删除和改变的物体
             GameObject ob;
             if (state.recordableObject==null)

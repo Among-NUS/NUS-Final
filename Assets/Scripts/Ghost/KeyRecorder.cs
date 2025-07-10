@@ -7,12 +7,13 @@ public class KeyRecorder : MonoBehaviour
 {
     [Header("auto update")]
     public static List<OperationType> currentInput;
-    public bool isRecording = false;
     public List<List<OperationType>> keyboardSequence;
-    
+    public bool isRecording = false;
+    public bool lastRecording;
+
     static bool isPressedUp = false;
     static bool isPressdInteracte = false;
-    public bool lastRecording;
+    static bool isPressedShoot = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,7 @@ public class KeyRecorder : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {   
-        getKeyInputs();
+        GetKeyInputs();
         if (lastRecording^isRecording&&isRecording)
         {//上升沿,开始记录时清楚上一次的记录
             keyboardSequence.Clear();
@@ -39,7 +40,7 @@ public class KeyRecorder : MonoBehaviour
     {//统一处理输入
         return currentInput;
     }
-    private static void getKeyInputs()
+    private static void GetKeyInputs()
     {//该方法一帧只能调用一次
         currentInput = new List<OperationType>();
         if (Input.GetKey(KeyCode.A)) currentInput.Add(OperationType.LEFT);
@@ -52,6 +53,9 @@ public class KeyRecorder : MonoBehaviour
 
         if (Input.GetKey(KeyCode.E)^ isPressdInteracte&&Input.GetKey(KeyCode.E)) currentInput.Add(OperationType.INTERACTE);
         isPressdInteracte = Input.GetKey(KeyCode.E);//在识别互动时，仅识别上升沿
+
+        if (Input.GetKey(KeyCode.Space) ^ isPressedShoot && Input.GetKey(KeyCode.Space)) currentInput.Add(OperationType.SHOOT);
+        isPressedShoot = Input.GetKey(KeyCode.Space);//在识别射击时，仅识别上升沿
     }
     public enum OperationType{
         UP,DOWN, LEFT, RIGHT,

@@ -13,6 +13,7 @@ public class Ghost : MonoBehaviour
     public int keySquenceIndex = 0;
 
     public bool isTouchGround = false;//提供给模仿方法，某些特定行为需要条件
+    public float lastShoot;//存储自己上次射击的时间点
     public bool isInteracting = false;//向可互动物体传递是否在互动
 
     public delegate void ghostImitation(Rigidbody2D myRb, List<KeyRecorder.OperationType> opt);//需要hero来实现如何模仿hero的动作

@@ -26,14 +26,14 @@ public class TimeReverseController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.I) ^ isPressedSave && Input.GetKey(KeyCode.I))
         {
-            GetComponent<SceneRecorder>().recordCurrentScene();
+            GetComponent<SceneRecorder>().RecordCurrentScene();
             Debug.Log("saved!");
             ghostPrefab.GetComponent<KeyRecorder>().isRecording = true;
         }
         isPressedSave = Input.GetKey(KeyCode.I);
         if (Input.GetKey(KeyCode.O) ^ isPressedLoad && Input.GetKey(KeyCode.O))
         {
-            GetComponent<SceneRecorder>().loadSavedScene();
+            GetComponent<SceneRecorder>().LoadSavedScene();
             Debug.Log("loaded!");
             ghostPrefab.GetComponent<KeyRecorder>().isRecording = false;
             ghostPrefab.GetComponent<Ghost>().isReplay = true;
