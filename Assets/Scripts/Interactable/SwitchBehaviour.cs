@@ -2,13 +2,13 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider2D))]
-public class Switch : MonoBehaviour, IInteractable
+public class SwitchBehaviour : MonoBehaviour, IInteractable, ICondition  // ← 加上 ICondition
 {
     [SerializeField]
     public bool isOn;
     public UnityEvent<bool> onStateChanged = new UnityEvent<bool>();
 
-    InteractionManager im;
+    private InteractionManager im;
 
     /* ---------- IInteractable ---------- */
     public Transform GetTransform() => transform;
@@ -16,9 +16,9 @@ public class Switch : MonoBehaviour, IInteractable
     public void Interact()
     {
         isOn = !isOn;
-        onStateChanged.Invoke(isOn);               // 通知所有订阅者（Door）
+        onStateChanged.Invoke(isOn);               // 通知所有订阅者（如门）
         GetComponent<SpriteRenderer>().color =
-            isOn ? Color.yellow : Color.white;     // 可选：给开关一个视觉反馈
+            isOn ? Color.yellow : Color.white;     // 可选视觉反馈
     }
 
     /* ---------- Trigger 注册 ---------- */
@@ -36,4 +36,7 @@ public class Switch : MonoBehaviour, IInteractable
 
     /* ---------- 暴露只读属性 ---------- */
     public bool IsOn => isOn;
+
+    /* ---------- ICondition 实现 ---------- */
+    public bool IsTrue => isOn;
 }
