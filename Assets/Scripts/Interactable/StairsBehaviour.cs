@@ -9,8 +9,8 @@ using UnityEngine;
 public class StairsBehaviour : MonoBehaviour
 {
     [Tooltip("这一段楼梯对应的另一段楼梯（必须互相指向）")]
-    public StairsBehaviour stairsUp;
-    public StairsBehaviour stairsDown;
+    public StairsBehaviour stairsUp = null;
+    public StairsBehaviour stairsDown = null;
     public Animator stairsAnimator;
 
     [Tooltip("站在这段楼梯时，按 W 是否算“上楼”")]
