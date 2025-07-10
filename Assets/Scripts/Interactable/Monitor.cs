@@ -54,7 +54,7 @@ public class Monitor : MonoBehaviour
                            Color.red, 0f, false);
 
             if (hit.collider != null &&
-                hit.collider.GetComponent<HeroBehaviour>() != null &&
+                (hit.collider.GetComponent<HeroBehaviour>() != null || hit.collider.GetComponent<GhostBehaviour>() != null) &&
                 !capturedTarget.Contains(hit.collider.gameObject))
             {
                 capturedTarget.Add(hit.collider.gameObject);
