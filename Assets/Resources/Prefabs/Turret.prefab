@@ -111,7 +111,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8559729350073114156}
-  - component: {fileID: 2125729303940756282}
   - component: {fileID: 7274238893619742135}
   - component: {fileID: 5295457473074663650}
   m_Layer: 0
@@ -136,25 +135,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4534604195829063251}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2125729303940756282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1476565711318896217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 348b7a970d2c1f140ada419c391a8cd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scanFan: 40
-  rotateSpeed: 45
-  rotateRange: 180
-  scanLength: 10
-  sm: 0
-  numberOfRay: 20
-  capturedTarget: []
 --- !u!212 &7274238893619742135
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -219,12 +199,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 348b7a970d2c1f140ada419c391a8cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scanFan: 40
+  scanFan: 360
   rotateSpeed: 45
   rotateRange: 180
   scanLength: 20
   sm: 0
-  numberOfRay: 20
+  numberOfRay: 60
   capturedTarget: []
 --- !u!1 &6864949391735184168
 GameObject:
@@ -240,7 +220,7 @@ GameObject:
   - component: {fileID: -2864243693930985335}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

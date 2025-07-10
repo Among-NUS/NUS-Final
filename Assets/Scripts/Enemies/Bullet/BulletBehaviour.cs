@@ -38,7 +38,7 @@ public class BulletBehaviour : MonoBehaviour
     {
         // 添加阵营判断（避免友军伤害）
         if (isEnemyBullet && collision.CompareTag("Enemy")) return;
-        if (!isEnemyBullet && collision.CompareTag("Player")) return;
+        if (!isEnemyBullet && (collision.CompareTag("Player") || collision.CompareTag("Ghost"))) return;
 
         Destroy(gameObject);
     }

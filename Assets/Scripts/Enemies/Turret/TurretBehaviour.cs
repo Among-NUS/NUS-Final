@@ -48,32 +48,37 @@ public class TurretBehaviour : MonoBehaviour, IInteractable
     void FixedUpdate()
     {
         if (!turret.isAlive)
-        {
-            Debug.Log("Turret dead.");
             return;
-        }
 
         if (GameManager.Instance?.currentPhase == GameManager.GamePhase.TimeStop)
-        {
-            Debug.Log("Time stopped.");
             return;
+
+        if (monitor == null || shooter == null)
+            return;
+
+        if (turret.isAlive)
+        {
+            var sr = GetComponentInChildren<SpriteRenderer>();
+            if (sr != null)
+                sr.color = Color.white;
         }
 
-        if (monitor == null)
+        var targets = monitor.getCapturedTarget();
+        int seen = targets.Count;
+
+        if (seen > 0)
         {
-            Debug.LogWarning("Monitor missing.");
-            return;
-        }
+            // 获取最近目标位置判断左右
+            GameObject target = targets[0];
+            Vector3 dir = target.transform.position - transform.position;
+            shooter.faceLeft = dir.x < 0;
 
-        int seen = monitor.getCapturedTarget().Count;
-
-        Debug.Log(shooter);
-
-        if (seen > 0 && shooter != null && shooter.CanFire())
-        {
-            Debug.Log("Turret fires!");
-            shooter.Fire();
+            if (shooter.CanFire())
+            {
+                shooter.Fire();
+            }
         }
     }
+
 
 }

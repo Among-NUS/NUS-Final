@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7558799490409040379}
   m_Layer: 10
   m_Name: GhostPrefab
-  m_TagString: Player
+  m_TagString: Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.1
+  interactSearchRadius: 0.5
 --- !u!212 &4119315803697022662
 SpriteRenderer:
   m_ObjectHideFlags: 0
