@@ -17,11 +17,13 @@ public class GhostBehaviour : MonoBehaviour
     [Header("Interaction")]
     [Tooltip("Radius used to search for interactables when the ghost \"presses\" E.")]
     [SerializeField] private float interactSearchRadius = 0.5f;
+    public Animator ghostAnimator;
 
     private Queue<Record> records;
     private bool isReplaying;
     private bool facingLeft = true; // ← 记录当前朝向
     private Shooter shooter;
+    private bool isWalking = false; // ← 用于记录是否在行走
 
     #region Public API
     public void StartReplay(Queue<Record> inputRecords)
@@ -38,7 +40,7 @@ public class GhostBehaviour : MonoBehaviour
 
     void Start()
     {
-        
+        Debug.Assert(ghostAnimator != null, "Ghost animator is not assigned.");
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -57,6 +59,7 @@ public class GhostBehaviour : MonoBehaviour
         if (!isReplaying || records == null || records.Count == 0) return;
 
         Record frame = records.Dequeue();
+        isWalking = false; // Reset walking state for this frame
         foreach (char key in frame.keys)
         {
             switch (key)
@@ -64,11 +67,13 @@ public class GhostBehaviour : MonoBehaviour
                 case 'a':
                     facingLeft = true;
                     transform.position += DirFromKey(key) * speed;
+                    isWalking = true; // Mark as walking
                     break;
 
                 case 'd':
                     facingLeft = false;
                     transform.position += DirFromKey(key) * speed;
+                    isWalking = true; // Mark as walking
                     break;
 
                 case 'w':
@@ -83,7 +88,12 @@ public class GhostBehaviour : MonoBehaviour
                 case 'j':
                     shooter.faceLeft = facingLeft;
                     shooter.Fire();
+                    ghostAnimator.SetTrigger("shootAnim");
                     break;
+            }
+            if (isWalking)
+            {
+                ghostAnimator.SetBool("isWalking", true);
             }
             Vector3 s = transform.localScale;
             float targetSign = facingLeft ? -1f : 1f;          // prefab 默认朝右；如默认朝左就反过来
@@ -92,7 +102,7 @@ public class GhostBehaviour : MonoBehaviour
                 s.x = Mathf.Abs(s.x) * targetSign;
                 transform.localScale = s;
             }
-}
+        }
 
 
         if (records.Count == 0)

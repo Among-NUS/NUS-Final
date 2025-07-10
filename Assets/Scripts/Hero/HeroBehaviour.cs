@@ -3,7 +3,9 @@ using System.Collections.Generic;
 
 public class HeroBehaviour : MonoBehaviour
 {
+    public Animator heroAnimator;
     public float speed = 0.1f;
+    private bool heroIsWalking = false;  // ← 用于记录是否在行走
 
     private Shooter shooter;
     private bool facingLeft = true;       // ← 记录当前朝向
@@ -11,6 +13,7 @@ public class HeroBehaviour : MonoBehaviour
     void Awake()
     {
         shooter = GetComponentInChildren<Shooter>();
+        Debug.Assert(heroAnimator != null);
     }
 
     void FixedUpdate()
@@ -22,6 +25,7 @@ public class HeroBehaviour : MonoBehaviour
         {
             shooter.faceLeft = facingLeft;
             shooter.Fire();
+            heroAnimator.SetTrigger("shootAnim");
         }
 
         if (GameManager.Instance.currentPhase == GameManager.GamePhase.Recording)
@@ -30,10 +34,12 @@ public class HeroBehaviour : MonoBehaviour
 
     void HandleMovement()
     {
+        heroIsWalking = false;  // 每次更新前重置
         Vector3 move = Vector3.zero;
 
-        if (Input.GetKey(KeyCode.A)) { move += Vector3.left; facingLeft = true; }
-        if (Input.GetKey(KeyCode.D)) { move += Vector3.right; facingLeft = false; }
+        if (Input.GetKey(KeyCode.A)) { move += Vector3.left; facingLeft = true; heroIsWalking = true; }
+        if (Input.GetKey(KeyCode.D)) { move += Vector3.right; facingLeft = false; heroIsWalking = true; }
+        heroAnimator.SetBool("isWalking", heroIsWalking);
 
         /* --- 用 localScale.x 的正负代表左右 --- */
         Vector3 s = transform.localScale;
