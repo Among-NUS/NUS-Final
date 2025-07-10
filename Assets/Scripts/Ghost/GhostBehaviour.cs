@@ -20,6 +20,8 @@ public class GhostBehaviour : MonoBehaviour
 
     private Queue<Record> records;
     private bool isReplaying;
+    private bool facingLeft = true; // ← 记录当前朝向
+    private Shooter shooter;
 
     #region Public API
     public void StartReplay(Queue<Record> inputRecords)
@@ -28,6 +30,16 @@ public class GhostBehaviour : MonoBehaviour
         isReplaying = true;
     }
     #endregion
+
+    void Awake()
+    {
+        shooter = GetComponentInChildren<Shooter>();
+    }
+
+    void Start()
+    {
+        Debug.Assert(shooter != null);
+    }
 
     #region Unity callbacks
     private void FixedUpdate()
@@ -40,7 +52,12 @@ public class GhostBehaviour : MonoBehaviour
             switch (key)
             {
                 case 'a':
+                    facingLeft = true;
+                    transform.position += DirFromKey(key) * speed;
+                    break;
+
                 case 'd':
+                    facingLeft = false;
                     transform.position += DirFromKey(key) * speed;
                     break;
 
@@ -50,10 +67,23 @@ public class GhostBehaviour : MonoBehaviour
                     break;
 
                 case 'e':
-                    TryInteract();       // ← NEW unified interaction logic
+                    TryInteract();
+                    break;
+
+                case 'j':
+                    shooter.faceLeft = facingLeft;
+                    shooter.Fire();
                     break;
             }
-        }
+            Vector3 s = transform.localScale;
+            float targetSign = facingLeft ? -1f : 1f;          // prefab 默认朝右；如默认朝左就反过来
+            if (Mathf.Sign(s.x) != targetSign)                 // 只在朝向改变时改一次
+            {
+                s.x = Mathf.Abs(s.x) * targetSign;
+                transform.localScale = s;
+            }
+}
+
 
         if (records.Count == 0)
         {
