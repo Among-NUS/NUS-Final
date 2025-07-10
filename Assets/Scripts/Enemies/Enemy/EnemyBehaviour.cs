@@ -10,6 +10,8 @@ public class EnemyBehaviour : MonoBehaviour
     public List<Transform> pathWayPoint;
     public Monitor enemyMonitor;      // 用于检测目标
     public float speed = 5f;
+    public Animator enemyAnimator; // 用于播放动画
+    public SpriteRenderer enemyDieSprite; // 死亡时的精灵
 
     /* ------- 运行期字段 ------- */
     private int currentTarget;
@@ -17,6 +19,7 @@ public class EnemyBehaviour : MonoBehaviour
     private Enemy enemy;
     private Shooter shooter;          // 射击由 Shooter 负责
     private SpriteRenderer sr;
+    
 
     /* ---------- 初始化 ---------- */
     void Awake()
@@ -29,7 +32,11 @@ public class EnemyBehaviour : MonoBehaviour
         facingLeft = transform.localScale.x < 0;
     }
 
-    void Start() => currentTarget = 0;
+    void Start()
+    {
+        currentTarget = 0;
+        Debug.Assert(enemyAnimator != null);
+    }
 
     /* ------------ 主循环 ------------ */
     void FixedUpdate()
@@ -77,6 +84,8 @@ public class EnemyBehaviour : MonoBehaviour
             s.x = Mathf.Abs(s.x) * targetSign;
             transform.localScale = s;
         }
+        enemyAnimator.SetBool("isWalking",  dirMove.x < -0.1f||dirMove.x > 0.1f);
+        
     }
 
     /* ---------- 巡逻点切换 ---------- */
