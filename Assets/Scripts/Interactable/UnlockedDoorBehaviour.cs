@@ -7,6 +7,8 @@ public class UnlockedDoorBehaviour : MonoBehaviour
 {
     [Header("…Ë÷√")]
     public List<string> triggerTags = new List<string> { "Player", "Ghost", "Enemy" };
+    public Sprite openDoorSprite;
+    public Sprite closedDoorSprite;
 
     [Header("◊¥Ã¨")]
     public bool isOpen = false;
@@ -55,6 +57,6 @@ public class UnlockedDoorBehaviour : MonoBehaviour
 
     void ApplyState()
     {
-        sr.color = isOpen ? Color.green : Color.red;
+        sr.sprite = isOpen ? openDoorSprite : closedDoorSprite;
     }
 }
