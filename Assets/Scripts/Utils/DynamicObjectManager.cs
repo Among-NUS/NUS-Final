@@ -39,7 +39,8 @@ public class DynamicObjectManager : MonoBehaviour
                 prefabName = b.prefabName,
                 position = obj.transform.position,
                 rotation = obj.transform.rotation,
-                direction = b.direction
+                direction = b.direction,
+                isEnemy = b.isEnemy
             });
         }
     }
@@ -66,6 +67,7 @@ public class DynamicObjectManager : MonoBehaviour
             if (b)
             {
                 b.direction = s.direction;
+                b.isEnemy = s.isEnemy;
                 Register(go);
             }
         }

@@ -7,7 +7,7 @@ public class BulletBehaviour : MonoBehaviour
     [HideInInspector] public Vector3 direction;
     public float speed = 8f;
     public float maxDistance = 5f;
-    public bool isEnemyBullet = false;
+    public bool isEnemy = false;
 
     Vector3 spawnPos;
 
@@ -37,8 +37,8 @@ public class BulletBehaviour : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         // 添加阵营判断（避免友军伤害）
-        if (isEnemyBullet && collision.CompareTag("Enemy")) return;
-        if (!isEnemyBullet && (collision.CompareTag("Player") || collision.CompareTag("Ghost"))) return;
+        if (isEnemy && collision.CompareTag("Enemy")) return;
+        if (!isEnemy && (collision.CompareTag("Player") || collision.CompareTag("Ghost"))) return;
 
         Destroy(gameObject);
     }

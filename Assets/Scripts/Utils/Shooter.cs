@@ -29,7 +29,7 @@ public class Shooter : MonoBehaviour
         if (bb != null)
         {
             bb.direction = dir;
-            bb.isEnemyBullet = isEnemy;
+            bb.isEnemy = isEnemy;
         }
 
         fireCooldown = fireInterval;

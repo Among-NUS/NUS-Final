@@ -19,5 +19,6 @@ public struct DynamicObjectState
     public Vector3 position;
     public Quaternion rotation;
     public Vector3 direction;
+    public bool isEnemy;
 }
 
