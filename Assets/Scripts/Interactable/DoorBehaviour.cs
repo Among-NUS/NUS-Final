@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class DoorBehaviour : MonoBehaviour
 {
+    [Header("拖进来")]
+    [SerializeField] private Sprite closedSprite;   // door_close
+    [SerializeField] private Sprite openSprite;     // door_open
+    
     [Header("need to drag")]
     public List<Switch> switches = new();          // 直接拖脚本引用
     public SwitchType st = SwitchType.OR;
@@ -44,9 +48,9 @@ public class DoorBehaviour : MonoBehaviour
         // true == 开门：禁用碰撞器 + 改色
         var col = GetComponent<BoxCollider2D>();
         if (col) col.enabled = !isOpen;
-
+        //change image not color
         var sr = GetComponent<SpriteRenderer>();
-        if (sr) sr.color = isOpen ? Color.red : Color.green;
+        if (sr) sr.sprite = isOpen ? openSprite : closedSprite;
     }
 
     public enum SwitchType { AND, OR, CHANGE }
