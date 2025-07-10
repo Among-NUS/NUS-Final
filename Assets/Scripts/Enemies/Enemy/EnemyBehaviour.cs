@@ -11,7 +11,7 @@ public class EnemyBehaviour : MonoBehaviour
     public Monitor enemyMonitor;      // 用于检测目标
     public float speed = 5f;
     public Animator enemyAnimator; // 用于播放动画
-    public SpriteRenderer enemyDieSprite; // 死亡时的精灵
+    public Sprite enemyDieSprite; // 死亡时的精灵
 
     /* ------- 运行期字段 ------- */
     private int currentTarget;
@@ -109,10 +109,10 @@ public class EnemyBehaviour : MonoBehaviour
 
     public void DestroyEnemy()
     {
+        enemyAnimator.SetBool("isDead", true);
         if (!enemy.isAlive) return;
 
         enemy.isAlive = false;
-        if (sr != null) sr.color = Color.red;
     }
 
 }
