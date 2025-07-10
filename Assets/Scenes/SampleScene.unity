@@ -436,17 +436,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: fe332324155c0cf4bb7ef24779fbe980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-=======
-  m_Script: {fileID: 11500000, guid: d6f1237e77fb2e449b58110afe5be709, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FollowTarget: {fileID: 1332309837}
-  FollowRegion: 0.5
->>>>>>> aa5db4d44d63b2b6ef5c1eac34c218430a1a3dfb
 --- !u!1 &686470427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1351,7 +1343,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
 --- !u!1 &1554409655
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,15 +1364,11 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &1554409656
-=======
---- !u!114 &1381389903
->>>>>>> aa5db4d44d63b2b6ef5c1eac34c218430a1a3dfb
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 1554409655}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -1509,15 +1496,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
-  m_GameObject: {fileID: 1381389899}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f45eea1182960540bc46356425512c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uniqueID: Circle
->>>>>>> aa5db4d44d63b2b6ef5c1eac34c218430a1a3dfb
 --- !u!1 &1683537447
 GameObject:
   m_ObjectHideFlags: 0

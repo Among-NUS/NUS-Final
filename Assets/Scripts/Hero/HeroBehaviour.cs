@@ -1,12 +1,19 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Assertions;
 
 public class HeroBehaviour : MonoBehaviour
 {
     public float speed = 0.1f;
+    public Animator heroAnimator=null;
+    void Start()
+    {
+        Debug.Assert(heroAnimator != null);
+    }
 
     void FixedUpdate()
     {
+        heroAnimator.SetBool("isRunning", false);  // ⬅ 新增
         HandleMovement();
 
         if (GameManager.Instance.currentPhase == GameManager.GamePhase.Recording)
@@ -17,11 +24,18 @@ public class HeroBehaviour : MonoBehaviour
     void HandleMovement()
     {
         Vector3 move = Vector3.zero;
-        if (Input.GetKey(KeyCode.A)) move += Vector3.left;
-        if (Input.GetKey(KeyCode.D)) move += Vector3.right;
+        if (Input.GetKey(KeyCode.A))
+        {
+            move += Vector3.left;
+            heroAnimator.SetBool("isRunning", true);  // ⬅ 新增
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            move += Vector3.right;
+            heroAnimator.SetBool("isRunning", true);  // ⬅ 新增
+        }
 
-       
-        transform.position += move * speed ;
+        transform.position += move * speed;
     }
 
     List<char> CollectKeyInputs()

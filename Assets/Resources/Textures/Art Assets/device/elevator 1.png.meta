@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: db88d0d1ed951904e9115f19e521666f
+guid: 88a0ca64d70c39743bee6d368902b91c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: herowalkingsheet(to right )_0
+      name: elevator_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 1
-        width: 24
-        height: 48
+        x: 8
+        y: 0
+        width: 53
+        height: 68
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb8464ba2336a3243bdaeefe8b47064b
-      internalID: 30389033
+      spriteID: 6cdd11a57e4085d439f21a735c44b3c9
+      internalID: 1410923979
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: herowalkingsheet(to right )_1
+      name: elevator_1
       rect:
         serializedVersion: 2
-        x: 66
-        y: 2
-        width: 32
-        height: 47
+        x: 78
+        y: 0
+        width: 53
+        height: 68
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c854a2e15900b6c4badd6008d53d2f2a
-      internalID: -665320421
+      spriteID: 5b3608be799ed4845b9fe27651b2dc4b
+      internalID: 1753936138
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: herowalkingsheet(to right )_2
+      name: elevator_2
       rect:
         serializedVersion: 2
-        x: 116
-        y: 2
-        width: 32
-        height: 47
+        x: 148
+        y: 0
+        width: 53
+        height: 68
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3c9e650aa6335b42963d68a0fd0bfe5
-      internalID: -1372150121
+      spriteID: 6c14856c212afc94e8abc9483e8389be
+      internalID: 2027358617
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: herowalkingsheet(to right )_3
+      name: elevator_3
       rect:
         serializedVersion: 2
-        x: 168
-        y: 2
-        width: 19
-        height: 47
+        x: 218
+        y: 0
+        width: 53
+        height: 68
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9698eb3580c8c6749944277a6b90ab77
-      internalID: -1624119530
+      spriteID: f8ce40e6f6a5dc94cb61422fa26a3b89
+      internalID: 1303960874
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: herowalkingsheet(to right )_4
+      name: elevator_4
       rect:
         serializedVersion: 2
-        x: 212
-        y: 3
-        width: 31
-        height: 46
+        x: 288
+        y: 0
+        width: 53
+        height: 68
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f90cceae072c0e04d9e608940c29b5c4
-      internalID: -1586331118
+      spriteID: f7e7298ed9ad2984db7febc0f632c790
+      internalID: -812635968
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: herowalkingsheet(to right )_5
+      name: elevator_5
       rect:
         serializedVersion: 2
-        x: 265
-        y: 4
-        width: 30
-        height: 45
+        x: 358
+        y: 0
+        width: 53
+        height: 68
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,29 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b7c580632862874fa3a496d1be808bb
-      internalID: -1364356764
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: herowalkingsheet(to right )_6
-      rect:
-        serializedVersion: 2
-        x: 323
-        y: 2
-        width: 19
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b858e60665db1504bbeb19775d1adf91
-      internalID: 629113587
+      spriteID: 73833ae8ad1369246a851634aeeb6985
+      internalID: 872840277
       vertices: []
       indices: 
       edges: []
@@ -267,13 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      herowalkingsheet(to right )_0: 30389033
-      herowalkingsheet(to right )_1: -665320421
-      herowalkingsheet(to right )_2: -1372150121
-      herowalkingsheet(to right )_3: -1624119530
-      herowalkingsheet(to right )_4: -1586331118
-      herowalkingsheet(to right )_5: -1364356764
-      herowalkingsheet(to right )_6: 629113587
+      elevator_0: 1410923979
+      elevator_1: 1753936138
+      elevator_2: 2027358617
+      elevator_3: 1303960874
+      elevator_4: -812635968
+      elevator_5: 872840277
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
