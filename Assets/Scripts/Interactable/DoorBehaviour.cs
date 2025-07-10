@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof(Door))]
 public class DoorBehaviour : MonoBehaviour
 {
     [Header("门贴图")]
@@ -12,21 +13,26 @@ public class DoorBehaviour : MonoBehaviour
     public List<MonoBehaviour> conditions = new();  // 可拖拽任何实现 ICondition 的组件
     public SwitchType st = SwitchType.OR;
 
-    private bool isOpen;
+    private Door door;
 
     void Awake()
+    {
+        door = GetComponent<Door>();
+    }
+
+    void Start()
     {
         Evaluate(); // 初始自检
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Evaluate(); // 每帧检测条件是否变化（也可以按需改成事件驱动）
     }
 
     void Evaluate()
     {
-        bool prev = isOpen;
+        bool prev = door.isOpen;
 
         // 统一处理所有 ICondition（Switch 也实现了它）
         var validConditions = conditions.OfType<ICondition>().ToList();
@@ -35,28 +41,26 @@ public class DoorBehaviour : MonoBehaviour
         switch (st)
         {
             case SwitchType.AND:
-                isOpen = validConditions.All(c => c.IsTrue);
+                door.isOpen = validConditions.All(c => c.IsTrue);
                 break;
             case SwitchType.OR:
-                isOpen = validConditions.Any(c => c.IsTrue);
+                door.isOpen = validConditions.Any(c => c.IsTrue);
                 break;
             case SwitchType.CHANGE:
-                isOpen = !isOpen;
+                door.isOpen = !door.isOpen;
                 break;
         }
 
-        if (prev != isOpen)
-            ApplyState();
+        ApplyState();
     }
-
 
     void ApplyState()
     {
         var col = GetComponent<BoxCollider2D>();
-        if (col) col.enabled = !isOpen;
+        if (col) col.enabled = !door.isOpen;
 
         var sr = GetComponent<SpriteRenderer>();
-        if (sr) sr.sprite = isOpen ? openSprite : closedSprite;
+        if (sr) sr.sprite = door.isOpen ? openSprite : closedSprite;
     }
 
     public enum SwitchType { AND, OR, CHANGE }

@@ -1,25 +1,46 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Collider2D))]
-public class SwitchBehaviour : MonoBehaviour, IInteractable, ICondition  // ¡û ¼ÓÉÏ ICondition
+[RequireComponent(typeof(Collider2D), typeof(Switch))]
+public class SwitchBehaviour : MonoBehaviour, IInteractable, ICondition
 {
-    [SerializeField]
-    public bool isOn;
     public UnityEvent<bool> onStateChanged = new UnityEvent<bool>();
 
     private InteractionManager im;
+    private Switch sw;
+
+    void Awake()
+    {
+        sw = GetComponent<Switch>();
+        ApplyVisual();
+    }
 
     /* ---------- IInteractable ---------- */
     public Transform GetTransform() => transform;
 
     public void Interact()
     {
-        isOn = !isOn;
-        onStateChanged.Invoke(isOn);               // Í¨ÖªËùÓÐ¶©ÔÄÕß£¨ÈçÃÅ£©
-        GetComponent<SpriteRenderer>().color =
-            isOn ? Color.yellow : Color.white;     // ¿ÉÑ¡ÊÓ¾õ·´À¡
+        sw.isOn = !sw.isOn;
+        onStateChanged.Invoke(sw.isOn);
+        ApplyVisual();
     }
+
+    /* ---------- ÊÓ¾õ·´À¡ ---------- */
+    private void ApplyVisual()
+    {
+        var sr = GetComponent<SpriteRenderer>();
+        if (sr != null)
+            sr.color = sw.isOn ? Color.yellow : Color.white;
+    }
+
+    void Update()
+    {
+        ApplyVisual();  // ÊµÊ±Í¬²½ÊÓ¾õ
+    }
+
+
+    /* ---------- ICondition ÊµÏÖ ---------- */
+    public bool IsTrue => sw.isOn;
 
     /* ---------- Trigger ×¢²á ---------- */
     void OnEnable() => im = FindObjectOfType<InteractionManager>();
@@ -33,10 +54,4 @@ public class SwitchBehaviour : MonoBehaviour, IInteractable, ICondition  // ¡û ¼
     {
         if (col.CompareTag("Player")) im?.UnregisterNearby(this);
     }
-
-    /* ---------- ±©Â¶Ö»¶ÁÊôÐÔ ---------- */
-    public bool IsOn => isOn;
-
-    /* ---------- ICondition ÊµÏÖ ---------- */
-    public bool IsTrue => isOn;
 }

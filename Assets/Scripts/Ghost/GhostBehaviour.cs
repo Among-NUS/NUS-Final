@@ -54,12 +54,15 @@ public class GhostBehaviour : MonoBehaviour
 
 
     #region Unity callbacks
+    private bool lastFramePressedE = false; // ← 新增字段，放在类里
+
     private void FixedUpdate()
     {
         if (!isReplaying || records == null || records.Count == 0) return;
 
         Record frame = records.Dequeue();
-        isWalking = false; // Reset walking state for this frame
+        bool pressedE = false;
+
         foreach (char key in frame.keys)
         {
             switch (key)
@@ -67,13 +70,11 @@ public class GhostBehaviour : MonoBehaviour
                 case 'a':
                     facingLeft = true;
                     transform.position += DirFromKey(key) * speed;
-                    isWalking = true; // Mark as walking
                     break;
 
                 case 'd':
                     facingLeft = false;
                     transform.position += DirFromKey(key) * speed;
-                    isWalking = true; // Mark as walking
                     break;
 
                 case 'w':
@@ -82,35 +83,40 @@ public class GhostBehaviour : MonoBehaviour
                     break;
 
                 case 'e':
-                    TryInteract();
+                    pressedE = true; // 标记这帧按下了 e
                     break;
 
                 case 'j':
                     shooter.faceLeft = facingLeft;
                     shooter.Fire();
-                    ghostAnimator.SetTrigger("shootAnim");
                     break;
-            }
-            if (isWalking)
-            {
-                ghostAnimator.SetBool("isWalking", true);
-            }
-            Vector3 s = transform.localScale;
-            float targetSign = facingLeft ? -1f : 1f;          // prefab 默认朝右；如默认朝左就反过来
-            if (Mathf.Sign(s.x) != targetSign)                 // 只在朝向改变时改一次
-            {
-                s.x = Mathf.Abs(s.x) * targetSign;
-                transform.localScale = s;
             }
         }
 
+        // 控制 sprite 方向镜像翻转
+        Vector3 s = transform.localScale;
+        float targetSign = facingLeft ? -1f : 1f;
+        if (Mathf.Sign(s.x) != targetSign)
+        {
+            s.x = Mathf.Abs(s.x) * targetSign;
+            transform.localScale = s;
+        }
 
+        // 只在 e 第一次按下的那一帧执行交互
+        if (pressedE && !lastFramePressedE)
+        {
+            TryInteract();
+        }
+        lastFramePressedE = pressedE;
+
+        // 回放结束时销毁自己
         if (records.Count == 0)
         {
             Destroy(gameObject);
             GameManager.Instance.OnGhostFinished();
         }
     }
+
     #endregion
 
     #region Helpers – movement
