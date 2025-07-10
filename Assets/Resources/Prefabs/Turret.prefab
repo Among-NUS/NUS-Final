@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1379034496691982341}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.26, y: -1.19, z: 0}
+  m_LocalPosition: {x: 0, y: 1.304, z: 0}
   m_LocalScale: {x: 3.75, y: 3.567825, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -94,7 +94,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4534604195829063251}
   - component: {fileID: 6289325934964640967}
-  - component: {fileID: 6460991679485837651}
+  - component: {fileID: 7028426249632407482}
+  - component: {fileID: -2864243693930985335}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -164,7 +165,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &6460991679485837651
+--- !u!114 &7028426249632407482
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -173,15 +174,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 6864949391735184168}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ca7488b004058246aae9200e1028c18, type: 3}
+  m_Script: {fileID: 11500000, guid: f590aa0cc7db53240915119d5294b4b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 3408761706605211824}
-  bulletPrefab: {fileID: 3943769148579212318, guid: cbfcd9f49d3bf2c4092bf548f319f14d, type: 3}
+  bulletPrefab: {fileID: 3943769148579212318, guid: 91a4eb19ff412e1499719b00e259a47f, type: 3}
   target: {fileID: 0}
+  playerInside: 0
   fireInterval: 0.5
   detectDistance: 8
   detectAngle: 45
+  interactDistance: 5
+  turret: {fileID: 0}
+--- !u!114 &-2864243693930985335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6864949391735184168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0497b1cfe0132a248842c17ba2a9f7e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: Turret1
+  isAlive: 0
 --- !u!1 &8554839392570605886
 GameObject:
   m_ObjectHideFlags: 0

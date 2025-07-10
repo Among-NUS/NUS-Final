@@ -2,13 +2,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-
 public class Snapshot
 {
     public Vector3 playerPosition;
     public List<ObjectState> objectStates;
 
-    public Snapshot()
+    // 空构造函数，不再包含 Unity API 调用
+    public Snapshot() { }
+
+    // 显式初始化方法，在合适的时机（如 Start）调用
+    public void Capture()
     {
         GameObject hero = GameObject.FindWithTag("Player");
         playerPosition = hero ? hero.transform.position : Vector3.zero;
@@ -16,8 +19,9 @@ public class Snapshot
         objectStates = new List<ObjectState>();
         foreach (var obj in GameObject.FindObjectsOfType<RecordableObject>())
             objectStates.Add(obj.CaptureState());
-    }
 
+        DynamicObjectManager.Instance.Capture();
+    }
 
     public void Restore()
     {
@@ -31,9 +35,11 @@ public class Snapshot
                 obj.RestoreState(state);
             }
         }
-    }
 
+        DynamicObjectManager.Instance.Restore();
+    }
 }
+
 
 
 

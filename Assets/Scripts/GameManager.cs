@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        snapshot = new Snapshot();
+
         ghostPrefab = Resources.Load<GameObject>("Prefabs/GhostPrefab");
         previewGhostPrefab = Resources.Load<GameObject>("Prefabs/PreviewGhostPrefab");
 
@@ -87,6 +89,7 @@ public class GameManager : MonoBehaviour
         inputRecords.Clear();
 
         snapshot = new Snapshot();
+        snapshot.Capture();
 
         if (previewGhost != null)
             Destroy(previewGhost);

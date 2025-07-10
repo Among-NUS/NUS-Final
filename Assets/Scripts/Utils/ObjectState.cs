@@ -8,4 +8,16 @@ public class ObjectState
     public Vector3 position;
     public Quaternion rotation;
     public Vector3 scale;
+
+    public Dictionary<string, object> extraData;
 }
+
+[System.Serializable]
+public struct DynamicObjectState
+{
+    public string prefabName;      // Resources.Load Â·¾¶
+    public Vector3 position;
+    public Quaternion rotation;
+    public Vector3 direction;
+}
+

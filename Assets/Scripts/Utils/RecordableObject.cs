@@ -15,22 +15,34 @@ public class RecordableObject : MonoBehaviour
         }
     }
 
-    public ObjectState CaptureState()
+    public virtual ObjectState CaptureState()
     {
         return new ObjectState
         {
             id = uniqueID,
             position = transform.position,
             rotation = transform.rotation,
-            scale = transform.localScale
+            scale = transform.localScale,
+            extraData = CaptureExtraData()
         };
     }
 
-    public void RestoreState(ObjectState state)
+    public virtual void RestoreState(ObjectState state)
     {
         transform.position = state.position;
         transform.rotation = state.rotation;
         transform.localScale = state.scale;
+        RestoreExtraData(state.extraData);
+    }
+
+    protected virtual Dictionary<string, object> CaptureExtraData()
+    {
+        return null; // 默认无额外数据
+    }
+
+    protected virtual void RestoreExtraData(Dictionary<string, object> data)
+    {
+        // 默认无操作
     }
 
     public static RecordableObject FindByID(string id)
