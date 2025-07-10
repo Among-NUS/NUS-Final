@@ -11,6 +11,7 @@ public class StairsBehaviour : MonoBehaviour
     [Tooltip("这一段楼梯对应的另一段楼梯（必须互相指向）")]
     public StairsBehaviour stairsUp;
     public StairsBehaviour stairsDown;
+    public Animator stairsAnimator;
 
     [Tooltip("站在这段楼梯时，按 W 是否算“上楼”")]
     //public bool upwardHere = true;
@@ -19,6 +20,10 @@ public class StairsBehaviour : MonoBehaviour
     bool playerInside;
     Transform playerTf;
     float cooldown;            // 防止瞬时往返
+    void Start()
+    {
+        Debug.Assert(stairsAnimator != null);
+    }
 
     void Update()
     {
@@ -33,10 +38,12 @@ public class StairsBehaviour : MonoBehaviour
         if ((stairsUp != null && Input.GetKeyDown(KeyCode.W)))
         {
             TeleportTo(stairsUp);
+            stairsDown.stairsAnimator.SetBool("HeroIn", false);
         }
         if ((stairsDown != null && Input.GetKeyDown(KeyCode.S)))
         {
             TeleportTo(stairsDown);
+            stairsUp.stairsAnimator.SetBool("HeroIn", false);
         }
     }
 
@@ -69,6 +76,11 @@ public class StairsBehaviour : MonoBehaviour
         {
             playerInside = true;
             playerTf = other.transform;
+            stairsAnimator.SetBool("HeroIn", true);
+            if (stairsUp != null)
+                stairsUp.stairsAnimator.SetBool("HeroIn", true);
+            if (stairsDown != null)
+                stairsDown.stairsAnimator.SetBool("HeroIn", true);
         }
     }
 
@@ -78,6 +90,7 @@ public class StairsBehaviour : MonoBehaviour
         {
             playerInside = false;
             playerTf = null;
+            stairsAnimator.SetBool("HeroIn", false);
         }
     }
     // 供 Ghost 调用的公共接口
