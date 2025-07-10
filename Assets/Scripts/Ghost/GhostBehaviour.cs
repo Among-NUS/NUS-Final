@@ -38,8 +38,18 @@ public class GhostBehaviour : MonoBehaviour
 
     void Start()
     {
-        Debug.Assert(shooter != null);
+        
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        BulletBehaviour bullet = collision.GetComponent<BulletBehaviour>();
+        if (bullet != null && bullet.isEnemy)
+        {
+            Debug.Log("Ghost hit by enemy bullet");
+        }
+    }
+
 
     #region Unity callbacks
     private void FixedUpdate()

@@ -59,4 +59,15 @@ public class HeroBehaviour : MonoBehaviour
         if (Input.GetKey(KeyCode.J)) keys.Add('j');
         return keys;
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        BulletBehaviour bullet = collision.GetComponent<BulletBehaviour>();
+        if (bullet != null && bullet.isEnemy)
+        {
+            Debug.Log("Hero hit by enemy bullet");
+            FindObjectOfType<GameOverUI>().ShowGameOver();
+        }
+    }
+
 }

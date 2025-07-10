@@ -77,6 +77,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void GameOver()
+    {
+
+    }
+
     public void StartRecording()
     {
         if (!cooldownBar.CanStartRecording)

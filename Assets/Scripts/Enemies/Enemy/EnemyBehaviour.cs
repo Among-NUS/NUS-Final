@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(Enemy))]
 public class EnemyBehaviour : MonoBehaviour
@@ -37,6 +38,13 @@ public class EnemyBehaviour : MonoBehaviour
         if (!enemy.isAlive) return;
         if (GameManager.Instance?.currentPhase == GameManager.GamePhase.TimeStop) return;
 
+        if (enemy.isAlive)
+        {
+            var sr = GetComponentInChildren<SpriteRenderer>();
+            if (sr != null)
+                sr.color = Color.white;
+        }
+
         /* 2. 巡逻移动 */
         Vector3 dirMove = Vector3.zero;
         if (pathWayPoint != null && pathWayPoint.Count > 0)
@@ -72,16 +80,24 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
     /* ---------- 巡逻点切换 ---------- */
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (pathWayPoint != null &&
-            col.gameObject == pathWayPoint[currentTarget].gameObject)
+            collision.gameObject == pathWayPoint[currentTarget].gameObject)
         {
             currentTarget = (currentTarget + 1) % pathWayPoint.Count;
         }
+
+        BulletBehaviour bullet = collision.GetComponent<BulletBehaviour>();
+
+        // 如果碰到的是来自玩家的子弹
+        if (bullet != null && !bullet.isEnemy && enemy.isAlive)
+        {
+            Debug.Log("Enemy hit by player bullet");
+            DestroyEnemy();  // 敌人死亡处理
+        }
     }
 
-    /* ---------- 外部调用：击杀敌人 ---------- */
     public void DestroyEnemy()
     {
         if (!enemy.isAlive) return;
@@ -89,4 +105,5 @@ public class EnemyBehaviour : MonoBehaviour
         enemy.isAlive = false;
         if (sr != null) sr.color = Color.red;
     }
+
 }
