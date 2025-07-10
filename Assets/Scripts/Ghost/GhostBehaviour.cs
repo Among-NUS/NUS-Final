@@ -17,7 +17,7 @@ public class GhostBehaviour : MonoBehaviour
     [Header("Interaction")]
     [Tooltip("Radius used to search for interactables when the ghost \"presses\" E.")]
     [SerializeField] private float interactSearchRadius = 0.5f;
-    public Animator ghostAnimator;
+    private Animator ghostAnimator;
 
     private Queue<Record> records;
     private bool isReplaying;
@@ -36,10 +36,14 @@ public class GhostBehaviour : MonoBehaviour
     void Awake()
     {
         shooter = GetComponentInChildren<Shooter>();
+        ghostAnimator = GetComponent<Animator>();
+        Debug.Assert(shooter != null, "Shooter component is not assigned.");
+        Debug.Assert(ghostAnimator != null, "Ghost animator is not assigned.");
     }
 
     void Start()
     {
+        ghostAnimator = GetComponent<Animator>();
         Debug.Assert(ghostAnimator != null, "Ghost animator is not assigned.");
     }
 
@@ -58,23 +62,27 @@ public class GhostBehaviour : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
         if (!isReplaying || records == null || records.Count == 0) return;
 
         Record frame = records.Dequeue();
         bool pressedE = false;
-
+        ghostAnimator.SetBool("isWalking", false); // 重置行走状态
         foreach (char key in frame.keys)
         {
+
             switch (key)
             {
                 case 'a':
                     facingLeft = true;
                     transform.position += DirFromKey(key) * speed;
+                    ghostAnimator.SetBool("isWalking", true);
                     break;
 
                 case 'd':
                     facingLeft = false;
                     transform.position += DirFromKey(key) * speed;
+                    ghostAnimator.SetBool("isWalking", true);
                     break;
 
                 case 'w':
@@ -89,6 +97,7 @@ public class GhostBehaviour : MonoBehaviour
                 case 'j':
                     shooter.faceLeft = facingLeft;
                     shooter.Fire();
+                    ghostAnimator.SetTrigger("shootAnim");
                     break;
             }
         }
