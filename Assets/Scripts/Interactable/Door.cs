@@ -28,13 +28,13 @@ public class Door : MonoBehaviour
         switch (st) 
         { 
             case SwitchType.AND:
-                isOn = allSwitchOn();
+                isOn = AllSwitchOn();
                 break;
             case SwitchType.OR:
-                isOn = oneSwitchOn();
+                isOn = OneSwitchOn();
                 break;
             case SwitchType.CHANGE:
-                if (switchChange())
+                if (SwitchChange())
                 {
                     isOn = !isOn;
                 }
@@ -49,7 +49,7 @@ public class Door : MonoBehaviour
         }
         GetComponent<SpriteRenderer>().color = isOn?Color.red : Color.green;
     }
-    bool allSwitchOn()
+    bool AllSwitchOn()
     {
         for (int i = 0;i<switchs.Count;i++)
         {
@@ -60,7 +60,7 @@ public class Door : MonoBehaviour
         }
         return true;
     }
-    bool oneSwitchOn()
+    bool OneSwitchOn()
     {
         for (int i = 0; i < switchs.Count; i++)
         {
@@ -71,7 +71,7 @@ public class Door : MonoBehaviour
         }
         return false;
     }
-    bool switchChange()
+    bool SwitchChange()
     {
         for (int i = 0; i < switchs.Count; i++)
         {
@@ -83,6 +83,7 @@ public class Door : MonoBehaviour
         }
         return false;
     }
+
     public enum SwitchType
     {
         AND,

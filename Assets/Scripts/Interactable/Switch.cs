@@ -2,12 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Switch : MonoBehaviour
+public class Switch : MonoBehaviour, IInteractable
 {
-    [Header("need to drag")]
-    [Header("auto update")]
-    [SerializeField]
-    bool isPressInteract =false;
     public bool isOn = false;
     
     void Start()
@@ -20,16 +16,9 @@ public class Switch : MonoBehaviour
     {
         
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    public Transform GetTransform() => transform;
+    public void Interact()
     {
-        isPressInteract = false;
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (Input.GetKey(KeyCode.E)^isPressInteract&& Input.GetKey(KeyCode.E))
-        {
-            isOn = !isOn;
-        }
-        isPressInteract = Input.GetKey(KeyCode.E);
+        isOn = !isOn;
     }
 }
