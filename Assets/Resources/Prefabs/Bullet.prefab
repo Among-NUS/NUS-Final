@@ -100,8 +100,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabName: Prefabs/Bullet
   direction: {x: 0, y: 0, z: 0}
-  speed: 1
+  speed: 1000
   maxDistance: 1000
+  isEnemy: 1
 --- !u!58 &7417335623041414153
 CircleCollider2D:
   m_ObjectHideFlags: 0
