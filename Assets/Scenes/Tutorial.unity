@@ -8414,6 +8414,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LockedDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 8949462445534746652, guid: 3cd16dde6d271a24ca31f3de664fcc2a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 8949462445534746652, guid: 3cd16dde6d271a24ca31f3de664fcc2a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.86
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
