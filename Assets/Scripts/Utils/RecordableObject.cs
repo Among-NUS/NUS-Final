@@ -1,19 +1,36 @@
 using UnityEngine;
+using System;
 using System.Collections.Generic;
 
+[ExecuteAlways]               // 让 OnValidate 在编辑器下也执行
 public class RecordableObject : MonoBehaviour
 {
-    public string uniqueID;
+    [SerializeField, HideInInspector]
+    private string uniqueID;   // 不再暴露给 Inspector
 
-    private static Dictionary<string, RecordableObject> allObjects = new();
+    public string UniqueID => uniqueID;   // 只读访问
 
-    void Awake()
+    private static readonly Dictionary<string, RecordableObject> allObjects = new();
+
+    /* ---------- 生命周期 ---------- */
+
+    void OnValidate()          // 编辑器状态下，每次改动都会触发
     {
-        if (!string.IsNullOrEmpty(uniqueID))
-        {
-            allObjects[uniqueID] = this;
-        }
+        EnsureID();
     }
+
+    void Awake()               // 运行时兜底，确保动态生成实例也有 ID
+    {
+        EnsureID();
+
+        // 注册到全局字典
+        if (!allObjects.ContainsKey(uniqueID))
+            allObjects.Add(uniqueID, this);
+        else
+            Debug.LogWarning($"Duplicate ID detected: {uniqueID} on {name}", this);
+    }
+
+    /* ---------- 快照接口 ---------- */
 
     public virtual ObjectState CaptureState()
     {
@@ -35,18 +52,39 @@ public class RecordableObject : MonoBehaviour
         RestoreExtraData(state.extraData);
     }
 
-    protected virtual Dictionary<string, object> CaptureExtraData()
+    /* ---------- 工具方法 ---------- */
+
+    /// <summary>保证 <c>uniqueID</c> 非空且唯一。</summary>
+    private void EnsureID()
     {
-        return null; // 默认无额外数据
+        if (string.IsNullOrEmpty(uniqueID) || !IsIDUnique(uniqueID))
+        {
+            uniqueID = Guid.NewGuid().ToString();
+#if UNITY_EDITOR
+            // 标记脏数据，确保场景/预制体保存
+            UnityEditor.EditorUtility.SetDirty(this);
+#endif
+        }
     }
 
-    protected virtual void RestoreExtraData(Dictionary<string, object> data)
-    {
-        // 默认无操作
-    }
+    private static bool IsIDUnique(string id) =>
+        !string.IsNullOrEmpty(id) && !allObjects.ContainsKey(id);
 
-    public static RecordableObject FindByID(string id)
+#if UNITY_EDITOR
+    [ContextMenu("Regenerate ID")]
+    private void RegenerateID()
     {
-        return allObjects.TryGetValue(id, out var obj) ? obj : null;
+        uniqueID = string.Empty;
+        EnsureID();
     }
+#endif
+
+    /* ---------- 可被子类覆写的扩展点 ---------- */
+
+    protected virtual Dictionary<string, object> CaptureExtraData() => null;
+
+    protected virtual void RestoreExtraData(Dictionary<string, object> data) { }
+
+    public static RecordableObject FindByID(string id) =>
+        allObjects.TryGetValue(id, out var obj) ? obj : null;
 }
