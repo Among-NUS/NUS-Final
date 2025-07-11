@@ -47,6 +47,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         if (enemy.isAlive)
         {
+            enemyAnimator.SetBool("isDead", false);
             var sr = GetComponentInChildren<SpriteRenderer>();
             if (sr != null)
                 sr.color = Color.white;

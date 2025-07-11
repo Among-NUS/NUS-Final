@@ -18,6 +18,11 @@ public class GhostBehaviour : MonoBehaviour
     [Tooltip("Radius used to search for interactables when the ghost \"presses\" E.")]
     [SerializeField] private float interactSearchRadius = 0.5f;
     private Animator ghostAnimator;
+    public float layerChangeCooldown = 0.8f;
+    private float lastCooldown;
+    public int nearLayer = 100;
+    public int farLayer = -1;
+    [SerializeField] private SpriteRenderer ghostSR;
 
     private Queue<Record> records;
     private bool isReplaying;
@@ -37,6 +42,7 @@ public class GhostBehaviour : MonoBehaviour
     {
         shooter = GetComponentInChildren<Shooter>();
         ghostAnimator = GetComponent<Animator>();
+        ghostSR = GetComponent<SpriteRenderer>();
         Debug.Assert(shooter != null, "Shooter component is not assigned.");
         Debug.Assert(ghostAnimator != null, "Ghost animator is not assigned.");
     }
@@ -62,9 +68,12 @@ public class GhostBehaviour : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
-        if (!isReplaying || records == null || records.Count == 0) return;
 
+        if (!isReplaying || records == null || records.Count == 0) return;
+        if (Time.time - lastCooldown > layerChangeCooldown)
+        {
+            setLayerNear();
+        }
         Record frame = records.Dequeue();
         bool pressedE = false;
         ghostAnimator.SetBool("isWalking", false); // 重置行走状态
@@ -180,4 +189,16 @@ public class GhostBehaviour : MonoBehaviour
         }
     }
     #endregion
+
+    public void setLayerFar()
+    {
+        Debug.Log("Ghost ser layer far");
+        ghostSR.sortingOrder = farLayer;
+        lastCooldown = Time.time;
+    }
+
+    public void setLayerNear()
+    {
+        ghostSR.sortingOrder = nearLayer;
+    }
 }

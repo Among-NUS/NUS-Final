@@ -12,6 +12,7 @@ public class StairsBehaviour : MonoBehaviour
     public StairsBehaviour stairsUp = null;
     public StairsBehaviour stairsDown = null;
     public Animator stairsAnimator;
+    private GameObject enterPlayer;
 
     [Tooltip("站在这段楼梯时，按 W 是否算“上楼”")]
     //public bool upwardHere = true;
@@ -38,12 +39,16 @@ public class StairsBehaviour : MonoBehaviour
         if ((stairsUp != null && Input.GetKeyDown(KeyCode.W)))
         {
             TeleportTo(stairsUp);
-            stairsDown.stairsAnimator.SetBool("HeroIn", false);
+            
+            enterPlayer.GetComponent<HeroBehaviour>().setLayerFar();
+            
         }
         if ((stairsDown != null && Input.GetKeyDown(KeyCode.S)))
         {
             TeleportTo(stairsDown);
-            stairsUp.stairsAnimator.SetBool("HeroIn", false);
+            
+            enterPlayer.GetComponent<HeroBehaviour>().setLayerFar();
+            
         }
     }
 
@@ -72,21 +77,20 @@ public class StairsBehaviour : MonoBehaviour
     // --- 触发器检测 ---
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player")||other.CompareTag("Ghost"))
         {
             playerInside = true;
             playerTf = other.transform;
             stairsAnimator.SetBool("HeroIn", true);
-            if (stairsUp != null)
-                stairsUp.stairsAnimator.SetBool("HeroIn", true);
-            if (stairsDown != null)
-                stairsDown.stairsAnimator.SetBool("HeroIn", true);
+            enterPlayer = other.gameObject;
+            
+            
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player")||other.CompareTag("Ghost"))
         {
             playerInside = false;
             playerTf = null;
@@ -103,6 +107,7 @@ public class StairsBehaviour : MonoBehaviour
         
         if (target==null) return;
 
+        enterPlayer.GetComponent<GhostBehaviour>().setLayerFar();
         // 执行传送
         entity.position = target.transform.position;
         cooldown              = 0.15f;
