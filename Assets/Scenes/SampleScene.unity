@@ -863,6 +863,14 @@ PrefabInstance:
       propertyPath: conditions.Array.data[2]
       value: 
       objectReference: {fileID: 2050361562}
+    - target: {fileID: 1630164317213801446, guid: 60c5d8d975229084f8bb5cf3c53e5398, type: 3}
+      propertyPath: uniqueID
+      value: c250900d-be50-4d21-99e9-f6a68a274848
+      objectReference: {fileID: 0}
+    - target: {fileID: 1855673802452995557, guid: 60c5d8d975229084f8bb5cf3c53e5398, type: 3}
+      propertyPath: uniqueID
+      value: fc6cd2bf-21dd-4a7c-9697-ac1ec54f797a
+      objectReference: {fileID: 0}
     - target: {fileID: 5293035313010212221, guid: 60c5d8d975229084f8bb5cf3c53e5398, type: 3}
       propertyPath: m_Name
       value: door
@@ -907,6 +915,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8481196496952285466, guid: 60c5d8d975229084f8bb5cf3c53e5398, type: 3}
+      propertyPath: uniqueID
+      value: 1a2eb97c-e269-4911-b87c-e40aaf7a13f9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -935,7 +947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f45eea1182960540bc46356425512c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 
+  uniqueID: c833bad7-bc3b-496c-b3d1-a8050c03c19c
 --- !u!1 &807091558
 GameObject:
   m_ObjectHideFlags: 0
@@ -1735,7 +1747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f45eea1182960540bc46356425512c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: Circle
+  uniqueID: da1f4a13-a546-4f25-ade7-10549afcabb4
 --- !u!1 &1531142619
 GameObject:
   m_ObjectHideFlags: 0
