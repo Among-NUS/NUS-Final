@@ -4,6 +4,11 @@ using System.Collections.Generic;
 public class HeroBehaviour : MonoBehaviour
 {
     public Animator heroAnimator;
+    public float layerChangeCooldown = 2f; //for elevator animation
+    private float lastCooldown;
+    public int nearLayer = 100;
+    public int farLayer = -1;
+    [SerializeField] private SpriteRenderer heroSR;
     public float speed = 0.1f;
     private bool heroIsWalking = false;  // ← 用于记录是否在行走
 
@@ -13,11 +18,16 @@ public class HeroBehaviour : MonoBehaviour
     void Awake()
     {
         shooter = GetComponentInChildren<Shooter>();
+        heroSR = GetComponent<SpriteRenderer>();
         Debug.Assert(heroAnimator != null);
     }
 
     void FixedUpdate()
     {
+        if (Time.time - lastCooldown > layerChangeCooldown)
+        {
+            setLayerNear();
+        }
         HandleMovement();
 
         // J 键开火（与上次示例一致）
@@ -74,6 +84,16 @@ public class HeroBehaviour : MonoBehaviour
             Debug.Log("Hero hit by enemy bullet");
             FindObjectOfType<GameOverUI>().ShowGameOver();
         }
+    }
+
+    public void setLayerFar()
+    {
+        heroSR.sortingOrder = farLayer;
+        lastCooldown = Time.time;
+    }
+    public void setLayerNear()
+    {
+        heroSR.sortingOrder = nearLayer;
     }
 
 }

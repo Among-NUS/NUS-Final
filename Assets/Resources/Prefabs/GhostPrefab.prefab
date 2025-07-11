@@ -51,7 +51,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.1
   interactSearchRadius: 0.5
-  ghostAnimator: {fileID: 7257149877909762456}
+  layerChangeCooldown: 0.8
+  nearLayer: 100
+  farLayer: -1
+  ghostSR: {fileID: 4119315803697022662}
 --- !u!212 &4119315803697022662
 SpriteRenderer:
   m_ObjectHideFlags: 0
