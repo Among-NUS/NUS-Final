@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4884076109398078808}
+  - component: {fileID: 6775211579641631550}
   m_Layer: 0
   m_Name: MonitorEye
   m_TagString: Untagged
@@ -31,6 +32,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3507712583735089925}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -125}
+--- !u!114 &6775211579641631550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2329316200211986690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 348b7a970d2c1f140ada419c391a8cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scanFan: 24
+  rotateSpeed: 45
+  rotateRange: 180
+  scanLength: 10
+  sm: 0
+  numberOfRay: 2
+  capturedTarget: []
 --- !u!1 &5755074365788193586
 GameObject:
   m_ObjectHideFlags: 0
