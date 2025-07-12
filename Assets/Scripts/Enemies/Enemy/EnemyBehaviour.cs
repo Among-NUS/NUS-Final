@@ -8,7 +8,7 @@ public class EnemyBehaviour : MonoBehaviour
     /* ------- Inspector 参数 ------- */
     [Header("巡逻路径(按顺序)")]
     public List<Transform> pathWayPoint;
-    public Monitor enemyMonitor;      // 用于检测目标
+    public MonitorBehaviour enemyMonitor;      // 用于检测目标
     public float speed = 5f;
     public Animator enemyAnimator; // 用于播放动画
     public Sprite enemyDieSprite; // 死亡时的精灵

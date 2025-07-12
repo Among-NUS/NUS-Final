@@ -6,6 +6,7 @@ public class PauseUI : MonoBehaviour
 {
     public GameObject pausePanel;
     public GameObject confirmPanel;
+    public GameObject settingsPanel;
     public TextMeshProUGUI confirmText;
 
     private System.Action confirmAction;
@@ -14,13 +15,18 @@ public class PauseUI : MonoBehaviour
     {
         pausePanel.SetActive(false);
         confirmPanel.SetActive(false);
+        settingsPanel.SetActive(false);
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (confirmPanel.activeSelf)
+            if (settingsPanel.activeSelf) {
+                settingsPanel.SetActive(false);
+                pausePanel.SetActive(true);
+            }
+            else if (confirmPanel.activeSelf)
             {
                 confirmPanel.SetActive(false);  // 先关确认框
             }
@@ -48,6 +54,11 @@ public class PauseUI : MonoBehaviour
     {
         pausePanel.SetActive(false);
         Time.timeScale = 1f;
+    }
+    public void OnClickSettingsButton()
+    {
+        pausePanel.SetActive(false);
+        settingsPanel.SetActive(true);
     }
 
     public void OnClickRestartConfirm()

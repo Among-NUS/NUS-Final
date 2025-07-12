@@ -17,8 +17,6 @@ public class GameManager : MonoBehaviour
     Queue<Record> inputRecords = new();
 
     public MessageDisplay messageDisplay;
-
-    bool travellingMode = false;
     public bool IsRecording => currentPhase == GamePhase.Recording;
 
     void Awake()
@@ -36,13 +34,9 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T) && currentPhase == GamePhase.Normal) travellingMode = !travellingMode;
         if (Input.GetKeyDown(KeyCode.U) && currentPhase == GamePhase.Normal) StartRecording();
-        if (Input.GetKeyDown(KeyCode.I) && currentPhase == GamePhase.Recording)
-        {
-            if (travellingMode) StopRecordingAndFreeze();
-            else StopAndReplay();
-        }
+        if (Input.GetKeyDown(KeyCode.I) && currentPhase == GamePhase.Recording) StopRecordingAndFreeze();
+        if (Input.GetKeyDown(KeyCode.O) && currentPhase == GamePhase.Recording)  StopAndReplay();
     }
 
     void FixedUpdate()

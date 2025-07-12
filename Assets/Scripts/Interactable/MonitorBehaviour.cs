@@ -5,7 +5,7 @@ using UnityEngine;
 /// 旋转扫描监视器：向扇形内发射多条 Ray 侦测 Hero，
 /// 结果保存在 capturedTarget，供 EnemyBehaviour 调用。
 /// </summary>
-public class Monitor : MonoBehaviour
+public class MonitorBehaviour : MonoBehaviour
 {
     /* ---------- Inspector 可调参数 ---------- */
     [Header("auto initialize")]
