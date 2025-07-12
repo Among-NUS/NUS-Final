@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject ghostPrefab;
     public GameObject previewGhostPrefab;
-    public CooldownBarBehaviour cooldownBar;
+    public CooldownRingBehaviour cooldownRing;
 
     GameObject previewGhost;
     Snapshot snapshot;
@@ -47,12 +47,12 @@ public class GameManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (cooldownBar == null) return;
+        if (cooldownRing == null) return;
 
         if (currentPhase == GamePhase.TimeStop)
         {
-            cooldownBar.ConsumeEnergyForTravel();
-            if (cooldownBar.IsEnergyDepleted)
+            cooldownRing.ConsumeEnergyForTravel();
+            if (cooldownRing.IsEnergyDepleted)
             {
                 BeginReplay();
             }
@@ -61,10 +61,10 @@ public class GameManager : MonoBehaviour
         if (currentPhase == GamePhase.Recording)
         {
             // 录制时，增加使用的能量
-            cooldownBar.TickRecording();
+            cooldownRing.TickRecording();
 
             // 检查能量是否耗尽
-            if (cooldownBar.IsRecordingEnergyDepleted())
+            if (cooldownRing.IsRecordingEnergyDepleted())
             {
                 CancelRecording();
                 Debug.Log("能量耗尽，录制被取消");
@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         else if (currentPhase == GamePhase.Normal)
         {
             // 非录制时恢复能量（包括幽灵存在时）
-            cooldownBar.RegenerateEnergy();
+            cooldownRing.RegenerateEnergy();
         }
     }
 
@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
 
     public void StartRecording()
     {
-        if (!cooldownBar.CanStartRecording)
+        if (!cooldownRing.CanStartRecording)
         {
             Debug.Log("能量不足，无法开始录制");
             return;
@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
             Destroy(previewGhost);
 
         previewGhost = Instantiate(previewGhostPrefab, snapshot.playerPosition, Quaternion.identity);
-        cooldownBar.StartRecording();
+        cooldownRing.StartRecording();
 
         Debug.Log("开始录制");
     }
@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
         snapshot.Restore();
         currentPhase = GamePhase.Normal;
 
-        cooldownBar.StopRecording();
+        cooldownRing.StopRecording();
         
         BeginReplay();
     }
@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
         snapshot.Restore();
         currentPhase = GamePhase.TimeStop;
 
-        cooldownBar.StopRecording();
+        cooldownRing.StopRecording();
     }
 
     void CancelRecording()
@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviour
         }
 
         inputRecords.Clear();
-        cooldownBar.CancelRecording();
+        cooldownRing.CancelRecording();
         Debug.Log("录制被取消");
     }
 
