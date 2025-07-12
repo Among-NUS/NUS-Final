@@ -9,6 +9,7 @@ public class TurretBehaviour : MonoBehaviour, IInteractable
     public Sprite aliveSprite;
     public Sprite dieSprite;
 
+
     void Awake()
     {
         turret = GetComponent<Turret>();
