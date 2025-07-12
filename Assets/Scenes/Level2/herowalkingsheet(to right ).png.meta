@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7f986c8f3ccde6e41ba30323145e54ea
+guid: 79fe2e9ca48ff3243b94ae440ec667d5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,54 +110,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: turretdestroying_0
+      name: herowalkingsheet(to right )_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 3
-        width: 53
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5d85070ca8f7c8546a93c713f1d14025
-      internalID: 2092381306
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: turretdestroying_1
-      rect:
-        serializedVersion: 2
-        x: 61
-        y: 3
-        width: 51
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0755419186402cf4eb46b44626a601ab
-      internalID: -266245396
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: turretdestroying_2
-      rect:
-        serializedVersion: 2
-        x: 122
-        y: 3
-        width: 57
+        x: 12
+        y: 1
+        width: 24
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -166,8 +124,134 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 979e22ba57cf71a4695153acead1e239
-      internalID: -1443387936
+      spriteID: 4cb76c974fd56424eba348c8953af9d8
+      internalID: -1389179649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: herowalkingsheet(to right )_1
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 2
+        width: 32
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9df1a0957675894494f854080685f73
+      internalID: -2122532256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: herowalkingsheet(to right )_2
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 2
+        width: 32
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaa0b31349353e1428fc77ae590bf399
+      internalID: -472690791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: herowalkingsheet(to right )_3
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 2
+        width: 19
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4ea40170972fe949a28af5d9bb57004
+      internalID: 1067736229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: herowalkingsheet(to right )_4
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 3
+        width: 31
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75fd77263d6ecb4408f2289e60b99779
+      internalID: -1810010754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: herowalkingsheet(to right )_5
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 4
+        width: 30
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b07429306139d92449c34ae4e9881b53
+      internalID: 2046268931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: herowalkingsheet(to right )_6
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 2
+        width: 19
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cc35c646847eaa42ac939840fd3234f
+      internalID: -7521864
       vertices: []
       indices: 
       edges: []
@@ -183,10 +267,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      turretdestroying_0: 2092381306
-      turretdestroying_1: -266245396
-      turretdestroying_2: -1443387936
-      turretdestroying_3: 1378165463
+      herowalkingsheet(to right )_0: -1389179649
+      herowalkingsheet(to right )_1: -2122532256
+      herowalkingsheet(to right )_2: -472690791
+      herowalkingsheet(to right )_3: 1067736229
+      herowalkingsheet(to right )_4: -1810010754
+      herowalkingsheet(to right )_5: 2046268931
+      herowalkingsheet(to right )_6: -7521864
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

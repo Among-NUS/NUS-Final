@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7f986c8f3ccde6e41ba30323145e54ea
+guid: e1a044169b9e2eb419afdb769bab3cd1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,11 +45,11 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 65
+  spriteBorder: {x: 9, y: 11, z: 8, w: 14}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: turretdestroying_0
+      name: brick3_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 3
-        width: 53
-        height: 49
+        x: 9
+        y: 12
+        width: 13
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d85070ca8f7c8546a93c713f1d14025
-      internalID: 2092381306
+      spriteID: ea5e0a9403474a64490dbb25a742629a
+      internalID: 1530946440
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turretdestroying_1
+      name: brick3_1
       rect:
         serializedVersion: 2
-        x: 61
-        y: 3
-        width: 51
-        height: 49
+        x: 10
+        y: 12
+        width: 13
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0755419186402cf4eb46b44626a601ab
-      internalID: -266245396
+      spriteID: 11da38e1ca38a95428db001968967dba
+      internalID: 1560920117
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turretdestroying_2
+      name: brick3_2
       rect:
         serializedVersion: 2
-        x: 122
-        y: 3
-        width: 57
-        height: 48
+        x: 23
+        y: 12
+        width: 13
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +166,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 979e22ba57cf71a4695153acead1e239
-      internalID: -1443387936
+      spriteID: bd8be3d6d33e2e4409b8157d2ab404bb
+      internalID: -448642048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brick3_3
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 13
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa05e681987de3c4e81d4334522f9276
+      internalID: 1892390920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brick3_4
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 11
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dc8869ef9f558b4796c659e9c7ed123
+      internalID: -249125619
       vertices: []
       indices: 
       edges: []
@@ -176,17 +218,19 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      turretdestroying_0: 2092381306
-      turretdestroying_1: -266245396
-      turretdestroying_2: -1443387936
-      turretdestroying_3: 1378165463
+      brick3_0: 1530946440
+      brick3_1: 1560920117
+      brick3_2: -448642048
+      brick3_3: 1892390920
+      brick3_4: -249125619
+      brick3_5: 251256222
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

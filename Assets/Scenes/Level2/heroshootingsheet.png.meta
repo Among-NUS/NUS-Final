@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7f986c8f3ccde6e41ba30323145e54ea
+guid: 317ce6414e404ae409b368d9378449b5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: turretdestroying_0
+      name: heroshootingsheet_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 3
-        width: 53
-        height: 49
+        x: 13
+        y: 2
+        width: 20
+        height: 47
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d85070ca8f7c8546a93c713f1d14025
-      internalID: 2092381306
+      spriteID: f86708da99b269b46b965301f3432405
+      internalID: -234105365
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turretdestroying_1
+      name: heroshootingsheet_1
       rect:
         serializedVersion: 2
-        x: 61
-        y: 3
-        width: 51
-        height: 49
+        x: 63
+        y: 2
+        width: 20
+        height: 47
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0755419186402cf4eb46b44626a601ab
-      internalID: -266245396
+      spriteID: ac68747755685d149b92a68704f2005f
+      internalID: -700330070
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turretdestroying_2
+      name: heroshootingsheet_2
       rect:
         serializedVersion: 2
-        x: 122
-        y: 3
-        width: 57
-        height: 48
+        x: 113
+        y: 2
+        width: 21
+        height: 47
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +166,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 979e22ba57cf71a4695153acead1e239
-      internalID: -1443387936
+      spriteID: 5a325ab1e8c5b8c4daf764921d2f68c8
+      internalID: 1481317351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heroshootingsheet_3
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 2
+        width: 34
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d79e8b0b9b41bf240b0e3634495d6c2b
+      internalID: 776906628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heroshootingsheet_4
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 2
+        width: 35
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7a8c69c79a5b1b4ab947f1c857ccf9c
+      internalID: 776688697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heroshootingsheet_5
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 2
+        width: 21
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff5ffefb699d0c84fbb63e5cd896d5d6
+      internalID: -692145781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heroshootingsheet_6
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 2
+        width: 21
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80c01295626a4ba42bf489756bd57418
+      internalID: 1550355394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heroshootingsheet_7
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 2
+        width: 23
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b74d5bb3a087f6142854ea71a98df2c9
+      internalID: 309512845
       vertices: []
       indices: 
       edges: []
@@ -183,10 +288,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      turretdestroying_0: 2092381306
-      turretdestroying_1: -266245396
-      turretdestroying_2: -1443387936
-      turretdestroying_3: 1378165463
+      heroshootingsheet_0: -234105365
+      heroshootingsheet_1: -700330070
+      heroshootingsheet_2: 1481317351
+      heroshootingsheet_3: 776906628
+      heroshootingsheet_4: 776688697
+      heroshootingsheet_5: -692145781
+      heroshootingsheet_6: 1550355394
+      heroshootingsheet_7: 309512845
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

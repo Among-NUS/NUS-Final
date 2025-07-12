@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7f986c8f3ccde6e41ba30323145e54ea
+guid: 032b4850cf6d8894f86f6265835e8ae8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,10 +45,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: turretdestroying_0
+      name: brick2_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 3
-        width: 53
-        height: 49
+        x: 0
+        y: 26
+        width: 10
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d85070ca8f7c8546a93c713f1d14025
-      internalID: 2092381306
+      spriteID: a44f23fd49f74f341bbc4d6e76da5cd7
+      internalID: -281238844
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turretdestroying_1
+      name: brick2_1
       rect:
         serializedVersion: 2
-        x: 61
-        y: 3
-        width: 51
-        height: 49
+        x: 10
+        y: 25
+        width: 10
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0755419186402cf4eb46b44626a601ab
-      internalID: -266245396
+      spriteID: aea8903a6df787f49add7a8321739795
+      internalID: -659599045
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turretdestroying_2
+      name: brick2_2
       rect:
         serializedVersion: 2
-        x: 122
-        y: 3
-        width: 57
-        height: 48
+        x: 20
+        y: 25
+        width: 10
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +166,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 979e22ba57cf71a4695153acead1e239
-      internalID: -1443387936
+      spriteID: d137d6f0dd355eb4bade3fcfdd0aee00
+      internalID: 1332626990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brick2_3
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 25
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 744816ca553a07343ac87625778dfd3c
+      internalID: 256417958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brick2_5
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 15
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c68c31f57207e8343a92aa731d3a6ad6
+      internalID: -582100131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brick2_6
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 15
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5457f653f7c60874e973410e314d0401
+      internalID: -486023029
       vertices: []
       indices: 
       edges: []
@@ -183,10 +246,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      turretdestroying_0: 2092381306
-      turretdestroying_1: -266245396
-      turretdestroying_2: -1443387936
-      turretdestroying_3: 1378165463
+      brick2_0: -281238844
+      brick2_1: -659599045
+      brick2_2: 1332626990
+      brick2_3: 256417958
+      brick2_4: -372382719
+      brick2_5: -582100131
+      brick2_6: -486023029
+      brick2_7: 766910525
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

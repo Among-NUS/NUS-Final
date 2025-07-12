@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7f986c8f3ccde6e41ba30323145e54ea
+guid: 9cb1cbf9d2b537d4aa5650d2f82ddd81
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: turretdestroying_0
+      name: CooldownRing_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 3
-        width: 53
-        height: 49
+        x: 0
+        y: 0
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d85070ca8f7c8546a93c713f1d14025
-      internalID: 2092381306
+      spriteID: 764a694df8a3b364baf1964bf6e3027c
+      internalID: -509978836
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turretdestroying_1
+      name: CooldownRing_1
       rect:
         serializedVersion: 2
-        x: 61
-        y: 3
-        width: 51
-        height: 49
+        x: 80
+        y: 0
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0755419186402cf4eb46b44626a601ab
-      internalID: -266245396
+      spriteID: cd10a34523ef7c346bd25ff1f0e959b0
+      internalID: 359828351
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: turretdestroying_2
+      name: CooldownRing_2
       rect:
         serializedVersion: 2
-        x: 122
-        y: 3
-        width: 57
-        height: 48
+        x: 160
+        y: 0
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +166,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 979e22ba57cf71a4695153acead1e239
-      internalID: -1443387936
+      spriteID: 1b34efb2512bf8848bf2e54a2f842dca
+      internalID: -12841022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CooldownRing_3
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17b52663255c8b14e979561a899bbb92
+      internalID: 1800001665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CooldownRing_4
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89098004f22960c45a36391c60df5e03
+      internalID: 2029008176
       vertices: []
       indices: 
       edges: []
@@ -183,10 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      turretdestroying_0: 2092381306
-      turretdestroying_1: -266245396
-      turretdestroying_2: -1443387936
-      turretdestroying_3: 1378165463
+      CooldownRing_0: -509978836
+      CooldownRing_1: 359828351
+      CooldownRing_2: -12841022
+      CooldownRing_3: 1800001665
+      CooldownRing_4: 2029008176
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
