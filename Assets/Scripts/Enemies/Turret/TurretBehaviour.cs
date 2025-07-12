@@ -5,7 +5,11 @@ public class TurretBehaviour : MonoBehaviour, IInteractable
     private InteractionManager im;
     public Turret turret;
     private Shooter shooter;
-    private MonitorBehaviour monitor;  // ← 添加监视器引用
+
+    private Monitor monitor;  // ← 添加监视器引用
+    public Sprite aliveSprite;
+    public Sprite dieSprite;
+
 
     void Awake()
     {
@@ -24,7 +28,7 @@ public class TurretBehaviour : MonoBehaviour, IInteractable
 
     public void DestroyTurret()
     {
-        gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.red;
+        gameObject.GetComponentInChildren<SpriteRenderer>().sprite = dieSprite;
         turret.isAlive = false;
     }
 
@@ -60,7 +64,7 @@ public class TurretBehaviour : MonoBehaviour, IInteractable
         {
             var sr = GetComponentInChildren<SpriteRenderer>();
             if (sr != null)
-                sr.color = Color.white;
+                sr.sprite = aliveSprite;
         }
 
         var targets = monitor.getCapturedTarget();
