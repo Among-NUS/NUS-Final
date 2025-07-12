@@ -19,9 +19,9 @@ TagManager:
   - 
   - 
   - Hero
-  - HeroBullet
+  - Bullet
   - Enemy
-  - EnemyBullet
+  - 
   - WayPoint
   - Interactable
   - 
