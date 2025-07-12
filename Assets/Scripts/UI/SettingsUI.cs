@@ -61,18 +61,17 @@ public class SettingsUI : MonoBehaviour
     void PopulateKeybinds()
     {
         string[,] keys = {
-            {"W", "上移"},
-            {"A", "左移"},
-            {"S", "下移"},
-            {"D", "右移"},
-            {"E", "交互"},
-            {"J", "射击"},
-            {"Space", "跳跃"},
-            {"Esc", "暂停"},
-            {"R", "重开关卡"},
-            {"Shift", "冲刺"},
-            {"Q", "技能"},
-            {"Q", "技能"}
+            {"A", "Move left"},
+            {"D", "Move right"},
+            {"W", "Stairs up"},
+            {"S", "Stairs down"},
+            {"E", "Interact (destroy turret / pick up item)"},
+            {"J", "Shoot"},
+            {"U", "Record a timestamp"},
+            {"I", "Travel back to the timestamp"},
+            {"O", "Travel back to the timestamp with movement"},
+            {"Esc", "Pause"},
+            {"R", "Restart"},
         };
 
         foreach (Transform child in keybindsContent)
@@ -89,12 +88,6 @@ public class SettingsUI : MonoBehaviour
 
     void PopulateHints()
     {
-        hintsText.text = "欢迎来到游戏！以下是一些提示：\n\n" +
-                         "• 使用WASD移动角色\n" +
-                         "• 按E与物体交互\n" +
-                         "• 按J发射子弹击败敌人\n" +
-                         "• 灵活运用时间回溯系统通关\n" +
-                         "• 某些门需要机关才能开启\n" +
-                         "• 多探索世界隐藏的要素！";
+        hintsText.text = "Some Instructions";
     }
 }
