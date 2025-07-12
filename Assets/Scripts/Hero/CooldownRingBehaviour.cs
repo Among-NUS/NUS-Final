@@ -4,17 +4,22 @@ using UnityEngine.UI;
 public class CooldownRingBehaviour : MonoBehaviour
 {
     [Header("UI圆环")]
-    public Image baseRing;              // 能量圆环本体（背景）
-    public Image currentRing;           // 当前可用能量圆环（蓝色）
-    public Image usedRing;              // 正在使用的能量圆环（红色遮罩）
+    public Image baseRing;              // 基础圆环背景（灰色）
+    public Image currentRing;           // 当前可用基础圆环（蓝色）
+    public Image usedRing;              // 正在使用的基础圆环（红色或黄色）
 
-    [Header("能量参数")]
-    public int maxEnergy = 300;          // 最大能量值
-    public int energyRegenRate = 1;      // 每帧恢复的能量
-    public int energyConsumeRate = 1;    // 每帧消耗的能量
+    [Header("指针设置")]
+    public Transform pointer;           // 指针Transform
+    public bool rotatePointer = true;   // 是否旋转指针
+    public float pointerOffset = 0f;    // 指针角度偏移
 
-    private int currentEnergy = 300;     // 当前可用能量
-    private int usedEnergy = 0;          // 正在使用的能量（录制时）
+    [Header("基础参数")]
+    public int maxEnergy = 300;          // 最大基础值
+    public int energyRegenRate = 1;      // 每秒恢复的基础
+    public int energyConsumeRate = 1;    // 每秒消耗的基础
+
+    private int currentEnergy = 300;     // 当前可用基础
+    private int usedEnergy = 0;          // 正在使用的基础（录制时）
     private bool isRecording = false;    // 是否正在录制
 
     public bool CanStartRecording => currentEnergy > 0;
@@ -24,11 +29,11 @@ public class CooldownRingBehaviour : MonoBehaviour
 
     void Start()
     {
-        // 初始化能量为满
+        // 初始化基础为满
         currentEnergy = maxEnergy;
         usedEnergy = 0;
 
-        // 确保圆环使用Radial 360填充模式
+        // 确保圆环使用Radial 360模式
         SetupRingImages();
         UpdateRingVisual();
     }
@@ -74,28 +79,28 @@ public class CooldownRingBehaviour : MonoBehaviour
     }
 
     /// <summary>
-    /// 录制时每帧调用
+    /// 录制时每秒调用
     /// </summary>
     public void TickRecording()
     {
         if (!isRecording) return;
 
-        // 增加使用的能量
+        // 增加使用的基础
         usedEnergy += energyConsumeRate;
 
-        // 检查是否超过当前可用能量
+        // 检查是否超过当前可用基础
         if (usedEnergy >= currentEnergy)
         {
             usedEnergy = currentEnergy;
             UpdateRingVisual();
-            return; // 能量耗尽，应该停止录制
+            return; // 基础耗尽，应该停止录制
         }
 
         UpdateRingVisual();
     }
 
     /// <summary>
-    /// 停止录制并消耗能量
+    /// 停止录制并消耗基础
     /// </summary>
     public void StopRecording()
     {
@@ -103,7 +108,7 @@ public class CooldownRingBehaviour : MonoBehaviour
 
         isRecording = false;
 
-        // 消耗实际使用的能量
+        // 消耗实际使用的基础
         currentEnergy -= usedEnergy;
         if (currentEnergy < 0) currentEnergy = 0;
 
@@ -116,16 +121,16 @@ public class CooldownRingBehaviour : MonoBehaviour
     /// </summary>
     public void CancelRecording()
     {
-        // 取消录制时不消耗能量，恢复到录制前的状态
+        // 取消录制时不消耗基础，恢复到录制前的状态
         isRecording = false;
         usedEnergy = 0;
-        // 如果需要，也可以恢复到满能量状态
+        // 如果需要，也可以恢复到满基础状态
         // currentEnergy = maxEnergy;
         UpdateRingVisual();
     }
 
     /// <summary>
-    /// 每帧恢复能量（非录制时）
+    /// 每秒恢复基础（非录制时）
     /// </summary>
     public void RegenerateEnergy()
     {
@@ -139,7 +144,7 @@ public class CooldownRingBehaviour : MonoBehaviour
     }
 
     /// <summary>
-    /// 穿越时消耗能量
+    /// 传送时消耗基础
     /// </summary>
     public void ConsumeEnergyForTravel()
     {
@@ -170,9 +175,12 @@ public class CooldownRingBehaviour : MonoBehaviour
                 usedRing.fillAmount = usedRatio;
                 usedRing.gameObject.SetActive(true);
 
-                // 确保红圈在蓝圈之上
+                // 确保红色在蓝色之上
                 usedRing.transform.SetAsLastSibling();
             }
+
+            // 更新指针位置 - 指向剩余能量的末端
+            UpdatePointer(availableRatio);
         }
         else
         {
@@ -181,6 +189,9 @@ public class CooldownRingBehaviour : MonoBehaviour
             {
                 float currentRatio = Mathf.Clamp01((float)currentEnergy / maxEnergy);
                 currentRing.fillAmount = currentRatio;
+
+                // 更新指针位置 - 指向当前能量的末端
+                UpdatePointer(currentRatio);
             }
 
             if (usedRing != null)
@@ -191,10 +202,54 @@ public class CooldownRingBehaviour : MonoBehaviour
     }
 
     /// <summary>
-    /// 检查是否能量耗尽
+    /// 更新指针位置
+    /// </summary>
+    private void UpdatePointer(float ratio)
+    {
+        if (pointer != null && rotatePointer)
+        {
+            // 计算角度：从顶部开始，顺时针旋转
+            // Unity的Image.Origin360.Top从-90度开始，所以需要调整
+            float angle = (ratio * 360f) - 90f + pointerOffset;
+            pointer.rotation = Quaternion.Euler(0, 0, angle);
+        }
+    }
+
+    /// <summary>
+    /// 检查是否基础耗尽
     /// </summary>
     public bool IsRecordingEnergyDepleted()
     {
         return isRecording && usedEnergy >= currentEnergy;
+    }
+
+    /// <summary>
+    /// 手动设置指针角度（用于测试）
+    /// </summary>
+    public void SetPointerAngle(float angle)
+    {
+        if (pointer != null)
+        {
+            pointer.rotation = Quaternion.Euler(0, 0, angle);
+        }
+    }
+
+    /// <summary>
+    /// 获取当前指针应该指向的角度
+    /// </summary>
+    public float GetCurrentPointerAngle()
+    {
+        float ratio;
+        if (isRecording)
+        {
+            float availableEnergy = currentEnergy - usedEnergy;
+            ratio = Mathf.Clamp01((float)availableEnergy / maxEnergy);
+        }
+        else
+        {
+            ratio = Mathf.Clamp01((float)currentEnergy / maxEnergy);
+        }
+
+        return (ratio * 360f) - 90f + pointerOffset;
     }
 }
