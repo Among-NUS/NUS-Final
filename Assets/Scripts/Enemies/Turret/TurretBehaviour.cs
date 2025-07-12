@@ -5,8 +5,7 @@ public class TurretBehaviour : MonoBehaviour, IInteractable
     private InteractionManager im;
     public Turret turret;
     private Shooter shooter;
-
-    private Monitor monitor;  // ← 添加监视器引用
+    private MonitorBehaviour monitor;  // ← 添加监视器引用
     public Sprite aliveSprite;
     public Sprite dieSprite;
 
