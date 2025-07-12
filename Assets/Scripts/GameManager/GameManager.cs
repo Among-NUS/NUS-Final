@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class GameManager : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
     // ─────────────────────────────────────────────────────────────
     void Update()
     {
+        if (Time.timeScale == 0) return;
         if (Input.GetKeyDown(KeyCode.U) && currentPhase == GamePhase.Normal)
             StartRecording();
         else if (Input.GetKeyDown(KeyCode.I) && currentPhase == GamePhase.Recording)
