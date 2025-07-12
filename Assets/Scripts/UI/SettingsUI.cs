@@ -20,7 +20,8 @@ public class SettingsUI : MonoBehaviour
 
     [Header("按键与提示")]
     public Transform keybindsContent;
-    public GameObject keybindEntryPrefab; // 每个按键项的 prefab（显示按键与描述）
+    public GameObject keybindEntryPrefab;
+    public ScrollRect keybindsScrollRect; // ✅ 拖入 ScrollView 的 ScrollRect 组件
 
     public TextMeshProUGUI hintsText;
 
@@ -32,22 +33,21 @@ public class SettingsUI : MonoBehaviour
         buttonHints.onClick.AddListener(() => ShowPanel("hints"));
 
         // 初始化滑动条
-        gameVolumeSlider.onValueChanged.AddListener((value) => {
+        gameVolumeSlider.onValueChanged.AddListener((value) =>
+        {
             Debug.Log("游戏音量: " + value);
-            // 可设置 AudioListener.volume = value;
+            // AudioListener.volume = value;
         });
 
-        sfxVolumeSlider.onValueChanged.AddListener((value) => {
+        sfxVolumeSlider.onValueChanged.AddListener((value) =>
+        {
             Debug.Log("音效音量: " + value);
         });
 
-        // 填充按键说明
         PopulateKeybinds();
-
-        // 填充玩法提示
         PopulateHints();
 
-        // 默认显示
+        // 默认显示声音面板
         ShowPanel("sound");
     }
 
@@ -56,22 +56,37 @@ public class SettingsUI : MonoBehaviour
         soundPanel.SetActive(type == "sound");
         keybindsPanel.SetActive(type == "keybinds");
         hintsPanel.SetActive(type == "hints");
+
+        if (type == "keybinds")
+        {
+            ScrollToTop();
+        }
+    }
+
+    void ScrollToTop()
+    {
+        // 强制刷新布局再滚动
+        Canvas.ForceUpdateCanvases();
+        if (keybindsScrollRect != null)
+        {
+            keybindsScrollRect.verticalNormalizedPosition = 1f;
+        }
     }
 
     void PopulateKeybinds()
     {
         string[,] keys = {
-            {"A", "Move left"},
-            {"D", "Move right"},
-            {"W", "Stairs up"},
-            {"S", "Stairs down"},
-            {"E", "Interact (destroy turret / pick up item)"},
-            {"J", "Shoot"},
-            {"U", "Record a timestamp"},
-            {"I", "Travel back to the timestamp"},
-            {"O", "Travel back to the timestamp with movement"},
-            {"Esc", "Pause"},
-            {"R", "Restart"},
+        {"A", "Move left"},
+        {"D", "Move right"},
+        {"W", "Go upstairs"},
+        {"S", "Go downstairs"},
+        {"E", "Interact"},
+        {"J", "Shoot"},
+        {"U", "Save timestamp"},
+        {"I", "Rewind to timestamp"},
+        {"O", "Rewind with movement"},
+        {"Esc", "Pause"},
+        {"R", "Restart"}
         };
 
         foreach (Transform child in keybindsContent)
@@ -81,8 +96,8 @@ public class SettingsUI : MonoBehaviour
         {
             GameObject entry = Instantiate(keybindEntryPrefab, keybindsContent);
             TextMeshProUGUI[] texts = entry.GetComponentsInChildren<TextMeshProUGUI>();
-            texts[0].text = keys[i, 0]; // 键
-            texts[1].text = keys[i, 1]; // 描述
+            texts[0].text = keys[i, 0];
+            texts[1].text = keys[i, 1];
         }
     }
 

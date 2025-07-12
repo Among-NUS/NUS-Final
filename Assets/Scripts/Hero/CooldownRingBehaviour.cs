@@ -1,255 +1,175 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 
 public class CooldownRingBehaviour : MonoBehaviour
 {
-    [Header("UIÔ²»·")]
-    public Image baseRing;              // »ù´¡Ô²»·±³¾°£¨»ÒÉ«£©
-    public Image currentRing;           // µ±Ç°¿ÉÓÃ»ù´¡Ô²»·£¨À¶É«£©
-    public Image usedRing;              // ÕıÔÚÊ¹ÓÃµÄ»ù´¡Ô²»·£¨ºìÉ«»ò»ÆÉ«£©
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ UI & å‚æ•° â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    [Header("UIåœ†ç¯")]
+    public Image baseRing;
+    public Image currentRing;
+    public Image usedRing;
 
-    [Header("Ö¸ÕëÉèÖÃ")]
-    public Transform pointer;           // Ö¸ÕëTransform
-    public bool rotatePointer = true;   // ÊÇ·ñĞı×ªÖ¸Õë
-    public float pointerOffset = 0f;    // Ö¸Õë½Ç¶ÈÆ«ÒÆ
+    [Header("æŒ‡é’ˆè®¾ç½®")]
+    public Transform pointer;
+    public bool rotatePointer = true;
+    public float pointerOffset = 0f;
 
-    [Header("»ù´¡²ÎÊı")]
-    public int maxEnergy = 300;          // ×î´ó»ù´¡Öµ
-    public int energyRegenRate = 1;      // Ã¿Ãë»Ö¸´µÄ»ù´¡
-    public int energyConsumeRate = 1;    // Ã¿ÃëÏûºÄµÄ»ù´¡
+    [Header("åŸºç¡€å‚æ•°")]
+    public int maxEnergy = 300;
+    public int energyRegenRate = 1;     // æ¯ FixedUpdate æ¢å¤
+    public int energyConsumeRate = 1;   // æ¯ FixedUpdate æ¶ˆè€—
 
-    private int currentEnergy = 300;     // µ±Ç°¿ÉÓÃ»ù´¡
-    private int usedEnergy = 0;          // ÕıÔÚÊ¹ÓÃµÄ»ù´¡£¨Â¼ÖÆÊ±£©
-    private bool isRecording = false;    // ÊÇ·ñÕıÔÚÂ¼ÖÆ
+    int currentEnergy = 300;            // å‰©ä½™å¯ç”¨èƒ½é‡
+    int usedEnergy = 0;                 // æœ¬æ¬¡å½•åˆ¶å·²ç”¨èƒ½é‡
+
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ ä¾¿æ·å±æ€§ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    bool IsRecording =>
+        GameManager.Instance != null &&
+        GameManager.Instance.currentPhase == GameManager.GamePhase.Recording;
+
+    bool IsTimeStop =>
+        GameManager.Instance != null &&
+        GameManager.Instance.currentPhase == GameManager.GamePhase.TimeStop;
 
     public bool CanStartRecording => currentEnergy > 0;
     public bool IsEnergyDepleted => currentEnergy <= 0;
+    public bool IsRecordingEnergyDepleted() =>
+        IsRecording && usedEnergy >= currentEnergy;
+
     public int CurrentEnergy => currentEnergy;
     public int UsedEnergy => usedEnergy;
 
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ ç”Ÿå‘½å‘¨æœŸ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     void Start()
     {
-        // ³õÊ¼»¯»ù´¡ÎªÂú
         currentEnergy = maxEnergy;
-        usedEnergy = 0;
-
-        // È·±£Ô²»·Ê¹ÓÃRadial 360Ä£Ê½
         SetupRingImages();
         UpdateRingVisual();
     }
 
-    /// <summary>
-    /// ÉèÖÃÔ²»·Í¼Ïñ²ÎÊı
-    /// </summary>
-    private void SetupRingImages()
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ æ¯å¸§èƒ½é‡é©±åŠ¨ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    void FixedUpdate()
     {
-        if (baseRing != null)
-        {
-            baseRing.type = Image.Type.Filled;
-            baseRing.fillMethod = Image.FillMethod.Radial360;
-            baseRing.fillOrigin = (int)Image.Origin360.Top;
-            baseRing.fillAmount = 1f;
-        }
+        var gm = GameManager.Instance;
+        if (gm == null) return;
 
-        if (currentRing != null)
+        switch (gm.currentPhase)
         {
-            currentRing.type = Image.Type.Filled;
-            currentRing.fillMethod = Image.FillMethod.Radial360;
-            currentRing.fillOrigin = (int)Image.Origin360.Top;
-        }
+            case GameManager.GamePhase.TimeStop:
+                ConsumeEnergyForTravel();
+                if (IsEnergyDepleted)
+                    gm.BeginReplay();                      // è‡ªåŠ¨ç»“æŸæ—¶é—´é™æ­¢
+                break;
 
-        if (usedRing != null)
-        {
-            usedRing.type = Image.Type.Filled;
-            usedRing.fillMethod = Image.FillMethod.Radial360;
-            usedRing.fillOrigin = (int)Image.Origin360.Top;
+            case GameManager.GamePhase.Recording:
+                TickRecording();
+                if (IsRecordingEnergyDepleted())
+                    gm.CancelRecording();                  // èƒ½é‡ä¸è¶³ï¼Œç»ˆæ­¢å½•åˆ¶
+                break;
+
+            case GameManager.GamePhase.Normal:
+                RegenerateEnergy();
+                break;
         }
     }
 
-    /// <summary>
-    /// ¿ªÊ¼Â¼ÖÆ
-    /// </summary>
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ å½•åˆ¶é˜¶æ®µæ¥å£ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     public void StartRecording()
     {
         if (!CanStartRecording) return;
 
-        isRecording = true;
         usedEnergy = 0;
         UpdateRingVisual();
     }
 
-    /// <summary>
-    /// Â¼ÖÆÊ±Ã¿Ãëµ÷ÓÃ
-    /// </summary>
     public void TickRecording()
     {
-        if (!isRecording) return;
+        if (!IsRecording) return;
 
-        // Ôö¼ÓÊ¹ÓÃµÄ»ù´¡
         usedEnergy += energyConsumeRate;
-
-        // ¼ì²éÊÇ·ñ³¬¹ıµ±Ç°¿ÉÓÃ»ù´¡
-        if (usedEnergy >= currentEnergy)
-        {
-            usedEnergy = currentEnergy;
-            UpdateRingVisual();
-            return; // »ù´¡ºÄ¾¡£¬Ó¦¸ÃÍ£Ö¹Â¼ÖÆ
-        }
+        usedEnergy = Mathf.Min(usedEnergy, currentEnergy);
 
         UpdateRingVisual();
     }
 
-    /// <summary>
-    /// Í£Ö¹Â¼ÖÆ²¢ÏûºÄ»ù´¡
-    /// </summary>
-    public void StopRecording()
+    public void StopRecording()            // å½•åˆ¶æ­£å¸¸ç»“æŸ
     {
-        if (!isRecording) return;
+        if (!IsRecording && usedEnergy == 0) return;
 
-        isRecording = false;
+        currentEnergy = Mathf.Max(currentEnergy - usedEnergy, 0);
+        usedEnergy = 0;
 
-        // ÏûºÄÊµ¼ÊÊ¹ÓÃµÄ»ù´¡
-        currentEnergy -= usedEnergy;
-        if (currentEnergy < 0) currentEnergy = 0;
+        UpdateRingVisual();
+    }
 
+    public void CancelRecording()          // GM å¤–éƒ¨è°ƒç”¨
+    {
         usedEnergy = 0;
         UpdateRingVisual();
     }
 
-    /// <summary>
-    /// È¡ÏûÂ¼ÖÆ
-    /// </summary>
-    public void CancelRecording()
-    {
-        // È¡ÏûÂ¼ÖÆÊ±²»ÏûºÄ»ù´¡£¬»Ö¸´µ½Â¼ÖÆÇ°µÄ×´Ì¬
-        isRecording = false;
-        usedEnergy = 0;
-        // Èç¹ûĞèÒª£¬Ò²¿ÉÒÔ»Ö¸´µ½Âú»ù´¡×´Ì¬
-        // currentEnergy = maxEnergy;
-        UpdateRingVisual();
-    }
-
-    /// <summary>
-    /// Ã¿Ãë»Ö¸´»ù´¡£¨·ÇÂ¼ÖÆÊ±£©
-    /// </summary>
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ èƒ½é‡å¢å‡ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     public void RegenerateEnergy()
     {
-        if (isRecording) return;
+        if (IsRecording || IsTimeStop) return;
 
-        currentEnergy += energyRegenRate;
-        if (currentEnergy > maxEnergy)
-            currentEnergy = maxEnergy;
-
+        currentEnergy = Mathf.Min(currentEnergy + energyRegenRate, maxEnergy);
         UpdateRingVisual();
     }
 
-    /// <summary>
-    /// ´«ËÍÊ±ÏûºÄ»ù´¡
-    /// </summary>
     public void ConsumeEnergyForTravel()
     {
-        currentEnergy -= energyConsumeRate;
-        if (currentEnergy < 0) currentEnergy = 0;
+        currentEnergy = Mathf.Max(currentEnergy - energyConsumeRate, 0);
         UpdateRingVisual();
     }
 
-    /// <summary>
-    /// ¸üĞÂUIÏÔÊ¾
-    /// </summary>
-    private void UpdateRingVisual()
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ UI ç»˜åˆ¶ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    void SetupRingImages()
     {
-        if (isRecording)
+        Image[] rings = { baseRing, currentRing, usedRing };
+        foreach (var img in rings)
         {
-            // Â¼ÖÆÊ±£ºcurrentRingÏÔÊ¾Ê£Óà£¬usedRingÏÔÊ¾ÏûºÄ
-            float availableEnergy = currentEnergy - usedEnergy;
-            float usedRatio = Mathf.Clamp01((float)usedEnergy / maxEnergy);
-            float availableRatio = Mathf.Clamp01((float)availableEnergy / maxEnergy);
+            if (!img) continue;
+            img.type = Image.Type.Filled;
+            img.fillMethod = Image.FillMethod.Radial360;
+            img.fillOrigin = (int)Image.Origin360.Top;
+        }
+        if (baseRing) baseRing.fillAmount = 1f;
+    }
 
-            if (currentRing != null)
-            {
-                currentRing.fillAmount = availableRatio;
-            }
+    void UpdateRingVisual()
+    {
+        if (IsRecording)
+        {
+            float remaining = currentEnergy - usedEnergy;
+            currentRing.fillAmount = Mathf.Clamp01(remaining / (float)maxEnergy);
 
-            if (usedRing != null)
-            {
-                usedRing.fillAmount = usedRatio;
-                usedRing.gameObject.SetActive(true);
+            usedRing.gameObject.SetActive(true);
+            usedRing.fillAmount = Mathf.Clamp01(usedEnergy / (float)maxEnergy);
+            usedRing.transform.SetAsLastSibling();
 
-                // È·±£ºìÉ«ÔÚÀ¶É«Ö®ÉÏ
-                usedRing.transform.SetAsLastSibling();
-            }
-
-            // ¸üĞÂÖ¸ÕëÎ»ÖÃ - Ö¸ÏòÊ£ÓàÄÜÁ¿µÄÄ©¶Ë
-            UpdatePointer(availableRatio);
+            UpdatePointer(currentRing.fillAmount);
         }
         else
         {
-            // ·ÇÂ¼ÖÆÊ±£ºÖ»ÏÔÊ¾currentRing
-            if (currentRing != null)
-            {
-                float currentRatio = Mathf.Clamp01((float)currentEnergy / maxEnergy);
-                currentRing.fillAmount = currentRatio;
-
-                // ¸üĞÂÖ¸ÕëÎ»ÖÃ - Ö¸Ïòµ±Ç°ÄÜÁ¿µÄÄ©¶Ë
-                UpdatePointer(currentRatio);
-            }
-
-            if (usedRing != null)
-            {
-                usedRing.gameObject.SetActive(false);
-            }
+            currentRing.fillAmount = Mathf.Clamp01(currentEnergy / (float)maxEnergy);
+            UpdatePointer(currentRing.fillAmount);
+            usedRing.gameObject.SetActive(false);
         }
+
+        // å±‚çº§ï¼šbase < used < current < pointer
+        baseRing.transform.SetSiblingIndex(0);
+        usedRing.transform.SetSiblingIndex(1);
+        currentRing.transform.SetSiblingIndex(2);
+        if (pointer) pointer.transform.SetSiblingIndex(3);
     }
 
-    /// <summary>
-    /// ¸üĞÂÖ¸ÕëÎ»ÖÃ
-    /// </summary>
-    private void UpdatePointer(float ratio)
+    void UpdatePointer(float ratio)
     {
-        if (pointer != null && rotatePointer)
+        if (pointer && rotatePointer)
         {
-            // ¼ÆËã½Ç¶È£º´Ó¶¥²¿¿ªÊ¼£¬Ë³Ê±ÕëĞı×ª
-            // UnityµÄImage.Origin360.Top´Ó-90¶È¿ªÊ¼£¬ËùÒÔĞèÒªµ÷Õû
-            float angle = (ratio * 360f) - 90f + pointerOffset;
+            float angle = -(ratio * 360f) + pointerOffset;
             pointer.rotation = Quaternion.Euler(0, 0, angle);
         }
-    }
-
-    /// <summary>
-    /// ¼ì²éÊÇ·ñ»ù´¡ºÄ¾¡
-    /// </summary>
-    public bool IsRecordingEnergyDepleted()
-    {
-        return isRecording && usedEnergy >= currentEnergy;
-    }
-
-    /// <summary>
-    /// ÊÖ¶¯ÉèÖÃÖ¸Õë½Ç¶È£¨ÓÃÓÚ²âÊÔ£©
-    /// </summary>
-    public void SetPointerAngle(float angle)
-    {
-        if (pointer != null)
-        {
-            pointer.rotation = Quaternion.Euler(0, 0, angle);
-        }
-    }
-
-    /// <summary>
-    /// »ñÈ¡µ±Ç°Ö¸ÕëÓ¦¸ÃÖ¸ÏòµÄ½Ç¶È
-    /// </summary>
-    public float GetCurrentPointerAngle()
-    {
-        float ratio;
-        if (isRecording)
-        {
-            float availableEnergy = currentEnergy - usedEnergy;
-            ratio = Mathf.Clamp01((float)availableEnergy / maxEnergy);
-        }
-        else
-        {
-            ratio = Mathf.Clamp01((float)currentEnergy / maxEnergy);
-        }
-
-        return (ratio * 360f) - 90f + pointerOffset;
     }
 }

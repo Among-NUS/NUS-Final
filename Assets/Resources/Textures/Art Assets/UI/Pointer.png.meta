@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 136efc2e9ebb1f54ca0c6ee673e94605
+guid: 58669503a99b75a4282c1d7505d654d6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,112 +108,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: CooldownRing_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 80d2950c103f5a4429d800be593d6e17
-      internalID: -829049714
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CooldownRing_1
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a1885e1663760ac499fe8fe31905faaf
-      internalID: -497623240
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CooldownRing_2
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 93256a5a4630a8540807d6751ce6e45b
-      internalID: 2023167208
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CooldownRing_3
-      rect:
-        serializedVersion: 2
-        x: 240
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d86dfcaa9869c184f8ab9215c1ac6baf
-      internalID: -1400951809
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CooldownRing_4
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e1804fa6f27d28b4990ed830c5f0f044
-      internalID: -1509490880
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -224,12 +119,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      CooldownRing_0: -829049714
-      CooldownRing_1: -497623240
-      CooldownRing_2: 2023167208
-      CooldownRing_3: -1400951809
-      CooldownRing_4: -1509490880
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
