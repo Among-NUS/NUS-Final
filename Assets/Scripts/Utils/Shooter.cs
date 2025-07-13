@@ -4,12 +4,18 @@ public class Shooter : MonoBehaviour
 {
     public Transform firePoint;
     public GameObject bulletPrefab;
-    public bool isEnemy = false;          // ÊÇ·ñÎªµÐ·½×Óµ¯
-    public bool faceLeft = true;          // Ãæ³¯·½Ïò¾ö¶¨·¢Éä·½Ïò
+    public bool isEnemy = false;          // ï¿½Ç·ï¿½Îªï¿½Ð·ï¿½ï¿½Óµï¿½
+    public bool faceLeft = true;          // ï¿½æ³¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ä·½ï¿½ï¿½
     public float fireInterval = 0.5f;
 
     private float fireCooldown = 0f;
+    public AudioClip gunshot;
+    private AudioSource shooterAudioS;
 
+    void Awake()
+    {
+        shooterAudioS = GetComponent<AudioSource>();
+    }
     void FixedUpdate()
     {
         if (fireCooldown > 0f)
@@ -21,7 +27,8 @@ public class Shooter : MonoBehaviour
     public void Fire()
     {
         if (!CanFire()) return;
-
+        shooterAudioS.clip = gunshot;
+        shooterAudioS.Play();
         Vector2 dir = faceLeft ? Vector2.left : Vector2.right;
 
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);

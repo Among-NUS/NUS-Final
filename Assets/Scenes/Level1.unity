@@ -48273,7 +48273,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-<<<<<<< HEAD
   - first: {x: -36, y: 13, z: 0}
     second:
       serializedVersion: 2
@@ -49084,8 +49083,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-=======
->>>>>>> ccf6559da4d588ad57a547b6456ecc49f2d7f256
   - first: {x: -36, y: 14, z: 0}
     second:
       serializedVersion: 2
@@ -49866,7 +49863,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-<<<<<<< HEAD
   - first: {x: -17, y: 34, z: 0}
     second:
       serializedVersion: 2
@@ -50487,8 +50483,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-=======
->>>>>>> ccf6559da4d588ad57a547b6456ecc49f2d7f256
   - first: {x: -17, y: 35, z: 0}
     second:
       serializedVersion: 2
