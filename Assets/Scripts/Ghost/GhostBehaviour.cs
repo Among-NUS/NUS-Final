@@ -104,9 +104,12 @@ public class GhostBehaviour : MonoBehaviour
                     break;
 
                 case 'j':
-                    shooter.faceLeft = facingLeft;
-                    shooter.Fire();
-                    ghostAnimator.SetTrigger("shootAnim");
+                    if (shooter.CanFire())
+                    {
+                        shooter.faceLeft = facingLeft;
+                        shooter.Fire();
+                        ghostAnimator.SetTrigger("shootAnim");
+                    }
                     break;
             }
         }

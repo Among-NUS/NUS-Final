@@ -113,10 +113,10 @@ TextureImporter:
       name: enemywalking_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 5
-        width: 28
-        height: 40
+        x: 0
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3b90b0dc9955de9409698c554c847770
-      internalID: -88905686
+      spriteID: 00e2f5dcaa57c3b42ba3f4cf14b6c5a3
+      internalID: 1640601489
       vertices: []
       indices: 
       edges: []
@@ -134,10 +134,10 @@ TextureImporter:
       name: enemywalking_1
       rect:
         serializedVersion: 2
-        x: 65
-        y: 5
-        width: 28
-        height: 40
+        x: 50
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5eacfd6766a2864a92614a90182fbfa
-      internalID: 1783031434
+      spriteID: 5d973fd1f423e464da683f9a36957af9
+      internalID: -943327540
       vertices: []
       indices: 
       edges: []
@@ -155,10 +155,10 @@ TextureImporter:
       name: enemywalking_2
       rect:
         serializedVersion: 2
-        x: 115
-        y: 5
-        width: 28
-        height: 40
+        x: 100
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 145dbfeff4cc15d44b0cada38c026ebf
-      internalID: -1035846242
+      spriteID: 87f852cedada31f4b830f9097bad8625
+      internalID: -603893179
       vertices: []
       indices: 
       edges: []
@@ -176,10 +176,10 @@ TextureImporter:
       name: enemywalking_3
       rect:
         serializedVersion: 2
-        x: 165
-        y: 5
-        width: 28
-        height: 40
+        x: 150
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d8b7360ca118d04baf91bb2a088cca9
-      internalID: -717560563
+      spriteID: 409ed9f96bb236f4faee2529a6290b7f
+      internalID: -1819283621
       vertices: []
       indices: 
       edges: []
@@ -197,10 +197,10 @@ TextureImporter:
       name: enemywalking_4
       rect:
         serializedVersion: 2
-        x: 214
-        y: 5
-        width: 29
-        height: 40
+        x: 200
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,8 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f910f776e3816434693ea7e18ba122c9
-      internalID: 406608747
+      spriteID: 3c2293a7ba196e240b92c06cd8b6486a
+      internalID: 1290796657
       vertices: []
       indices: 
       edges: []
@@ -225,11 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      enemywalking_0: -88905686
-      enemywalking_1: 1783031434
-      enemywalking_2: -1035846242
-      enemywalking_3: -717560563
-      enemywalking_4: 406608747
+      enemywalking_0: 1640601489
+      enemywalking_1: -943327540
+      enemywalking_2: -603893179
+      enemywalking_3: -1819283621
+      enemywalking_4: 1290796657
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

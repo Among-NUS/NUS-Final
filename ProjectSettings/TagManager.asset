@@ -19,9 +19,9 @@ TagManager:
   - 
   - Sound
   - Hero
-  - HeroBullet
+  - Bullet
   - Enemy
-  - EnemyBullet
+  - 
   - WayPoint
   - Interactable
   - 

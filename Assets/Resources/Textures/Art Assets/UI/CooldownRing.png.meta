@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5bd40626c1849764c9ce8ceea227c7c0
+guid: 136efc2e9ebb1f54ca0c6ee673e94605
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 764a694df8a3b364baf1964bf6e3027c
-      internalID: -509978836
+      spriteID: 80d2950c103f5a4429d800be593d6e17
+      internalID: -829049714
       vertices: []
       indices: 
       edges: []
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd10a34523ef7c346bd25ff1f0e959b0
-      internalID: 359828351
+      spriteID: a1885e1663760ac499fe8fe31905faaf
+      internalID: -497623240
       vertices: []
       indices: 
       edges: []
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b34efb2512bf8848bf2e54a2f842dca
-      internalID: -12841022
+      spriteID: 93256a5a4630a8540807d6751ce6e45b
+      internalID: 2023167208
       vertices: []
       indices: 
       edges: []
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 17b52663255c8b14e979561a899bbb92
-      internalID: 1800001665
+      spriteID: d86dfcaa9869c184f8ab9215c1ac6baf
+      internalID: -1400951809
       vertices: []
       indices: 
       edges: []
@@ -208,8 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89098004f22960c45a36391c60df5e03
-      internalID: 2029008176
+      spriteID: e1804fa6f27d28b4990ed830c5f0f044
+      internalID: -1509490880
       vertices: []
       indices: 
       edges: []
@@ -225,11 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CooldownRing_0: -509978836
-      CooldownRing_1: 359828351
-      CooldownRing_2: -12841022
-      CooldownRing_3: 1800001665
-      CooldownRing_4: 2029008176
+      CooldownRing_0: -829049714
+      CooldownRing_1: -497623240
+      CooldownRing_2: 2023167208
+      CooldownRing_3: -1400951809
+      CooldownRing_4: -1509490880
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
