@@ -14,11 +14,12 @@ public class HeroBehaviour : MonoBehaviour
     private bool heroIsWalking = false;  // ← 用于记录是否在行走
 
     private Shooter shooter;
-    private bool facingLeft = true;       // ← 记录当前朝向
+    public bool facingLeft = true;       // ← 记录当前朝向
     private Rigidbody2D heroRigidBody;
     private bool isOnGround = true;
     private bool isJumping = false;
     private int groundLayer = 13;
+
     void Awake()
     {
         shooter = GetComponentInChildren<Shooter>();

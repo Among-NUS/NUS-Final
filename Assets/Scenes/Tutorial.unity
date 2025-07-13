@@ -3037,8 +3037,7 @@ GameObject:
   - component: {fileID: 834006900}
   - component: {fileID: 834006899}
   - component: {fileID: 834006902}
-  - component: {fileID: 834006903}
-  - component: {fileID: 834006904}
+  - component: {fileID: 834006905}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3165,7 +3164,7 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!114 &834006903
+--- !u!114 &834006905
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3174,23 +3173,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 834006898}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6f1237e77fb2e449b58110afe5be709, type: 3}
+  m_Script: {fileID: 11500000, guid: 5725983ffb2cadf4a879dc5f4e3c15dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FollowTarget: {fileID: 956687365}
-  FollowRegion: 0.2
---- !u!114 &834006904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 834006898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e35aa5104d8728c49a616bfcb49cf35e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  target: {fileID: 956687365}
+  smoothSpeed: 2
+  horizontalOffset: 2
+  fixedZ: -10
 --- !u!1 &868698490
 GameObject:
   m_ObjectHideFlags: 0
@@ -3807,6 +3796,8 @@ MonoBehaviour:
   farLayer: -1
   heroSR: {fileID: 0}
   speed: 0.1
+  jumpForce: 5
+  facingLeft: 1
 --- !u!4 &956687365
 Transform:
   m_ObjectHideFlags: 0
