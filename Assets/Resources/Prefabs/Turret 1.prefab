@@ -102,6 +102,7 @@ MonoBehaviour:
   faceLeft: 1
   fireInterval: 0.2
   gunshot: {fileID: 8300000, guid: 75b9fd17d5f7a1e4db1d08b4562ca946, type: 3}
+  soundCooldown: 0.1
 --- !u!82 &1139188257778602233
 AudioSource:
   m_ObjectHideFlags: 0
@@ -208,6 +209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5283411180552510602}
   - component: {fileID: 8656728185681746462}
+  - component: {fileID: 4884960768518997217}
   m_Layer: 0
   m_Name: TurretBody
   m_TagString: Untagged
@@ -282,6 +284,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4884960768518997217
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5322514283656031114}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: edb9edf6b4920fc419fea1cda6b63d96, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5732037888462462612
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,7 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0497b1cfe0132a248842c17ba2a9f7e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 2d4d98da-73b2-4ad7-b61e-34181948088e
+  uniqueID: 9679c672-3bd7-4e47-b65c-410e8c6baffa
   isAlive: 1
 --- !u!95 &1760983899805209598
 Animator:
