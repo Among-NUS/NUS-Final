@@ -40,7 +40,14 @@ public class EnemyBehaviour : MonoBehaviour
     {
         enemy.currentTarget = 0;
         Debug.Assert(enemyAnimator != null);
-        ear.onHearing += GetHearedTarget;//接受耳朵的委托，
+        if (ear==null)
+        {
+            Debug.Log("Where are my ears?");
+        }
+        else
+        {
+            ear.onHearing += GetHearedTarget;//接受耳朵的委托，
+        }
         enemy.spotTime = Time.time;//初始化反应时间
     }
 
