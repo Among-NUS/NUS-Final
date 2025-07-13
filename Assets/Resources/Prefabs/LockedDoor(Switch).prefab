@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 8025241914395275542}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.01, y: -0.44, z: 2.6600893}
-  m_LocalScale: {x: 0.29685712, y: 0.23867647, z: 1}
+  m_LocalPosition: {x: 1.03, y: -0.66, z: 2.6600893}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1919230781440929461}
@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fb275aaa544ed114191b39ee615ad735, type: 3}
+  m_Sprite: {fileID: -364223411, guid: ac53a3fad08e44145978f98953e8472d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3, y: 3}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf7ffd817752104aa5e251a968bb775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 6a35cdba-f8f0-474a-bc09-72a9d4856c3f
+  uniqueID: c65a17c4-1686-4d7b-a28f-418a27497547
   isOn: 0
 --- !u!114 &2326147666619078973
 MonoBehaviour:
@@ -116,6 +116,8 @@ MonoBehaviour:
   onStateChanged:
     m_PersistentCalls:
       m_Calls: []
+  offSprite: {fileID: -364223411, guid: ac53a3fad08e44145978f98953e8472d, type: 3}
+  onSprite: {fileID: 1826077350, guid: ac53a3fad08e44145978f98953e8472d, type: 3}
 --- !u!61 &8689592561874418570
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -152,8 +154,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3, y: 3}
-    newSize: {x: 3, y: 3}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -306,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 053e46176013c77498f968aea947056f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 02c29c1e-18c6-436a-9cc0-5d1a9684ede0
+  uniqueID: 305cba31-f1a4-4355-ad4a-ef7e1230f7b9
   isOpen: 0
 --- !u!114 &4852539444736834814
 MonoBehaviour:
@@ -322,6 +324,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closedSprite: {fileID: 1902755424, guid: 72cc199d6643d5245a17029294cf280c, type: 3}
   openSprite: {fileID: 1391909783, guid: 72cc199d6643d5245a17029294cf280c, type: 3}
-  conditions:
-  - {fileID: 2326147666619078973}
+  conditionObjects: []
   st: 1
