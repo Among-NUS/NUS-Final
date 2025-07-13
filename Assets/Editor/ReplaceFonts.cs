@@ -1,9 +1,10 @@
+using System.IO;
+using System.Linq;
+using TMPro;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System.IO;
 
 public class ReplaceFonts : EditorWindow
 {
@@ -37,34 +38,41 @@ public class ReplaceFonts : EditorWindow
 
     static void ReplaceInProject()
     {
-        // 遍历所有场景和 prefab
-        string[] guids = AssetDatabase.FindAssets("t:Scene t:Prefab");
+        // 只搜索 Assets/ 目录
+        var sceneGuids = AssetDatabase.FindAssets("t:Scene", new[] { "Assets" });
+        var prefabGuids = AssetDatabase.FindAssets("t:Prefab", new[] { "Assets" });
+        var guids = sceneGuids.Concat(prefabGuids);
+
         foreach (string guid in guids)
         {
             string path = AssetDatabase.GUIDToAssetPath(guid);
-            bool changed = false;
 
-            // Prefab
+            // ------------------ Prefab ------------------
             if (path.EndsWith(".prefab"))
             {
                 var root = PrefabUtility.LoadPrefabContents(path);
-                changed = ReplaceInHierarchy(root) || changed;
+                bool changed = ReplaceInHierarchy(root);
+
                 if (changed)
                     PrefabUtility.SaveAsPrefabAsset(root, path);
+
                 PrefabUtility.UnloadPrefabContents(root);
             }
-            // Scene
+            // ------------------ Scene -------------------
             else if (path.EndsWith(".unity"))
             {
                 var scene = EditorSceneManager.OpenScene(path, OpenSceneMode.Single);
+                bool changed = false;
+
                 foreach (var rootObj in scene.GetRootGameObjects())
-                    changed = ReplaceInHierarchy(rootObj) || changed;
+                    changed |= ReplaceInHierarchy(rootObj);
 
                 if (changed)
                     EditorSceneManager.SaveScene(scene);
             }
         }
     }
+
 
     static bool ReplaceInHierarchy(GameObject root)
     {
