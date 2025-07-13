@@ -34,6 +34,7 @@ public class GhostBehaviour : MonoBehaviour
     private bool isOnGround = true;
     private bool isJumping = false;
     private int groundLayer = 13;
+    private GameObject Elevator = null;
     #region Public API
     public void StartReplay(Queue<Record> inputRecords)
     {
@@ -60,6 +61,12 @@ public class GhostBehaviour : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+
+        if (collision.GetComponent<StairsBehaviour>() != null)
+        {
+            Debug.Log("ghost found elevator");
+            Elevator = collision.gameObject;
+        }
         BulletBehaviour bullet = collision.GetComponent<BulletBehaviour>();
         if (bullet != null && bullet.isEnemy)
         {
@@ -103,6 +110,7 @@ public class GhostBehaviour : MonoBehaviour
 
                 case 'w':
                 case 's':
+                    Debug.Log("ghost tring to use stairs");
                     TryUseStairs(key == 'w');
                     break;
 
@@ -194,17 +202,33 @@ public class GhostBehaviour : MonoBehaviour
     #region Helpers – stairs
     private void TryUseStairs(bool commandUp)
     {
+        if (Elevator == null)
+        {
+            return;
+        }
+        else
+        {
+            StairsBehaviour elevatorScript = Elevator.GetComponent<StairsBehaviour>();
+            Debug.Log("ghost using exist elevator");
+            elevatorScript.TryTeleport(transform, commandUp);
+        }
         // Very small radius because we must already be on the stair trigger.
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 0.05f);
+        /*Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 0.5f);
         foreach (var h in hits)
         {
+            Debug.Log("ghost looking at " + h.gameObject.name);
+        }
+        foreach (var h in hits)
+        {
+            Debug.Log("ghost looking at " + h.gameObject.name);
             StairsBehaviour stairs = h.GetComponent<StairsBehaviour>();
             if (stairs != null)
             {
+                Debug.Log("ghost using stair" + h.gameObject.name);
                 stairs.TryTeleport(transform, commandUp);
                 break; // Only need one stair per frame.
             }
-        }
+        }*/
     }
     #endregion
 
@@ -229,8 +253,9 @@ public class GhostBehaviour : MonoBehaviour
 
 
         }
+
     }
-    
+
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.layer == groundLayer) // Check if collision is with the ground layer
@@ -238,6 +263,15 @@ public class GhostBehaviour : MonoBehaviour
             isOnGround = false; // Set isOnGround to false when exiting the ground layer
         }
     }
-    
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.GetComponent<StairsBehaviour>() != null)
+        {
+            Debug.Log("ghost left elevator");
+            Elevator = null;
+        }
+    }
+
 
 }
