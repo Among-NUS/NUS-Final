@@ -73,7 +73,16 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (enemy.enemyState ==EnemyState.PATROL)
+        BulletBehaviour bullet = collision.GetComponent<BulletBehaviour>();
+
+        // 如果碰到的是来自玩家的子弹
+        if (bullet != null && !bullet.isEnemy && enemy.isAlive)
+        {
+            Debug.Log("Enemy hit by player bullet");
+            DestroyEnemy();  // 敌人死亡处理
+        }
+        //优先判定死亡
+        if (enemy.enemyState == EnemyState.PATROL)
         {
             if (collision.gameObject == pathWayPoint[enemy.currentTarget].gameObject)
             {
@@ -91,16 +100,6 @@ public class EnemyBehaviour : MonoBehaviour
                 enemy.curChasePoint++;
                 Debug.Log("moving to " + enemy.curChasePoint);
             }
-        }
-
-
-        BulletBehaviour bullet = collision.GetComponent<BulletBehaviour>();
-
-        // 如果碰到的是来自玩家的子弹
-        if (bullet != null && !bullet.isEnemy && enemy.isAlive)
-        {
-            Debug.Log("Enemy hit by player bullet");
-            DestroyEnemy();  // 敌人死亡处理
         }
     }
     void PerformBehaviour()
