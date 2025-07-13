@@ -1,20 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
-using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 
 public class PathPointMap : MonoBehaviour
 {
-    public List<GameObject> pathPointObjects = new List<GameObject>();//´æ´¢ÁËÈ«Í¼µÄÂ·¾¶µã£¬µÐÈË¿ÉÒÔ²éÑ¯,Í¼ÖÐµÄÄ³Ìõ±ßÊÇÐèÒª³Ë×øµçÌÝµÄ£¬ÔòÊýÖµ+50
+    public List<GameObject> pathPointObjects = new List<GameObject>();//ï¿½æ´¢ï¿½ï¿½È«Í¼ï¿½ï¿½Â·ï¿½ï¿½ï¿½ã£¬ï¿½ï¿½ï¿½Ë¿ï¿½ï¿½Ô²ï¿½Ñ¯,Í¼ï¿½Ðµï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÝµÄ£ï¿½ï¿½ï¿½ï¿½ï¿½Öµ+50
     public MyGraph graph;
     public int level = 1;
     void Start()
-    {//¿ÉÒÔÑ¡ÔñÍ³Ò»ÔÚinspector»òjsonÖÐÐÞ¸Ä
+    {//ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Í³Ò»ï¿½ï¿½inspectorï¿½ï¿½jsonï¿½ï¿½ï¿½Þ¸ï¿½
         //TextAsset jsonFile = Resources.Load<TextAsset>("Maps/Level"+level);
         //graph = JsonUtility.FromJson<MyGraph>(jsonFile.text);
 
-        //Debug.Log($"µØÍ¼: {level}");
+        //Debug.Log($"ï¿½ï¿½Í¼: {level}");
         //foreach (Node pathPoint in graph.nodes)
         //{
         //    Debug.Log($"pathP {pathPoint.index} neightbor is " +
