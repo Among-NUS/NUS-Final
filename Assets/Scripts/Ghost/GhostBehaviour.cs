@@ -80,6 +80,8 @@ public class GhostBehaviour : MonoBehaviour
             setLayerNear();
         }
         Record frame = records.Dequeue();
+        ghostAnimator.SetBool("isJumping", ghostRigidBody.velocity.y > 0);
+        ghostAnimator.SetBool("isFalling", ghostRigidBody.velocity.y < 0);
         bool pressedE = false;
         ghostAnimator.SetBool("isWalking", false); // 重置行走状态
         foreach (char key in frame.keys)
