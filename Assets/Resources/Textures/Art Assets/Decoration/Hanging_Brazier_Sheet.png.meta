@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: eab22a31940d52c45a6b6f55127af693
+guid: 78f8bfd6948566749bedea23f4e2c57c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 20
+  spritePixelsToUnits: 30
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -106,81 +106,173 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: specialscene_Box
+      name: Hanging_Brazier_Sheet_0
       rect:
         serializedVersion: 2
-        x: 360
-        y: 177
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 081484e327e128b48be98f0589289e4b
-      internalID: -1895129134
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: specialscene_StackBox
-      rect:
-        serializedVersion: 2
-        x: 444
-        y: 177
-        width: 24
+        x: 0
+        y: 0
+        width: 26
         height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 929c06c3d4ef0144c92451aa54665380
-      internalID: 2096915281
+      spriteID: d7d22223098c6e24b93eba203ea64f88
+      internalID: 1015447349
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: specialscene_Table
+      name: Hanging_Brazier_Sheet_1
       rect:
         serializedVersion: 2
-        x: 397
-        y: 117
-        width: 47
-        height: 36
+        x: 26
+        y: 0
+        width: 26
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad2cd4f88359a21449b7699b5c48abf4
-      internalID: -1260529669
+      spriteID: b9990d6ba3d434a4c86e4d52d04bc246
+      internalID: -2064196668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging_Brazier_Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 0
+        width: 26
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a0159be52a151f4d8c9d36fc2546fc8
+      internalID: -613329110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging_Brazier_Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 0
+        width: 26
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29b12c1db60faac40b28498bc3b01acd
+      internalID: 1909498277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging_Brazier_Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 0
+        width: 26
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b84c2f3f726d9b47a44bcac1fdec303
+      internalID: 2012194518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging_Brazier_Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 0
+        width: 26
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4907f61aabf20aa45add5b254a80c120
+      internalID: -621017469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging_Brazier_Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 0
+        width: 26
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3bbfaf3cbe719549aa889b979616b38
+      internalID: 2074533010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging_Brazier_Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 0
+        width: 26
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b300e9e6023f03444836b5a89a34b110
+      internalID: -1536678206
       vertices: []
       indices: 
       edges: []
@@ -196,9 +288,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      specialscene_Box: -1895129134
-      specialscene_StackBox: 2096915281
-      specialscene_Table: -1260529669
+      Hanging_Brazier_Sheet_0: 1015447349
+      Hanging_Brazier_Sheet_1: -2064196668
+      Hanging_Brazier_Sheet_2: -613329110
+      Hanging_Brazier_Sheet_3: 1909498277
+      Hanging_Brazier_Sheet_4: 2012194518
+      Hanging_Brazier_Sheet_5: -621017469
+      Hanging_Brazier_Sheet_6: 2074533010
+      Hanging_Brazier_Sheet_7: -1536678206
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

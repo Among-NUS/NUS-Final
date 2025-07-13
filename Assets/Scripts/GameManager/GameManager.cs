@@ -82,12 +82,18 @@ public class GameManager : MonoBehaviour
     {
         if (currentPhase != GamePhase.Recording) return;
 
-        snapshot.Restore();             // 回到录制起点
-        currentPhase = GamePhase.Normal;
+        var zoom = GetComponent<CameraZoomEffect>();
+        zoom.OnZoomInFinished = () =>
+        {
+            snapshot.Restore();
+            currentPhase = GamePhase.Normal;
+            cooldownRing.StopRecording();
+            BeginReplay();
+        };
 
-        cooldownRing.StopRecording();
-        BeginReplay();
+        zoom.ZoomIn();
     }
+
 
     public void StopRecordingAndFreeze()
     {
