@@ -8,6 +8,10 @@ public class TurretBehaviour : MonoBehaviour, IInteractable
     private MonitorBehaviour monitor;  // ← 添加监视器引用
     public Sprite aliveSprite;
     public Sprite dieSprite;
+    public float reactionTime = 0.5f;
+    private float spotTime = 0f;//not in recordable
+    private bool playerSpotted = false;
+    public Animator turretAnimator;
 
 
     void Awake()
@@ -15,6 +19,7 @@ public class TurretBehaviour : MonoBehaviour, IInteractable
         turret = GetComponent<Turret>();
         shooter = GetComponentInChildren<Shooter>();
         monitor = GetComponentInChildren<MonitorBehaviour>();
+        turretAnimator = GetComponentInChildren<Animator>();
     }
 
     public Transform GetTransform() => transform;
@@ -71,15 +76,34 @@ public class TurretBehaviour : MonoBehaviour, IInteractable
 
         if (seen > 0)
         {
-            // 获取最近目标位置判断左右
-            GameObject target = targets[0];
-            Vector3 dir = target.transform.position - transform.position;
-            shooter.faceLeft = dir.x < 0;
-
-            if (shooter.CanFire())
+            if (!playerSpotted)
             {
-                shooter.Fire();
+                playerSpotted = true;
+                spotTime = Time.time;
             }
+            else
+            {
+                if (Time.time - spotTime > reactionTime)
+                {
+                    GameObject target = targets[0];
+                    Vector3 dir = target.transform.position - transform.position;
+                    shooter.faceLeft = dir.x < 0;
+
+                    if (shooter.CanFire())
+                    {
+                        turretAnimator.SetBool("isShooting",true);
+                        shooter.Fire();
+                    }
+                }
+
+            }
+            // 获取最近目标位置判断左右
+
+        }
+        else
+        {
+            turretAnimator.SetBool("isShooting",false);
+            playerSpotted = false;
         }
     }
 
