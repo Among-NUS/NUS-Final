@@ -274,6 +274,10 @@ public class EnemyBehaviour : MonoBehaviour
                 {
                     continue;
                 }
+                if (cameFrom.ContainsKey(cur.neightbor[i])|cameFrom.ContainsKey(cur.neightbor[i]+50))
+                {
+                    continue;
+                }
                 cameFrom.Add(cur.neightbor[i], cur.index);//key是边的方向和种类，value这是该边由这个点发出
                 toCheck.Enqueue(graph.nodes[GetNormalIndex(cur.neightbor[i])]);
                 isChecked[cur.index] = true;
