@@ -16,6 +16,7 @@ public class EnemyBehaviour : MonoBehaviour
     public float speed = 5f;
     public Animator enemyAnimator; // 用于播放动画
     public Sprite enemyDieSprite; // 死亡时的精灵
+    private bool enemyWalking = false;
 
 
 
@@ -66,6 +67,7 @@ public class EnemyBehaviour : MonoBehaviour
                 sr.color = Color.white;
         }
         transform.localScale = new Vector3(enemy.facingLeft ? -0.5f : 0.5f, 0.5f, 0);
+        enemyAnimator.SetBool("isWalking", enemyWalking);
         PerformBehaviour();
     }
 
@@ -131,10 +133,12 @@ public class EnemyBehaviour : MonoBehaviour
             dirMove = (pathWayPoint[enemy.currentTarget].position - transform.position).normalized;
             transform.position += dirMove * speed * Time.fixedDeltaTime;
             enemy.facingLeft = dirMove.x < 0;
+            enemyWalking = true;
         }
-        else if(pathWayPoint.Count == 1)
+        else if (pathWayPoint.Count == 1)
         {
             //空白填充
+            enemyWalking = false;
             enemy.currentTarget = 0;
         }
             
