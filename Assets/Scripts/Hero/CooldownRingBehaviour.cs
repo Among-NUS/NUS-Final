@@ -4,6 +4,10 @@ using UnityEngine.UI;
 public class CooldownRingBehaviour : MonoBehaviour
 {
     /* ──────────── UI & 参数 ──────────── */
+    [Header("倒计时音效")]
+    public AudioClip TikTok;
+    private AudioSource clockAS;
+    private bool isPlaying = false;
     [Header("UI圆环")]
     public Image baseRing;
     public Image currentRing;
@@ -45,6 +49,8 @@ public class CooldownRingBehaviour : MonoBehaviour
         currentEnergy = maxEnergy;
         SetupRingImages();
         UpdateRingVisual();
+        clockAS = GetComponent<AudioSource>();
+        clockAS.clip = TikTok;
     }
 
     /* ──────────── 每帧能量驱动 ──────────── */
@@ -52,22 +58,46 @@ public class CooldownRingBehaviour : MonoBehaviour
     {
         var gm = GameManager.Instance;
         if (gm == null) return;
-
+        if (!isPlaying)
+        {
+            clockAS.Stop();
+        }
         switch (gm.currentPhase)
         {
             case GameManager.GamePhase.TimeStop:
                 ConsumeEnergyForTravel();
+                if (!isPlaying)
+                {
+                    clockAS.Play();
+                    isPlaying = true;
+                }
+                
+
                 if (IsEnergyDepleted)
-                    gm.BeginReplay();                      // 自动结束时间静止
+                {
+                    gm.BeginReplay();
+                    isPlaying = false;
+                }
+                   // 自动结束时间静止
                 break;
 
             case GameManager.GamePhase.Recording:
                 TickRecording();
+                if (!isPlaying)
+                {
+                    clockAS.Play();
+                    isPlaying = true;
+                }
                 if (IsRecordingEnergyDepleted())
+                {
                     gm.CancelRecording();                  // 能量不足，终止录制
+                    isPlaying = false;
+                }
+
                 break;
 
             case GameManager.GamePhase.Normal:
+                isPlaying = false;
                 RegenerateEnergy();
                 break;
         }
