@@ -26,6 +26,7 @@ public class SwitchBehaviour : MonoBehaviour, IInteractable, ICondition
 
     public void Interact()
     {
+        if (GameManager.Instance.currentPhase == GameManager.GamePhase.TimeStop) return;
         sw.isOn = !sw.isOn;
         onStateChanged.Invoke(sw.isOn);
         ApplyVisual();

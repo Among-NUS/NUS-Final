@@ -99,10 +99,15 @@ public class GameManager : MonoBehaviour
     {
         if (currentPhase != GamePhase.Recording) return;
 
-        snapshot.Restore();
-        currentPhase = GamePhase.TimeStop;
+        var zoom = GetComponent<CameraZoomEffect>();
+        zoom.OnZoomInFinished = () =>
+        {
+            snapshot.Restore();
+            currentPhase = GamePhase.TimeStop;
+            cooldownRing.StopRecording();
+        };
 
-        cooldownRing.StopRecording();
+        zoom.ZoomIn();
     }
 
     // 现在从 CooldownRingBehaviour 调用 → 需要 public

@@ -40,7 +40,7 @@ public class HeroBehaviour : MonoBehaviour
         heroAnimator.SetBool("isFalling", heroRigidBody.velocity.y < 0);
 
         // J 键开火（与上次示例一致）
-        if (Input.GetKey(KeyCode.J) && shooter != null && shooter.CanFire())
+        if (Input.GetKey(KeyCode.J) && shooter != null && shooter.CanFire() && GameManager.Instance.currentPhase != GameManager.GamePhase.TimeStop)
         {
             shooter.faceLeft = facingLeft;
             shooter.Fire();
