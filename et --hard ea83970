@@ -1,0 +1,37 @@
+[33m6e97e5e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32m0713[m[33m, [m[1;31morigin/0713[m[33m)[m HEAD@{0}: rebase (finish): returning to refs/heads/0713
+[33m6e97e5e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32m0713[m[33m, [m[1;31morigin/0713[m[33m)[m HEAD@{1}: rebase (continue): Add new art assets and resolve merge conflict in Level1Real.unity
+[33mc6bd8ce[m HEAD@{2}: rebase (start): checkout c6bd8ce
+[33mea83970[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{3}: checkout: moving from master to 0713
+[33mea83970[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{4}: reset: moving to origin/0713
+[33mb871198[m HEAD@{5}: reset: moving to origin/master
+[33mb871198[m HEAD@{6}: pull origin master: Fast-forward
+[33mccf6559[m HEAD@{7}: checkout: moving from 0713 to master
+[33mea83970[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{8}: commit: Finalize merge, resolve Level1Real.unity and update related files
+[33me35dd6a[m HEAD@{9}: commit (merge): Resolve merge conflict in Level1Real.unity
+[33m50e1038[m HEAD@{10}: checkout: moving from 0713 to 0713
+[33m50e1038[m HEAD@{11}: commit: Add new art assets and resolve merge conflict in Level1Real.unity
+[33m1944b79[m HEAD@{12}: checkout: moving from master to 0713
+[33mccf6559[m HEAD@{13}: reset: moving to HEAD
+[33mccf6559[m HEAD@{14}: pull --tags origin master: Fast-forward
+[33m2302ffc[m HEAD@{15}: pull --tags origin master: Merge made by the 'ort' strategy.
+[33m280b793[m HEAD@{16}: commit: Restore deleted Level.scenetemplate from 0713 commit 3eee1028
+[33mdc98c3f[m HEAD@{17}: pull --tags origin master: Fast-forward
+[33mfbfc0a6[m HEAD@{18}: commit (merge): Merge 0713 into master: kept 0713 versions of scene files, deleted Level.scenetemplate
+[33m9d90508[m HEAD@{19}: pull origin master: Fast-forward
+[33mc15b8b2[m HEAD@{20}: checkout: moving from 0713 to master
+[33m1944b79[m HEAD@{21}: commit: Merge branch 0713, resolved conflicts by using 0713 version and deleting Level.scenetemplate
+[33m3eee102[m HEAD@{22}: commit: Resolve conflict: use 0713 version for Level.scenetemplate
+[33m0854b9d[m HEAD@{23}: commit: Level2背景更改
+[33m2c98b09[m HEAD@{24}: commit: tutorial2背景更改
+[33m0aa4df5[m HEAD@{25}: commit (merge): Resolved merge conflicts, kept 0713's .unity and master’s .png/.meta files
+[33m1f3ea28[m HEAD@{26}: checkout: moving from master to 0713
+[33mc15b8b2[m HEAD@{27}: pull origin master: Fast-forward
+[33mbb94fc0[m HEAD@{28}: checkout: moving from 0713 to master
+[33m1f3ea28[m HEAD@{29}: commit: level2_BG
+[33mcf3e4aa[m HEAD@{30}: checkout: moving from master to 0713
+[33mbb94fc0[m HEAD@{31}: checkout: moving from master to master
+[33mbb94fc0[m HEAD@{32}: pull --tags origin master: Fast-forward
+[33m4f17163[m HEAD@{33}: checkout: moving from 0713 to master
+[33mcf3e4aa[m HEAD@{34}: commit: 修改了背景以及部分人物动画
+[33m4f17163[m HEAD@{35}: checkout: moving from master to 0713
+[33m4f17163[m HEAD@{36}: clone: from https://github.com/Among-NUS/NUS-Final.git
