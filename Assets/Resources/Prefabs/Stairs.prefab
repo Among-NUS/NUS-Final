@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5106601273194543900}
   - component: {fileID: 4563377884789174470}
   - component: {fileID: 1299252203434266169}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,6 +143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d7817647e1fdb54a80d1f76c8ce8d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linkedStairs: {fileID: 0}
-  spawnPoint: {fileID: 0}
-  triggerKey: 119
+  stairsUp: {fileID: 0}
+  stairsDown: {fileID: 0}
+  stairsAnimator: {fileID: 0}
