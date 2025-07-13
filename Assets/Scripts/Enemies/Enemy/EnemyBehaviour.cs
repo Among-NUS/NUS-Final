@@ -113,6 +113,7 @@ public class EnemyBehaviour : MonoBehaviour
                 Discover();
                 break;
             case EnemyState.CHASE:
+                enemyWalking = true;
                 Chase();
                 break;
             case EnemyState.SHOOT:
@@ -159,6 +160,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
         else
         {
+            enemyWalking = true;
             enemy.lastTarget = GetClosestPathPoint(enemyMonitor.getCapturedTarget()[0]);//固定最后发现的位置
             enemy.lastPriciseTarget = enemyMonitor.getCapturedTarget()[0].transform.position;
         }
@@ -188,6 +190,7 @@ public class EnemyBehaviour : MonoBehaviour
     }
     void Chase()
     {
+        enemyWalking = true;
         if (enemy.isLastTargetUpdated)
         {//如果更新了，那就刷新路径
             enemy.chasePath = BFS(GetClosestPathPoint(gameObject), enemy.lastTarget);
