@@ -40,7 +40,14 @@ public class EnemyBehaviour : MonoBehaviour
     {
         enemy.currentTarget = 0;
         Debug.Assert(enemyAnimator != null);
-        ear.onHearing += GetHearedTarget;//接受耳朵的委托，
+        if (ear==null)
+        {
+            Debug.Log("Where are my ears?");
+        }
+        else
+        {
+            ear.onHearing += GetHearedTarget;//接受耳朵的委托，
+        }
         enemy.spotTime = Time.time;//初始化反应时间
     }
 
@@ -190,6 +197,7 @@ public class EnemyBehaviour : MonoBehaviour
             enemy.lastTarget = GetClosestPathPoint(enemyMonitor.getCapturedTarget()[0]);//固定最后发现的位置
             enemy.lastPriciseTarget = enemyMonitor.getCapturedTarget()[0].transform.position;
             enemy.enemyState = EnemyState.DISCOVER;
+            enemy.spotTime = Time.time;
             enemy.isGoBack = false;
         }
         if (enemy.curChasePoint <= enemy.chasePath.Count)
