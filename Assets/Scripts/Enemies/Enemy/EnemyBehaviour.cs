@@ -190,6 +190,7 @@ public class EnemyBehaviour : MonoBehaviour
             enemy.lastTarget = GetClosestPathPoint(enemyMonitor.getCapturedTarget()[0]);//固定最后发现的位置
             enemy.lastPriciseTarget = enemyMonitor.getCapturedTarget()[0].transform.position;
             enemy.enemyState = EnemyState.DISCOVER;
+            enemy.spotTime = Time.time;
             enemy.isGoBack = false;
         }
         if (enemy.curChasePoint <= enemy.chasePath.Count)
