@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8435d73aafbec6d48a158dbb04f12a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 7e9dd34b-f3ad-4a46-830d-8fb8790a022e
+  uniqueID: d81916be-e527-492c-b103-bc7f630477e4
   isAlive: 1
   lastTarget: 0
   lastPriciseTarget: {x: 0, y: 0, z: 0}
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f45eea1182960540bc46356425512c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 68f26a4b-6816-48fe-989e-941356ba0b41
+  uniqueID: 664f26af-a937-44e1-8679-2fd74a2b88d6
 --- !u!95 &4215317039813925728
 Animator:
   serializedVersion: 5
@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 8724019765089582884}
   - component: {fileID: 8371461809714143387}
   - component: {fileID: 877016632837671109}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: ear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -482,6 +482,7 @@ MonoBehaviour:
   isEnemy: 1
   faceLeft: 1
   fireInterval: 0.5
+  gunshot: {fileID: 0}
 --- !u!212 &378059497093383190
 SpriteRenderer:
   m_ObjectHideFlags: 0
