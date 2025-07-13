@@ -34,6 +34,9 @@ public class HeroBehaviour : MonoBehaviour
             setLayerNear();
         }
         HandleMovement();
+        
+        heroAnimator.SetBool("isJumping", heroRigidBody.velocity.y > 0);
+        heroAnimator.SetBool("isFalling", heroRigidBody.velocity.y < 0);
 
         // J 键开火（与上次示例一致）
         if (Input.GetKey(KeyCode.J) && shooter != null && shooter.CanFire())
@@ -61,6 +64,7 @@ public class HeroBehaviour : MonoBehaviour
             isOnGround = false;
             isJumping = true;
         }
+        
         /* --- 用 localScale.x 的正负代表左右 --- */
         Vector3 s = transform.localScale;
         float targetSign = facingLeft ? -1f : 1f;          // prefab 默认朝右；如默认朝左就反过来
