@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 8724019765089582884}
   - component: {fileID: 8371461809714143387}
   - component: {fileID: 877016632837671109}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: ear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
