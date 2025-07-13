@@ -52499,7 +52499,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9193016314754436847, guid: a1f67bd4565ad8d4189783abd474774c, type: 3}
       propertyPath: targetSceneName
-      value: Congratuations
+      value: Congratulations
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
