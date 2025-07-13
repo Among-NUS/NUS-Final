@@ -11,6 +11,7 @@ public class TurretBehaviour : MonoBehaviour, IInteractable
     public float reactionTime = 0.5f;
     private float spotTime = 0f;//not in recordable
     private bool playerSpotted = false;
+    public Animator turretAnimator;
 
 
     void Awake()
@@ -18,6 +19,7 @@ public class TurretBehaviour : MonoBehaviour, IInteractable
         turret = GetComponent<Turret>();
         shooter = GetComponentInChildren<Shooter>();
         monitor = GetComponentInChildren<MonitorBehaviour>();
+        turretAnimator = GetComponentInChildren<Animator>();
     }
 
     public Transform GetTransform() => transform;
@@ -89,6 +91,7 @@ public class TurretBehaviour : MonoBehaviour, IInteractable
 
                     if (shooter.CanFire())
                     {
+                        turretAnimator.SetBool("isShooting",true);
                         shooter.Fire();
                     }
                 }
@@ -99,6 +102,7 @@ public class TurretBehaviour : MonoBehaviour, IInteractable
         }
         else
         {
+            turretAnimator.SetBool("isShooting",false);
             playerSpotted = false;
         }
     }
