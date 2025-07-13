@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d1cd0fba8ef818f4780b707c04b3e72a
+guid: 08ca3b690df444d4e92accfc8daea127
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -113,10 +113,10 @@ TextureImporter:
       name: enemydying_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 5
-        width: 32
-        height: 40
+        x: 0
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 541f957e1581d154a87d217ce13c473c
-      internalID: 2110435020
+      spriteID: 950d4c9d17b7183469add180a141e764
+      internalID: -1731037488
       vertices: []
       indices: 
       edges: []
@@ -134,10 +134,10 @@ TextureImporter:
       name: enemydying_1
       rect:
         serializedVersion: 2
-        x: 55
-        y: 11
-        width: 44
-        height: 31
+        x: 50
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad1edcf0f328dca4097bac00082c77aa
-      internalID: 1233460613
+      spriteID: 2d6e5df1101d87a4099157458c7355cd
+      internalID: -657715717
       vertices: []
       indices: 
       edges: []
@@ -155,10 +155,10 @@ TextureImporter:
       name: enemydying_2
       rect:
         serializedVersion: 2
-        x: 101
-        y: 11
-        width: 44
-        height: 31
+        x: 100
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f5a66e882eccbd4085e38d47eb29d8b
-      internalID: 524382502
+      spriteID: 95c6e44f287c2854d80302f25e8e5219
+      internalID: 2105887035
       vertices: []
       indices: 
       edges: []
@@ -183,9 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      enemydying_0: 2110435020
-      enemydying_1: 1233460613
-      enemydying_2: 524382502
+      enemydying_0: -1731037488
+      enemydying_1: -657715717
+      enemydying_2: 2105887035
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
