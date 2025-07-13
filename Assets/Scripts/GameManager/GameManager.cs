@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     public MessageDisplay messageDisplay;
     public bool IsRecording => currentPhase == GamePhase.Recording;
 
+    GameObject heroIndicator;
+
+
     void Awake()
     {
         snapshot = new Snapshot();
@@ -122,8 +125,16 @@ public class GameManager : MonoBehaviour
     public void OnGhostFinished()
     {
         currentPhase = GamePhase.Normal;
+
+        if (heroIndicator != null)
+        {
+            heroIndicator.SetActive(false);
+            heroIndicator = null;
+        }
+
         Debug.Log("幽灵回放结束");
     }
+
 
     public void BeginReplay()
     {
@@ -135,8 +146,20 @@ public class GameManager : MonoBehaviour
             previewGhost = null;
         }
 
+        GameObject hero = GameObject.FindGameObjectWithTag("Player");
+        if (hero != null)
+        {
+            Transform indicator = hero.transform.Find("Indicator");
+            if (indicator != null)
+            {
+                indicator.gameObject.SetActive(true);
+                heroIndicator = indicator.gameObject;
+            }
+        }
+
         GameObject ghost = Instantiate(ghostPrefab, snapshot.playerPosition, Quaternion.identity);
         ghost.GetComponent<GhostBehaviour>()
              .StartReplay(new Queue<Record>(inputRecords));   // 深拷贝一份指令
     }
+
 }
