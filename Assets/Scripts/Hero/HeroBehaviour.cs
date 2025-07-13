@@ -10,16 +10,22 @@ public class HeroBehaviour : MonoBehaviour
     public int farLayer = -1;
     [SerializeField] private SpriteRenderer heroSR;
     public float speed = 0.1f;
+    public float jumpForce = 5f;
     private bool heroIsWalking = false;  // ← 用于记录是否在行走
 
     private Shooter shooter;
-    private bool facingLeft = true;       // ← 记录当前朝向
+    public bool facingLeft = true;       // ← 记录当前朝向
+    private Rigidbody2D heroRigidBody;
+    private bool isOnGround = true;
+    private bool isJumping = false;
+    private int groundLayer = 13;
 
     void Awake()
     {
         shooter = GetComponentInChildren<Shooter>();
         heroSR = GetComponent<SpriteRenderer>();
         Debug.Assert(heroAnimator != null);
+        heroRigidBody = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate()
@@ -29,6 +35,9 @@ public class HeroBehaviour : MonoBehaviour
             setLayerNear();
         }
         HandleMovement();
+        
+        heroAnimator.SetBool("isJumping", heroRigidBody.velocity.y > 0);
+        heroAnimator.SetBool("isFalling", heroRigidBody.velocity.y < 0);
 
         // J 键开火（与上次示例一致）
         if (Input.GetKey(KeyCode.J) && shooter != null && shooter.CanFire())
@@ -50,7 +59,13 @@ public class HeroBehaviour : MonoBehaviour
         if (Input.GetKey(KeyCode.A)) { move += Vector3.left; facingLeft = true; heroIsWalking = true; }
         if (Input.GetKey(KeyCode.D)) { move += Vector3.right; facingLeft = false; heroIsWalking = true; }
         heroAnimator.SetBool("isWalking", heroIsWalking);
-
+        if (Input.GetKey(KeyCode.Space) && isOnGround)
+        {
+            heroRigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            isOnGround = false;
+            isJumping = true;
+        }
+        
         /* --- 用 localScale.x 的正负代表左右 --- */
         Vector3 s = transform.localScale;
         float targetSign = facingLeft ? -1f : 1f;          // prefab 默认朝右；如默认朝左就反过来
@@ -73,6 +88,7 @@ public class HeroBehaviour : MonoBehaviour
         if (Input.GetKey(KeyCode.S)) keys.Add('s');
         if (Input.GetKey(KeyCode.E)) keys.Add('e');
         if (Input.GetKey(KeyCode.J)) keys.Add('j');
+        if (Input.GetKey(KeyCode.Space)) keys.Add(' ');
         return keys;
     }
 
@@ -96,4 +112,22 @@ public class HeroBehaviour : MonoBehaviour
         heroSR.sortingOrder = nearLayer;
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == groundLayer) // Check if collision is with the ground layer
+        {
+            isOnGround = true;  // Reset grounded state when hitting the ground
+            isJumping = false;  // Reset jumping state when on the ground
+           
+
+        }
+    }
+    
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == groundLayer) // Check if collision is with the ground layer
+        {
+            isOnGround = false; // Set isOnGround to false when exiting the ground layer
+        }
+    }
 }

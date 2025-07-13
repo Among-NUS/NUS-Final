@@ -13,6 +13,7 @@ public class GhostBehaviour : MonoBehaviour
 {
     [Header("Movement")]
     public float speed = 0.1f;
+    public float jumpForce = 5f;
 
     [Header("Interaction")]
     [Tooltip("Radius used to search for interactables when the ghost \"presses\" E.")]
@@ -27,9 +28,13 @@ public class GhostBehaviour : MonoBehaviour
     private Queue<Record> records;
     private bool isReplaying;
     private bool facingLeft = true; // ← 记录当前朝向
+    private Rigidbody2D ghostRigidBody;
     private Shooter shooter;
     private bool isWalking = false; // ← 用于记录是否在行走
-
+    private bool isOnGround = true;
+    private bool isJumping = false;
+    private int groundLayer = 13;
+    private GameObject Elevator = null;
     #region Public API
     public void StartReplay(Queue<Record> inputRecords)
     {
@@ -43,6 +48,7 @@ public class GhostBehaviour : MonoBehaviour
         shooter = GetComponentInChildren<Shooter>();
         ghostAnimator = GetComponent<Animator>();
         ghostSR = GetComponent<SpriteRenderer>();
+        ghostRigidBody = GetComponent<Rigidbody2D>();
         Debug.Assert(shooter != null, "Shooter component is not assigned.");
         Debug.Assert(ghostAnimator != null, "Ghost animator is not assigned.");
     }
@@ -55,6 +61,12 @@ public class GhostBehaviour : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+
+        if (collision.GetComponent<StairsBehaviour>() != null)
+        {
+            Debug.Log("ghost found elevator");
+            Elevator = collision.gameObject;
+        }
         BulletBehaviour bullet = collision.GetComponent<BulletBehaviour>();
         if (bullet != null && bullet.isEnemy)
         {
@@ -75,6 +87,8 @@ public class GhostBehaviour : MonoBehaviour
             setLayerNear();
         }
         Record frame = records.Dequeue();
+        ghostAnimator.SetBool("isJumping", ghostRigidBody.velocity.y > 0);
+        ghostAnimator.SetBool("isFalling", ghostRigidBody.velocity.y < 0);
         bool pressedE = false;
         ghostAnimator.SetBool("isWalking", false); // 重置行走状态
         foreach (char key in frame.keys)
@@ -96,6 +110,7 @@ public class GhostBehaviour : MonoBehaviour
 
                 case 'w':
                 case 's':
+                    Debug.Log("ghost tring to use stairs");
                     TryUseStairs(key == 'w');
                     break;
 
@@ -109,6 +124,14 @@ public class GhostBehaviour : MonoBehaviour
                         shooter.faceLeft = facingLeft;
                         shooter.Fire();
                         ghostAnimator.SetTrigger("shootAnim");
+                    }
+                    break;
+                case ' ':
+                    if (isOnGround)
+                    {
+                        ghostRigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                        isOnGround = false;
+                        isJumping = true;
                     }
                     break;
             }
@@ -179,17 +202,33 @@ public class GhostBehaviour : MonoBehaviour
     #region Helpers – stairs
     private void TryUseStairs(bool commandUp)
     {
+        if (Elevator == null)
+        {
+            return;
+        }
+        else
+        {
+            StairsBehaviour elevatorScript = Elevator.GetComponent<StairsBehaviour>();
+            Debug.Log("ghost using exist elevator");
+            elevatorScript.TryTeleport(transform, commandUp);
+        }
         // Very small radius because we must already be on the stair trigger.
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 0.05f);
+        /*Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 0.5f);
         foreach (var h in hits)
         {
+            Debug.Log("ghost looking at " + h.gameObject.name);
+        }
+        foreach (var h in hits)
+        {
+            Debug.Log("ghost looking at " + h.gameObject.name);
             StairsBehaviour stairs = h.GetComponent<StairsBehaviour>();
             if (stairs != null)
             {
+                Debug.Log("ghost using stair" + h.gameObject.name);
                 stairs.TryTeleport(transform, commandUp);
                 break; // Only need one stair per frame.
             }
-        }
+        }*/
     }
     #endregion
 
@@ -204,4 +243,35 @@ public class GhostBehaviour : MonoBehaviour
     {
         ghostSR.sortingOrder = nearLayer;
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == groundLayer) // Check if collision is with the ground layer
+        {
+            isOnGround = true;  // Reset grounded state when hitting the ground
+            isJumping = false;  // Reset jumping state when on the ground
+
+
+        }
+
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == groundLayer) // Check if collision is with the ground layer
+        {
+            isOnGround = false; // Set isOnGround to false when exiting the ground layer
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.GetComponent<StairsBehaviour>() != null)
+        {
+            Debug.Log("ghost left elevator");
+            Elevator = null;
+        }
+    }
+
+
 }

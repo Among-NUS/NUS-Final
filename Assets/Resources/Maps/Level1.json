@@ -1,0 +1,24 @@
+{
+	"nodes":[
+		{
+		"index":0,
+		"neightbor":[1,-1,-1,-1]
+		},
+		{
+		"index":1,
+		"neightbor":[0,2,53,-1]
+		},
+		{
+		"index":2,
+		"neightbor":[1,-1,-1,-1]
+		},
+		{
+		"index":3,
+		"neightbor":[51,4,-1,-1]
+		},
+		{
+		"index":4,
+		"neightbor":[3,-1,-1,-1]
+		}
+	]
+}

@@ -26,6 +26,6 @@ public class GameOverUI : MonoBehaviour
     public void OnExitButton()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Menu");
     }
 }

@@ -17,11 +17,11 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Sound
   - Hero
   - Bullet
   - Enemy
-  - 
+  - Ground
   - WayPoint
   - Interactable
   - 

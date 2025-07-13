@@ -1,17 +1,23 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Collider2D), typeof(Switch))]
+[RequireComponent(typeof(Collider2D), typeof(Switch), typeof(SpriteRenderer))]
 public class SwitchBehaviour : MonoBehaviour, IInteractable, ICondition
 {
     public UnityEvent<bool> onStateChanged = new UnityEvent<bool>();
 
+    [Header("Switch Sprites")]
+    public Sprite offSprite;
+    public Sprite onSprite;
+
     private InteractionManager im;
     private Switch sw;
+    private SpriteRenderer sr;
 
     void Awake()
     {
         sw = GetComponent<Switch>();
+        sr = GetComponent<SpriteRenderer>();
         ApplyVisual();
     }
 
@@ -28,16 +34,14 @@ public class SwitchBehaviour : MonoBehaviour, IInteractable, ICondition
     /* ---------- 视觉反馈 ---------- */
     private void ApplyVisual()
     {
-        var sr = GetComponent<SpriteRenderer>();
         if (sr != null)
-            sr.color = sw.isOn ? Color.yellow : Color.white;
+            sr.sprite = sw.isOn ? onSprite : offSprite;
     }
 
     void Update()
     {
         ApplyVisual();  // 实时同步视觉
     }
-
 
     /* ---------- ICondition 实现 ---------- */
     public bool IsTrue => sw.isOn;
