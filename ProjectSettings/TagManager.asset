@@ -21,7 +21,7 @@ TagManager:
   - Hero
   - Bullet
   - Enemy
-  - 
+  - Ground
   - WayPoint
   - Interactable
   - 
