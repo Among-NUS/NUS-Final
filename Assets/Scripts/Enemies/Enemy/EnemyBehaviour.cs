@@ -9,7 +9,7 @@ public class EnemyBehaviour : MonoBehaviour
     [Header("巡逻路径(按顺序)")]
     public List<Transform> pathWayPoint;
     public PathPointMap pathPointMap;   //全图的路径点reference
-    public Monitor enemyMonitor;        // 用于检测目标
+    public MonitorBehaviour enemyMonitor;        // 用于检测目标
     public Ear ear;                     //听觉
     public float reactionTime = 0.5f;    //敌人的反应时间
     public float interactTime = 0.2f;           //敌人需要与物体互动多久
