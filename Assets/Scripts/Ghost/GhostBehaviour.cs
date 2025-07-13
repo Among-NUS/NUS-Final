@@ -13,6 +13,7 @@ public class GhostBehaviour : MonoBehaviour
 {
     [Header("Movement")]
     public float speed = 0.1f;
+    public float jumpForce = 5f;
 
     [Header("Interaction")]
     [Tooltip("Radius used to search for interactables when the ghost \"presses\" E.")]
@@ -27,9 +28,12 @@ public class GhostBehaviour : MonoBehaviour
     private Queue<Record> records;
     private bool isReplaying;
     private bool facingLeft = true; // ← 记录当前朝向
+    private Rigidbody2D ghostRigidBody;
     private Shooter shooter;
     private bool isWalking = false; // ← 用于记录是否在行走
-
+    private bool isOnGround = true;
+    private bool isJumping = false;
+    private int groundLayer = 13;
     #region Public API
     public void StartReplay(Queue<Record> inputRecords)
     {
@@ -43,6 +47,7 @@ public class GhostBehaviour : MonoBehaviour
         shooter = GetComponentInChildren<Shooter>();
         ghostAnimator = GetComponent<Animator>();
         ghostSR = GetComponent<SpriteRenderer>();
+        ghostRigidBody = GetComponent<Rigidbody2D>();
         Debug.Assert(shooter != null, "Shooter component is not assigned.");
         Debug.Assert(ghostAnimator != null, "Ghost animator is not assigned.");
     }
@@ -109,6 +114,14 @@ public class GhostBehaviour : MonoBehaviour
                         shooter.faceLeft = facingLeft;
                         shooter.Fire();
                         ghostAnimator.SetTrigger("shootAnim");
+                    }
+                    break;
+                case ' ':
+                    if (isOnGround)
+                    {
+                        ghostRigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                        isOnGround = false;
+                        isJumping = true;
                     }
                     break;
             }
@@ -204,4 +217,25 @@ public class GhostBehaviour : MonoBehaviour
     {
         ghostSR.sortingOrder = nearLayer;
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == groundLayer) // Check if collision is with the ground layer
+        {
+            isOnGround = true;  // Reset grounded state when hitting the ground
+            isJumping = false;  // Reset jumping state when on the ground
+
+
+        }
+    }
+    
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == groundLayer) // Check if collision is with the ground layer
+        {
+            isOnGround = false; // Set isOnGround to false when exiting the ground layer
+        }
+    }
+    
+
 }
