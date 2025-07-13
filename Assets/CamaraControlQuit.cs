@@ -14,11 +14,6 @@ public class CamaraControlQuit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //quit game when press q
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Application.Quit();
-        }
         if(Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

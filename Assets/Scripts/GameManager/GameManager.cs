@@ -1,9 +1,10 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class GameManager : MonoBehaviour
 {
-    public enum GamePhase { Normal, Recording, TimeStop, Replaying }
+    public enum GamePhase { Normal, Recording, TimeStop }
 
     public static GameManager Instance { get; private set; }
     public GamePhase currentPhase = GamePhase.Normal;
@@ -17,15 +18,13 @@ public class GameManager : MonoBehaviour
     Queue<Record> inputRecords = new();
 
     public MessageDisplay messageDisplay;
-
-    bool travellingMode = false;
     public bool IsRecording => currentPhase == GamePhase.Recording;
 
     void Awake()
     {
         snapshot = new Snapshot();
 
-        ghostPrefab = Resources.Load<GameObject>("Prefabs/GhostPrefab");
+        ghostPrefab        = Resources.Load<GameObject>("Prefabs/GhostPrefab");
         previewGhostPrefab = Resources.Load<GameObject>("Prefabs/PreviewGhostPrefab");
 
         if (Instance != null && Instance != this)
@@ -34,59 +33,32 @@ public class GameManager : MonoBehaviour
             Instance = this;
     }
 
+    // ─────────────────────────────────────────────────────────────
+    //  键盘入口：U 开始录制，I 结束并回放，O 结束并时间静止
+    // ─────────────────────────────────────────────────────────────
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T) && currentPhase == GamePhase.Normal) travellingMode = !travellingMode;
-        if (Input.GetKeyDown(KeyCode.U) && currentPhase == GamePhase.Normal) StartRecording();
-        if (Input.GetKeyDown(KeyCode.I) && currentPhase == GamePhase.Recording)
-        {
-            if (travellingMode) StopRecordingAndFreeze();
-            else StopAndReplay();
-        }
+        if (Time.timeScale == 0) return;
+        if (Input.GetKeyDown(KeyCode.U) && currentPhase == GamePhase.Normal)
+            StartRecording();
+        else if (Input.GetKeyDown(KeyCode.I) && currentPhase == GamePhase.Recording)
+            StopAndReplay();
+        else if (Input.GetKeyDown(KeyCode.O) && currentPhase == GamePhase.Recording)
+            StopRecordingAndFreeze();
     }
 
-    void FixedUpdate()
-    {
-        if (cooldownRing == null) return;
-
-        if (currentPhase == GamePhase.TimeStop)
-        {
-            cooldownRing.ConsumeEnergyForTravel();
-            if (cooldownRing.IsEnergyDepleted)
-            {
-                BeginReplay();
-            }
-        }
-
-        if (currentPhase == GamePhase.Recording)
-        {
-            // 录制时，增加使用的能量
-            cooldownRing.TickRecording();
-
-            // 检查能量是否耗尽
-            if (cooldownRing.IsRecordingEnergyDepleted())
-            {
-                CancelRecording();
-                Debug.Log("能量耗尽，录制被取消");
-            }
-        }
-        else if (currentPhase == GamePhase.Normal)
-        {
-            // 非录制时恢复能量（包括幽灵存在时）
-            cooldownRing.RegenerateEnergy();
-        }
-    }
-
-    public void GameOver()
-    {
-
-    }
-
+    //────────────────────────  录制流程  ────────────────────────
     public void StartRecording()
     {
         if (!cooldownRing.CanStartRecording)
         {
             Debug.Log("能量不足，无法开始录制");
+            return;
+        }
+
+        if (GameObject.FindGameObjectsWithTag("Ghost").Length != 0)
+        {
+            Debug.Log("场上已有Ghost，无法开始录制");
             return;
         }
 
@@ -96,25 +68,21 @@ public class GameManager : MonoBehaviour
         snapshot = new Snapshot();
         snapshot.Capture();
 
-        if (previewGhost != null)
-            Destroy(previewGhost);
-
+        if (previewGhost) Destroy(previewGhost);
         previewGhost = Instantiate(previewGhostPrefab, snapshot.playerPosition, Quaternion.identity);
-        cooldownRing.StartRecording();
 
+        cooldownRing.StartRecording();
         Debug.Log("开始录制");
     }
+
     public void StopAndReplay()
     {
         if (currentPhase != GamePhase.Recording) return;
 
-        //messageDisplay.ShowMessageForOneSecond();
-
-        snapshot.Restore();
+        snapshot.Restore();             // 回到录制起点
         currentPhase = GamePhase.Normal;
 
         cooldownRing.StopRecording();
-        
         BeginReplay();
     }
 
@@ -128,11 +96,12 @@ public class GameManager : MonoBehaviour
         cooldownRing.StopRecording();
     }
 
-    void CancelRecording()
+    // 现在从 CooldownRingBehaviour 调用 → 需要 public
+    public void CancelRecording()
     {
         currentPhase = GamePhase.Normal;
 
-        if (previewGhost != null)
+        if (previewGhost)
         {
             Destroy(previewGhost);
             previewGhost = null;
@@ -143,15 +112,13 @@ public class GameManager : MonoBehaviour
         Debug.Log("录制被取消");
     }
 
+    //────────────────────────  幽灵播放  ────────────────────────
     public void RecordKeyInput(List<char> keys)
     {
-        if (currentPhase != GamePhase.Recording) return;
-        inputRecords.Enqueue(new Record(keys));
+        if (currentPhase == GamePhase.Recording)
+            inputRecords.Enqueue(new Record(keys));
     }
 
-    /// <summary>
-    /// 当幽灵结束回放时调用
-    /// </summary>
     public void OnGhostFinished()
     {
         currentPhase = GamePhase.Normal;
@@ -161,14 +128,15 @@ public class GameManager : MonoBehaviour
     public void BeginReplay()
     {
         currentPhase = GamePhase.Normal;
-        if (previewGhost != null)
+
+        if (previewGhost)
         {
             Destroy(previewGhost);
             previewGhost = null;
         }
-        // 在 snapshot 处生成幽灵
-        GameObject ghost = Instantiate(ghostPrefab, snapshot.playerPosition, Quaternion.identity);
-        ghost.GetComponent<GhostBehaviour>().StartReplay(new Queue<Record>(inputRecords)); // 把已录指令给幽灵
 
+        GameObject ghost = Instantiate(ghostPrefab, snapshot.playerPosition, Quaternion.identity);
+        ghost.GetComponent<GhostBehaviour>()
+             .StartReplay(new Queue<Record>(inputRecords));   // 深拷贝一份指令
     }
 }

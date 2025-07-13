@@ -6,6 +6,8 @@ public class PauseUI : MonoBehaviour
 {
     public GameObject pausePanel;
     public GameObject confirmPanel;
+    public GameObject settingsPanel;
+    public GameObject inGameUICanvas;
     public TextMeshProUGUI confirmText;
 
     private System.Action confirmAction;
@@ -14,20 +16,24 @@ public class PauseUI : MonoBehaviour
     {
         pausePanel.SetActive(false);
         confirmPanel.SetActive(false);
+        settingsPanel.SetActive(false);
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (confirmPanel.activeSelf)
+            if (settingsPanel.activeSelf) {
+                settingsPanel.SetActive(false);
+                pausePanel.SetActive(true);
+            }
+            else if (confirmPanel.activeSelf)
             {
                 confirmPanel.SetActive(false);  // 先关确认框
             }
             else if (pausePanel.activeSelf)
             {
-                pausePanel.SetActive(false);    // 再关暂停菜单
-                Time.timeScale = 1f;
+                OnClickResumeButton();
             }
             else
             {
@@ -39,6 +45,7 @@ public class PauseUI : MonoBehaviour
 
     public void ShowPause()
     {
+        inGameUICanvas.SetActive(false);
         pausePanel.SetActive(true);
         Time.timeScale = 0f;
     }
@@ -46,8 +53,14 @@ public class PauseUI : MonoBehaviour
     // ====== 主菜单按钮事件 ======
     public void OnClickResumeButton()
     {
+        inGameUICanvas.SetActive(true);
         pausePanel.SetActive(false);
         Time.timeScale = 1f;
+    }
+    public void OnClickSettingsButton()
+    {
+        pausePanel.SetActive(false);
+        settingsPanel.SetActive(true);
     }
 
     public void OnClickRestartConfirm()

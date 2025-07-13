@@ -9,8 +9,8 @@ public class DoorBehaviour : MonoBehaviour
     [SerializeField] private Sprite closedSprite;
     [SerializeField] private Sprite openSprite;
 
-    [Header("条件组件")]
-    public List<MonoBehaviour> conditions = new();  // 可拖拽任何实现 ICondition 的组件
+    [Header("条件对象")]
+    public List<GameObject> conditionObjects = new();  // 拖入任意包含 ICondition 的 GameObject
     public SwitchType st = SwitchType.OR;
 
     private Door door;
@@ -22,20 +22,24 @@ public class DoorBehaviour : MonoBehaviour
 
     void Start()
     {
-        Evaluate(); // 初始自检
+        Evaluate();
     }
 
     void FixedUpdate()
     {
-        Evaluate(); // 每帧检测条件是否变化（也可以按需改成事件驱动）
+        Evaluate();
     }
 
     void Evaluate()
     {
         bool prev = door.isOpen;
 
-        // 统一处理所有 ICondition（Switch 也实现了它）
-        var validConditions = conditions.OfType<ICondition>().ToList();
+        // 获取所有 conditionObjects 中实现 ICondition 的组件
+        var validConditions = conditionObjects
+            .SelectMany(go => go.GetComponents<MonoBehaviour>())
+            .OfType<ICondition>()
+            .ToList();
+
         if (validConditions.Count == 0) return;
 
         switch (st)
