@@ -4441,6 +4441,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.66
       objectReference: {fileID: 0}
+    - target: {fileID: 6149389303612388870, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: soundCooldown
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 6316553079493030345, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_Name
       value: GamePreset

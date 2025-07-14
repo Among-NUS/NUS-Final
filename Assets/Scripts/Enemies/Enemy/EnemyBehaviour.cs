@@ -196,8 +196,8 @@ public class EnemyBehaviour : MonoBehaviour
             enemy.chasePath = BFS(GetClosestPathPoint(gameObject), enemy.lastTarget);
             enemy.curChasePoint = 0;//注意这里不会维护自身在哪个节点，只会认为自己在最近的点，特定路径点排列会引发bug
             enemy.isLastTargetUpdated = false;
+            enemy.isGoBack = false;
         }
-        //按路径行走
         if (enemyMonitor.getCapturedTarget().Count != 0)
         {//先判定是否检测到主角
             enemy.lastTarget = GetClosestPathPoint(enemyMonitor.getCapturedTarget()[0]);//固定最后发现的位置
@@ -252,10 +252,11 @@ public class EnemyBehaviour : MonoBehaviour
                 enemy.isGoBack = false;
             }
             else
-            {//开始向回走
-                enemy.isLastTargetUpdated = true;
+            {//开始向回走，不能触发该方法开头的更新，否则回家状态消失，自己独立更新一次地图
                 enemy.lastTarget = pathPointMap.pathPointObjects.LastIndexOf(pathWayPoint[enemy.currentTarget].gameObject);
                 enemy.lastPriciseTarget = pathPointMap.pathPointObjects[enemy.lastTarget].transform.position;
+                enemy.chasePath = BFS(GetClosestPathPoint(gameObject), enemy.lastTarget);
+                enemy.curChasePoint = 0;//注意这里不会维护自身在哪个节点，只会认为自己在最近的点，特定路径点排列会引发bug
                 enemy.isGoBack = true;
             }
         }
