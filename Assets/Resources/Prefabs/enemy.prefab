@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 5455007380358418162}
   - component: {fileID: 4890364027894669440}
   - component: {fileID: 4215317039813925728}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -277,7 +277,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.10361004, y: 0.012951136}
@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8435d73aafbec6d48a158dbb04f12a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: a4f4531b-5924-4ea0-b7d6-a4e1070ce2d6
+  uniqueID: e02be546-d318-418b-9512-7701c6bcb423
   isAlive: 1
   lastTarget: 0
   lastPriciseTarget: {x: 0, y: 0, z: 0}
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f45eea1182960540bc46356425512c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 41938dc0-7461-46b4-9401-c5549366d492
+  uniqueID: 103fb1ea-5e26-4275-acdc-c756987e3e0e
 --- !u!95 &4215317039813925728
 Animator:
   serializedVersion: 5
@@ -484,6 +484,7 @@ MonoBehaviour:
   faceLeft: 1
   fireInterval: 0.5
   gunshot: {fileID: 8300000, guid: 75b9fd17d5f7a1e4db1d08b4562ca946, type: 3}
+  soundCooldown: 0.1
 --- !u!212 &378059497093383190
 SpriteRenderer:
   m_ObjectHideFlags: 0
