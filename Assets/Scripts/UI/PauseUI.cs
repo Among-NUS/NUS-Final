@@ -37,7 +37,7 @@ public class PauseUI : MonoBehaviour
             }
             else
             {
-                ShowPause(); // 正常打开暂停
+                if(Time.timeScale != 0) ShowPause(); // 正常打开暂停
             }
         }
     }
