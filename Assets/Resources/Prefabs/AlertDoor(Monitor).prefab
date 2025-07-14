@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.6566994, y: -0.08918691, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.68, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.62, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2035198557042520163}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1902755424, guid: 72cc199d6643d5245a17029294cf280c, type: 3}
+  m_Sprite: {fileID: 414259958, guid: c60e35da37e2e6c42bb3079061e6059f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -125,7 +125,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.3, y: 2.2}
+    oldSize: {x: 0.8, y: 2.4}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -160,8 +160,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 8943904219166682457}
-  closedSprite: {fileID: 1902755424, guid: 72cc199d6643d5245a17029294cf280c, type: 3}
-  openSprite: {fileID: 1391909783, guid: 72cc199d6643d5245a17029294cf280c, type: 3}
+  closedSprite: {fileID: 414259958, guid: c60e35da37e2e6c42bb3079061e6059f, type: 3}
+  openSprite: {fileID: -1450103495, guid: c60e35da37e2e6c42bb3079061e6059f, type: 3}
   conditions:
   - {fileID: 7493133782882413574}
 --- !u!114 &8943904219166682457
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b01cd05e35b734394050ed4fe6bef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 0c2a4636-232b-4cc7-a2cb-765efde660c2
+  uniqueID: 6aa020d0-5b35-48e2-a8cb-d41fdcb79494
   isOpen: 1
   isLocked: 0
 --- !u!1001 &3212082823978199910

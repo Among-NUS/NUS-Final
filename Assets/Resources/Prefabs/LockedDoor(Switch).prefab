@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf7ffd817752104aa5e251a968bb775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: c65a17c4-1686-4d7b-a28f-418a27497547
+  uniqueID: 54acb954-8119-4b75-8106-b1e7f6137bda
   isOn: 0
 --- !u!114 &2326147666619078973
 MonoBehaviour:
@@ -193,7 +193,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.1131604, y: -0.06820035, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.68, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.62, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1640966134001420267}
@@ -240,7 +240,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1902755424, guid: 72cc199d6643d5245a17029294cf280c, type: 3}
+  m_Sprite: {fileID: 414259958, guid: c60e35da37e2e6c42bb3079061e6059f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -287,7 +287,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.3, y: 2.2}
+    oldSize: {x: 0.8, y: 2.4}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 053e46176013c77498f968aea947056f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 305cba31-f1a4-4355-ad4a-ef7e1230f7b9
+  uniqueID: 4ea63327-1f6e-41fd-9878-3c9ac32bd74c
   isOpen: 0
 --- !u!114 &4852539444736834814
 MonoBehaviour:
@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b4049aeea34f146887b436c1cbae7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  closedSprite: {fileID: 1902755424, guid: 72cc199d6643d5245a17029294cf280c, type: 3}
-  openSprite: {fileID: 1391909783, guid: 72cc199d6643d5245a17029294cf280c, type: 3}
+  closedSprite: {fileID: 414259958, guid: c60e35da37e2e6c42bb3079061e6059f, type: 3}
+  openSprite: {fileID: -1450103495, guid: c60e35da37e2e6c42bb3079061e6059f, type: 3}
   conditionObjects: []
   st: 1
