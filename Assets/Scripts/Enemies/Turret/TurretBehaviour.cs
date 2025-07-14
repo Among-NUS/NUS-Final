@@ -11,7 +11,7 @@ public class TurretBehaviour : MonoBehaviour, IInteractable
     public float reactionTime = 0.5f;
     private float spotTime = 0f;//not in recordable
     private bool playerSpotted = false;
-    //public Animator turretAnimator;
+    public Animator turretAnimator;
 
 
     void Awake()
@@ -19,7 +19,7 @@ public class TurretBehaviour : MonoBehaviour, IInteractable
         turret = GetComponent<Turret>();
         shooter = GetComponentInChildren<Shooter>();
         monitor = GetComponentInChildren<MonitorBehaviour>();
-        //turretAnimator = GetComponentInChildren<Animator>();
+        turretAnimator = GetComponentInChildren<Animator>();
     }
 
     public Transform GetTransform() => transform;
@@ -55,6 +55,7 @@ public class TurretBehaviour : MonoBehaviour, IInteractable
 
     void FixedUpdate()
     {
+        turretAnimator.SetBool("isDead", !turret.isAlive);
         if (!turret.isAlive)
             return;
 
@@ -77,40 +78,35 @@ public class TurretBehaviour : MonoBehaviour, IInteractable
         if (seen > 0)
         {
         // 第一次看到玩家 → 设定下一次可射击的绝对时间
-        if (!playerSpotted)
-        {
-            playerSpotted = true;
-                spotTime = Time.time;
-        }
-
-        // 只要过了反应时间，之后完全靠 fireInterval 控制
-        else
-        {
-            if (Time.time - spotTime > reactionTime)
+            if (!playerSpotted)
             {
-                GameObject target = targets[0];
-                Vector3 dir = target.transform.position - transform.position;
-                shooter.faceLeft = dir.x < 0;
-
-                if (shooter.CanFire())
-                {
-                    //turretAnimator.SetBool("isShooting",true);
-                    shooter.Fire();
-                }
+                playerSpotted = true;
+                spotTime = Time.time;
             }
 
+            // 只要过了反应时间，之后完全靠 fireInterval 控制
+            else
+            {
+                if (Time.time - spotTime > reactionTime)
+                {
+                    GameObject target = targets[0];
+                    Vector3 dir = target.transform.position - transform.position;
+                    shooter.faceLeft = dir.x < 0;
+
+                    if (shooter.CanFire())
+                    {
+                        turretAnimator.SetBool("isShooting",true);
+                        shooter.Fire();
+                    }
+                }
+
+            }
         }
-    }
-    else
-    {
-        playerSpotted = false;       // 真正彻底丢失
-    }
-    
-        //{
-        //    Debug.Log("hero lost");
-            //turretAnimator.SetBool("isShooting",false);
-        //    playerSpotted = false;
-        //}
+        else
+        {
+            turretAnimator.SetBool("isShooting",false);
+            playerSpotted = false;       // 真正彻底丢失
+        }
     }
 
 
