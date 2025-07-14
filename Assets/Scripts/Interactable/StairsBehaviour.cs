@@ -11,7 +11,7 @@ public class StairsBehaviour : MonoBehaviour
     [Tooltip("这一段楼梯对应的另一段楼梯（必须互相指向）")]
     public StairsBehaviour stairsUp = null;
     public StairsBehaviour stairsDown = null;
-    public Animator stairsAnimator;
+    //public Animator stairsAnimator;
     private GameObject enterPlayer;
 
     [Tooltip("站在这段楼梯时，按 W 是否算“上楼”")]
@@ -23,7 +23,7 @@ public class StairsBehaviour : MonoBehaviour
     float cooldown;            // 防止瞬时往返
     void Start()
     {
-        Debug.Assert(stairsAnimator != null);
+        //Debug.Assert(stairsAnimator != null);
     }
 
     void Update()
@@ -40,14 +40,12 @@ public class StairsBehaviour : MonoBehaviour
         {
             TeleportTo(stairsUp);
             
-            enterPlayer.GetComponent<HeroBehaviour>().setLayerFar();
             
         }
         if ((stairsDown != null && Input.GetKeyDown(KeyCode.S)))
         {
             TeleportTo(stairsDown);
             
-            enterPlayer.GetComponent<HeroBehaviour>().setLayerFar();
             
         }
     }
@@ -81,7 +79,7 @@ public class StairsBehaviour : MonoBehaviour
         {
             playerInside = true;
             playerTf = other.transform;
-            stairsAnimator.SetBool("HeroIn", true);
+            //stairsAnimator.SetBool("HeroIn", true);
             enterPlayer = other.gameObject;
             
             
@@ -94,7 +92,7 @@ public class StairsBehaviour : MonoBehaviour
         {
             playerInside = false;
             playerTf = null;
-            stairsAnimator.SetBool("HeroIn", false);
+            //stairsAnimator.SetBool("HeroIn", false);
         }
     }
     // 供 Ghost 调用的公共接口
@@ -107,7 +105,6 @@ public class StairsBehaviour : MonoBehaviour
         
         if (target==null) return;
 
-        enterPlayer.GetComponent<GhostBehaviour>().setLayerFar();
         // 执行传送
         entity.position = target.transform.position;
         cooldown              = 0.15f;
