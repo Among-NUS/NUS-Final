@@ -42,10 +42,12 @@ public class GameManager : MonoBehaviour
     // ─────────────────────────────────────────────────────────────
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
         if (Time.timeScale == 0) return;
+        if (Input.GetKeyDown(KeyCode.R) && currentPhase != GamePhase.TimeStop)
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
         if (Input.GetKeyDown(KeyCode.U) && currentPhase == GamePhase.Normal)
             StartRecording();
         else if (Input.GetKeyDown(KeyCode.I) && currentPhase == GamePhase.Recording)
