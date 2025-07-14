@@ -7,16 +7,16 @@ using TMPro;
 
 public class DialogSystem : MonoBehaviour
 {
-    [Header("UI组件")]
+    [Header("UI Component")]
     public TextMeshProUGUI textlabel;
    // public Image faceImage;
     public GameObject dialogBox;
 
-    [Header("文本文件")]
+    [Header("Text File")]
     public TextAsset textFile;
     public int index;
 
-    [Header("角色控制")]
+    [Header("Character Control")]
     public MonoBehaviour playerController; // 控制hero移动的脚本
 
     private List<string> textlist = new List<string>();
