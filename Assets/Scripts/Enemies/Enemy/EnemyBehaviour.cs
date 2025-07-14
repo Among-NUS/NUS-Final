@@ -16,6 +16,7 @@ public class EnemyBehaviour : MonoBehaviour
     public float speed = 5f;
     public Animator enemyAnimator; // 用于播放动画
     public Sprite enemyDieSprite; // 死亡时的精灵
+    public AlertSignBehaviour enemyAlertSign;
     private bool enemyWalking = false;
 
 
@@ -32,6 +33,7 @@ public class EnemyBehaviour : MonoBehaviour
         enemy = GetComponent<Enemy>();
         shooter = GetComponentInChildren<Shooter>();
         sr = GetComponentInChildren<SpriteRenderer>();
+        enemyAlertSign = GetComponentInChildren<AlertSignBehaviour>();
 
         // 根据初始缩放确定朝向
         enemy.facingLeft = transform.localScale.x < 0;
@@ -152,9 +154,10 @@ public class EnemyBehaviour : MonoBehaviour
     }
     void Discover()
     {
+        enemyAlertSign.showAlert();
         if (enemyMonitor.getCapturedTarget().Count == 0)
         {
-            enemy.enemyState =EnemyState.CHASE;//消失时拿着上一帧的位置进chase
+            enemy.enemyState = EnemyState.CHASE;//消失时拿着上一帧的位置进chase
             enemy.isLastTargetUpdated = true;
             return;
         }
@@ -185,7 +188,10 @@ public class EnemyBehaviour : MonoBehaviour
             shooter.faceLeft = enemy.facingLeft;     // 告诉 Shooter 发射方向
 
             if (shooter.CanFire())
+            {
                 shooter.Fire();
+                enemyAnimator.SetTrigger("shootAnim");
+            }
         }
     }
     void Chase()
