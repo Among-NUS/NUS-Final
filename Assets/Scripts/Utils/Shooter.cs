@@ -1,5 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
+using System.Collections.Generic;
 
 public class Shooter : MonoBehaviour
 {
@@ -12,8 +14,8 @@ public class Shooter : MonoBehaviour
     private float fireCooldown = 0f;
     public AudioClip gunshot;
     private AudioSource shooterAudioS;
-    private GameObject soundSource = null;
-    private float lastSound = 0f;
+    private Queue<GameObject> soundSource;
+    private Queue<float> lastSound;
     public float soundCooldown = 0.1f;
 
 
@@ -21,11 +23,17 @@ public class Shooter : MonoBehaviour
     {
         shooterAudioS = GetComponent<AudioSource>();
     }
+    void Start()
+    {
+        soundSource = new Queue<GameObject>();
+        lastSound = new Queue<float>();
+    }
     void FixedUpdate()
     {
-        if (soundSource != null&&Time.time-lastSound>soundCooldown)
+        if (soundSource.Count>0&&Time.time-lastSound.Peek()>soundCooldown)
         {
-            Destroy(soundSource);
+            lastSound.Dequeue();
+            Destroy(soundSource.Dequeue());
         }
         if (fireCooldown > 0f)
             fireCooldown -= Time.fixedDeltaTime;
@@ -39,8 +47,8 @@ public class Shooter : MonoBehaviour
         shooterAudioS.clip = gunshot;
         shooterAudioS.Play();
         Vector2 dir = faceLeft ? Vector2.left : Vector2.right;
-        soundSource = (GameObject)Instantiate(Resources.Load("Prefabs/soundSource"), firePoint.position+new Vector3(3.1f,0f,0f),Quaternion.identity);
-        lastSound = Time.time;
+        soundSource.Enqueue((GameObject)Instantiate(Resources.Load("Prefabs/soundSource"), firePoint.position+new Vector3(3.1f,0f,0f),Quaternion.identity));
+        lastSound.Enqueue(Time.time);
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         BulletBehaviour bb = bullet.GetComponent<BulletBehaviour>();
         if (bb != null)

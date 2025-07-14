@@ -47,7 +47,7 @@ public class MonitorBehaviour : MonoBehaviour
                               Mathf.Sin(angleRad),
                               0f);
 
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, scanLength,LayerMask.GetMask("Hero"));
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, scanLength,LayerMask.GetMask("Hero","Default","Ground"));
             hits.Add(hit);
             Debug.DrawLine(transform.position,
                            transform.position + dir * scanLength,
