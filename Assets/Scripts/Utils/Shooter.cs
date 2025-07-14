@@ -20,7 +20,6 @@ public class Shooter : MonoBehaviour
     void Awake()
     {
         shooterAudioS = GetComponent<AudioSource>();
-        soundCooldown = 0.5f;
     }
     void FixedUpdate()
     {
