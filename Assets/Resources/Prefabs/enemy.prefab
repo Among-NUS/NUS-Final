@@ -222,6 +222,7 @@ MonoBehaviour:
   speed: 2
   enemyAnimator: {fileID: 4215317039813925728}
   enemyDieSprite: {fileID: -657715717, guid: 08ca3b690df444d4e92accfc8daea127, type: 3}
+  enemyAlertSign: {fileID: 0}
 --- !u!50 &7573196431681372307
 Rigidbody2D:
   serializedVersion: 4
@@ -549,7 +550,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -694,6 +695,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7871828227012517345, guid: a29d79dae0f3c0742afa8467f547c6b0, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8896440198253827757, guid: a29d79dae0f3c0742afa8467f547c6b0, type: 3}
       propertyPath: m_Name
       value: ExcalimationMark
@@ -723,6 +728,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 821799d4e23c77847b2fced2948ddd2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  existInterval: 2
+  alertSR: {fileID: 0}
+  alertClip: {fileID: 8300000, guid: 19ced01e3424a6146b211df64ea46c32, type: 3}
 --- !u!4 &9038788545032874916 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6926485125144531788, guid: a29d79dae0f3c0742afa8467f547c6b0, type: 3}

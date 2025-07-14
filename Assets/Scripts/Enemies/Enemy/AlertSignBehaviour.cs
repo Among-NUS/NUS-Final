@@ -7,11 +7,15 @@ public class AlertSignBehaviour : MonoBehaviour
     public float existInterval = 2f;
     private float lastShowTime = 0f;
     public SpriteRenderer alertSR;
+    public AudioClip alertClip;
+    private AudioSource alertAS;
     // Start is called before the first frame update
     void Start()
     {
         alertSR = GetComponent<SpriteRenderer>();
         alertSR.enabled = false;
+        alertAS = GetComponent<AudioSource>();
+        alertAS.clip = alertClip;
     }
 
     // Update is called once per frame
@@ -25,8 +29,13 @@ public class AlertSignBehaviour : MonoBehaviour
 
     public void showAlert()
     {
+        if (Time.time - lastShowTime < existInterval)
+        {
+            return;
+        }
         alertSR.enabled = true;
         lastShowTime = Time.time;
+        alertAS.PlayOneShot(alertClip);
     }
     
 }

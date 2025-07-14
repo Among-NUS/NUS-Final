@@ -45,7 +45,7 @@ public class Shooter : MonoBehaviour
     {
         if (!CanFire()) return;
         shooterAudioS.clip = gunshot;
-        shooterAudioS.Play();
+        shooterAudioS.PlayOneShot(gunshot);
         Vector2 dir = faceLeft ? Vector2.left : Vector2.right;
         soundSource.Enqueue((GameObject)Instantiate(Resources.Load("Prefabs/soundSource"), firePoint.position+new Vector3(3.1f,0f,0f),Quaternion.identity));
         lastSound.Enqueue(Time.time);
