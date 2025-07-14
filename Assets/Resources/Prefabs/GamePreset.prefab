@@ -1507,6 +1507,7 @@ MonoBehaviour:
   faceLeft: 1
   fireInterval: 0.5
   gunshot: {fileID: 8300000, guid: 75b9fd17d5f7a1e4db1d08b4562ca946, type: 3}
+  soundCooldown: 0.05
 --- !u!212 &1019572880100718846
 SpriteRenderer:
   m_ObjectHideFlags: 0

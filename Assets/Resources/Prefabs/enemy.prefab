@@ -216,7 +216,7 @@ MonoBehaviour:
   pathPointMap: {fileID: 0}
   enemyMonitor: {fileID: 5294119340803840153}
   ear: {fileID: 877016632837671109}
-  reactionTime: 0.5
+  reactionTime: 0.3
   interactTime: 0.5
   speed: 2
   enemyAnimator: {fileID: 4215317039813925728}

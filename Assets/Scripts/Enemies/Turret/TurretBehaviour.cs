@@ -76,35 +76,41 @@ public class TurretBehaviour : MonoBehaviour, IInteractable
 
         if (seen > 0)
         {
-            if (!playerSpotted)
-            {
-                playerSpotted = true;
+        // 第一次看到玩家 → 设定下一次可射击的绝对时间
+        if (!playerSpotted)
+        {
+            playerSpotted = true;
                 spotTime = Time.time;
-            }
-            else
-            {
-                if (Time.time - spotTime > reactionTime)
-                {
-                    GameObject target = targets[0];
-                    Vector3 dir = target.transform.position - transform.position;
-                    shooter.faceLeft = dir.x < 0;
-
-                    if (shooter.CanFire())
-                    {
-                        //turretAnimator.SetBool("isShooting",true);
-                        shooter.Fire();
-                    }
-                }
-
-            }
-            // 获取最近目标位置判断左右
-
         }
+
+        // 只要过了反应时间，之后完全靠 fireInterval 控制
         else
         {
-            //turretAnimator.SetBool("isShooting",false);
-            playerSpotted = false;
+            if (Time.time - spotTime > reactionTime)
+            {
+                GameObject target = targets[0];
+                Vector3 dir = target.transform.position - transform.position;
+                shooter.faceLeft = dir.x < 0;
+
+                if (shooter.CanFire())
+                {
+                    //turretAnimator.SetBool("isShooting",true);
+                    shooter.Fire();
+                }
+            }
+
         }
+    }
+    else
+    {
+        playerSpotted = false;       // 真正彻底丢失
+    }
+    
+        //{
+        //    Debug.Log("hero lost");
+            //turretAnimator.SetBool("isShooting",false);
+        //    playerSpotted = false;
+        //}
     }
 
 
