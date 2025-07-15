@@ -43,11 +43,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (Time.timeScale == 0) return;
-        if (Input.GetKeyDown(KeyCode.R) && currentPhase != GamePhase.TimeStop)
-        {
-            Time.timeScale = 1;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+
         if (Input.GetKeyDown(KeyCode.U) && currentPhase == GamePhase.Normal)
             StartRecording();
         else if (Input.GetKeyDown(KeyCode.I) && currentPhase == GamePhase.Recording)
@@ -108,6 +104,8 @@ public class GameManager : MonoBehaviour
         var zoom = GetComponent<CameraZoomEffect>();
         zoom.OnZoomInFinished = () =>
         {
+            ToggleTimeStopMode(true);
+
             snapshot.Restore();
             currentPhase = GamePhase.TimeStop;
             cooldownRing.StopRecording();
@@ -152,10 +150,11 @@ public class GameManager : MonoBehaviour
         Debug.Log("幽灵回放结束");
     }
 
-
     public void BeginReplay()
     {
         currentPhase = GamePhase.Normal;
+
+        ToggleTimeStopMode(false);
 
         if (previewGhost)
         {
@@ -178,5 +177,53 @@ public class GameManager : MonoBehaviour
         ghost.GetComponent<GhostBehaviour>()
              .StartReplay(new Queue<Record>(inputRecords));   // 深拷贝一份指令
     }
+
+    /// <summary>
+    /// 切换 TimeStopGrid 可见状态:
+    /// - true: 只显示 TimeStopGrid，隐藏其他 Grid 和 Background
+    /// - false: 显示所有 Grid 和 Background
+    /// </summary>
+    private void ToggleTimeStopMode(bool showTimeStopGrid)
+    {
+        // ---- Grid 处理 ----
+        var gridRoot = GameObject.Find("Grid");
+        if (gridRoot == null)
+        {
+            Debug.LogWarning("Grid 根物体没找到！");
+        }
+        else
+        {
+            var renderers = gridRoot.GetComponentsInChildren<UnityEngine.Tilemaps.TilemapRenderer>(true);
+            foreach (var r in renderers)
+            {
+                if (showTimeStopGrid)
+                {
+                    r.enabled = (r.gameObject.name == "TimeStopGrid");
+                }
+                else
+                {
+                    r.enabled = (r.gameObject.name != "TimeStopGrid");
+                }
+                
+            }
+        }
+
+        // ---- UI 处理 ----
+        string[] uiTargets = { "Background" };
+        foreach (var name in uiTargets)
+        {
+            var allObjs = Resources.FindObjectsOfTypeAll<Transform>(); // 能找到所有对象，包括禁用的
+            foreach (var t in allObjs)
+            {
+                if (t.name == name)
+                {
+                    t.gameObject.SetActive(!showTimeStopGrid); // true 模式隐藏，false 模式恢复
+                    break;
+                }
+            }
+        }
+    }
+
+
 
 }
