@@ -397,6 +397,11 @@ PrefabInstance:
       addedObject: {fileID: 288235771}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c798326c29b93df46b62197ca79eb867, type: 3}
+--- !u!1 &120330488 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8025241914395275542, guid: c798326c29b93df46b62197ca79eb867, type: 3}
+  m_PrefabInstance: {fileID: 301247093}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &127303586
 GameObject:
   m_ObjectHideFlags: 0
@@ -3310,7 +3315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3954132917089357140, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4890364027894669440, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
       propertyPath: uniqueID
@@ -3395,6 +3400,14 @@ PrefabInstance:
       propertyPath: uniqueID
       value: 9824e91a-0dc2-4401-854a-4d072bdc8e6e
       objectReference: {fileID: 0}
+    - target: {fileID: 4852539444736834814, guid: c798326c29b93df46b62197ca79eb867, type: 3}
+      propertyPath: conditionObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4852539444736834814, guid: c798326c29b93df46b62197ca79eb867, type: 3}
+      propertyPath: conditionObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 120330488}
     - target: {fileID: 9092269241597079435, guid: c798326c29b93df46b62197ca79eb867, type: 3}
       propertyPath: m_Name
       value: LockedDoor(Switch)
@@ -55554,7 +55567,6 @@ MonoBehaviour:
   validTags:
   - Player
   - Ghost
-  - Enemy
   idleSprite: {fileID: 817878756, guid: ac27637869f438d438a9f07584789121, type: 3}
   pressedSprite: {fileID: 1702887364, guid: ac27637869f438d438a9f07584789121, type: 3}
 --- !u!61 &727672466
@@ -70903,7 +70915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3954132917089357140, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4890364027894669440, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
       propertyPath: uniqueID
@@ -71736,7 +71748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f45eea1182960540bc46356425512c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: d1c0fc6f-a0c1-455c-ad5f-99174badffbf
+  uniqueID: 43446147-03b5-4a83-a971-e1a71d9ff8be
 --- !u!61 &1528089741
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -72380,7 +72392,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3954132917089357140, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4890364027894669440, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
       propertyPath: uniqueID
