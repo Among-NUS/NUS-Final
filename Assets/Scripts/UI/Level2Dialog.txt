@@ -2,5 +2,5 @@ Voicemail（您有一则语音留言）
 I've upgraded your time-travel.我在你获得的箱子里找到了博士装置的升级。
 at the end of your pivot, you should have some time left to chose an entrance to land in the past.在你标下时间锚点后，你应该有时间按O并选择你穿越到过去的落点。
 you can try use it to defeat multiple guards at once, or do something else, feel free to be creative.你可以试着用它一次性解决多个敌人，或是其它更有创意的战术。
-There’s a turret on the top floor guarding the files we need.顶楼有一架炮塔看守者我们需要的文件。
+There's a turret on the top floor guarding the files we need.顶楼有一架炮塔看守者我们需要的文件。
 you can only disable it from the back, so be careful.炮塔只能从背后拆除，所以小心。
