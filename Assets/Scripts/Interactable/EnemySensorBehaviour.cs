@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class EnemySensorBehaviour : MonoBehaviour
 {
-    public int enemyIn = 0;
+    [SerializeField]private List<Enemy> enemiesIn = new List<Enemy>();
+    public int aliveCount = 0;
     // Start is called before the first frame update
     void Start()
     {
-        enemyIn = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        enemiesIn.RemoveAll(e => e == null || !e.isAlive);
+        aliveCount = enemiesIn.Count;
 
     }
 
@@ -21,7 +23,11 @@ public class EnemySensorBehaviour : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            enemyIn++;
+            Enemy thisEnemy = collision.GetComponent<Enemy>();
+            if (thisEnemy != null && !enemiesIn.Contains(thisEnemy))
+            {
+                enemiesIn.Add(thisEnemy);
+            }
         }
     }
 
@@ -29,7 +35,11 @@ public class EnemySensorBehaviour : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            enemyIn--;
+            Enemy enemy = collision.GetComponent<Enemy>();
+            if (enemy != null && enemiesIn.Contains(enemy))
+            {
+                enemiesIn.Remove(enemy);
+            }
         }
     }
 }
