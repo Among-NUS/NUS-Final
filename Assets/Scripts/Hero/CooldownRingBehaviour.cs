@@ -8,10 +8,10 @@ public class CooldownRingBehaviour : MonoBehaviour
     public AudioClip TikTok;
     private AudioSource clockAS;
     private bool isPlaying = false;
+
     [Header("UI圆环")]
     public Image baseRing;
     public Image currentRing;
-    public Image usedRing;
 
     [Header("指针设置")]
     public Transform pointer;
@@ -58,10 +58,12 @@ public class CooldownRingBehaviour : MonoBehaviour
     {
         var gm = GameManager.Instance;
         if (gm == null) return;
+
         if (!isPlaying)
         {
             clockAS.Stop();
         }
+
         switch (gm.currentPhase)
         {
             case GameManager.GamePhase.TimeStop:
@@ -71,14 +73,12 @@ public class CooldownRingBehaviour : MonoBehaviour
                     clockAS.Play();
                     isPlaying = true;
                 }
-                
 
                 if (IsEnergyDepleted)
                 {
-                    gm.BeginReplay();
+                    gm.BeginReplay();   // 自动结束时间静止
                     isPlaying = false;
                 }
-                   // 自动结束时间静止
                 break;
 
             case GameManager.GamePhase.Recording:
@@ -90,10 +90,9 @@ public class CooldownRingBehaviour : MonoBehaviour
                 }
                 if (IsRecordingEnergyDepleted())
                 {
-                    gm.CancelRecording();                  // 能量不足，终止录制
+                    gm.CancelRecording();  // 能量不足，终止录制
                     isPlaying = false;
                 }
-
                 break;
 
             case GameManager.GamePhase.Normal:
@@ -122,7 +121,7 @@ public class CooldownRingBehaviour : MonoBehaviour
         UpdateRingVisual();
     }
 
-    public void StopRecording()            // 录制正常结束
+    public void StopRecording() // 录制正常结束
     {
         if (!IsRecording && usedEnergy == 0) return;
 
@@ -132,7 +131,7 @@ public class CooldownRingBehaviour : MonoBehaviour
         UpdateRingVisual();
     }
 
-    public void CancelRecording()          // GM 外部调用
+    public void CancelRecording() // GM 外部调用
     {
         usedEnergy = 0;
         UpdateRingVisual();
@@ -156,7 +155,7 @@ public class CooldownRingBehaviour : MonoBehaviour
     /* ──────────── UI 绘制 ──────────── */
     void SetupRingImages()
     {
-        Image[] rings = { baseRing, currentRing, usedRing };
+        Image[] rings = { baseRing, currentRing };
         foreach (var img in rings)
         {
             if (!img) continue;
@@ -173,25 +172,18 @@ public class CooldownRingBehaviour : MonoBehaviour
         {
             float remaining = currentEnergy - usedEnergy;
             currentRing.fillAmount = Mathf.Clamp01(remaining / (float)maxEnergy);
-
-            usedRing.gameObject.SetActive(true);
-            usedRing.fillAmount = Mathf.Clamp01(usedEnergy / (float)maxEnergy);
-            usedRing.transform.SetAsLastSibling();
-
-            UpdatePointer(currentRing.fillAmount);
         }
         else
         {
             currentRing.fillAmount = Mathf.Clamp01(currentEnergy / (float)maxEnergy);
-            UpdatePointer(currentRing.fillAmount);
-            usedRing.gameObject.SetActive(false);
         }
 
-        // 层级：base < used < current < pointer
+        // 层级：base < current < pointer
         baseRing.transform.SetSiblingIndex(0);
-        usedRing.transform.SetSiblingIndex(1);
-        currentRing.transform.SetSiblingIndex(2);
-        if (pointer) pointer.transform.SetSiblingIndex(3);
+        currentRing.transform.SetSiblingIndex(1);
+        if (pointer) pointer.transform.SetSiblingIndex(2);
+
+        UpdatePointer(currentRing.fillAmount);
     }
 
     void UpdatePointer(float ratio)
