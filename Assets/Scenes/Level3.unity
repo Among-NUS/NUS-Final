@@ -3258,6 +3258,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3183006285444701665, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
+      propertyPath: ear
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183006285444701665, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
       propertyPath: pathPointMap
       value: 
       objectReference: {fileID: 2014489182}
@@ -3326,7 +3330,8 @@ PrefabInstance:
       value: f9aa7a69-6e06-494e-988d-1c91893965e2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5441222952909387648, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
@@ -55165,6 +55170,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2014489182}
     - target: {fileID: 3183006285444701665, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
+      propertyPath: patrolFacingLeft
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183006285444701665, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
       propertyPath: pathWayPoint.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -55350,7 +55359,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.43739223, y: 0.7144973}
+  m_Size: {x: 0.2, y: 2}
   m_EdgeRadius: 0
 --- !u!4 &711029754
 Transform:
@@ -63717,6 +63726,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2014489182}
     - target: {fileID: 3183006285444701665, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
+      propertyPath: patrolFacingLeft
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183006285444701665, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
       propertyPath: pathWayPoint.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -63797,6 +63810,10 @@ PrefabInstance:
       propertyPath: pathPointMap
       value: 
       objectReference: {fileID: 2014489182}
+    - target: {fileID: 3183006285444701665, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
+      propertyPath: patrolFacingLeft
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3183006285444701665, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
       propertyPath: pathWayPoint.Array.size
       value: 1
@@ -70854,9 +70871,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3183006285444701665, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
+      propertyPath: ear
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183006285444701665, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
       propertyPath: pathPointMap
       value: 
       objectReference: {fileID: 2014489182}
+    - target: {fileID: 3183006285444701665, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
+      propertyPath: patrolFacingLeft
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3183006285444701665, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
       propertyPath: pathWayPoint.Array.size
       value: 1
@@ -70926,7 +70951,8 @@ PrefabInstance:
       value: 19d206a2-f6ee-49dd-85f1-3016e5b086d9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5441222952909387648, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
@@ -71748,7 +71774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f45eea1182960540bc46356425512c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 43446147-03b5-4a83-a971-e1a71d9ff8be
+  uniqueID: 3b7d3aa8-9128-480b-958a-ab0b12ff4b57
 --- !u!61 &1528089741
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -72331,9 +72357,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3183006285444701665, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
+      propertyPath: ear
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183006285444701665, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
       propertyPath: pathPointMap
       value: 
       objectReference: {fileID: 2014489182}
+    - target: {fileID: 3183006285444701665, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
+      propertyPath: patrolFacingLeft
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3183006285444701665, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
       propertyPath: pathWayPoint.Array.size
       value: 1
@@ -72403,7 +72437,8 @@ PrefabInstance:
       value: 5e09ed41-3647-4563-984a-cfdf288dea3b
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5441222952909387648, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
