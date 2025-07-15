@@ -52,6 +52,7 @@ public class DoorBehaviour : MonoBehaviour
             door.isOpen = false;
             ApplyState();
             Debug.Log("церя╧ь╠у");
+            return;
         }
         Evaluate();
     }
