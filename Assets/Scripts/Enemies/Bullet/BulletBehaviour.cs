@@ -38,7 +38,7 @@ public class BulletBehaviour : MonoBehaviour
         if (GameManager.Instance.currentPhase == GameManager.GamePhase.TimeStop) return;
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, speed * Time.fixedDeltaTime,LayerMask.GetMask("Enemy","Hero","Default"));
-        if (hit.collider!=null)
+        if (hit.collider!=null&&IsHit(hit.collider))
         {
             transform.position = hit.point;
         }
@@ -51,15 +51,22 @@ public class BulletBehaviour : MonoBehaviour
         if (Vector3.Distance(spawnPos, transform.position) > maxDistance)
             Destroy(gameObject);
     }
-
-    void OnTriggerEnter2D(Collider2D collision)
+    bool IsHit(Collider2D collision)
     {
         // 添加阵营判断（避免友军伤害）
-        if (isEnemy && collision.CompareTag("Enemy")) return;
-        if (!isEnemy && (collision.CompareTag("Player") || collision.CompareTag("Ghost"))) return;
-        if(collision.CompareTag("Interactable")) return;
-        if (GameManager.Instance?.currentPhase == GameManager.GamePhase.TimeStop) return;
-        if (!isEnemy && collision.GetComponent<Enemy>().isAlive == false) return;
+        if (isEnemy && collision.CompareTag("Enemy")) return false;
+        if (!isEnemy && (collision.CompareTag("Player") || collision.CompareTag("Ghost"))) return false;
+        if (collision.CompareTag("Interactable")) return false;
+        if (GameManager.Instance?.currentPhase == GameManager.GamePhase.TimeStop) return false;
+        if (collision.GetComponent<Enemy>() != null && collision.GetComponent<Enemy>().isAlive == false) return false;
+        return true;
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!IsHit(collision))
+        {
+            return;
+        }
 
         //在击中不同目标时产生不同的效果
         if ((collision.CompareTag("Player") || collision.CompareTag("Ghost"))|| collision.CompareTag("Enemy"))
