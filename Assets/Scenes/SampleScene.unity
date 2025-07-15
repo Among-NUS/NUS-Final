@@ -810,11 +810,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6010391369405407529, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.71
+      value: 3.91
       objectReference: {fileID: 0}
     - target: {fileID: 6010391369405407529, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.01
+      value: -0.03
       objectReference: {fileID: 0}
     - target: {fileID: 6316553079493030345, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_Name
@@ -1370,7 +1370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f45eea1182960540bc46356425512c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 6a6407b4-658c-4c03-b9c6-061b0f437907
+  uniqueID: 4a300676-bfb2-4e2f-91e1-225fa01f2be8
 --- !u!1 &1410261783
 GameObject:
   m_ObjectHideFlags: 0
@@ -1697,6 +1697,63 @@ MonoBehaviour:
   ghostName: GhostPrefab(Clone)
   ghostCamera: {fileID: 1872743812}
   ghost: {fileID: 3794698721212635393, guid: 01e54849687bf534d97a5efdbaf4752e, type: 3}
+--- !u!1001 &1877668030
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1372922694982291839, guid: 1c8886388022d0e4798b22484c63a545, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 1372922694982291839, guid: 1c8886388022d0e4798b22484c63a545, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1372922694982291839, guid: 1c8886388022d0e4798b22484c63a545, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.600735
+      objectReference: {fileID: 0}
+    - target: {fileID: 1372922694982291839, guid: 1c8886388022d0e4798b22484c63a545, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1372922694982291839, guid: 1c8886388022d0e4798b22484c63a545, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1372922694982291839, guid: 1c8886388022d0e4798b22484c63a545, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1372922694982291839, guid: 1c8886388022d0e4798b22484c63a545, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1372922694982291839, guid: 1c8886388022d0e4798b22484c63a545, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1372922694982291839, guid: 1c8886388022d0e4798b22484c63a545, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1372922694982291839, guid: 1c8886388022d0e4798b22484c63a545, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967077542314061901, guid: 1c8886388022d0e4798b22484c63a545, type: 3}
+      propertyPath: m_Name
+      value: UnlockedDoor (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1c8886388022d0e4798b22484c63a545, type: 3}
 --- !u!1 &1881754140
 GameObject:
   m_ObjectHideFlags: 0
@@ -2086,7 +2143,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2583048037590165843, guid: 71fe9320c27b0b14ca5dd1e486ce9ac6, type: 3}
       propertyPath: uniqueID
-      value: 468562d0-5bf6-409a-9d91-3cde9aff8a76
+      value: cb3af3a7-038b-4672-93d1-0cb599810d6b
       objectReference: {fileID: 0}
     - target: {fileID: 2624915492390763770, guid: 71fe9320c27b0b14ca5dd1e486ce9ac6, type: 3}
       propertyPath: m_Name
@@ -2225,7 +2282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f45eea1182960540bc46356425512c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 4c0935fb-a7b1-4892-a294-a13ab8fed94f
+  uniqueID: b5fb500a-bf83-4ed4-a14c-31a673876d86
 --- !u!4 &2874154372160541449
 Transform:
   m_ObjectHideFlags: 0
@@ -2599,3 +2656,4 @@ SceneRoots:
   - {fileID: 245288567}
   - {fileID: 2874154372160541449}
   - {fileID: 1093377805311588910}
+  - {fileID: 1877668030}
