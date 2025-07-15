@@ -48,7 +48,8 @@ public class DialogSystem : MonoBehaviour
     void Update()
     {
         // 只有在第一句已经显示之后，才响应按键显示后续内容
-        if (hasAutoShown && Input.GetKeyDown(KeyCode.F))
+        //按任意按键切换
+        if (hasAutoShown && Input.anyKeyDown)
         {
             if (index < textlist.Count)
             {
