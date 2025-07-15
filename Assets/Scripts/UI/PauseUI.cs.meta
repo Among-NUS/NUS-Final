@@ -3,7 +3,12 @@ guid: 764efd01fa44b8144afe0efd064e2a04
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - pausePanel: {instanceID: 0}
+  - confirmPanel: {instanceID: 0}
+  - settingsPanel: {instanceID: 0}
+  - inGameUICanvas: {instanceID: 0}
+  - confirmText: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
