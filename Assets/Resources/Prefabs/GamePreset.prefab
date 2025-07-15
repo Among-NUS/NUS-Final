@@ -2578,7 +2578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 6010391369405407529}
-  smoothSpeed: 2
+  smoothSpeed: 1
   horizontalOffset: 2
   fixedZ: -10
 --- !u!1 &3213671977706168808
