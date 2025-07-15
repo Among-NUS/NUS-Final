@@ -97,3 +97,8 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+# 忽略 manifest.json 文件
+/Packages/manifest.json
+
+# 忽略 ExternalPackages 文件夹
+/ExternalPackages/
