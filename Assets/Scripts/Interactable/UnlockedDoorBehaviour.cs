@@ -5,7 +5,7 @@ using System.Collections.Generic;
 [RequireComponent(typeof(SpriteRenderer))]
 public class UnlockedDoorBehaviour : MonoBehaviour
 {
-    [Header("ÉèÖÃ")]
+    [Header("ï¿½ï¿½ï¿½ï¿½")]
     public List<string> triggerTags = new List<string> { "Player", "Ghost", "Enemy" };
     public Sprite openDoorSprite;
     public Sprite closedDoorSprite;
@@ -15,6 +15,8 @@ public class UnlockedDoorBehaviour : MonoBehaviour
 
     private BoxCollider2D box;
     private SpriteRenderer sr;
+    private int IgnoreRaycast = 2;
+    private int Default = 0;
 
     void Awake()
     {
@@ -45,18 +47,19 @@ public class UnlockedDoorBehaviour : MonoBehaviour
         {
             isOpen = true;
             ApplyState();
-            Debug.Log("ÃÅÒÑ´ò¿ª");
+            Debug.Log("ï¿½ï¿½ï¿½Ñ´ï¿½");
         }
         else if (count == 0 && isOpen)
         {
             isOpen = false;
             ApplyState();
-            Debug.Log("ÃÅÒÑ¹Ø±Õ");
+            Debug.Log("ï¿½ï¿½ï¿½Ñ¹Ø±ï¿½");
         }
     }
 
     void ApplyState()
     {
         sr.sprite = isOpen ? openDoorSprite : closedDoorSprite;
+        transform.gameObject.layer = isOpen ? IgnoreRaycast : Default;
     }
 }

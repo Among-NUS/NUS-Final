@@ -24,7 +24,11 @@ public class MonitorBehaviour : MonoBehaviour
     /* ---------- ???????? ---------- */
     void Start() => numberOfRay = Mathf.Max(2, numberOfRay);
 
-    void FixedUpdate() => CastRay();
+    void FixedUpdate()
+    {
+        if (GameManager.Instance.currentPhase == GameManager.GamePhase.TimeStop) return;
+        CastRay();
+    }
 
     /* ---------- ????????????????????? ---------- */
     void CastRay()

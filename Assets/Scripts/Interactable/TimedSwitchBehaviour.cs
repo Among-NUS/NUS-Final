@@ -1,3 +1,4 @@
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,11 +16,14 @@ public class TimedSwitchBehaviour : MonoBehaviour, IInteractable, ICondition
     private SpriteRenderer sr;
     public float switchCooldown = 1.5f;
     public float setCooldown = 1.5f;
+    public Transform square;
+    private SpriteRenderer squareSR;
 
     void Awake()
     {
         tsw = GetComponent<TimedSwitch>();
         sr = GetComponent<SpriteRenderer>();
+        squareSR = square.GetComponent<SpriteRenderer>();
         ApplyVisual();
     }
 
@@ -44,6 +48,16 @@ public class TimedSwitchBehaviour : MonoBehaviour, IInteractable, ICondition
     {
         if (sr != null)
             sr.sprite = tsw.isOn ? onSprite : offSprite;
+
+        if (tsw.isOn)
+        {
+            squareSR.enabled = true;
+            square.transform.localScale = new UnityEngine.Vector3(tsw.switchCooldown / setCooldown, square.transform.localScale.y, square.transform.localScale.z);
+        }
+        else
+        {
+            squareSR.enabled = false;
+        }
     }
 
     void FixedUpdate()
