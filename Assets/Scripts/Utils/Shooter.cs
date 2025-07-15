@@ -16,7 +16,7 @@ public class Shooter : MonoBehaviour
     private AudioSource shooterAudioS;
     private Queue<GameObject> soundSource;
     private Queue<float> lastSound;
-    public float soundCooldown = 0.1f;
+    public float soundCooldown;
 
 
     void Awake()
@@ -27,6 +27,7 @@ public class Shooter : MonoBehaviour
     {
         soundSource = new Queue<GameObject>();
         lastSound = new Queue<float>();
+        soundCooldown = 0.05f;
     }
     void FixedUpdate()
     {
@@ -47,7 +48,7 @@ public class Shooter : MonoBehaviour
         shooterAudioS.clip = gunshot;
         shooterAudioS.PlayOneShot(gunshot);
         Vector2 dir = faceLeft ? Vector2.left : Vector2.right;
-        soundSource.Enqueue((GameObject)Instantiate(Resources.Load("Prefabs/soundSource"), firePoint.position+new Vector3(3.1f,0f,0f),Quaternion.identity));
+        soundSource.Enqueue((GameObject)Instantiate(Resources.Load("Prefabs/soundSource"), firePoint.position,Quaternion.identity));
         lastSound.Enqueue(Time.time);
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         BulletBehaviour bb = bullet.GetComponent<BulletBehaviour>();
