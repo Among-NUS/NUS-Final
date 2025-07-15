@@ -45908,6 +45908,10 @@ PrefabInstance:
       propertyPath: gunshot
       value: 
       objectReference: {fileID: 8300000, guid: 75b9fd17d5f7a1e4db1d08b4562ca946, type: 3}
+    - target: {fileID: 6167240790351019227, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: textFile
+      value: 
+      objectReference: {fileID: 4900000, guid: 99a92bea97a862348856f672d80e78ea, type: 3}
     - target: {fileID: 6316553079493030345, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_Name
       value: GamePreset
