@@ -5,18 +5,20 @@ using UnityEngine;
 [RequireComponent(typeof(Door))]
 public class DoorBehaviour : MonoBehaviour
 {
-    [Header("门贴图")]
+    [Header("?????")]
     [SerializeField] private Sprite closedSprite;
     [SerializeField] private Sprite openSprite;
 
-    [Header("条件对象")]
-    public List<GameObject> conditionObjects = new();  // 拖入任意包含 ICondition 的 GameObject
+    [Header("????????")]
+    public List<GameObject> conditionObjects = new();  // ??????????? ICondition ?? GameObject
     public SwitchType st = SwitchType.OR;
 
     private Door door;
+    private BoxCollider2D box;
 
     void Awake()
     {
+        box = GetComponent<BoxCollider2D>();
         door = GetComponent<Door>();
     }
 
@@ -27,6 +29,30 @@ public class DoorBehaviour : MonoBehaviour
 
     void FixedUpdate()
     {
+        Collider2D[] hits = Physics2D.OverlapBoxAll(box.bounds.center, box.bounds.size, 0f);
+        int count = 0;
+
+        foreach (var hit in hits)
+        {
+            if (hit.tag=="Enemy" && hit.gameObject != gameObject)
+            {
+                count++;
+            }
+        }
+
+        if (count > 0 && !door.isOpen)
+        {
+            door.isOpen = true;
+            ApplyState();
+            Debug.Log("门已打开");
+            return;
+        }
+        else if (count == 0 && door.isOpen)
+        {
+            door.isOpen = false;
+            ApplyState();
+            Debug.Log("门已关闭");
+        }
         Evaluate();
     }
 
@@ -34,7 +60,7 @@ public class DoorBehaviour : MonoBehaviour
     {
         bool prev = door.isOpen;
 
-        // 获取所有 conditionObjects 中实现 ICondition 的组件
+        // ??????? conditionObjects ????? ICondition ?????
         var validConditions = conditionObjects
             .SelectMany(go => go.GetComponents<MonoBehaviour>())
             .OfType<ICondition>()
