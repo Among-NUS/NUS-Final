@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     GameObject previewGhost;
     Snapshot snapshot;
     Queue<Record> inputRecords = new();
+    public Scene currentScene;
+    private string sceneName;
 
     public MessageDisplay messageDisplay;
     public bool IsRecording => currentPhase == GamePhase.Recording;
@@ -30,6 +32,9 @@ public class GameManager : MonoBehaviour
 
         ghostPrefab        = Resources.Load<GameObject>("Prefabs/GhostPrefab");
         previewGhostPrefab = Resources.Load<GameObject>("Prefabs/PreviewGhostPrefab");
+        currentScene = SceneManager.GetActiveScene();
+        sceneName = currentScene.name;
+
 
         if (Instance != null && Instance != this)
             Destroy(gameObject);
@@ -49,7 +54,12 @@ public class GameManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.I) && currentPhase == GamePhase.Recording)
             StopAndReplay();
         else if (Input.GetKeyDown(KeyCode.O) && currentPhase == GamePhase.Recording)
-            StopRecordingAndFreeze();
+        {
+            if (sceneName == "Level1Real" || sceneName == "Level3" || sceneName == "Level4"||sceneName=="Level_4")
+            {
+                StopRecordingAndFreeze();
+            }
+        }
     }
 
     //────────────────────────  录制流程  ────────────────────────
@@ -84,16 +94,10 @@ public class GameManager : MonoBehaviour
     {
         if (currentPhase != GamePhase.Recording) return;
 
-        var zoom = GetComponent<CameraZoomEffect>();
-        zoom.OnZoomInFinished = () =>
-        {
-            snapshot.Restore();
-            currentPhase = GamePhase.Normal;
-            cooldownRing.StopRecording();
-            BeginReplay();
-        };
-
-        zoom.ZoomIn();
+        snapshot.Restore();
+        currentPhase = GamePhase.Normal;
+        cooldownRing.StopRecording();
+        BeginReplay();
     }
 
 
@@ -101,17 +105,11 @@ public class GameManager : MonoBehaviour
     {
         if (currentPhase != GamePhase.Recording) return;
 
-        var zoom = GetComponent<CameraZoomEffect>();
-        zoom.OnZoomInFinished = () =>
-        {
-            ToggleTimeStopMode(true);
+        ToggleTimeStopMode(true);
 
-            snapshot.Restore();
-            currentPhase = GamePhase.TimeStop;
-            cooldownRing.StopRecording();
-        };
-
-        zoom.ZoomIn();
+        snapshot.Restore();
+        currentPhase = GamePhase.TimeStop;
+        cooldownRing.StopRecording();
     }
 
     // 现在从 CooldownRingBehaviour 调用 → 需要 public
