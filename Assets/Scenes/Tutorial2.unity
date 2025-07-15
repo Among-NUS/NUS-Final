@@ -5524,7 +5524,7 @@ VideoPlayer:
   m_DataSource: 0
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
-  m_AudioOutputMode: 2
+  m_AudioOutputMode: 0
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
@@ -5640,8 +5640,8 @@ MonoBehaviour:
     U \u952E\u53EF\u4EE5\u8BB0\u5F55\u4E00\u4E2A\u65F6\u95F4\u6233\uFF0C\u5728\u80FD\u91CF\u8017\u5C3D\u4E4B\u524D\uFF0C\u6309\u4E0B
     I \u952E\u53EF\u4EE5\u56DE\u5230\u8BE5\u65F6\u95F4\u70B9\uFF0C\u4F46\u4F60\u5F53\u524D\u7684\u7269\u7406\u4F4D\u7F6E\u5C06\u4FDD\u6301\u4E0D\u53D8\u3002\n\u8FC7\u53BB\u7684\u4F60\u5C06\u4F1A\u5B8C\u5168\u91CD\u590D\u4F60\u66FE\u7ECF\u505A\u8FC7\u7684\u52A8\u4F5C\u3002"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 88c9ddbf5dfe972478a830188fa7096b, type: 2}
-  m_sharedMaterial: {fileID: 634336198351173478, guid: 88c9ddbf5dfe972478a830188fa7096b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3043f41ad7f03534b92cd4b261e55d2b, type: 2}
+  m_sharedMaterial: {fileID: -2258592172141708404, guid: 3043f41ad7f03534b92cd4b261e55d2b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

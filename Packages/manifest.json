@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.hiddenmonk.u3drtg": "file:../ExternalPackages/Unity3DRuntimeTransformGizmo",
     "com.unity.collab-proxy": "2.8.2",
     "com.unity.feature.2d": "2.0.0",
     "com.unity.ide.rider": "3.0.27",
@@ -11,7 +10,6 @@
     "com.unity.timeline": "1.7.6",
     "com.unity.ugui": "1.0.0",
     "com.unity.visualscripting": "1.9.1",
-    "com.yasirkula.runtimeinspector": "file:../ExternalPackages/UnityRuntimeInspector",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
@@ -42,6 +40,8 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
+    "com.unity.modules.xr": "1.0.0",
+    "com.yasirkula.runtimeinspector": "https://github.com/yasirkula/UnityRuntimeInspector.git",
+    "com.hiddenmonk.u3drtg": "https://github.com/cyrilBoucher/Unity3DRuntimeTransformGizmo.git#feature/upm-package"
   }
 }

@@ -70805,6 +70805,18 @@ PrefabInstance:
       propertyPath: m_margin.w
       value: 2.0415154
       objectReference: {fileID: 0}
+    - target: {fileID: 2200671617222650207, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 7dff6e67efd33914f96b99b0f858c786, type: 2}
+    - target: {fileID: 2200671617222650207, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3427109066482390850, guid: 7dff6e67efd33914f96b99b0f858c786, type: 2}
+    - target: {fileID: 2200671617222650207, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2460194887926517604, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.36
@@ -71798,11 +71810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f45eea1182960540bc46356425512c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  uniqueID: f3983e4f-33c7-4188-9783-6ebbd8d4b59f
-=======
-  uniqueID: 43446147-03b5-4a83-a971-e1a71d9ff8be
->>>>>>> a017d5e4f54d6f3b3f40307470a8d6054cff7798
+  uniqueID: f8d4ebb5-4a4d-460e-be1a-a6f830118fb1
 --- !u!61 &1528089741
 BoxCollider2D:
   m_ObjectHideFlags: 0

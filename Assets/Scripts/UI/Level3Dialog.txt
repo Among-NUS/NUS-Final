@@ -1,6 +1,10 @@
-Voicemail（您有一则语音留言）
-I've upgraded your time-travel.我在你获得的箱子里找到了博士装置的升级。
-at the end of your pivot, you should have some time left to chose an entrance to land in the past.在你标下时间锚点后，你应该有时间按O并选择你穿越到过去的落点。
-you can try use it to defeat multiple guards at once, or do something else, feel free to be creative.你可以试着用它一次性解决多个敌人，或是其它更有创意的战术。
-There’s a turret on the top floor guarding the files we need.顶楼有一架炮塔看守者我们需要的文件。
-you can only disable it from the back, so be careful.炮塔只能从背后拆除，所以小心。
+You have a voice mail （您有一则语音留言）
+Hey, i heard you're pretty good with your time-travel stuff.我听说你的时间穿越用的很顺手。
+The good news is we finally located doctor Kaminsky's location.好消息是我们终于得以锁定博士的藏身点。
+Bad news is, well, you've cause a lot of heat during extraction. 坏消息嘛,你的上次行动造成了太大动静。
+In other words, they'll be expecting you.翻译过来就是他们预料到你要来了。
+I got nothing to teach you anymore, good luck hunting.我已经没有什么可以教你的了，祝你好运。
+
+
+
+
