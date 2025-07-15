@@ -3747,11 +3747,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2019509842655315057, guid: c798326c29b93df46b62197ca79eb867, type: 3}
       propertyPath: uniqueID
-      value: dd904904-2de8-4285-9d9d-2accbcfdbde8
+      value: efd8308b-5682-4460-ad27-0f607a961193
       objectReference: {fileID: 0}
     - target: {fileID: 3279991498709262887, guid: c798326c29b93df46b62197ca79eb867, type: 3}
       propertyPath: uniqueID
-      value: 5d19cecf-fa7a-4dc8-8ec0-5c98597555d5
+      value: 3caed603-3176-4ac7-8820-3c724545fd83
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584506511909160106, guid: c798326c29b93df46b62197ca79eb867, type: 3}
+      propertyPath: m_Size.y
+      value: 2.412714
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584506511909160106, guid: c798326c29b93df46b62197ca79eb867, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.0154361725
       objectReference: {fileID: 0}
     - target: {fileID: 4852539444736834814, guid: c798326c29b93df46b62197ca79eb867, type: 3}
       propertyPath: conditionObjects.Array.size
