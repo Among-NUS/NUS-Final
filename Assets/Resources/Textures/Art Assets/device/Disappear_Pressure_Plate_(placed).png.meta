@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ac27637869f438d438a9f07584789121
+guid: 7d19cf7b016bfb4418592ef5423d1371
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 20
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pressurePlate_0
+      name: Disappear_Pressure_Plate_(placed)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 24
-        height: 8
+        width: 16
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a8a7ad56eea8e04fa2a03cbe720b528
-      internalID: 817878756
+      spriteID: 69894f41fd940ef4da70cfb1c23a8488
+      internalID: -834627124
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pressurePlate_1
+      name: Disappear_Pressure_Plate_(placed)_1
       rect:
         serializedVersion: 2
-        x: 24
+        x: 16
         y: 0
-        width: 24
-        height: 8
+        width: 16
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 947726e9aa9cd4a44851a97cf6256831
-      internalID: 1702887364
+      spriteID: 271f477e935015f44bcbbd6c50c73809
+      internalID: -1348363902
       vertices: []
       indices: 
       edges: []
@@ -162,8 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      pressurePlate_0: 817878756
-      pressurePlate_1: 1702887364
+      Disappear_Pressure_Plate_(placed)_0: -834627124
+      Disappear_Pressure_Plate_(placed)_1: -1348363902
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
