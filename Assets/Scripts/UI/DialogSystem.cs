@@ -16,21 +16,29 @@ public class DialogSystem : MonoBehaviour
     public TextAsset textFile;
     public int index;
 
-    [Header("Character Control")]
-    public MonoBehaviour playerController; // 控制hero移动的脚本
 
+    private static bool hasDialogBeenShown = false;    // 用于记录对话是否已经播放过
+    
     private List<string> textlist = new List<string>();
     private bool hasAutoShown = false;// 用于判断是否自动显示了第一句
+    private bool dialogFinished = false;// 用于判断对话是否已经结束
 
     void Start()
     {
         GetTextFromFile(textFile);
 
-        if (playerController != null)
+         //禁用所有游戏操作
+        Time.timeScale = 0f;
+
+        // 如果对话已经播放过，直接进入游戏状态
+        if (hasDialogBeenShown)
         {
-            playerController.enabled = false; // 禁止角色移动
+            dialogBox.SetActive(false);
+            Time.timeScale = 1f;
+            return;
         }
 
+    
         // 自动显示第一句对话
         if (textlist.Count > 0)
         {
@@ -47,9 +55,9 @@ public class DialogSystem : MonoBehaviour
 
     void Update()
     {
-        // 只有在第一句已经显示之后，才响应按键显示后续内容
-        //按任意按键切换
-        if (hasAutoShown && Input.anyKeyDown)
+        // 只有在第一句已经显示之后，且对话未结束时，才响应按键显示后续内容
+        // 按任意按键切换
+        if (hasAutoShown && !dialogFinished && Input.anyKeyDown)
         {
             if (index < textlist.Count)
             {
@@ -61,11 +69,14 @@ public class DialogSystem : MonoBehaviour
                 Debug.Log("对话结束");
                 dialogBox.SetActive(false);//文本显示完毕，隐藏对话框
 
-                // 重新允许hero移动
-                if (playerController != null)
-                {
-                    playerController.enabled = true;
-                }
+                // 重新允许游戏操作
+                Time.timeScale = 1f;
+                
+                // 标记对话已结束，防止继续响应按键
+                dialogFinished = true;
+                
+                // 标记对话已经播放过，下次重启时不再显示
+                hasDialogBeenShown = true;
             }
         }
     }
