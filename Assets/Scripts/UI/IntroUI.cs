@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IntroUI : MonoBehaviour
 {
-    public GameObject IntroducePanel;
+    public GameObject IntroduceCanvas;
     private static bool hasIntroBeenShown = false;
 
     // Start is called before the first frame update
@@ -12,13 +12,13 @@ public class IntroUI : MonoBehaviour
     { 
         if (hasIntroBeenShown)
         {
-            IntroducePanel.SetActive(false);
+            IntroduceCanvas.SetActive(false);
             Time.timeScale = 1f;
             return;
         }
 
         Time.timeScale = 0f;
-        IntroducePanel.SetActive(true);
+        IntroduceCanvas.SetActive(true);
     }
 
     // Update is called once per frame
@@ -28,7 +28,7 @@ public class IntroUI : MonoBehaviour
         {
             Time.timeScale = 1f;
             hasIntroBeenShown = true;
-            IntroducePanel.SetActive(false);
+            IntroduceCanvas.SetActive(false);
         }
     }
 }

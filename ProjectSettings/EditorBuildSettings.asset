@@ -26,10 +26,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Congratulations.unity
     guid: 7ce5ba606f1449f45ae5cb09d9447783
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/EditorScene.unity
     guid: d66ffd4512a647442a359a47bcf6e3db
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/WorkshopLevelScene.unity
     guid: 91fc2c3716d6dcd4690bfa43caac8514
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: 6dcdca2959eea8546b5785b0ee188cfb
   m_configObjects: {}

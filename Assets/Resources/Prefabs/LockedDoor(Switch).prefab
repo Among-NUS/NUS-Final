@@ -80,7 +80,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ff762f432cc614992c59bf63eb346e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyIn: 0
+  enemiesIn: []
+  aliveCount: 0
 --- !u!1 &8025241914395275542
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +95,7 @@ GameObject:
   - component: {fileID: 3279991498709262887}
   - component: {fileID: 2326147666619078973}
   - component: {fileID: 8689592561874418570}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Switch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf7ffd817752104aa5e251a968bb775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 2cc403c8-db12-4ba2-814c-b0d22061512f
+  uniqueID: 825c548e-42ed-4a4c-9112-ecabc379abe0
   isOn: 0
 --- !u!114 &2326147666619078973
 MonoBehaviour:
@@ -390,7 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 053e46176013c77498f968aea947056f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 485d28ea-b2d7-4658-b4f9-0b7c4bc809ec
+  uniqueID: 03a5d29a-0c50-400a-ac14-6cdd55057191
   isOpen: 0
 --- !u!114 &4852539444736834814
 MonoBehaviour:

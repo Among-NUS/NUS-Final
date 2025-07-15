@@ -3804,7 +3804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 821734326c7897341991c6e056cfe0da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IntroducePanel: {fileID: 85075404}
+  IntroduceCanvas: {fileID: 366718043}
 --- !u!114 &366718046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5632,16 +5632,16 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "You have gained the ability to rewind time.\nRewinding time consumes the
-    energy bar in the top-left corner of the screen \u2014 the further back you go,
-    the more energy it costs.\nPress U to record a timestamp. Before your energy
-    runs out, press I to return to that moment in time, while keeping your current
-    physical position unchanged.\nYour past self will reappear and repeat all the
-    actions you previously performed.\n\n\u4F60\u83B7\u5F97\u4E86\u65F6\u7A7A\u56DE\u6EAF\u7684\u80FD\u529B\u3002\n\u4F7F\u7528\u65F6\u7A7A\u56DE\u6EAF\u4F1A\u6D88\u8017\u5C4F\u5E55\u5DE6\u4E0A\u89D2\u7684\u80FD\u91CF\u6761\uFF0C\u56DE\u6EAF\u7684\u65F6\u95F4\u8D8A\u4E45\uFF0C\u6D88\u8017\u7684\u80FD\u91CF\u4E5F\u8D8A\u591A\u3002\n\u6309\u4E0B
+    energy bar in the top-left corner of the screen - the further back you go, the
+    more energy it costs.\nPress U to record a timestamp. Before your energy runs
+    out, press I to return to that moment in time, while keeping your current physical
+    position unchanged.\nYour past self will reappear and repeat all the actions
+    you previously performed.\n\n\u4F60\u83B7\u5F97\u4E86\u65F6\u7A7A\u56DE\u6EAF\u7684\u80FD\u529B\u3002\n\u4F7F\u7528\u65F6\u7A7A\u56DE\u6EAF\u4F1A\u6D88\u8017\u5C4F\u5E55\u5DE6\u4E0A\u89D2\u7684\u80FD\u91CF\u6761\uFF0C\u56DE\u6EAF\u7684\u65F6\u95F4\u8D8A\u4E45\uFF0C\u6D88\u8017\u7684\u80FD\u91CF\u4E5F\u8D8A\u591A\u3002\n\u6309\u4E0B
     U \u952E\u53EF\u4EE5\u8BB0\u5F55\u4E00\u4E2A\u65F6\u95F4\u6233\uFF0C\u5728\u80FD\u91CF\u8017\u5C3D\u4E4B\u524D\uFF0C\u6309\u4E0B
     I \u952E\u53EF\u4EE5\u56DE\u5230\u8BE5\u65F6\u95F4\u70B9\uFF0C\u4F46\u4F60\u5F53\u524D\u7684\u7269\u7406\u4F4D\u7F6E\u5C06\u4FDD\u6301\u4E0D\u53D8\u3002\n\u8FC7\u53BB\u7684\u4F60\u5C06\u4F1A\u5B8C\u5168\u91CD\u590D\u4F60\u66FE\u7ECF\u505A\u8FC7\u7684\u52A8\u4F5C\u3002"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 83eec80db16565746a7ad2374b76a670, type: 2}
-  m_sharedMaterial: {fileID: -1177333104058501760, guid: 83eec80db16565746a7ad2374b76a670, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7dff6e67efd33914f96b99b0f858c786, type: 2}
+  m_sharedMaterial: {fileID: -3427109066482390850, guid: 7dff6e67efd33914f96b99b0f858c786, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

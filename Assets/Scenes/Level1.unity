@@ -51950,6 +51950,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 401448387934886124, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 643533507122356149, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 643533507122356149, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080837241894518036, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1817640103350194308, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.19
@@ -52002,13 +52018,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4987260590923498427, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987260590923498427, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6167240790351019227, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: textFile
       value: 
       objectReference: {fileID: 4900000, guid: f8bf824943fc19c49a3e84ff1959e8fb, type: 3}
+    - target: {fileID: 6262353910676469709, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6316553079493030345, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_Name
       value: GamePreset
+      objectReference: {fileID: 0}
+    - target: {fileID: 6474815089207695601, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6522302071772520899, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_AnchoredPosition.x
