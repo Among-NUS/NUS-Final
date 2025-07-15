@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -95,13 +96,64 @@ public class DialogSystem : MonoBehaviour
         textlist.Clear();
         index = 0;
 
-        var lineData = file.text.Split('\n');
-        foreach (var line in lineData)
+        if (file == null)
         {
-            string trimmed = line.Trim();
-            if (!string.IsNullOrEmpty(trimmed))
+            Debug.LogWarning("DialogSystem: 文本文件为空");
+            return;
+        }
+
+        // 获取原始文本
+        string originalText = file.text;
+        Debug.Log($"DialogSystem: 原始文本长度: {originalText.Length}");
+        Debug.Log($"DialogSystem: 原始文本内容:\n{originalText}");
+
+        // 使用最安全的方法：StringReader逐行读取
+        List<string> lines = new List<string>();
+        
+        try
+        {
+            using (System.IO.StringReader reader = new System.IO.StringReader(originalText))
             {
-                textlist.Add(trimmed);// 去除多余空格或换行
+                string line;
+                int lineNumber = 0;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    lineNumber++;
+                    string trimmed = line.Trim();
+                    if (!string.IsNullOrEmpty(trimmed))
+                    {
+                        lines.Add(trimmed);
+                        Debug.Log($"DialogSystem: 第 {lineNumber} 行: \"{trimmed}\"");
+                    }
+                    else
+                    {
+                        Debug.Log($"DialogSystem: 第 {lineNumber} 行为空，已跳过");
+                    }
+                }
+            }
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"DialogSystem: 读取文本文件时出错: {e.Message}");
+            return;
+        }
+        
+        // 将分割结果添加到textlist
+        textlist.AddRange(lines);
+        
+        Debug.Log($"DialogSystem: 总共加载了 {textlist.Count} 行对话");
+        
+        // 最终验证
+        if (textlist.Count == 0)
+        {
+            Debug.LogWarning("DialogSystem: 没有加载到任何对话行，请检查文本文件格式");
+        }
+        else
+        {
+            Debug.Log("DialogSystem: 最终加载的对话内容:");
+            for (int i = 0; i < textlist.Count; i++)
+            {
+                Debug.Log($"  第 {i + 1} 句: \"{textlist[i]}\"");
             }
         }
     }
