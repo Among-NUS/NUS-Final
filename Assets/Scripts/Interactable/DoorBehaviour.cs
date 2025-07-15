@@ -29,7 +29,7 @@ public class DoorBehaviour : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (enemySensor.enemyIn > 0)
+        if (enemySensor.aliveCount > 0)
         {
             door.isOpen = true;
             ApplyState();
