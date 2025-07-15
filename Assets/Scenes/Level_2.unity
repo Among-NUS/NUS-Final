@@ -275,7 +275,7 @@ PrefabInstance:
     - target: {fileID: 6327793329625968625, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 325342509}
+      objectReference: {fileID: 0}
     - target: {fileID: 6522302071772520899, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -966.3
@@ -51096,7 +51096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f45eea1182960540bc46356425512c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: db5cfad9-21ec-45a5-bf94-ae8c1dfcd9c4
+  uniqueID: b5812a70-ac13-4d7a-8473-8ea7ad822331
 --- !u!114 &4189161154904360583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51506,3 +51506,4 @@ SceneRoots:
   - {fileID: 2125851293}
   - {fileID: 515877147}
   - {fileID: 1043294808}
+  - {fileID: 2065342050}
