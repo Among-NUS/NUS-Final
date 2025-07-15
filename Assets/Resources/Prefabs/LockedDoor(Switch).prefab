@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4928367911542489479}
   - component: {fileID: 2985031934586057815}
   - component: {fileID: 4549781859297873796}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: enemySensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf7ffd817752104aa5e251a968bb775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 7be2f075-1054-4f68-8fb4-7013b8db186c
+  uniqueID: 2cc403c8-db12-4ba2-814c-b0d22061512f
   isOn: 0
 --- !u!114 &2326147666619078973
 MonoBehaviour:
@@ -390,7 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 053e46176013c77498f968aea947056f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 9a58cb60-8c41-410e-be7d-19791a4be57e
+  uniqueID: 485d28ea-b2d7-4658-b4f9-0b7c4bc809ec
   isOpen: 0
 --- !u!114 &4852539444736834814
 MonoBehaviour:

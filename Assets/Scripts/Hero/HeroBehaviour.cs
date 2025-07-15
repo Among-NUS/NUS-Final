@@ -95,7 +95,7 @@ public class HeroBehaviour : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         BulletBehaviour bullet = collision.GetComponent<BulletBehaviour>();
-        if (bullet != null && bullet.isEnemy)
+        if (bullet != null && bullet.isEnemy && GameManager.Instance?.currentPhase!=GameManager.GamePhase.TimeStop)
         {
             Debug.Log("Hero hit by enemy bullet");
             FindObjectOfType<GameOverUI>().ShowGameOver();

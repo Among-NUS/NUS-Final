@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3843554284658569233}
   - component: {fileID: 8682752486775257091}
   - component: {fileID: 2583048037590165843}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: TimedSwitch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1, y: 1, z: 1}
-  m_LocalScale: {x: 0.7, y: 0.62, z: 1}
+  m_LocalScale: {x: 0.62, y: 0.62, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6987971143435927447}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -364223411, guid: ac53a3fad08e44145978f98953e8472d, type: 3}
+  m_Sprite: {fileID: -251225206, guid: 73e3dab647a839e47b5dfecf9e408356, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -124,7 +124,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
+    oldSize: {x: 0.5, y: 0.5}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -148,8 +148,8 @@ MonoBehaviour:
   onStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  offSprite: {fileID: -364223411, guid: ac53a3fad08e44145978f98953e8472d, type: 3}
-  onSprite: {fileID: 1826077350, guid: ac53a3fad08e44145978f98953e8472d, type: 3}
+  offSprite: {fileID: -251225206, guid: 73e3dab647a839e47b5dfecf9e408356, type: 3}
+  onSprite: {fileID: 1345450267, guid: 73e3dab647a839e47b5dfecf9e408356, type: 3}
   switchCooldown: 1.5
   setCooldown: 1.5
   square: {fileID: 6987971143435927447}
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d4877d75d73eab499582e422e17d130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 4e6e2ec7-d4d9-450e-995d-bbdaaff9bf9b
+  uniqueID: 47b127a7-6c3e-441b-8c79-0230f4b0e6b1
   isOn: 0
   switchCooldown: 0
 --- !u!1 &8310164857732341607
@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6987971143435927447}
   - component: {fileID: 5154119878995397128}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}

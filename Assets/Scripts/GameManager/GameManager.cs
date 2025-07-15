@@ -209,7 +209,7 @@ public class GameManager : MonoBehaviour
         }
 
         // ---- UI 处理 ----
-        string[] uiTargets = { "Background" };
+        string[] uiTargets = { "BackScene" };
         foreach (var name in uiTargets)
         {
             var allObjs = Resources.FindObjectsOfTypeAll<Transform>(); // 能找到所有对象，包括禁用的
