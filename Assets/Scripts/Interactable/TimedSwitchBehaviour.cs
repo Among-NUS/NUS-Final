@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Collider2D), typeof(Switch), typeof(SpriteRenderer))]
-public class SwitchBehaviour : MonoBehaviour, IInteractable, ICondition
+[RequireComponent(typeof(Collider2D), typeof(TimedSwitch), typeof(SpriteRenderer))]
+public class TimedSwitchBehaviour : MonoBehaviour, IInteractable, ICondition
 {
     public UnityEvent<bool> onStateChanged = new UnityEvent<bool>();
 
@@ -11,12 +11,14 @@ public class SwitchBehaviour : MonoBehaviour, IInteractable, ICondition
     public Sprite onSprite;
 
     private InteractionManager im;
-    private Switch sw;
+    private TimedSwitch tsw;
     private SpriteRenderer sr;
+    public float switchCooldown = 1.5f;
+    public float setCooldown = 1.5f;
 
     void Awake()
     {
-        sw = GetComponent<Switch>();
+        tsw = GetComponent<TimedSwitch>();
         sr = GetComponent<SpriteRenderer>();
         ApplyVisual();
     }
@@ -27,25 +29,41 @@ public class SwitchBehaviour : MonoBehaviour, IInteractable, ICondition
     public void Interact()
     {
         if (GameManager.Instance.currentPhase == GameManager.GamePhase.TimeStop) return;
-        sw.isOn = !sw.isOn;
-        onStateChanged.Invoke(sw.isOn);
-        ApplyVisual();
+        if (!tsw.isOn)
+        {
+            tsw.isOn = !tsw.isOn;
+            tsw.switchCooldown = setCooldown;
+            onStateChanged.Invoke(tsw.isOn);
+            ApplyVisual();
+        }
+        
     }
 
     /* ---------- �Ӿ����� ---------- */
     private void ApplyVisual()
     {
         if (sr != null)
-            sr.sprite = sw.isOn ? onSprite : offSprite;
+            sr.sprite = tsw.isOn ? onSprite : offSprite;
     }
 
     void FixedUpdate()
     {
+        if (tsw.isOn && tsw.switchCooldown > 0f)
+        {
+            tsw.switchCooldown -= Time.deltaTime;
+        }
+        if (tsw.switchCooldown < 0f)
+        {
+            tsw.switchCooldown = 0f;
+            tsw.isOn = false;
+            onStateChanged.Invoke(tsw.isOn);
+            tsw.switchCooldown = setCooldown;
+        }
         ApplyVisual();  // ʵʱͬ���Ӿ�
     }
 
     /* ---------- ICondition ʵ�� ---------- */
-    public bool IsTrue => sw.isOn;
+    public bool IsTrue => tsw.isOn;
 
     /* ---------- Trigger ע�� ---------- */
     void OnEnable() => im = FindObjectOfType<InteractionManager>();
