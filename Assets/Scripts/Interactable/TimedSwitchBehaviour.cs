@@ -62,6 +62,7 @@ public class TimedSwitchBehaviour : MonoBehaviour, IInteractable, ICondition
 
     void FixedUpdate()
     {
+        if (GameManager.Instance?.currentPhase == GameManager.GamePhase.TimeStop) return;
         if (tsw.isOn && tsw.switchCooldown > 0f)
         {
             tsw.switchCooldown -= Time.deltaTime;

@@ -91,9 +91,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textlabel: {fileID: 3357149472789819646}
   dialogBox: {fileID: 3372835144621445290}
-  textFile: {fileID: 4900000, guid: 3ea0c73cf92b2d6468a9b49e487e0d25, type: 3}
+  textFile: {fileID: 0}
   index: 0
-  playerController: {fileID: 0}
 --- !u!1 &6762752919381247336
 GameObject:
   m_ObjectHideFlags: 0

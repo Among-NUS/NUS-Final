@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class ElevatorPlatform : MonoBehaviour
 {
+    [SerializeField]
     public enum SwitchType { AND, OR }
 
     [Header("��������")]

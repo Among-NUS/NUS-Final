@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BulletBehaviour : MonoBehaviour
@@ -57,6 +58,8 @@ public class BulletBehaviour : MonoBehaviour
         if (isEnemy && collision.CompareTag("Enemy")) return;
         if (!isEnemy && (collision.CompareTag("Player") || collision.CompareTag("Ghost"))) return;
         if(collision.CompareTag("Interactable")) return;
+        if (GameManager.Instance?.currentPhase == GameManager.GamePhase.TimeStop) return;
+        if (!isEnemy && collision.GetComponent<Enemy>().isAlive == false) return;
 
         //在击中不同目标时产生不同的效果
         if ((collision.CompareTag("Player") || collision.CompareTag("Ghost"))|| collision.CompareTag("Enemy"))
