@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     GameObject previewGhost;
     Snapshot snapshot;
     Queue<Record> inputRecords = new();
+    public Scene currentScene;
+    private string sceneName;
 
     public MessageDisplay messageDisplay;
     public bool IsRecording => currentPhase == GamePhase.Recording;
@@ -30,6 +32,9 @@ public class GameManager : MonoBehaviour
 
         ghostPrefab        = Resources.Load<GameObject>("Prefabs/GhostPrefab");
         previewGhostPrefab = Resources.Load<GameObject>("Prefabs/PreviewGhostPrefab");
+        currentScene = SceneManager.GetActiveScene();
+        sceneName = currentScene.name;
+
 
         if (Instance != null && Instance != this)
             Destroy(gameObject);
@@ -49,7 +54,12 @@ public class GameManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.I) && currentPhase == GamePhase.Recording)
             StopAndReplay();
         else if (Input.GetKeyDown(KeyCode.O) && currentPhase == GamePhase.Recording)
-            StopRecordingAndFreeze();
+        {
+            if (sceneName == "Level1Real" || sceneName == "Level3" || sceneName == "Level4"||sceneName=="Level_4")
+            {
+                StopRecordingAndFreeze();
+            }
+        }
     }
 
     //────────────────────────  录制流程  ────────────────────────
