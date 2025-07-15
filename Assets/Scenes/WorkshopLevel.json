@@ -1,0 +1,30 @@
+{
+    "items": [
+        {
+            "prefabName": "ElevatorPlatformSet",
+            "position": {
+                "x": 960.0,
+                "y": 540.0,
+                "z": 1.0
+            },
+            "rotationZ": 0.0,
+            "comps": [
+                {
+                    "type": "PressurePlateBehaviour, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                    "path": "/PressurePlate",
+                    "json": "{\"validTags\":[\"Player\",\"Ghost\",\"Enemy\"],\"idleSprite\":{\"instanceID\":0},\"pressedSprite\":{\"instanceID\":0}}"
+                },
+                {
+                    "type": "ElevatorPlatform, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                    "path": "/ElevatorPlatform",
+                    "json": "{\"conditionObjects\":[],\"switchType\":0,\"topPosition\":{\"instanceID\":-40478},\"moveSpeed\":2.0}"
+                },
+                {
+                    "type": "RecordableObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                    "path": "/ElevatorPlatform",
+                    "json": "{\"uniqueID\":\"c4631627-5914-46bb-907e-f1a7ab5156a7\"}"
+                }
+            ]
+        }
+    ]
+}
