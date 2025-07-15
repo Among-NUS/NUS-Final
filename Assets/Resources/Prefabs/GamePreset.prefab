@@ -1503,7 +1503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 6655799380925276785}
-  bulletPrefab: {fileID: 3943769148579212318, guid: a0733dba034522a4692dddf745565232, type: 3}
+  bulletPrefab: {fileID: 3943769148579212318, guid: 91a4eb19ff412e1499719b00e259a47f, type: 3}
   isEnemy: 0
   faceLeft: 1
   fireInterval: 0.5
