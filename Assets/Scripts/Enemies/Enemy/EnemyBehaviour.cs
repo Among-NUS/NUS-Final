@@ -8,6 +8,7 @@ public class EnemyBehaviour : MonoBehaviour
     /* ------- Inspector 参数 ------- */
     [Header("巡逻路径(按顺序)")]
     public List<Transform> pathWayPoint;
+    public bool patrolFacingLeft = false;       //站岗时的朝向
     public PathPointMap pathPointMap;   //全图的路径点reference
     public MonitorBehaviour enemyMonitor;        // 用于检测目标
     public Ear ear;                     //听觉
@@ -142,6 +143,7 @@ public class EnemyBehaviour : MonoBehaviour
             //空白填充
             enemyWalking = false;
             enemy.currentTarget = 0;
+            enemy.facingLeft = patrolFacingLeft;
         }
             
         if (enemyMonitor.getCapturedTarget().Count!=0)
