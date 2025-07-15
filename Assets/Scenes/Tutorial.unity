@@ -45890,6 +45890,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1080837241894518036, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4287647639150142092, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5
@@ -45950,6 +45954,10 @@ PrefabInstance:
       propertyPath: textFile
       value: 
       objectReference: {fileID: 4900000, guid: 99a92bea97a862348856f672d80e78ea, type: 3}
+    - target: {fileID: 6262353910676469709, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6316553079493030345, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_Name
       value: GamePreset
