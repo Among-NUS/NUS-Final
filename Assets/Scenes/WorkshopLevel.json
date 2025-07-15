@@ -1,28 +1,28 @@
 {
     "items": [
         {
-            "prefabName": "ElevatorPlatformSet",
+            "prefabName": "ElevatorSet",
             "position": {
-                "x": 960.0,
-                "y": 540.0,
+                "x": 955.7657470703125,
+                "y": 534.9314575195313,
                 "z": 1.0
             },
             "rotationZ": 0.0,
             "comps": [
                 {
-                    "type": "PressurePlateBehaviour, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-                    "path": "/PressurePlate",
-                    "json": "{\"validTags\":[\"Player\",\"Ghost\",\"Enemy\"],\"idleSprite\":{\"instanceID\":0},\"pressedSprite\":{\"instanceID\":0}}"
+                    "type": "StairsBehaviour, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                    "path": "/Elevator",
+                    "json": "{\"stairsUp\":{\"instanceID\":0},\"stairsDown\":{\"instanceID\":0},\"cooldown\":0.0,\"standardCooldown\":0.5}"
                 },
                 {
-                    "type": "ElevatorPlatform, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-                    "path": "/ElevatorPlatform",
-                    "json": "{\"conditionObjects\":[],\"switchType\":0,\"topPosition\":{\"instanceID\":-40478},\"moveSpeed\":2.0}"
+                    "type": "StairsBehaviour, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                    "path": "/Elevator (1)",
+                    "json": "{\"stairsUp\":{\"instanceID\":0},\"stairsDown\":{\"instanceID\":0},\"cooldown\":0.0,\"standardCooldown\":0.5}"
                 },
                 {
-                    "type": "RecordableObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-                    "path": "/ElevatorPlatform",
-                    "json": "{\"uniqueID\":\"c4631627-5914-46bb-907e-f1a7ab5156a7\"}"
+                    "type": "StairsBehaviour, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                    "path": "/Elevator (2)",
+                    "json": "{\"stairsUp\":{\"instanceID\":0},\"stairsDown\":{\"instanceID\":0},\"cooldown\":0.0,\"standardCooldown\":0.5}"
                 }
             ]
         }

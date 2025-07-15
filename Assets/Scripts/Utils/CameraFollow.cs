@@ -34,7 +34,7 @@ public class CameraFollow : MonoBehaviour
         float offsetX = facingLeft ? -horizontalOffset : horizontalOffset;
         Vector3 offset = new Vector3(offsetX, 0f, 0f);
 
-        Vector3 targetPosition = new Vector3(target.position.x, target.position.y, fixedZ) + offset;
+        Vector3 targetPosition = new Vector3(target.position.x, target.position.y + 2.5f, fixedZ) + offset;
         transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed * Time.deltaTime);
     }
 }
