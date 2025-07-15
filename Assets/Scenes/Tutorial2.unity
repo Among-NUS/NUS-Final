@@ -5640,8 +5640,8 @@ MonoBehaviour:
     U \u952E\u53EF\u4EE5\u8BB0\u5F55\u4E00\u4E2A\u65F6\u95F4\u6233\uFF0C\u5728\u80FD\u91CF\u8017\u5C3D\u4E4B\u524D\uFF0C\u6309\u4E0B
     I \u952E\u53EF\u4EE5\u56DE\u5230\u8BE5\u65F6\u95F4\u70B9\uFF0C\u4F46\u4F60\u5F53\u524D\u7684\u7269\u7406\u4F4D\u7F6E\u5C06\u4FDD\u6301\u4E0D\u53D8\u3002\n\u8FC7\u53BB\u7684\u4F60\u5C06\u4F1A\u5B8C\u5168\u91CD\u590D\u4F60\u66FE\u7ECF\u505A\u8FC7\u7684\u52A8\u4F5C\u3002"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3043f41ad7f03534b92cd4b261e55d2b, type: 2}
-  m_sharedMaterial: {fileID: -2258592172141708404, guid: 3043f41ad7f03534b92cd4b261e55d2b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 83eec80db16565746a7ad2374b76a670, type: 2}
+  m_sharedMaterial: {fileID: -1177333104058501760, guid: 83eec80db16565746a7ad2374b76a670, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -24184,7 +24184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8943904219166682457, guid: 67cff7523e3d605498429f4a67bfdb26, type: 3}
       propertyPath: uniqueID
-      value: 3761a8d9-9a72-4f4a-9900-80b92354c154
+      value: 320ade6e-5b2d-4857-a362-2e23da08db7a
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
