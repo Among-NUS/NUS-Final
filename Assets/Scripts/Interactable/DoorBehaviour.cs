@@ -14,11 +14,11 @@ public class DoorBehaviour : MonoBehaviour
     public SwitchType st = SwitchType.OR;
 
     private Door door;
-    private BoxCollider2D box;
+    private EnemySensorBehaviour enemySensor;
 
     void Awake()
     {
-        box = GetComponent<BoxCollider2D>();
+        enemySensor = GetComponentInChildren<EnemySensorBehaviour>();
         door = GetComponent<Door>();
     }
 
@@ -29,32 +29,15 @@ public class DoorBehaviour : MonoBehaviour
 
     void FixedUpdate()
     {
-        Collider2D[] hits = Physics2D.OverlapBoxAll(box.bounds.center, box.bounds.size, 0f);
-        int count = 0;
-
-        foreach (var hit in hits)
-        {
-            if (hit.tag=="Enemy" && hit.gameObject != gameObject)
-            {
-                count++;
-            }
-        }
-
-        if (count > 0 && !door.isOpen)
+        if (enemySensor.enemyIn > 0)
         {
             door.isOpen = true;
             ApplyState();
-            Debug.Log("门已打开");
-            return;
         }
-        else if (count == 0 && door.isOpen)
+        else
         {
-            door.isOpen = false;
-            ApplyState();
-            Debug.Log("门已关闭");
-            return;
+            Evaluate();
         }
-        Evaluate();
     }
 
     void Evaluate()
