@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!95 &29868305 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3089876922802148896, guid: acf1608a4675f2c478e71631c6382138, type: 3}
-  m_PrefabInstance: {fileID: 564517928}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &29868306 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7040080098183611154, guid: acf1608a4675f2c478e71631c6382138, type: 3}
@@ -194,7 +189,7 @@ PrefabInstance:
     - target: {fileID: 7040080098183611154, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: stairsAnimator
       value: 
-      objectReference: {fileID: 1603566638}
+      objectReference: {fileID: 0}
     - target: {fileID: 7800279439871655699, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: m_Name
       value: Elevator (4)
@@ -3877,7 +3872,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3661757308668691572, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.65
+      value: 3.57
       objectReference: {fileID: 0}
     - target: {fileID: 3661757308668691572, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3918,7 +3913,7 @@ PrefabInstance:
     - target: {fileID: 7040080098183611154, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: stairsAnimator
       value: 
-      objectReference: {fileID: 29868305}
+      objectReference: {fileID: 0}
     - target: {fileID: 7800279439871655699, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: m_Name
       value: Elevator (1)
@@ -3975,11 +3970,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d7817647e1fdb54a80d1f76c8ce8d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &639277670 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3089876922802148896, guid: acf1608a4675f2c478e71631c6382138, type: 3}
-  m_PrefabInstance: {fileID: 1703347420}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &652141736
 GameObject:
   m_ObjectHideFlags: 0
@@ -48797,11 +48787,6 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 8219944971579997525, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
   m_PrefabInstance: {fileID: 866692250}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1048556302 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3089876922802148896, guid: acf1608a4675f2c478e71631c6382138, type: 3}
-  m_PrefabInstance: {fileID: 1353577808}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1048556303 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7040080098183611154, guid: acf1608a4675f2c478e71631c6382138, type: 3}
@@ -48813,11 +48798,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d7817647e1fdb54a80d1f76c8ce8d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &1048844137 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3089876922802148896, guid: acf1608a4675f2c478e71631c6382138, type: 3}
-  m_PrefabInstance: {fileID: 1285327028}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1048844138 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7040080098183611154, guid: acf1608a4675f2c478e71631c6382138, type: 3}
@@ -49169,7 +49149,7 @@ PrefabInstance:
     - target: {fileID: 7040080098183611154, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: stairsAnimator
       value: 
-      objectReference: {fileID: 1048844137}
+      objectReference: {fileID: 0}
     - target: {fileID: 7800279439871655699, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: m_Name
       value: Elevator (3)
@@ -49179,11 +49159,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acf1608a4675f2c478e71631c6382138, type: 3}
---- !u!95 &1322212674 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3089876922802148896, guid: acf1608a4675f2c478e71631c6382138, type: 3}
-  m_PrefabInstance: {fileID: 1400874579}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1322212675 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7040080098183611154, guid: acf1608a4675f2c478e71631c6382138, type: 3}
@@ -49380,7 +49355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3661757308668691572, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.55
+      value: -0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3661757308668691572, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: m_LocalPosition.z
@@ -49421,7 +49396,7 @@ PrefabInstance:
     - target: {fileID: 7040080098183611154, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: stairsAnimator
       value: 
-      objectReference: {fileID: 1048556302}
+      objectReference: {fileID: 0}
     - target: {fileID: 7800279439871655699, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: m_Name
       value: Elevator
@@ -49823,11 +49798,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3661757308668691572, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.4494412
+      value: -3.34
       objectReference: {fileID: 0}
     - target: {fileID: 3661757308668691572, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5557734
+      value: -0.61
       objectReference: {fileID: 0}
     - target: {fileID: 3661757308668691572, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: m_LocalPosition.z
@@ -49868,7 +49843,7 @@ PrefabInstance:
     - target: {fileID: 7040080098183611154, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: stairsAnimator
       value: 
-      objectReference: {fileID: 1322212674}
+      objectReference: {fileID: 0}
     - target: {fileID: 7800279439871655699, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: m_Name
       value: Elevator (5)
@@ -52386,11 +52361,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d7817647e1fdb54a80d1f76c8ce8d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &1603566638 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3089876922802148896, guid: acf1608a4675f2c478e71631c6382138, type: 3}
-  m_PrefabInstance: {fileID: 84128445}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1649334482 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8025241914395275542, guid: c798326c29b93df46b62197ca79eb867, type: 3}
@@ -52487,7 +52457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3661757308668691572, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.6538267
+      value: 3.6
       objectReference: {fileID: 0}
     - target: {fileID: 3661757308668691572, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: m_LocalPosition.z
@@ -52528,7 +52498,7 @@ PrefabInstance:
     - target: {fileID: 7040080098183611154, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: stairsAnimator
       value: 
-      objectReference: {fileID: 639277670}
+      objectReference: {fileID: 0}
     - target: {fileID: 7800279439871655699, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: m_Name
       value: Elevator (2)

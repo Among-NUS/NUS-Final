@@ -20,7 +20,8 @@ public class StairsBehaviour : MonoBehaviour
     // --- 私有状态 ---
     bool playerInside;
     Transform playerTf;
-    float cooldown;            // 防止瞬时往返
+    public float cooldown;            // 防止瞬时往返
+    public float standardCooldown = 0.2f;
     void Start()
     {
         //Debug.Assert(stairsAnimator != null);
@@ -62,14 +63,14 @@ public class StairsBehaviour : MonoBehaviour
         playerTf.position = stairsUp.transform.position;
 
         // 给两端都加一点冷却，避免刚到就被判定回传
-        cooldown = 0.15f;
-        stairsUp.cooldown = 0.15f;
+        cooldown = standardCooldown;
+        stairsUp.cooldown = standardCooldown;
     }
     void TeleportTo(StairsBehaviour target)
     {
         playerTf.position   = target.transform.position;
-        cooldown            = 0.15f;   // 自己冷却
-        target.cooldown     = 0.15f;   // 目标端也冷却
+        cooldown            = standardCooldown;   // 自己冷却
+        target.cooldown     = standardCooldown;   // 目标端也冷却
     }
 
     // --- 触发器检测 ---
@@ -107,8 +108,8 @@ public class StairsBehaviour : MonoBehaviour
 
         // 执行传送
         entity.position = target.transform.position;
-        cooldown              = 0.15f;
-        target.cooldown = 0.15f;
+        cooldown              = standardCooldown;
+        target.cooldown = standardCooldown;
     }
 }
 

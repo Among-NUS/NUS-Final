@@ -7,13 +7,13 @@ public class ElevatorPlatform : MonoBehaviour
 {
     public enum SwitchType { AND, OR }
 
-    [Header("Ìõ¼þ¶ÔÏó")]
-    public List<GameObject> conditionObjects = new();  // ÍÏÈë°üº¬ ICondition µÄÎïÌå
-    public SwitchType switchType = SwitchType.OR;      // Âß¼­ÀàÐÍ
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
+    public List<GameObject> conditionObjects = new();  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ICondition ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public SwitchType switchType = SwitchType.OR;      // ï¿½ß¼ï¿½ï¿½ï¿½ï¿½ï¿½
 
-    [Header("Éý½µÉèÖÃ")]
-    public Transform topPosition;     // ÉýÆðÎ»ÖÃ
-    public float moveSpeed = 2f;      // Éý½µËÙ¶È
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
+    public Transform topPosition;     // ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
+    public float moveSpeed = 2f;      // ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶ï¿½
 
     private Vector3 startPosition;
     private Vector3 previousPosition;
@@ -26,6 +26,8 @@ public class ElevatorPlatform : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (GameManager.Instance?.currentPhase == GameManager.GamePhase.TimeStop) return;
+        
         Vector3 beforeMove = transform.position;
 
         EvaluateConditionsAndMove();
