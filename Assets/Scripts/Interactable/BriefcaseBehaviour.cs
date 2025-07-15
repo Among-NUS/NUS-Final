@@ -7,7 +7,7 @@ public class BriefcaseBehaviour : MonoBehaviour
     // Start is called before the first frame update
     private SpriteRenderer briefcaseSR;
     public bool isPicked = false;
-    public GameObject targetExit;
+    public GameObject[] targetExit;
     void Start()
     {
         briefcaseSR = GetComponent<SpriteRenderer>();
@@ -24,7 +24,10 @@ public class BriefcaseBehaviour : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isPicked = true;
-            targetExit.SetActive(true);
+            foreach (var exit in targetExit) {
+                exit.SetActive(true);
+            }
+
             gameObject.SetActive(false);
         }
     }
