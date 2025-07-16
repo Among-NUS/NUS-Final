@@ -1,44 +1,12 @@
 {
     "items": [
         {
-            "prefabName": "Elevator_1",
-            "uniqueId": "8d5199c5-9794-4599-844c-ebef7e9c321e",
+            "prefabName": "ElevatorPlatformSet 1",
             "position": {
-                "x": 1142.0,
-                "y": 642.2468872070313,
+                "x": 1152.0,
+                "y": 648.0,
                 "z": 1.0
-            },
-            "rotationZ": 0.0,
-            "comps": [
-                {
-                    "type": "StairsBehaviour, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-                    "json": "{\"stairsUp\":{\"instanceID\":-138854},\"stairsDown\":{\"instanceID\":0},\"cooldown\":0.0,\"standardCooldown\":0.5}"
-                },
-                {
-                    "type": "UniqueId, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-                    "json": "{\"id\":\"8d5199c5-9794-4599-844c-ebef7e9c321e\"}"
-                }
-            ]
-        },
-        {
-            "prefabName": "Elevator_2",
-            "uniqueId": "98862a54-6e4f-414f-9454-d2685d7ebc57",
-            "position": {
-                "x": 1142.0,
-                "y": 642.2468872070313,
-                "z": 1.0
-            },
-            "rotationZ": 0.0,
-            "comps": [
-                {
-                    "type": "StairsBehaviour, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-                    "json": "{\"stairsUp\":{\"instanceID\":0},\"stairsDown\":{\"instanceID\":0},\"cooldown\":0.0,\"standardCooldown\":0.5}"
-                },
-                {
-                    "type": "UniqueId, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-                    "json": "{\"id\":\"98862a54-6e4f-414f-9454-d2685d7ebc57\"}"
-                }
-            ]
+            }
         }
     ]
 }
