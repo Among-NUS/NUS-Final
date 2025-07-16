@@ -241,7 +241,7 @@ public class EnemyBehaviour : MonoBehaviour
             }
             else
             {//达到最后一个点
-                if (enemy.lastPriciseTarget.x - transform.position.x<0.1f)
+                if (Mathf.Abs(enemy.lastPriciseTarget.x - transform.position.x)<0.1f)
                 {
                     enemy.curChasePoint++;
                 }
