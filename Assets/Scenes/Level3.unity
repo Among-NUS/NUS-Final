@@ -70905,6 +70905,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.63
       objectReference: {fileID: 0}
+    - target: {fileID: 9142796188872525721, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 07e21daa7840f2c4a85c9c275d22a4b9, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -71822,7 +71826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f45eea1182960540bc46356425512c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 503f9d0a-1bf8-4887-b114-cfe55c824647
+  uniqueID: 48f3178a-4aff-4e2e-8805-89905d44e623
 --- !u!61 &1528089741
 BoxCollider2D:
   m_ObjectHideFlags: 0
