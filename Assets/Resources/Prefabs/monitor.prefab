@@ -49,7 +49,7 @@ MonoBehaviour:
   rotateRange: 180
   scanLength: 10
   sm: 0
-  numberOfRay: 2
+  numberOfRay: 60
   capturedTarget: []
 --- !u!1 &5755074365788193586
 GameObject:
