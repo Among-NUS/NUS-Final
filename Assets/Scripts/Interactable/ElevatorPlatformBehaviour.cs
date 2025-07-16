@@ -8,13 +8,13 @@ public class ElevatorPlatform : MonoBehaviour
     [SerializeField]
     public enum SwitchType { AND, OR }
 
-    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
-    public List<GameObject> conditionObjects = new();  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ICondition ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-    public SwitchType switchType = SwitchType.OR;      // ï¿½ß¼ï¿½ï¿½ï¿½ï¿½ï¿½
+    [Header("„1¤7„1¤7„1¤7„1¤7„1¤7„1¤7„1¤7„1¤7")]
+    public List<GameObject> conditionObjects = new();  // „1¤7„1¤7„1¤7„1¤7„1¤7„1¤7„1¤7 ICondition „1¤7„1¤7„1¤7„1¤7„1¤7„1¤7
+    public SwitchType switchType = SwitchType.OR;      // „1¤71²8„1¤7„1¤7„1¤7„1¤7„1¤7
 
-    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
-    public Transform topPosition;     // ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
-    public float moveSpeed = 2f;      // ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶ï¿½
+    [Header("„1¤7„1¤7„1¤7„1¤7„1¤7„1¤7„1¤7„1¤7")]
+    public Transform topPosition;     // „1¤7„1¤7„1¤7„1¤7¦Ë„1¤7„1¤7
+    public float moveSpeed = 2f;      // „1¤7„1¤7„1¤7„1¤7„1¤71‹8„1¤7
 
     private Vector3 startPosition;
     private Vector3 previousPosition;

@@ -19,6 +19,7 @@ public class HeroBehaviour : MonoBehaviour
     private bool isOnGround = true;
     private bool isJumping = false;
     private int groundLayer = 13;
+    public bool jumpBuffer = false;
 
     void Awake()
     {
@@ -26,6 +27,13 @@ public class HeroBehaviour : MonoBehaviour
         heroSR = GetComponent<SpriteRenderer>();
         Debug.Assert(heroAnimator != null);
         heroRigidBody = GetComponent<Rigidbody2D>();
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jumpBuffer = true;
+        }
     }
 
     void FixedUpdate()
@@ -35,9 +43,10 @@ public class HeroBehaviour : MonoBehaviour
             setLayerNear();
         }
         HandleMovement();
-        
-        heroAnimator.SetBool("isJumping", heroRigidBody.velocity.y > 0);
-        heroAnimator.SetBool("isFalling", heroRigidBody.velocity.y < 0);
+        bool consumedJump = HandleJump();
+
+        heroAnimator.SetBool("isJumping", heroRigidBody.velocity.y > 0.01);
+        heroAnimator.SetBool("isFalling", heroRigidBody.velocity.y < -0.01);
 
         // J 键开火（与上次示例一致）
         if (Input.GetKey(KeyCode.J) && shooter != null && shooter.CanFire() && GameManager.Instance.currentPhase != GameManager.GamePhase.TimeStop)
@@ -48,7 +57,7 @@ public class HeroBehaviour : MonoBehaviour
         }
 
         if (GameManager.Instance.currentPhase == GameManager.GamePhase.Recording)
-            GameManager.Instance.RecordKeyInput(CollectKeyInputs());
+            GameManager.Instance.RecordKeyInput(CollectKeyInputs(consumedJump));
     }
 
     void HandleMovement()
@@ -59,13 +68,8 @@ public class HeroBehaviour : MonoBehaviour
         if (Input.GetKey(KeyCode.A)) { move += Vector3.left; facingLeft = true; heroIsWalking = true; }
         if (Input.GetKey(KeyCode.D)) { move += Vector3.right; facingLeft = false; heroIsWalking = true; }
         heroAnimator.SetBool("isWalking", heroIsWalking);
-        if (Input.GetKey(KeyCode.Space) && isOnGround)
-        {
-            heroRigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            isOnGround = false;
-            isJumping = true;
-        }
         
+
         /* --- 用 localScale.x 的正负代表左右 --- */
         Vector3 s = transform.localScale;
         float targetSign = facingLeft ? -1f : 1f;          // prefab 默认朝右；如默认朝左就反过来
@@ -79,7 +83,7 @@ public class HeroBehaviour : MonoBehaviour
     }
 
 
-    List<char> CollectKeyInputs()
+    List<char> CollectKeyInputs(bool jumpThisFrame)
     {
         List<char> keys = new();
         if (Input.GetKey(KeyCode.A)) keys.Add('a');
@@ -88,14 +92,14 @@ public class HeroBehaviour : MonoBehaviour
         if (Input.GetKey(KeyCode.S)) keys.Add('s');
         if (Input.GetKey(KeyCode.E)) keys.Add('e');
         if (Input.GetKey(KeyCode.J)) keys.Add('j');
-        if (Input.GetKey(KeyCode.Space)) keys.Add(' ');
+        if (jumpThisFrame) keys.Add(' ');
         return keys;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         BulletBehaviour bullet = collision.GetComponent<BulletBehaviour>();
-        if (bullet != null && bullet.isEnemy && GameManager.Instance?.currentPhase!=GameManager.GamePhase.TimeStop)
+        if (bullet != null && bullet.isEnemy && GameManager.Instance?.currentPhase != GameManager.GamePhase.TimeStop)
         {
             Debug.Log("Hero hit by enemy bullet");
             FindObjectOfType<GameOverUI>().ShowGameOver();
@@ -118,16 +122,31 @@ public class HeroBehaviour : MonoBehaviour
         {
             isOnGround = true;  // Reset grounded state when hitting the ground
             isJumping = false;  // Reset jumping state when on the ground
-           
+
 
         }
     }
-    
+
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.layer == groundLayer) // Check if collision is with the ground layer
         {
             isOnGround = false; // Set isOnGround to false when exiting the ground layer
         }
+    }
+
+    bool HandleJump()
+    {
+        bool didJump = false;
+        bool wantJump = jumpBuffer;
+        jumpBuffer = false;
+        if (wantJump && isOnGround)
+        {
+            heroRigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            isOnGround = false;
+            isJumping = true;
+            didJump = true;
+        }
+        return didJump;
     }
 }
