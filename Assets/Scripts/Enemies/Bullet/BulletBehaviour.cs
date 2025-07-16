@@ -76,6 +76,7 @@ public class BulletBehaviour : MonoBehaviour
         {//击中其他
             Instantiate(Resources.Load<GameObject>("Prefabs/hitWallEffectPrefab"), transform.position, transform.rotation);
         }
+        Debug.Log("Bullet hit" + collision.gameObject.name);
             Destroy(gameObject);
     }
 }

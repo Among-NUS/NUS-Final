@@ -214,6 +214,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  patrolFacingLeft: 0
   pathPointMap: {fileID: 0}
   enemyMonitor: {fileID: 5294119340803840153}
   ear: {fileID: 877016632837671109}
@@ -282,7 +283,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.10361004, y: 0.012951136}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -293,7 +294,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6475601, y: 2.0619988}
+  m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &5455007380358418162
 MonoBehaviour:
@@ -307,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8435d73aafbec6d48a158dbb04f12a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 175ddbfc-42d2-4b0e-a946-b6091a7fcbee
+  uniqueID: 6084e423-575c-4f46-880b-76b1a8ef1197
   isAlive: 1
   lastTarget: 0
   lastPriciseTarget: {x: 0, y: 0, z: 0}
@@ -332,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f45eea1182960540bc46356425512c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 13d3589c-633e-41e6-8a2c-15d7a9db0a8b
+  uniqueID: 58c9b48a-94e6-451a-86e8-4ed74807cb31
 --- !u!95 &4215317039813925728
 Animator:
   serializedVersion: 5
