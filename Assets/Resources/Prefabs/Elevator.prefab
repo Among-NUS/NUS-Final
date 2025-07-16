@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1299252203434266169, guid: 97a7a88dc0eba7849bddaaa19c38e615, type: 3}
       propertyPath: standardCooldown
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2302629827201135160, guid: 97a7a88dc0eba7849bddaaa19c38e615, type: 3}
       propertyPath: m_Name

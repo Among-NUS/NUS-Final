@@ -19,7 +19,7 @@ public class DialogSystem : MonoBehaviour
     public int index;
 
     // 用于记录对话是否已经播放过
-    private static bool hasDialogBeenShown = false;
+   // private static bool hasDialogBeenShown = false;
     
     private List<DialogLine> dialogLines = new List<DialogLine>(); // 存储对话行（英文和中文）
     private bool hasAutoShown = false;// 用于判断是否自动显示了第一句
@@ -44,12 +44,12 @@ public class DialogSystem : MonoBehaviour
         GetTextFromFile(textFile);
 
         // 如果对话已经播放过，直接进入游戏状态
-        if (hasDialogBeenShown)
-        {
-            dialogBox.SetActive(false);
-            Time.timeScale = 1f;
-            return;
-        }
+       // if (hasDialogBeenShown)
+        //{
+        //    dialogBox.SetActive(false);
+        //    Time.timeScale = 1f;
+        //    return;
+        //}
 
         //禁用所有游戏操作
         Time.timeScale = 0f;
@@ -100,7 +100,7 @@ public class DialogSystem : MonoBehaviour
                 dialogFinished = true;
                 
                 // 标记对话已经播放过，下次重启时不再显示
-                hasDialogBeenShown = true;
+                //hasDialogBeenShown = true;
             }
         }
     }

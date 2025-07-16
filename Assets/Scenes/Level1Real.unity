@@ -657,7 +657,7 @@ Transform:
   m_GameObject: {fileID: 341151404}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.979, y: 7.754, z: 0}
+  m_LocalPosition: {x: -1.479, y: 7.754, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3914,6 +3914,10 @@ PrefabInstance:
       propertyPath: conditionObject
       value: 
       objectReference: {fileID: 1922610956}
+    - target: {fileID: 8870764955139709305, guid: 5b589d8c91a519349bc4a6086bf9d4f7, type: 3}
+      propertyPath: targetSceneName
+      value: Level3
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3861305688724794412, guid: 5b589d8c91a519349bc4a6086bf9d4f7, type: 3}
     m_RemovedGameObjects: []
@@ -4302,6 +4306,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1409864234756596352}
     - target: {fileID: 3183006285444701665, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
+      propertyPath: patrolFacingLeft
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183006285444701665, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
       propertyPath: pathWayPoint.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -4434,8 +4442,8 @@ MonoBehaviour:
     your energy is depleted.\nDuring this frozen moment, you are free to move \u2014
     but you cannot interact or shoot.\n\u75AF\u72C2\u535A\u58EB\u7684\u7A7F\u8D8A\u8FC7\u8F7D\u63D2\u4EF6\n\u5C1A\u672A\u516C\u5F00\u7684\u9AD8\u7EA7\u65F6\u7A7A\u56DE\u6EAF\u6280\u672F\uFF0C\u5141\u8BB8\u4F60\u5728\u65F6\u95F4\u7A7F\u8D8A\u7684\u540C\u65F6\u8FDB\u884C\u4E00\u5B9A\u7A0B\u5EA6\u7684\u7269\u7406\u79FB\u52A8\u3002\n\u6309\u4E0BU\u952E\u4EE5\u8BB0\u5F55\u4E00\u4E2A\u65F6\u95F4\u6233\u3002\u5728\u80FD\u91CF\u8017\u5C3D\u4E4B\u524D\uFF0C\u6309\u4E0BO\u952E\u4EE5\u53D1\u52A8\u7A7F\u8D8A\u8FC7\u8F7D\uFF1A\u4F60\u4F1A\u56DE\u5230\u6240\u8BB0\u5F55\u7684\u65F6\u95F4\u70B9\uFF0C\u968F\u540E\u65F6\u95F4\u5C06\u5B8C\u5168\u505C\u6EDE\uFF0C\u76F4\u5230\u4F60\u7684\u80FD\u91CF\u8017\u5C3D\u3002\n\u5728\u8FD9\u6BB5\u65F6\u95F4\u5185\uFF0C\u4F60\u53EF\u4EE5\u81EA\u7531\u79FB\u52A8\uFF0C\u4F46\u65E0\u6CD5\u8FDB\u884C\u4EA4\u4E92\u6216\u5C04\u51FB\u3002"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 83eec80db16565746a7ad2374b76a670, type: 2}
-  m_sharedMaterial: {fileID: -1177333104058501760, guid: 83eec80db16565746a7ad2374b76a670, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7dff6e67efd33914f96b99b0f858c786, type: 2}
+  m_sharedMaterial: {fileID: -3427109066482390850, guid: 7dff6e67efd33914f96b99b0f858c786, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10086,6 +10094,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1080837241894518036, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1817640103350194308, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_SizeDelta.y
       value: 2.9177
@@ -10101,7 +10113,7 @@ PrefabInstance:
     - target: {fileID: 2200671617222650207, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 3043f41ad7f03534b92cd4b261e55d2b, type: 2}
+      objectReference: {fileID: 11400000, guid: 7dff6e67efd33914f96b99b0f858c786, type: 2}
     - target: {fileID: 2200671617222650207, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_fontColor.b
       value: 0.9579477
@@ -10117,7 +10129,11 @@ PrefabInstance:
     - target: {fileID: 2200671617222650207, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: -2258592172141708404, guid: 3043f41ad7f03534b92cd4b261e55d2b, type: 2}
+      objectReference: {fileID: -3427109066482390850, guid: 7dff6e67efd33914f96b99b0f858c786, type: 2}
+    - target: {fileID: 2200671617222650207, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2460194887926517604, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -1.65
@@ -10205,7 +10221,11 @@ PrefabInstance:
     - target: {fileID: 6167240790351019227, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: textFile
       value: 
-      objectReference: {fileID: 4900000, guid: f8bf824943fc19c49a3e84ff1959e8fb, type: 3}
+      objectReference: {fileID: 4900000, guid: 21da2b04c7c6a6a40966bfc5a3a08329, type: 3}
+    - target: {fileID: 6262353910676469709, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6316553079493030345, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_Name
       value: GamePreset
@@ -10214,6 +10234,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1012891361}
+    - target: {fileID: 6474815089207695601, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6522302071772520899, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.8
@@ -54820,8 +54844,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1658881495}
   m_HandleRect: {fileID: 1658881494}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.8333333
+  m_Value: 0.9999994
+  m_Size: 0.83333325
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -55022,7 +55046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 821734326c7897341991c6e056cfe0da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IntroducePanel: {fileID: 970933180}
+  IntroduceCanvas: {fileID: 1077523159}
 --- !u!114 &1077523162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58689,7 +58713,7 @@ VideoPlayer:
   m_DataSource: 0
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
-  m_AudioOutputMode: 2
+  m_AudioOutputMode: 0
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
@@ -59424,7 +59448,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 654134838306531050, guid: d3198b24d19b87047a1aa3cfa68046b1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3
+      value: -0.73
       objectReference: {fileID: 0}
     - target: {fileID: 654134838306531050, guid: d3198b24d19b87047a1aa3cfa68046b1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -59468,7 +59492,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9220668673660092310, guid: d3198b24d19b87047a1aa3cfa68046b1, type: 3}
       propertyPath: uniqueID
-      value: ade1ef2c-27a4-41eb-8af8-b91385410382
+      value: 3c3039cc-3205-4c29-92a8-6eafd3ac23f6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -59891,7 +59915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8185849104712935094, guid: 50b218c66a8ebd940849e986d39b2a63, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.0200052
+      value: -1.520005
       objectReference: {fileID: 0}
     - target: {fileID: 8185849104712935094, guid: 50b218c66a8ebd940849e986d39b2a63, type: 3}
       propertyPath: m_LocalPosition.y
@@ -59990,6 +60014,10 @@ PrefabInstance:
       propertyPath: conditionObject
       value: 
       objectReference: {fileID: 1922610956}
+    - target: {fileID: 8870764955139709305, guid: 5b589d8c91a519349bc4a6086bf9d4f7, type: 3}
+      propertyPath: targetSceneName
+      value: Level3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

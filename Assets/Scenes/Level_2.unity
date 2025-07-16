@@ -251,6 +251,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1080837241894518036, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1817640103350194308, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.6
@@ -322,7 +326,11 @@ PrefabInstance:
     - target: {fileID: 6167240790351019227, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: textFile
       value: 
-      objectReference: {fileID: 4900000, guid: 21da2b04c7c6a6a40966bfc5a3a08329, type: 3}
+      objectReference: {fileID: 4900000, guid: f8bf824943fc19c49a3e84ff1959e8fb, type: 3}
+    - target: {fileID: 6262353910676469709, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6316553079493030345, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_Name
       value: GamePreset
@@ -330,6 +338,10 @@ PrefabInstance:
     - target: {fileID: 6327793329625968625, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_Camera
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6474815089207695601, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6522302071772520899, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -48182,6 +48194,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1169799105}
     - target: {fileID: 3183006285444701665, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
+      propertyPath: patrolFacingLeft
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183006285444701665, guid: 9adf6c98b7181654996eea63e9b8b935, type: 3}
       propertyPath: pathWayPoint.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -50852,6 +50868,10 @@ PrefabInstance:
       propertyPath: conditionObject
       value: 
       objectReference: {fileID: 34483481}
+    - target: {fileID: 8870764955139709305, guid: 5b589d8c91a519349bc4a6086bf9d4f7, type: 3}
+      propertyPath: targetSceneName
+      value: Level1Real
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3861305688724794412, guid: 5b589d8c91a519349bc4a6086bf9d4f7, type: 3}
     m_RemovedGameObjects: []
@@ -51591,7 +51611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f45eea1182960540bc46356425512c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: ed426436-b837-4e89-bffd-0a05b4aedce8
+  uniqueID: 065e6a7b-5787-443c-9855-3bea0b0ec15d
 --- !u!114 &4189161154904360583
 MonoBehaviour:
   m_ObjectHideFlags: 0
