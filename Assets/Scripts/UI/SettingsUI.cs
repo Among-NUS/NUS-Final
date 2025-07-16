@@ -103,6 +103,6 @@ public class SettingsUI : MonoBehaviour
 
     void PopulateHints()
     {
-        hintsText.text = "Some Instructions";
+        //hintsText.text = "Some Instructions";
     }
 }
