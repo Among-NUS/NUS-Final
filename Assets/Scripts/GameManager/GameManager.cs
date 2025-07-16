@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public bool IsRecording => currentPhase == GamePhase.Recording;
 
     GameObject heroIndicator;
+    public AudioSource bgmAudio;
 
 
     void Awake()
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
         previewGhostPrefab = Resources.Load<GameObject>("Prefabs/PreviewGhostPrefab");
         currentScene = SceneManager.GetActiveScene();
         sceneName = currentScene.name;
+        bgmAudio = GetComponent<AudioSource>();
 
 
         if (Instance != null && Instance != this)
@@ -104,6 +106,7 @@ public class GameManager : MonoBehaviour
     public void StopRecordingAndFreeze()
     {
         if (currentPhase != GamePhase.Recording) return;
+        bgmAudio.mute = true;
 
         ToggleTimeStopMode(true);
 
@@ -153,6 +156,7 @@ public class GameManager : MonoBehaviour
         currentPhase = GamePhase.Normal;
 
         ToggleTimeStopMode(false);
+        bgmAudio.mute = false;
 
         if (previewGhost)
         {
