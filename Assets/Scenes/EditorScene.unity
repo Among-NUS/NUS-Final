@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 27853834}
   - component: {fileID: 27853837}
   - component: {fileID: 27853838}
+  - component: {fileID: 27853840}
   m_Layer: 0
   m_Name: RuntimeGizmo
   m_TagString: MainCamera
@@ -346,6 +347,24 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &27853840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27853833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d73cd31cfe13efc44bf78ebd7500a760, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hierarchy: {fileID: 2043390671}
+  inspector: {fileID: 1183732541}
+  gizmoCamera: {fileID: 27853835}
+  selectableMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &144072775
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,6 +932,7 @@ GameObject:
   - component: {fileID: 281688369}
   - component: {fileID: 281688370}
   - component: {fileID: 281688371}
+  - component: {fileID: 281688372}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1011,6 +1031,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66ebe44b71ce19a43b47879bc1da0a9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hierarchy: {fileID: 2043390671}
+  inspector: {fileID: 1183732541}
+  spawnRoot: {fileID: 961772057}
+--- !u!114 &281688372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281688362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa5ead03e3a03f4899b559a63b10ea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hierarchy: {fileID: 2043390671}
@@ -2273,7 +2308,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnParent: {fileID: 961772057}
-  gridSpacing: 1
   hierarchy: {fileID: 2043390671}
 --- !u!114 &1430183047
 MonoBehaviour:

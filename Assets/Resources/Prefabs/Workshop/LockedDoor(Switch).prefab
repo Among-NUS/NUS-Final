@@ -80,7 +80,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ff762f432cc614992c59bf63eb346e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyIn: 0
+  enemiesIn: []
+  aliveCount: 0
 --- !u!1 &8025241914395275542
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf7ffd817752104aa5e251a968bb775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 7be2f075-1054-4f68-8fb4-7013b8db186c
+  uniqueID: 1044ffb9-43eb-47e0-bee0-9e4ab7d7a51b
   isOn: 0
 --- !u!114 &2326147666619078973
 MonoBehaviour:
@@ -390,7 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 053e46176013c77498f968aea947056f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 9a58cb60-8c41-410e-be7d-19791a4be57e
+  uniqueID: 6034e614-d10e-4776-941b-4f9b9d2b91eb
   isOpen: 0
 --- !u!114 &4852539444736834814
 MonoBehaviour:
@@ -406,5 +407,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closedSprite: {fileID: 414259958, guid: c60e35da37e2e6c42bb3079061e6059f, type: 3}
   openSprite: {fileID: -1450103495, guid: c60e35da37e2e6c42bb3079061e6059f, type: 3}
-  conditionObjects: []
+  conditionObjects:
+  - {fileID: 8025241914395275542}
   st: 1

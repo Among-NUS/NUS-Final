@@ -84,7 +84,6 @@ public class WorkshopSaveLoad : MonoBehaviour
 
                 PhysicsScriptDisabler.Disable(go);
                 WrapperColliderUtils.AddBoxColliderToWrapper(wrapper, go);
-                wrapper.gameObject.AddComponent<TransformLock2D>().gridSize = 1f;
             }
             else
             {

@@ -71,9 +71,6 @@ public class WorkshopManager : MonoBehaviour
         PhysicsScriptDisabler.Disable(child);
         WrapperColliderUtils.AddBoxColliderToWrapper(wrapper, child);
 
-        var lock2D = wrapper.AddComponent<TransformLock2D>();
-        lock2D.gridSize = gridSpacing;
-
         hierarchy?.Refresh();
         inspector?.Inspect(wrapper);
 
