@@ -20,7 +20,7 @@ public class BossBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public void BossWalk(float duration,bool facingLeft)
