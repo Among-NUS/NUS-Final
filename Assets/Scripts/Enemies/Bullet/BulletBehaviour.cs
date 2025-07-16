@@ -69,13 +69,14 @@ public class BulletBehaviour : MonoBehaviour
         }
 
         //在击中不同目标时产生不同的效果
-        if ((collision.CompareTag("Player") || collision.CompareTag("Ghost"))|| collision.CompareTag("Enemy"))
-        {//击中人物
+        if ((collision.CompareTag("Player") || collision.CompareTag("Ghost")|| collision.CompareTag("Enemy"))&&collision.GetComponent<Shield>()==null)
+        {//击中人物,且不是盾牌
             Instantiate(Resources.Load<GameObject>("Prefabs/hitEnemyEffectPrefab"),transform.position,transform.rotation);
         }else
         {//击中其他
             Instantiate(Resources.Load<GameObject>("Prefabs/hitWallEffectPrefab"), transform.position, transform.rotation);
         }
+        Debug.Log("Bullet hit" + collision.gameObject.name);
             Destroy(gameObject);
     }
 }
