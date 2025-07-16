@@ -2,223 +2,163 @@
 using System.Collections.Generic;
 using System.IO;
 
-/*─────────────────────────────────────────────────────────────
- * 数据结构
- *────────────────────────────────────────────────────────────*/
+/*──────── 数据结构 ────────*/
 [System.Serializable]
 public class ComponentData
 {
-    public string type;   // 组件类型（含程序集）
-    public string path;   // 在 Prefab 层级中的相对路径  (/Child/GrandChild)
-    public string json;   // 组件字段序列化后的 Json
+    public string type;
+    public string json;
 }
 
 [System.Serializable]
 public class ObjectData
 {
-    public string prefabName;
+    public string prefabName;  // 带编号
+    public string uniqueId;    // GUID
     public Vector3 position;
     public float rotationZ;
     public List<ComponentData> comps = new();
 }
-
-/*─────────────────────────────────────────────────────────────
- * WorkshopSaveLoad
- *────────────────────────────────────────────────────────────*/
+/*────────────────────────*/
 public class WorkshopSaveLoad : MonoBehaviour
 {
-    public Transform spawnParent;   // SpawnRoot
-    public float gridSpacing = 1f;
+    public Transform spawnParent;
     public RuntimeInspectorNamespace.RuntimeHierarchy hierarchy;
 
-    /*────────────────────────── 路径工具 ─────────────────────────*/
-    string ResolvePath(string fileOrPath)
-    {
-        return Path.IsPathRooted(fileOrPath)
-             ? fileOrPath
-             : Path.Combine(Application.dataPath, "Scenes", fileOrPath);
-    }
+    static string ResolvePath(string f) =>
+        Path.IsPathRooted(f) ? f : Path.Combine(Application.dataPath, "Scenes", f);
 
-    /*────────────────────────── 保存布局 ─────────────────────────*/
-    public void SaveLayout(string fileName)
+    /*──────── 保存 ────────*/
+    public void SaveLayout(string file)
     {
-        string full = ResolvePath(fileName);
-        Directory.CreateDirectory(Path.GetDirectoryName(full));
-
         var list = new List<ObjectData>();
 
         foreach (Transform wrapper in spawnParent)
         {
-            // Wrapper 命名：PrefabName_Wrapper
-            string prefabName = wrapper.name.Replace("_Wrapper", "");
+            if (wrapper.childCount == 0) continue;
+            Transform childRoot = wrapper.GetChild(0);
+
+            var uid = childRoot.GetComponentInChildren<UniqueId>();
+            if (uid)
+            {
+                uid.EnsureId();                     // ★ 保存前强制生成 GUID
+            }
 
             var od = new ObjectData
             {
-                prefabName = prefabName,
+                prefabName = childRoot.name,
+                uniqueId = uid ? uid.Id : "",
                 position = wrapper.position,
                 rotationZ = wrapper.eulerAngles.z
             };
 
-            // 子物体是真实 Prefab 根
-            if (wrapper.childCount > 0)
+            foreach (var mb in childRoot.GetComponentsInChildren<MonoBehaviour>(true))
             {
-                Transform childRoot = wrapper.GetChild(0);
+                if (mb is TransformLock2D) continue;
 
-                // 遍历所有脚本（包括禁用对象）
-                foreach (var mb in childRoot.GetComponentsInChildren<MonoBehaviour>(true))
+                od.comps.Add(new ComponentData
                 {
-                    // 跳过不需要保存的脚本
-                    if (mb is TransformLock2D) continue;
-
-                    od.comps.Add(new ComponentData
-                    {
-                        type = mb.GetType().AssemblyQualifiedName,
-                        path = GetRelativePath(childRoot, mb.transform),
-                        json = JsonUtility.ToJson(mb)
-                    });
-                }
+                    type = mb.GetType().AssemblyQualifiedName,
+                    json = JsonUtility.ToJson(mb)
+                });
             }
-
             list.Add(od);
         }
 
-        string jsonAll = JsonUtility.ToJson(new SerializationWrapper<ObjectData>(list), true);
-        File.WriteAllText(full, jsonAll);
-        Debug.Log("[SaveLayout] " + full);
+        string full = ResolvePath(file);
+        Directory.CreateDirectory(Path.GetDirectoryName(full));
+        File.WriteAllText(full,
+            JsonUtility.ToJson(new SerializationWrapper<ObjectData>(list), true));
+        Debug.Log($"✅ [SaveLayout] 已保存 {full}");
     }
 
-    /*────────────────────── 加载布局（编辑器） ─────────────────────*/
-    public void LoadLayoutForEditor(string fileName)
+
+    /*──────── 加载（编辑器 / 游戏） ────────*/
+    public void LoadLayout(string file, bool editorMode)
     {
-        string full = ResolvePath(fileName);
-        if (!File.Exists(full))
+        string full = ResolvePath(file);
+        if (!File.Exists(full)) { Debug.LogError("❌ Layout not found"); return; }
+
+        foreach (Transform c in spawnParent) Destroy(c.gameObject);
+
+        var data = JsonUtility.FromJson<SerializationWrapper<ObjectData>>(File.ReadAllText(full));
+        if (data?.items == null) { Debug.LogError("❌ Deserialize failed"); return; }
+
+        Dictionary<string, GameObject> map = new();
+
+        foreach (var od in data.items)
         {
-            Debug.LogError("Layout not found: " + full);
-            return;
+            string baseName = od.prefabName.Split('_')[0];
+            GameObject prefab = Resources.Load<GameObject>("Prefabs/Workshop/" + baseName);
+            if (!prefab) { Debug.LogWarning("⚠ Missing prefab " + baseName); continue; }
+
+            GameObject go, wrapper = null;
+            if (editorMode)
+            {
+                wrapper = new GameObject(od.prefabName.Replace(baseName, baseName + "_Wrapper"));
+                wrapper.transform.SetParent(spawnParent);
+                wrapper.transform.position = od.position;
+                wrapper.transform.rotation = Quaternion.Euler(0, 0, od.rotationZ);
+
+                go = Instantiate(prefab, wrapper.transform);
+                go.transform.localPosition = Vector3.zero;
+            }
+            else
+            {
+                go = Instantiate(prefab, od.position,
+                        Quaternion.Euler(0, 0, od.rotationZ), spawnParent);
+            }
+
+            go.name = od.prefabName;
+
+            // ★ 保证 UniqueId 正确
+            var uid = go.GetComponentInChildren<UniqueId>();
+            if (!uid) uid = go.AddComponent<UniqueId>();
+
+            if (!string.IsNullOrEmpty(od.uniqueId))
+            {
+                // 用 JSON 中的 GUID 覆盖
+                typeof(UniqueId).GetField("id",
+                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+                    ?.SetValue(uid, od.uniqueId);
+            }
+            else
+            {
+                // JSON 里为空 → 运行时生成
+                uid.EnsureId();
+            }
+
+            map[uid.Id] = go;
+
+            if (editorMode)
+            {
+                PhysicsScriptDisabler.Disable(go);
+                WrapperColliderUtils.AddBoxColliderToWrapper(wrapper, go);
+                wrapper.gameObject.AddComponent<TransformLock2D>().gridSize = 1f;
+            }
         }
 
-        // 清空旧 Wrapper
-        foreach (Transform t in spawnParent)
-            Destroy(t.gameObject);
-
-        var wrapperJson = File.ReadAllText(full);
-        var dataWrapper = JsonUtility.FromJson<SerializationWrapper<ObjectData>>(wrapperJson);
-
-        if (dataWrapper?.items == null)
+        // 字段恢复
+        foreach (var od in data.items)
         {
-            Debug.LogError("Deserialize failed");
-            return;
-        }
-
-        foreach (var od in dataWrapper.items)
-        {
-            GameObject prefab = Resources.Load<GameObject>("Prefabs/Workshop/" + od.prefabName);
-            if (!prefab) { Debug.LogWarning("Missing prefab " + od.prefabName); continue; }
-
-            /* 创建 Wrapper */
-            GameObject w = new GameObject(od.prefabName + "_Wrapper");
-            w.transform.SetParent(spawnParent, true);
-            w.transform.position = od.position;
-            w.transform.rotation = Quaternion.Euler(0, 0, od.rotationZ);
-
-            /* 实例化 Prefab */
-            GameObject childRoot = Instantiate(prefab, w.transform);
-            childRoot.transform.localPosition = Vector3.zero;
-            childRoot.transform.localRotation = Quaternion.identity;
-
-            /* 禁用物理脚本 */
-            PhysicsScriptDisabler.Disable(childRoot);
-
-            /* 恢复脚本字段 */
-            RestoreComponentData(childRoot, od.comps);
-
-            /* 碰撞盒 & 网格锁定 */
-            WrapperColliderUtils.AddBoxColliderToWrapper(w, childRoot);
-            var lock2D = w.AddComponent<TransformLock2D>();
-            lock2D.gridSize = gridSpacing;
+            if (map.TryGetValue(string.IsNullOrEmpty(od.uniqueId) ? null : od.uniqueId, out var go))
+            {
+                foreach (var cd in od.comps)
+                {
+                    var t = System.Type.GetType(cd.type);
+                    if (t == null) continue;
+                    var comp = go.GetComponentInChildren(t, true) ?? go.AddComponent(t);
+                    JsonUtility.FromJsonOverwrite(cd.json, comp);
+                }
+            }
         }
 
         hierarchy?.Refresh();
-        Debug.Log("[LoadLayoutForEditor] " + full);
+        Debug.Log($"✅ [LoadLayout] {full}");
     }
 
-    /*────────────────────── 加载布局（游戏） ─────────────────────*/
-    public void LoadLayoutForGame(string fileName)
-    {
-        string full = ResolvePath(fileName);
-        if (!File.Exists(full))
-        {
-            Debug.LogError("Layout not found: " + full);
-            return;
-        }
 
-        foreach (Transform t in spawnParent)
-            Destroy(t.gameObject);
-
-        var wrapperJson = File.ReadAllText(full);
-        var dataWrapper = JsonUtility.FromJson<SerializationWrapper<ObjectData>>(wrapperJson);
-
-        if (dataWrapper?.items == null)
-        {
-            Debug.LogError("Deserialize failed");
-            return;
-        }
-
-        foreach (var od in dataWrapper.items)
-        {
-            GameObject prefab = Resources.Load<GameObject>("Prefabs/Workshop/" + od.prefabName);
-            if (!prefab) { Debug.LogWarning("Missing prefab " + od.prefabName); continue; }
-
-            GameObject go = Instantiate(prefab, od.position,
-                                        Quaternion.Euler(0, 0, od.rotationZ),
-                                        spawnParent);
-
-            RestoreComponentData(go, od.comps);
-        }
-
-        Debug.Log("[LoadLayoutForGame] " + full);
-    }
-
-    /*───────────────── 辅助：写回脚本字段 ─────────────────*/
-    static void RestoreComponentData(GameObject root, List<ComponentData> datas)
-    {
-        if (datas == null) return;
-
-        foreach (var cd in datas)
-        {
-            var type = System.Type.GetType(cd.type);
-            if (type == null) continue;
-
-            Transform target = FindByPath(root.transform, cd.path);
-            if (!target) continue;
-
-            var comp = target.GetComponent(type) ?? target.gameObject.AddComponent(type);
-            JsonUtility.FromJsonOverwrite(cd.json, comp);
-        }
-    }
-
-    /* 路径: 从 childRoot 开始的 /Child/GrandChild  */
-    static string GetRelativePath(Transform root, Transform target)
-    {
-        if (target == root) return "/";
-        var stack = new Stack<string>();
-        var cur = target;
-        while (cur != root && cur != null)
-        {
-            stack.Push(cur.name);
-            cur = cur.parent;
-        }
-        return "/" + string.Join("/", stack.ToArray());
-    }
-
-    /* 按路径查找子节点 */
-    static Transform FindByPath(Transform root, string path)
-    {
-        if (path == "/" || string.IsNullOrEmpty(path)) return root;
-        string[] seg = path.Split('/');
-        Transform cur = root;
-        for (int i = 1; i < seg.Length && cur; i++)
-            cur = cur.Find(seg[i]);
-        return cur;
-    }
+    /* 快捷调用 */
+    public void LoadLayoutForEditor(string file) => LoadLayout(file, true);
+    public void LoadLayoutForGame(string file) => LoadLayout(file, false);
 }

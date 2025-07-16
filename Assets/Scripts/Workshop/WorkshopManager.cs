@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using RuntimeInspectorNamespace;
+using System.Linq;
 
 public class WorkshopManager : MonoBehaviour
 {
-    public string defaultPrefabName = "Circle"; // ✅ 默认 prefab 名
+    public string defaultPrefabName = "Circle";
     public GameObject prefabToSpawn;
     public Transform spawnParent;
     public RuntimeHierarchy hierarchy;
@@ -11,96 +12,75 @@ public class WorkshopManager : MonoBehaviour
     public Camera gizmoCamera;
 
     public float gridSpacing = 1f;
-    public float zoomSpeed = 5f;
-    public float minZoom = 2f;
-    public float maxZoom = 20f;
+    public float zoomSpeed = 5f, minZoom = 2f, maxZoom = 20f;
+    Vector3 lastMouse;
 
-    private Vector3 lastMousePosition;
-
-    private void Start()
+    void Update()
     {
-        Physics2D.simulationMode = SimulationMode2D.Script;   // 2D 物理不更新
-    }
-
-    private void Update()
-    {
-        // ✅ 滚轮缩放相机
         if (gizmoCamera && gizmoCamera.orthographic)
         {
-            float scroll = Input.GetAxis("Mouse ScrollWheel");
-            if (Mathf.Abs(scroll) > 0.001f)
-            {
-                gizmoCamera.orthographicSize -= scroll * zoomSpeed;
-                gizmoCamera.orthographicSize = Mathf.Clamp(gizmoCamera.orthographicSize, minZoom, maxZoom);
-            }
+            float sc = Input.GetAxis("Mouse ScrollWheel");
+            if (Mathf.Abs(sc) > 0.001f)
+                gizmoCamera.orthographicSize = Mathf.Clamp(
+                    gizmoCamera.orthographicSize - sc * zoomSpeed, minZoom, maxZoom);
         }
-
-        // ✅ 右键平移相机
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1)) lastMouse = Input.mousePosition;
+        if (Input.GetMouseButton(1))
         {
-            lastMousePosition = Input.mousePosition;
-        }
-        else if (Input.GetMouseButton(1))
-        {
-            Vector3 delta = Input.mousePosition - lastMousePosition;
-            Vector3 move = gizmoCamera.ScreenToWorldPoint(lastMousePosition) - gizmoCamera.ScreenToWorldPoint(lastMousePosition + delta);
-            gizmoCamera.transform.position += new Vector3(move.x, move.y, 0);
-            lastMousePosition = Input.mousePosition;
+            Vector3 delta = Input.mousePosition - lastMouse;
+            Vector3 mov = gizmoCamera.ScreenToWorldPoint(lastMouse) -
+                          gizmoCamera.ScreenToWorldPoint(lastMouse + delta);
+            gizmoCamera.transform.position += new Vector3(mov.x, mov.y, 0);
+            lastMouse = Input.mousePosition;
         }
     }
 
+    /*──────────── Spawn ────────────*/
     public void Spawn()
     {
-        // ✅ 优先用 Dropdown 选中的 prefabToSpawn，否则用默认
-        if (prefabToSpawn == null)
-        {
+        if (!prefabToSpawn)
             prefabToSpawn = Resources.Load<GameObject>("Prefabs/Workshop/" + defaultPrefabName);
-            if (prefabToSpawn == null)
-            {
-                Debug.LogError($"❌ 找不到默认 Prefab: {defaultPrefabName}");
-                return;
-            }
-        }
+        if (!prefabToSpawn) { Debug.LogError("❌ Default prefab missing"); return; }
 
-        string prefabName = prefabToSpawn.name;
-        GameObject prefab = Resources.Load<GameObject>("Prefabs/Workshop/" + prefabName);
-        if (prefab == null)
-        {
-            Debug.LogError($"❌ Prefab {prefabName} 不在 Resources/Prefabs/Workshop/");
-            return;
-        }
+        string baseName = prefabToSpawn.name;
+        GameObject prefab = Resources.Load<GameObject>("Prefabs/Workshop/" + baseName);
+        if (!prefab) { Debug.LogError("❌ Prefab not in Resources"); return; }
 
-        // ✅ 创建 Wrapper 父物体
-        GameObject wrapper = new GameObject(prefabName + "_Wrapper");
+        // 计算下一个编号
+        int nextIdx = spawnParent.Cast<Transform>()
+                     .Count(t => t.name.StartsWith(baseName + "_Wrapper_")) + 1;
+
+        string wrapperName = $"{baseName}_Wrapper_{nextIdx}";
+        string childName = $"{baseName}_{nextIdx}";
+
+        // 创建 Wrapper
+        GameObject wrapper = new GameObject(wrapperName);
         wrapper.transform.SetParent(spawnParent, true);
-
-        // 放到相机中心
-        float zOffset = 2f;
         Vector3 center = gizmoCamera.ViewportToWorldPoint(
-            new Vector3(0.5f, 0.5f, gizmoCamera.nearClipPlane + zOffset));
+            new Vector3(0.5f, 0.5f, gizmoCamera.nearClipPlane + 2f));
         center.z = 1f;
         wrapper.transform.position = center;
 
-        // 实例化实际 prefab 作为子物体
+        // 子 prefab
         GameObject child = Instantiate(prefab, wrapper.transform);
-        child.name = prefabName;
+        child.name = childName;
         child.transform.localPosition = Vector3.zero;
-        child.transform.localRotation = Quaternion.identity;
 
-        // 禁用物理和脚本
+        // ★ 确保生成 UniqueId 并写入 GUID
+        var uid = child.GetComponent<UniqueId>();
+        if (!uid) uid = child.AddComponent<UniqueId>();
+        uid.EnsureId();
+
         PhysicsScriptDisabler.Disable(child);
-
-        // 用公共工具计算碰撞盒
         WrapperColliderUtils.AddBoxColliderToWrapper(wrapper, child);
 
-        // Wrapper 贴网格
-        var lockComp = wrapper.AddComponent<TransformLock2D>();
-        lockComp.gridSize = gridSpacing;
-
-        Debug.Log($"✅ 已生成 Wrapper {wrapper.name} + 子物体 {child.name}（从 Resources/Prefabs/Workshop/ 加载）");
+        var lock2D = wrapper.AddComponent<TransformLock2D>();
+        lock2D.gridSize = gridSpacing;
 
         hierarchy?.Refresh();
         inspector?.Inspect(wrapper);
+
+        Debug.Log($"✅ 已生成 Wrapper {wrapper.name} + 子物体 {child.name} 并绑定 GUID {uid.Id}");
     }
 
 }

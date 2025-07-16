@@ -1,28 +1,42 @@
 {
     "items": [
         {
-            "prefabName": "ElevatorPlatformSet",
+            "prefabName": "Elevator_1",
+            "uniqueId": "8d5199c5-9794-4599-844c-ebef7e9c321e",
             "position": {
-                "x": 960.0,
-                "y": 540.0,
+                "x": 1142.0,
+                "y": 642.2468872070313,
                 "z": 1.0
             },
             "rotationZ": 0.0,
             "comps": [
                 {
-                    "type": "PressurePlateBehaviour, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-                    "path": "/PressurePlate",
-                    "json": "{\"validTags\":[\"Player\",\"Ghost\",\"Enemy\"],\"idleSprite\":{\"instanceID\":0},\"pressedSprite\":{\"instanceID\":0}}"
+                    "type": "StairsBehaviour, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                    "json": "{\"stairsUp\":{\"instanceID\":-138854},\"stairsDown\":{\"instanceID\":0},\"cooldown\":0.0,\"standardCooldown\":0.5}"
                 },
                 {
-                    "type": "ElevatorPlatform, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-                    "path": "/ElevatorPlatform",
-                    "json": "{\"conditionObjects\":[],\"switchType\":0,\"topPosition\":{\"instanceID\":-40478},\"moveSpeed\":2.0}"
+                    "type": "UniqueId, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                    "json": "{\"id\":\"8d5199c5-9794-4599-844c-ebef7e9c321e\"}"
+                }
+            ]
+        },
+        {
+            "prefabName": "Elevator_2",
+            "uniqueId": "98862a54-6e4f-414f-9454-d2685d7ebc57",
+            "position": {
+                "x": 1142.0,
+                "y": 642.2468872070313,
+                "z": 1.0
+            },
+            "rotationZ": 0.0,
+            "comps": [
+                {
+                    "type": "StairsBehaviour, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                    "json": "{\"stairsUp\":{\"instanceID\":0},\"stairsDown\":{\"instanceID\":0},\"cooldown\":0.0,\"standardCooldown\":0.5}"
                 },
                 {
-                    "type": "RecordableObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-                    "path": "/ElevatorPlatform",
-                    "json": "{\"uniqueID\":\"c4631627-5914-46bb-907e-f1a7ab5156a7\"}"
+                    "type": "UniqueId, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                    "json": "{\"id\":\"98862a54-6e4f-414f-9454-d2685d7ebc57\"}"
                 }
             ]
         }

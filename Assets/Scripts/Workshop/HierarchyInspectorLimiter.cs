@@ -40,15 +40,12 @@ public class HierarchyInspectorSetup : MonoBehaviour
         {
             Component c = list[i];
 
-            // 隐藏所有不需暴露的组件
-            if (c is BoxCollider ||   // 3D 碰撞箱
-                c is BoxCollider2D ||   // 2D 碰撞箱
-                c is LineRenderer ||   // 高亮线框
-                c is Transform ||   // Transform 组件本身
-                c is TransformLock2D)      // 网格锁定脚本
+            // 只保留类名以 "Behaviour" 结尾的脚本
+            if (!c.GetType().Name.EndsWith("Behaviour"))
             {
                 list.RemoveAt(i);
             }
         }
     }
+
 }
