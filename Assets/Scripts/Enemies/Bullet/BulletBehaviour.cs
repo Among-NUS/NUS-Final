@@ -1,4 +1,5 @@
 using Unity.VisualScripting;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class BulletBehaviour : MonoBehaviour
@@ -37,16 +38,22 @@ public class BulletBehaviour : MonoBehaviour
     {
         if (GameManager.Instance.currentPhase == GameManager.GamePhase.TimeStop) return;
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, speed * Time.fixedDeltaTime,LayerMask.GetMask("Enemy","Hero","Default"));
-        if (hit.collider!=null&&IsHit(hit.collider))
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, direction, speed * Time.fixedDeltaTime,LayerMask.GetMask("Enemy","Hero","Default"));
+        bool hitOrNot = false;    
+        foreach (RaycastHit2D hit in hits)
         {
-            transform.position = hit.point;
+            if (IsHit(hit.collider))
+            {
+                transform.position = hit.point;
+                hitOrNot = true;
+                break;
+            }
         }
-        else
+        if (!hitOrNot)
         {
             transform.position += direction.normalized * speed * Time.fixedDeltaTime;
         }
-        lineRenderer.SetPosition(0, transform.position- direction.normalized * speed * Time.fixedDeltaTime);
+        lineRenderer.SetPosition(0, transform.position - direction.normalized * speed * Time.fixedDeltaTime);
         lineRenderer.SetPosition(1, transform.position);
         if (Vector3.Distance(spawnPos, transform.position) > maxDistance)
             Destroy(gameObject);
@@ -77,6 +84,6 @@ public class BulletBehaviour : MonoBehaviour
             Instantiate(Resources.Load<GameObject>("Prefabs/hitWallEffectPrefab"), transform.position, transform.rotation);
         }
         Debug.Log("Bullet hit" + collision.gameObject.name);
-            Destroy(gameObject);
+        Destroy(gameObject);
     }
 }
