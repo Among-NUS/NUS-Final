@@ -24,7 +24,7 @@ public class MenuBehaviour : MonoBehaviour
     }
     public void OnClickWorkshop()
     {
-        SceneManager.LoadScene("EditScene");
+        SceneManager.LoadScene("EditorScene");
     }
     public void OnClickCertainLevel(int levelNo)
     {
