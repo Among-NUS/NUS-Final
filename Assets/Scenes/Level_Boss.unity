@@ -8502,7 +8502,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0036721707, y: -0.0016100407}
@@ -8524,7 +8524,7 @@ MonoBehaviour:
   isDead: 0
   generalCooldown: 0
   speed: 0.1
-  bossAnimator: {fileID: 0}
+  bossAnimator: {fileID: 901580851}
 --- !u!212 &901580849
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8586,7 +8586,7 @@ Transform:
   m_GameObject: {fileID: 901580846}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.96, y: -1.92, z: 0}
+  m_LocalPosition: {x: -0.96, y: -1.85, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8602,7 +8602,7 @@ Animator:
   m_GameObject: {fileID: 901580846}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0fa2ed2b9310a4c4cb0a13e011164457, type: 2}
+  m_Controller: {fileID: 9100000, guid: f40221fdd4dded74ebc04bd1a2554e46, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
