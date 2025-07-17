@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5ae5e0cc873cd8146ade18e5a48d7fa2
+guid: 4cbbfdf384b49ff4a85d6e577a64a7c3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 20
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hero_0
+      name: HeroWalking_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57206f74a4e23b648a29bec5697cde2f
-      internalID: -922576643
+      spriteID: 4f2f34115d3ac0940b26ba5444bfecb5
+      internalID: 1326603181
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hero_1
+      name: HeroWalking_1
       rect:
         serializedVersion: 2
         x: 50
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 869b7dc48bbb89a48ae008aeee29c722
-      internalID: 1966800982
+      spriteID: e108ad9082be7ec498502981d42e9793
+      internalID: -1765588962
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hero_2
+      name: HeroWalking_2
       rect:
         serializedVersion: 2
         x: 100
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1170e45ae25879443ab3c1c622a3e469
-      internalID: 138560838
+      spriteID: c8d1d459b039c1745afca2cf08115b83
+      internalID: -276244170
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hero_3
+      name: HeroWalking_3
       rect:
         serializedVersion: 2
         x: 150
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46c2b47a257177941acc7b64bafa8af0
-      internalID: 586680136
+      spriteID: f2f7d5d7545881b4984e3c2b536ef8b8
+      internalID: -536302834
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hero_4
+      name: HeroWalking_4
       rect:
         serializedVersion: 2
         x: 200
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 379f640c38ba726488b67d84337c0989
-      internalID: -1413861393
+      spriteID: a594e5aae7e0b0843be1d1d64f2cbdf4
+      internalID: 1442713975
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hero_5
+      name: HeroWalking_5
       rect:
         serializedVersion: 2
         x: 250
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32c6a691a6a16b04499a2d1d45459dfb
-      internalID: -1973030803
+      spriteID: 2c517a22c660bbd40a3a969f8dc7c0f0
+      internalID: -1382016034
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hero_6
+      name: HeroWalking_6
       rect:
         serializedVersion: 2
         x: 300
@@ -250,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b94505aca00496e4b9fd5bf63a6b3e98
-      internalID: 1857518689
+      spriteID: 0ac8ddabacb4dc842bbc0199d43fba89
+      internalID: 1506969949
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hero_7
+      name: HeroWalking_7
       rect:
         serializedVersion: 2
         x: 350
@@ -271,14 +271,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 290ce77bd18c51942867cb678888a95d
-      internalID: -73203331
+      spriteID: bd46d4b3267190b4f844a2a204f2fea2
+      internalID: 1656862878
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hero_8
+      name: HeroWalking_8
       rect:
         serializedVersion: 2
         x: 400
@@ -292,14 +292,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3419876aaf73bee4d962a2f5514d55bb
-      internalID: 392931329
+      spriteID: b5273f93b45f16e49bc72f9f4065033f
+      internalID: 274013789
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hero_9
+      name: HeroWalking_9
       rect:
         serializedVersion: 2
         x: 450
@@ -313,14 +313,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5da6d1197cfc2514ab2c30bed5611353
-      internalID: 1775015561
+      spriteID: 471632b9dd72a6e48838656413df9516
+      internalID: -1913740616
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hero_10
+      name: HeroWalking_10
       rect:
         serializedVersion: 2
         x: 500
@@ -334,14 +334,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0be4ae6b26b95be4584bbf39f7392ee6
-      internalID: -1113815332
+      spriteID: e6fca058deb7b26439a18d1b8c583698
+      internalID: -1756391436
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hero_11
+      name: HeroWalking_11
       rect:
         serializedVersion: 2
         x: 550
@@ -355,8 +355,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99c2c6996f41a8243bf38ddad4ba0c66
-      internalID: -1809858663
+      spriteID: 238d8fd997a77fb4ca232479053aec5b
+      internalID: -1985339153
       vertices: []
       indices: 
       edges: []
@@ -372,18 +372,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      hero_0: -922576643
-      hero_1: 1966800982
-      hero_10: -1113815332
-      hero_11: -1809858663
-      hero_2: 138560838
-      hero_3: 586680136
-      hero_4: -1413861393
-      hero_5: -1973030803
-      hero_6: 1857518689
-      hero_7: -73203331
-      hero_8: 392931329
-      hero_9: 1775015561
+      HeroWalking_0: 1326603181
+      HeroWalking_1: -1765588962
+      HeroWalking_10: -1756391436
+      HeroWalking_11: -1985339153
+      HeroWalking_2: -276244170
+      HeroWalking_3: -536302834
+      HeroWalking_4: 1442713975
+      HeroWalking_5: -1382016034
+      HeroWalking_6: 1506969949
+      HeroWalking_7: 1656862878
+      HeroWalking_8: 274013789
+      HeroWalking_9: -1913740616
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
