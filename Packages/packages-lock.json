@@ -1,10 +1,11 @@
 {
   "dependencies": {
     "com.hiddenmonk.u3drtg": {
-      "version": "file:../ExternalPackages/Unity3DRuntimeTransformGizmo",
+      "version": "https://github.com/cyrilBoucher/Unity3DRuntimeTransformGizmo.git#feature/upm-package",
       "depth": 0,
-      "source": "local",
-      "dependencies": {}
+      "source": "git",
+      "dependencies": {},
+      "hash": "2ce83db0fcde81c4da705f744bc6f5202c4a564d"
     },
     "com.unity.2d.animation": {
       "version": "9.1.0",
@@ -273,10 +274,11 @@
       "url": "https://packages.unity.com"
     },
     "com.yasirkula.runtimeinspector": {
-      "version": "file:../ExternalPackages/UnityRuntimeInspector",
+      "version": "https://github.com/yasirkula/UnityRuntimeInspector.git",
       "depth": 0,
-      "source": "local",
-      "dependencies": {}
+      "source": "git",
+      "dependencies": {},
+      "hash": "f8755d61a7b535cc626630e54478ca162ab97ff6"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
