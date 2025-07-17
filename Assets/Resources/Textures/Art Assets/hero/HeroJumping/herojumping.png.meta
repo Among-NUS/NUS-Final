@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5d857b1456c2e6843954d83040db7370
+guid: 1dfce21ff75d25a4983bc35ded82c371
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 20
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: herojumping_0
+      name: HeroJumping_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ac451fae41f843499021537f5ddabc1
-      internalID: -2138825956
+      spriteID: b51e82319e2b35941b7a298e115801ab
+      internalID: 951049746
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: herojumping_1
+      name: HeroJumping_1
       rect:
         serializedVersion: 2
         x: 50
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e889d456f11f9324888d221f1ba6c7b9
-      internalID: -2093650360
+      spriteID: 30c4a19710f38a049bc1488c57407842
+      internalID: -1378127586
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: herojumping_2
+      name: HeroJumping_2
       rect:
         serializedVersion: 2
         x: 100
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c531336a12afc145b773062ce1b4bf2
-      internalID: -1888643683
+      spriteID: fc228a2584606b340a8ca4874ac37eef
+      internalID: 589631239
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: herojumping_3
+      name: HeroJumping_3
       rect:
         serializedVersion: 2
         x: 150
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19cf1d265f2b5c64abc0fe2cc2716c2a
-      internalID: 2027760422
+      spriteID: d5a724ba2d3c7b844a71e45f829925b6
+      internalID: 482134503
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: herojumping_4
+      name: HeroJumping_4
       rect:
         serializedVersion: 2
         x: 200
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2802d28c1254ea346ad70a3205f82c81
-      internalID: 666019157
+      spriteID: c93ea04e93ede014f8105d83f3c279e8
+      internalID: -1267363463
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: herojumping_5
+      name: HeroJumping_5
       rect:
         serializedVersion: 2
         x: 250
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e8b7f766c6479d48a9bd1f6e4c5852f
-      internalID: -2011580561
+      spriteID: 277cfe413c3bf9e458ce71f7b48a6902
+      internalID: 672877307
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: herojumping_6
+      name: HeroJumping_6
       rect:
         serializedVersion: 2
         x: 300
@@ -250,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3fa7b25844655414dbd7d9473953123f
-      internalID: -1307498159
+      spriteID: 130b6434181e9d94fba18f0682795df2
+      internalID: 1538930687
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: herojumping_7
+      name: HeroJumping_7
       rect:
         serializedVersion: 2
         x: 350
@@ -271,14 +271,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe799781271cde143a5fbd5c7ff2ce9c
-      internalID: -1703688111
+      spriteID: 630fe92708dc9e64cbf7b891b6967cd3
+      internalID: -1984369991
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: herojumping_8
+      name: HeroJumping_8
       rect:
         serializedVersion: 2
         x: 400
@@ -292,14 +292,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1ddfe98c541fa4459ce71016c0e61b8
-      internalID: -738909406
+      spriteID: 72f4369082b434444b88413e6e6703cd
+      internalID: -1487407551
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: herojumping_9
+      name: HeroJumping_9
       rect:
         serializedVersion: 2
         x: 450
@@ -313,14 +313,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d49dc3200506c1418923bc0f5c52acf
-      internalID: -780518590
+      spriteID: e73bda9ce4e71224abcc3d6ad2eaa5fc
+      internalID: 1452864551
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: herojumping_10
+      name: HeroJumping_10
       rect:
         serializedVersion: 2
         x: 500
@@ -334,14 +334,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8da16b5f84eb3674babf8a9b21c83dc4
-      internalID: 380312077
+      spriteID: 3e46008be47553540856a88ef37a1916
+      internalID: -1238010226
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: herojumping_11
+      name: HeroJumping_11
       rect:
         serializedVersion: 2
         x: 550
@@ -355,8 +355,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52f04ba822565594dbfbb8d8fd882c62
-      internalID: -1184888243
+      spriteID: d25778a359f86b4449e533dcf7b0a64b
+      internalID: -325610329
       vertices: []
       indices: 
       edges: []
@@ -372,18 +372,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      herojumping_0: -2138825956
-      herojumping_1: -2093650360
-      herojumping_10: 380312077
-      herojumping_11: -1184888243
-      herojumping_2: -1888643683
-      herojumping_3: 2027760422
-      herojumping_4: 666019157
-      herojumping_5: -2011580561
-      herojumping_6: -1307498159
-      herojumping_7: -1703688111
-      herojumping_8: -738909406
-      herojumping_9: -780518590
+      HeroJumping_0: 951049746
+      HeroJumping_1: -1378127586
+      HeroJumping_10: -1238010226
+      HeroJumping_11: -325610329
+      HeroJumping_2: 589631239
+      HeroJumping_3: 482134503
+      HeroJumping_4: -1267363463
+      HeroJumping_5: 672877307
+      HeroJumping_6: 1538930687
+      HeroJumping_7: -1984369991
+      HeroJumping_8: -1487407551
+      HeroJumping_9: 1452864551
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
