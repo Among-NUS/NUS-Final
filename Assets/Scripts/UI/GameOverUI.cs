@@ -1,3 +1,4 @@
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,15 +8,50 @@ public class GameOverUI : MonoBehaviour
 
     void Start()
     {
-        gameOverPanel.SetActive(false); // ��ʼʱ����
+        gameOverPanel.SetActive(false); // 开始时隐藏
     }
 
-    // ���� Game Over ʱ�������
+    // 触发 Game Over 时调用这个
     public void ShowGameOver()
     {
         gameOverPanel.SetActive(true);
-        Time.timeScale = 0f;  // ��ͣ��Ϸ
+
+        // ✅ 找到名为 gameOverText 的子物体并修改 TMP_Text
+        var textTransform = gameOverPanel.transform.Find("DeadWayText");
+        if (textTransform != null)
+        {
+            TMP_Text tmpText = textTransform.GetComponent<TMP_Text>();
+            if (tmpText)
+                tmpText.text = "Hit by Bullet";
+        }
+        else
+        {
+            Debug.LogWarning("⚠ gameOverText 子物体没找到");
+        }
+
+        Time.timeScale = 0f;  // 暂停游戏
     }
+
+    public void ShowGhostGameOver()
+    {
+        gameOverPanel.SetActive(true);
+
+        // ✅ 找到名为 gameOverText 的子物体并修改 TMP_Text
+        var textTransform = gameOverPanel.transform.Find("DeadWayText");
+        if (textTransform != null)
+        {
+            TMP_Text tmpText = textTransform.GetComponent<TMP_Text>();
+            if (tmpText)
+                tmpText.text = "Causality Broken";
+        }
+        else
+        {
+            Debug.LogWarning("⚠ gameOverText 子物体没找到");
+        }
+
+        Time.timeScale = 0f;  // 暂停游戏
+    }
+
 
     public void OnRestartButton()
     {
