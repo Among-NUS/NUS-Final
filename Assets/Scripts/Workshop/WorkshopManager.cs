@@ -14,6 +14,41 @@ public class WorkshopManager : MonoBehaviour
     public float gridSpacing = 1f;
     public float zoomSpeed = 5f, minZoom = 2f, maxZoom = 20f;
     Vector3 lastMouse;
+    void Start()
+    {
+        // ✅ 进入场景时检查是否已有 Hero（Wrapper）
+        bool hasHero = false;
+        foreach (Transform wrapper in spawnParent)
+        {
+            if (wrapper.name.Contains("Hero"))
+            {
+                hasHero = true;
+                break;
+            }
+        }
+
+        if (!hasHero)
+        {
+            Debug.Log("✅ 没有 Hero，自动生成一个");
+            SpawnPrefab("Hero"); // ✅ 生成 Wrapper + Hero prefab
+        }
+
+        bool hasLevelExit = false;
+        foreach (Transform wrapper in spawnParent)
+        {
+            if (wrapper.name.Contains("LevelExit"))
+            {
+                hasLevelExit = true;
+                break;
+            }
+        }
+
+        if (!hasLevelExit)
+        {
+            Debug.Log("✅ 没有 exit，自动生成一个");
+            SpawnPrefab("LevelExit"); // ✅ 生成 Wrapper + Hero prefab
+        }
+    }
 
     /*──────── 相机缩放 / 平移 ────────*/
     void Update()

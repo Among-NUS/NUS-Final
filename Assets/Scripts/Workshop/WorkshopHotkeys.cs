@@ -1,17 +1,17 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using RuntimeInspectorNamespace;
 
 public class WorkshopHotkeys : MonoBehaviour
 {
-    public RuntimeHierarchy hierarchy;   // ÍÏÈë RuntimeHierarchy
-    public RuntimeInspector inspector;   // ÍÏÈë RuntimeInspector
-    public Transform spawnRoot;          // ÄãµÄ SpawnRoot
+    public RuntimeHierarchy hierarchy;   // æ‹–å…¥ RuntimeHierarchy
+    public RuntimeInspector inspector;   // æ‹–å…¥ RuntimeInspector
+    public Transform spawnRoot;          // ä½ çš„ SpawnRoot
 
     private GameObject currentSelected;
 
     void Update()
     {
-        // »ñÈ¡µ±Ç° Inspector Ñ¡ÖĞµÄ¶ÔÏó
+        // è·å–å½“å‰ Inspector é€‰ä¸­çš„å¯¹è±¡
         if (inspector != null)
         {
             if (inspector.InspectedObject is GameObject go)
@@ -20,7 +20,7 @@ public class WorkshopHotkeys : MonoBehaviour
                 currentSelected = null;
         }
 
-        // Delete ¼üÉ¾³ı
+        // Delete é”®åˆ é™¤
         if (currentSelected != null && Input.GetKeyDown(KeyCode.Delete))
         {
             DeleteCurrent();
@@ -31,7 +31,20 @@ public class WorkshopHotkeys : MonoBehaviour
     {
         Debug.Log($"[Hotkeys] Delete {currentSelected.name}");
 
-        // È·±£Ö»É¾³ı SpawnRoot ÏÂµÄ
+        // âœ… ç¦æ­¢åˆ é™¤ Hero
+        if (currentSelected.name.Contains("Hero"))
+        {
+            Debug.LogWarning("[Hotkeys] Hero æ˜¯å—ä¿æŠ¤çš„ï¼Œä¸èƒ½åˆ é™¤");
+            return;
+        }
+
+        if (currentSelected.name.Contains("LevelExit"))
+        {
+            Debug.LogWarning("[Hotkeys] exit æ˜¯å—ä¿æŠ¤çš„ï¼Œä¸èƒ½åˆ é™¤");
+            return;
+        }
+
+        // âœ… ç¡®ä¿åªåˆ é™¤ SpawnRoot ä¸‹çš„
         if (currentSelected.transform.IsChildOf(spawnRoot))
         {
             Destroy(currentSelected);
@@ -40,7 +53,8 @@ public class WorkshopHotkeys : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("[Hotkeys] Ñ¡ÖĞµÄ²»ÊÇ SpawnRoot ÏÂµÄÎïÌå£¬Ìø¹ıÉ¾³ı");
+            Debug.LogWarning("[Hotkeys] é€‰ä¸­çš„ä¸æ˜¯ SpawnRoot ä¸‹çš„ç‰©ä½“ï¼Œè·³è¿‡åˆ é™¤");
         }
     }
+
 }

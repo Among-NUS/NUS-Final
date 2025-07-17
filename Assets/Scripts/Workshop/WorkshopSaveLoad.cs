@@ -19,7 +19,7 @@ public class WorkshopSaveLoad : MonoBehaviour
     /// <summary>
     /// 统一到 persistentDataPath 并自动补 json 后缀
     /// </summary>
-    static string ResolvePath(string f)
+    public static string ResolvePath(string f)
     {
         // 如果输入为空，默认 WorkshopLevel.ana
         if (string.IsNullOrEmpty(f))
