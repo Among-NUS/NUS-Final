@@ -60,7 +60,12 @@ public class TurretBehaviour : MonoBehaviour, IInteractable
             return;
 
         if (GameManager.Instance?.currentPhase == GameManager.GamePhase.TimeStop)
+        {
+            turretAnimator.speed = 0f;
             return;
+        }
+        turretAnimator.speed = 1f;
+
 
         if (monitor == null || shooter == null)
             return;
