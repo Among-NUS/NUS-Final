@@ -6,6 +6,7 @@ public class IntroUI : MonoBehaviour
 {
     public GameObject IntroduceCanvas;
     public GameObject PauseCanvas;
+    public GameObject DialogCanvas;
     private static bool hasIntroBeenShown = false;
 
     // Start is called before the first frame update
@@ -18,6 +19,7 @@ public class IntroUI : MonoBehaviour
 
         Time.timeScale = 0f;
         PauseCanvas.SetActive(false);
+        if (DialogCanvas != null) DialogCanvas.SetActive(false);
         IntroduceCanvas.SetActive(true);
     }
     public void OnSkipButtonClicked()
@@ -25,6 +27,7 @@ public class IntroUI : MonoBehaviour
         Time.timeScale = 1f;
         hasIntroBeenShown = true;
         PauseCanvas.SetActive(true);
+        if (DialogCanvas != null) DialogCanvas.SetActive(true);
         IntroduceCanvas.SetActive(false);
     }
 }
