@@ -45894,19 +45894,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1658635369976223388, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 19.2018
+      value: 18.6889
       objectReference: {fileID: 0}
     - target: {fileID: 1658635369976223388, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 4.3371
+      value: 3.8812
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658635369976223388, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658635369976223388, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 1658635369976223388, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -970.4429
+      value: -970.4673
       objectReference: {fileID: 0}
     - target: {fileID: 1658635369976223388, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -543.79126
+      value: -543.68
       objectReference: {fileID: 0}
     - target: {fileID: 1734176039421381508, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: textFile
