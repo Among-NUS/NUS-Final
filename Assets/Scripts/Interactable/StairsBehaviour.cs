@@ -18,7 +18,7 @@ public class StairsBehaviour : MonoBehaviour
     //public bool upwardHere = true;
 
     // --- 私有状态 ---
-    bool playerInside;
+    private readonly HashSet<Transform> insideEntities = new(); // 所有进入触发器的实体
     Transform playerTf;
     public float cooldown;            // 防止瞬时往返
     public float standardCooldown = 0.2f;
@@ -32,7 +32,7 @@ public class StairsBehaviour : MonoBehaviour
         if (cooldown > 0f)           // 冷却中
             cooldown -= Time.deltaTime;
 
-        if (!playerInside || cooldown > 0f) // 玩家不在触发器内或冷却中
+        if (insideEntities.Count==0 || cooldown > 0f) // 玩家不在触发器内或冷却中
             return;
 
         // 根据方向检测输入
@@ -78,7 +78,7 @@ public class StairsBehaviour : MonoBehaviour
     {
         if (other.CompareTag("Player")||other.CompareTag("Ghost"))
         {
-            playerInside = true;
+            insideEntities.Add(other.transform);
             playerTf = other.transform;
             //stairsAnimator.SetBool("HeroIn", true);
             enterPlayer = other.gameObject;
@@ -91,7 +91,7 @@ public class StairsBehaviour : MonoBehaviour
     {
         if (other.CompareTag("Player")||other.CompareTag("Ghost"))
         {
-            playerInside = false;
+            insideEntities.Remove(other.transform);
             playerTf = null;
             //stairsAnimator.SetBool("HeroIn", false);
         }

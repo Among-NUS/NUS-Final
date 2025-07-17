@@ -279,4 +279,16 @@ public class GhostBehaviour : MonoBehaviour
             Elevator = null;
         }
     }
+
+    public void SetFacingLeft(bool setLeft)
+    {
+        facingLeft = setLeft;
+        Vector3 s = transform.localScale;
+        float targetSign = facingLeft ? -1f : 1f;
+        if (Mathf.Sign(s.x) != targetSign)
+        {
+            s.x = Mathf.Abs(s.x) * targetSign;
+            transform.localScale = s;
+        }
+    }
 }
