@@ -1,7 +1,9 @@
-// ©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤
+ï»¿// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // LevelLoader.cs
-// ÔËĞĞÊ±´Ó JSON ¼ÓÔØ¹Ø¿¨Êı¾İµ½ÓÎÏ·³¡¾°£¨Óë±à¼­Æ÷½âñî£©
-// ©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤
+// è¿è¡Œæ—¶ä» JSON åŠ è½½å…³å¡æ•°æ®åˆ°æ¸¸æˆåœºæ™¯ï¼ˆä¸ç¼–è¾‘å™¨è§£è€¦ï¼‰
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+using System.IO;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,25 +14,47 @@ public static class LevelDataBridge
 
 public class LevelLoader : MonoBehaviour
 {
-    [Tooltip("Äã±£´æºÃµÄ JSON ÎÄ¼şÏà¶ÔÂ·¾¶£¬Èç Assets/Scenes/WorkshopLevel.json")]
-    public string levelJsonRelativePath = "Assets/Scenes/WorkshopLevel.json";
+    [Header("UI è¾“å…¥")]
+    public TMP_InputField fileNameField;  // âœ… ä»è¾“å…¥æ¡†è·å–è·¯å¾„
 
-    [Tooltip("¼ÓÔØºóÌø×ªµÄÕıÊ½ÓÎÏ·³¡¾°Ãû")]
+    [Tooltip("åŠ è½½åè·³è½¬çš„æ­£å¼æ¸¸æˆåœºæ™¯å")]
     public string targetSceneName = "GameLevelScene";
+
+    // âœ… è‡ªåŠ¨è¡¥ .ana å¹¶é»˜è®¤æ¡Œé¢è·¯å¾„
+    static string ResolvePath(string f)
+    {
+        if (string.IsNullOrEmpty(f))
+            f = "WorkshopLevel.ana";
+
+        if (!f.EndsWith(".ana"))
+            f += ".ana";
+
+        string desktopPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
+
+        return Path.IsPathRooted(f)
+            ? f
+            : Path.Combine(desktopPath, f);
+    }
 
     public void LoadLevelInGameScene()
     {
-        string fullPath = System.IO.Path.Combine(Application.dataPath, "Scenes/" + System.IO.Path.GetFileName(levelJsonRelativePath));
-        if (!System.IO.File.Exists(fullPath))
+        // âœ… å…ˆå–è¾“å…¥æ¡†å†…å®¹ï¼Œå¦‚æœä¸ºç©ºå°±ç”¨é»˜è®¤
+        string input = (fileNameField != null && !string.IsNullOrWhiteSpace(fileNameField.text))
+                        ? fileNameField.text.Trim()
+                        : "WorkshopLevel.ana";
+
+        string fullPath = ResolvePath(input);
+
+        if (!File.Exists(fullPath))
         {
-            Debug.LogError("ÕÒ²»µ½¹Ø¿¨ÎÄ¼ş: " + fullPath);
+            Debug.LogError("âŒ æ‰¾ä¸åˆ°å…³å¡æ–‡ä»¶: " + fullPath);
             return;
         }
 
-        // ÉèÖÃ´ı¼ÓÔØÂ·¾¶
+        // âœ… ä¿å­˜åˆ°æ¡¥æ¥ç±»
         LevelDataBridge.pendingLevelJsonPath = fullPath;
 
-        // ¼ÓÔØÓÎÏ·³¡¾°
+        // âœ… è·³è½¬åœºæ™¯
         SceneManager.LoadScene(targetSceneName);
     }
 }

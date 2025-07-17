@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public GameObject ghostPrefab;
     public GameObject previewGhostPrefab;
     public CooldownRingBehaviour cooldownRing;
+    public HeroBehaviour myHero;
+    private bool facingLeftRecord;
 
     GameObject previewGhost;
     Snapshot snapshot;
@@ -59,7 +61,7 @@ public class GameManager : MonoBehaviour
             StopAndReplay();
         else if (Input.GetKeyDown(KeyCode.O) && currentPhase == GamePhase.Recording)
         {
-            if (sceneName == "Level1Real" || sceneName == "Level3" || sceneName == "Level4"||sceneName=="Level_4")
+            if (sceneName == "Level1Real" || sceneName == "Level3" || sceneName == "Level4"||sceneName=="Level_4"||sceneName=="WorkshopLevelScene")
             {
                 StopRecordingAndFreeze();
             }
@@ -80,6 +82,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("场上已有Ghost，无法开始录制");
             return;
         }
+        facingLeftRecord = myHero.facingLeft;
 
         currentPhase = GamePhase.Recording;
         inputRecords.Clear();
@@ -178,6 +181,8 @@ public class GameManager : MonoBehaviour
         }
 
         GameObject ghost = Instantiate(ghostPrefab, snapshot.playerPosition, Quaternion.identity);
+        GhostBehaviour myGhost = ghost.GetComponent<GhostBehaviour>();
+        myGhost.SetFacingLeft(facingLeftRecord);
         ghost.GetComponent<GhostBehaviour>()
              .StartReplay(new Queue<Record>(inputRecords));   // 深拷贝一份指令
     }

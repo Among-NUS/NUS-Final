@@ -1,29 +1,76 @@
-// ©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤
-// WorkshopSaveLoadUI.cs
-// ¼òµ¥ UI£º°´Å¥±£´æ/¼ÓÔØ´´Òâ¹¤·»²¼¾Öµ½¹Ì¶¨Â·¾¶
-// ©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using System.IO;
+using System.Collections;
 
 public class WorkshopSaveLoadUI : MonoBehaviour
 {
-    public WorkshopSaveLoad saveLoad;         // ÍÏÈë½Å±¾ÒıÓÃ
+    [Header("Core")]
+    public WorkshopSaveLoad saveLoad;
+
+    [Header("UI Buttons")]
     public Button saveButton;
     public Button loadButton;
 
-    private string savePath;
+    [Header("TMP Input")]
+    public TMP_InputField fileNameField;
+
+    [Header("å¯é€‰æç¤º UI")]
+    public TMP_Text hintText; // âœ… æç¤ºæ˜¾ç¤ºåŒºåŸŸ
 
     void Start()
     {
-        string savePath = "WorkshopLevel.json";
+        // âœ… é»˜è®¤æ–‡ä»¶å .ana
+        if (fileNameField != null && string.IsNullOrEmpty(fileNameField.text))
+            fileNameField.text = "WorkshopLevel.ana";
 
         if (saveButton != null)
-            saveButton.onClick.AddListener(() => saveLoad.SaveLayout(savePath));
+            saveButton.onClick.AddListener(() =>
+            {
+                string name = GetFileNameOrDefault();
+                saveLoad.SaveLayout(name);
+
+                string fullPath = WorkshopSaveLoad.ResolvePath(name); // éœ€è¦ public static
+                ShowHint($"Saved to:\n{fullPath}");
+            });
 
         if (loadButton != null)
-            loadButton.onClick.AddListener(() => saveLoad.LoadLayoutForEditor(savePath));
+            loadButton.onClick.AddListener(() =>
+            {
+                string name = GetFileNameOrDefault();
+                saveLoad.LoadLayoutForEditor(name);
 
-        Debug.Log("±£´æÂ·¾¶: " + savePath);
+                string fullPath = WorkshopSaveLoad.ResolvePath(name);
+                ShowHint($"Loaded from:\n{fullPath}");
+            });
+
+        Debug.Log("âœ… WorkshopSaveLoadUI åˆå§‹åŒ–å®Œæˆ");
+    }
+
+    string GetFileNameOrDefault()
+    {
+        return (fileNameField != null && !string.IsNullOrWhiteSpace(fileNameField.text))
+            ? fileNameField.text.Trim()
+            : "WorkshopLevel.ana";
+    }
+
+    /// âœ… æ˜¾ç¤ºæç¤ºå¹¶åœ¨ 1 ç§’åè‡ªåŠ¨éšè—
+    void ShowHint(string msg)
+    {
+        Debug.Log(msg);
+
+        if (hintText)
+        {
+            hintText.text = msg;
+            StopAllCoroutines();              // é¿å…å¤šæ¬¡ç‚¹å‡»å åŠ 
+            StartCoroutine(HideHintAfterDelay(1f));
+        }
+    }
+
+    IEnumerator HideHintAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (hintText) hintText.text = "";
     }
 }

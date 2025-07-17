@@ -665,6 +665,7 @@ MonoBehaviour:
   smoothSpeed: 1
   horizontalOffset: 2
   fixedZ: -10
+  verticalOffset: 2.5
 --- !u!1 &6316553079493030345
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,7 +752,8 @@ MonoBehaviour:
   currentPhase: 0
   ghostPrefab: {fileID: 3794698721212635393, guid: 4f963a9baeb8c804a84b62d51b857e6c, type: 3}
   previewGhostPrefab: {fileID: 3794698721212635393, guid: 4f963a9baeb8c804a84b62d51b857e6c, type: 3}
-  cooldownRing: {fileID: 8121664263058093013}
+  cooldownRing: {fileID: 327348418966216307}
+  myHero: {fileID: 2979225996144727295}
   currentScene:
     m_Handle: 0
   messageDisplay: {fileID: 0}

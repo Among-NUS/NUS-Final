@@ -18,7 +18,7 @@ public class StairsBehaviour : MonoBehaviour
     //public bool upwardHere = true;
 
     // --- 私有状态 ---
-    bool playerInside;
+    private readonly HashSet<Transform> insideEntities = new(); // 所有进入触发器的实体
     Transform playerTf;
     public float cooldown;            // 防止瞬时往返
     public float standardCooldown = 0.2f;
@@ -38,12 +38,12 @@ public class StairsBehaviour : MonoBehaviour
         if (cooldown > 0f)           // 冷却中
             cooldown -= Time.deltaTime;
 
-        if (!playerInside || cooldown > 0f) // 玩家不在触发器内或冷却中
-            return;
+        /*if (insideEntities.Count==0 || cooldown > 0f) // 玩家不在触发器内或冷却中
+            return;*/
 
         // 根据方向检测输入
 
-        if ((stairsUp != null && Input.GetKeyDown(KeyCode.W)))
+        /*if ((stairsUp != null && Input.GetKeyDown(KeyCode.W)))
         {
             TeleportTo(stairsUp);
             
@@ -54,7 +54,7 @@ public class StairsBehaviour : MonoBehaviour
             TeleportTo(stairsDown);
             
             
-        }
+        }*/
     }
 
     void TeleportPlayer()
@@ -84,7 +84,7 @@ public class StairsBehaviour : MonoBehaviour
     {
         if (other.CompareTag("Player")||other.CompareTag("Ghost"))
         {
-            playerInside = true;
+            insideEntities.Add(other.transform);
             playerTf = other.transform;
             //stairsAnimator.SetBool("HeroIn", true);
             enterPlayer = other.gameObject;
@@ -97,7 +97,7 @@ public class StairsBehaviour : MonoBehaviour
     {
         if (other.CompareTag("Player")||other.CompareTag("Ghost"))
         {
-            playerInside = false;
+            insideEntities.Remove(other.transform);
             playerTf = null;
             //stairsAnimator.SetBool("HeroIn", false);
         }
@@ -106,14 +106,15 @@ public class StairsBehaviour : MonoBehaviour
     public void TryTeleport(Transform entity, bool commandUp)
     {
         // 冷却中直接忽略
-        if (cooldown > 0f) return;
+        if (!insideEntities.Contains(entity)||cooldown > 0f) return;
         StairsBehaviour target = commandUp ? stairsUp : stairsDown;
         // commandUp=true 表示来的是 "想往上"
         
         if (target==null) return;
-
+        insideEntities.Remove(entity);
         // 执行传送
         entity.position = target.transform.position;
+        target.insideEntities.Add(entity);
         cooldown              = standardCooldown;
         target.cooldown = standardCooldown;
     }

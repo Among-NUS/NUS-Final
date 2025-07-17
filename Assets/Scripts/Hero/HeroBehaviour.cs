@@ -14,6 +14,7 @@ public class HeroBehaviour : MonoBehaviour
     private bool heroIsWalking = false;  // ← 用于记录是否在行走
 
     private Shooter shooter;
+    private StairsBehaviour currentStairs = null;
     public bool facingLeft = true;       // ← 记录当前朝向
     private Rigidbody2D heroRigidBody;
     private bool isOnGround = true;
@@ -67,6 +68,12 @@ public class HeroBehaviour : MonoBehaviour
             shooter.Fire();
             heroAnimator.SetTrigger("shootAnim");
         }
+        if (currentStairs)
+        {
+            if (Input.GetKey(KeyCode.W)) currentStairs.TryTeleport(transform, true);
+            if (Input.GetKey(KeyCode.S)) currentStairs.TryTeleport(transform, false);
+        }
+
 
         if (GameManager.Instance.currentPhase == GameManager.GamePhase.Recording)
             GameManager.Instance.RecordKeyInput(CollectKeyInputs(consumedJump));
@@ -80,7 +87,7 @@ public class HeroBehaviour : MonoBehaviour
         if (Input.GetKey(KeyCode.A)) { move += Vector3.left; facingLeft = true; heroIsWalking = true; }
         if (Input.GetKey(KeyCode.D)) { move += Vector3.right; facingLeft = false; heroIsWalking = true; }
         heroAnimator.SetBool("isWalking", heroIsWalking);
-        
+
 
         /* --- 用 localScale.x 的正负代表左右 --- */
         Vector3 s = transform.localScale;
@@ -110,6 +117,8 @@ public class HeroBehaviour : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.TryGetComponent(out StairsBehaviour stairs))
+            currentStairs = stairs;
         BulletBehaviour bullet = collision.GetComponent<BulletBehaviour>();
         if (bullet != null && bullet.isEnemy && GameManager.Instance?.currentPhase != GameManager.GamePhase.TimeStop)
         {
@@ -160,5 +169,11 @@ public class HeroBehaviour : MonoBehaviour
             didJump = true;
         }
         return didJump;
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out StairsBehaviour stairs) && stairs == currentStairs)
+            currentStairs = null;
     }
 }

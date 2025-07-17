@@ -35,6 +35,8 @@ public class GhostBehaviour : MonoBehaviour
     private bool isJumping = false;
     private int groundLayer = 13;
     private GameObject Elevator = null;
+    public float transportTime = 0f;
+    public float transportExpect = 0.1f;
     #region Public API
     public void StartReplay(Queue<Record> inputRecords)
     {
@@ -82,9 +84,9 @@ public class GhostBehaviour : MonoBehaviour
     {
 
         if (!isReplaying || records == null || records.Count == 0) return;
-        if (Time.time - lastCooldown > layerChangeCooldown)
+        if (transportTime > 0)
         {
-            setLayerNear();
+            transportTime -= Time.deltaTime;
         }
         Record frame = records.Dequeue();
         ghostAnimator.SetBool("isJumping", ghostRigidBody.velocity.y > 0);
@@ -209,8 +211,14 @@ public class GhostBehaviour : MonoBehaviour
         else
         {
             StairsBehaviour elevatorScript = Elevator.GetComponent<StairsBehaviour>();
+            StairsBehaviour next = commandUp ? elevatorScript.stairsUp : elevatorScript.stairsDown;
             Debug.Log("ghost using exist elevator");
             elevatorScript.TryTeleport(transform, commandUp);
+            if (next)
+            {
+                Elevator = next.gameObject;
+                transportTime = transportExpect;
+            }
         }
         // Very small radius because we must already be on the stair trigger.
         /*Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 0.5f);
@@ -275,8 +283,23 @@ public class GhostBehaviour : MonoBehaviour
 
         if (collision.GetComponent<StairsBehaviour>() != null)
         {
-            Debug.Log("ghost left elevator");
-            Elevator = null;
+            if (transportTime <= 0)
+            {
+                Debug.Log("ghost left elevator");
+                Elevator = null;
+            }
+        }
+    }
+
+    public void SetFacingLeft(bool setLeft)
+    {
+        facingLeft = setLeft;
+        Vector3 s = transform.localScale;
+        float targetSign = facingLeft ? -1f : 1f;
+        if (Mathf.Sign(s.x) != targetSign)
+        {
+            s.x = Mathf.Abs(s.x) * targetSign;
+            transform.localScale = s;
         }
     }
 }
