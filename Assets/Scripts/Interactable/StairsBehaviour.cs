@@ -32,12 +32,12 @@ public class StairsBehaviour : MonoBehaviour
         if (cooldown > 0f)           // 冷却中
             cooldown -= Time.deltaTime;
 
-        if (insideEntities.Count==0 || cooldown > 0f) // 玩家不在触发器内或冷却中
-            return;
+        /*if (insideEntities.Count==0 || cooldown > 0f) // 玩家不在触发器内或冷却中
+            return;*/
 
         // 根据方向检测输入
 
-        if ((stairsUp != null && Input.GetKeyDown(KeyCode.W)))
+        /*if ((stairsUp != null && Input.GetKeyDown(KeyCode.W)))
         {
             TeleportTo(stairsUp);
             
@@ -48,7 +48,7 @@ public class StairsBehaviour : MonoBehaviour
             TeleportTo(stairsDown);
             
             
-        }
+        }*/
     }
 
     void TeleportPlayer()
@@ -100,14 +100,15 @@ public class StairsBehaviour : MonoBehaviour
     public void TryTeleport(Transform entity, bool commandUp)
     {
         // 冷却中直接忽略
-        if (cooldown > 0f) return;
+        if (!insideEntities.Contains(entity)||cooldown > 0f) return;
         StairsBehaviour target = commandUp ? stairsUp : stairsDown;
         // commandUp=true 表示来的是 “想往上”
         
         if (target==null) return;
-
+        insideEntities.Remove(entity);
         // 执行传送
         entity.position = target.transform.position;
+        target.insideEntities.Add(entity);
         cooldown              = standardCooldown;
         target.cooldown = standardCooldown;
     }

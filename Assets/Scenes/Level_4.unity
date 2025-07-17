@@ -12960,6 +12960,10 @@ PrefabInstance:
       propertyPath: stairsUp
       value: 
       objectReference: {fileID: 820162039}
+    - target: {fileID: 7040080098183611154, guid: acf1608a4675f2c478e71631c6382138, type: 3}
+      propertyPath: standardCooldown
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7800279439871655699, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: m_Name
       value: Elevator (4)
@@ -14375,7 +14379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f45eea1182960540bc46356425512c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 57d0ec33-d963-4b63-b25f-1cde1a0a993b
+  uniqueID: 4aadda3b-14e8-4d49-9412-a9b0cd8b8c26
 --- !u!61 &926201272
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14629,6 +14633,10 @@ PrefabInstance:
       propertyPath: stairsDown
       value: 
       objectReference: {fileID: 1907815853}
+    - target: {fileID: 7040080098183611154, guid: acf1608a4675f2c478e71631c6382138, type: 3}
+      propertyPath: standardCooldown
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7800279439871655699, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: m_Name
       value: Elevator (1)
@@ -14774,6 +14782,10 @@ PrefabInstance:
       propertyPath: stairsUp
       value: 
       objectReference: {fileID: 1399395909}
+    - target: {fileID: 7040080098183611154, guid: acf1608a4675f2c478e71631c6382138, type: 3}
+      propertyPath: standardCooldown
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7800279439871655699, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: m_Name
       value: Elevator (3)
@@ -21658,7 +21670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3661757308668691572, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.7482157
+      value: 6.74
       objectReference: {fileID: 0}
     - target: {fileID: 3661757308668691572, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: m_LocalPosition.z
@@ -21709,6 +21721,83 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acf1608a4675f2c478e71631c6382138, type: 3}
+--- !u!1001 &1580788544
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 337094464790314725, guid: a1f67bd4565ad8d4189783abd474774c, type: 3}
+      propertyPath: m_Name
+      value: LevelExit (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5077976220876474779, guid: a1f67bd4565ad8d4189783abd474774c, type: 3}
+      propertyPath: m_Size.y
+      value: 8.6541
+      objectReference: {fileID: 0}
+    - target: {fileID: 5077976220876474779, guid: a1f67bd4565ad8d4189783abd474774c, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.6421803
+      objectReference: {fileID: 0}
+    - target: {fileID: 5780155907555604810, guid: a1f67bd4565ad8d4189783abd474774c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5839339133870779219, guid: a1f67bd4565ad8d4189783abd474774c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 5839339133870779219, guid: a1f67bd4565ad8d4189783abd474774c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 5839339133870779219, guid: a1f67bd4565ad8d4189783abd474774c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5839339133870779219, guid: a1f67bd4565ad8d4189783abd474774c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5839339133870779219, guid: a1f67bd4565ad8d4189783abd474774c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5839339133870779219, guid: a1f67bd4565ad8d4189783abd474774c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5839339133870779219, guid: a1f67bd4565ad8d4189783abd474774c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5839339133870779219, guid: a1f67bd4565ad8d4189783abd474774c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5839339133870779219, guid: a1f67bd4565ad8d4189783abd474774c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5839339133870779219, guid: a1f67bd4565ad8d4189783abd474774c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7345190463175111937, guid: a1f67bd4565ad8d4189783abd474774c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9193016314754436847, guid: a1f67bd4565ad8d4189783abd474774c, type: 3}
+      propertyPath: targetSceneName
+      value: Level_Boss
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a1f67bd4565ad8d4189783abd474774c, type: 3}
 --- !u!1 &1593371629
 GameObject:
   m_ObjectHideFlags: 0
@@ -22081,6 +22170,10 @@ PrefabInstance:
       propertyPath: stairsUp
       value: 
       objectReference: {fileID: 1327772822}
+    - target: {fileID: 7040080098183611154, guid: acf1608a4675f2c478e71631c6382138, type: 3}
+      propertyPath: standardCooldown
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7800279439871655699, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: m_Name
       value: Elevator
@@ -84943,6 +85036,10 @@ PrefabInstance:
       propertyPath: stairsDown
       value: 
       objectReference: {fileID: 694827530}
+    - target: {fileID: 7040080098183611154, guid: acf1608a4675f2c478e71631c6382138, type: 3}
+      propertyPath: standardCooldown
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7800279439871655699, guid: acf1608a4675f2c478e71631c6382138, type: 3}
       propertyPath: m_Name
       value: Elevator (5)
@@ -85121,6 +85218,14 @@ PrefabInstance:
     - target: {fileID: 6316553079493030345, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_Name
       value: GamePreset
+      objectReference: {fileID: 0}
+    - target: {fileID: 7673598585400716474, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -41.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 7673598585400716474, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.31
       objectReference: {fileID: 0}
     - target: {fileID: 9142796188872525721, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_audioClip
@@ -85312,7 +85417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f45eea1182960540bc46356425512c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: f7dfd4ad-f9cc-40c1-9ed9-624feded02d1
+  uniqueID: 8ee0da02-29c6-4882-b091-ad63a2f1a817
 --- !u!212 &3991431326721802753
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -85553,3 +85658,4 @@ SceneRoots:
   - {fileID: 1780910285}
   - {fileID: 562430302}
   - {fileID: 933375717}
+  - {fileID: 1580788544}
