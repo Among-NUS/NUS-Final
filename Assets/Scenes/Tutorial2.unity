@@ -23792,10 +23792,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50.000942
       objectReference: {fileID: 0}
+    - target: {fileID: 2548852397822666387, guid: f3916c098b65a704ba7aaaf729a8686a, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 8400000, guid: 79102123e455eb743858fad077ce28e6, type: 2}
     - target: {fileID: 3079618675031969724, guid: f3916c098b65a704ba7aaaf729a8686a, type: 3}
       propertyPath: PauseCanvas
       value: 
       objectReference: {fileID: 233037476}
+    - target: {fileID: 6373238752979587857, guid: f3916c098b65a704ba7aaaf729a8686a, type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 79102123e455eb743858fad077ce28e6, type: 2}
     - target: {fileID: 6463008943583125720, guid: f3916c098b65a704ba7aaaf729a8686a, type: 3}
       propertyPath: m_Texture
       value: 

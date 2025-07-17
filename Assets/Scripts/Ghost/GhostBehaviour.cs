@@ -147,6 +147,7 @@ public class GhostBehaviour : MonoBehaviour
             s.x = Mathf.Abs(s.x) * targetSign;
             transform.localScale = s;
         }
+        ghostAnimator.SetBool("isLeft", facingLeft);
 
         // 只在 e 第一次按下的那一帧执行交互
         if (pressedE && !lastFramePressedE)

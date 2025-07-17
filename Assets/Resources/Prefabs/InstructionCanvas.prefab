@@ -1180,6 +1180,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IntroduceCanvas: {fileID: 8821802001816889686}
+  PauseCanvas: {fileID: 0}
+  DialogCanvas: {fileID: 0}
 --- !u!1 &8858700427761347432
 GameObject:
   m_ObjectHideFlags: 0
@@ -1216,7 +1218,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 316}
-  m_SizeDelta: {x: 500.4859, y: 500.4859}
+  m_SizeDelta: {x: 600, y: 337.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &534643807116500479
 CanvasRenderer:

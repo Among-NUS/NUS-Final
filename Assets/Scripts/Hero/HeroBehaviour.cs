@@ -97,6 +97,7 @@ public class HeroBehaviour : MonoBehaviour
             s.x = Mathf.Abs(s.x) * targetSign;
             transform.localScale = s;
         }
+        heroAnimator.SetBool("isLeft", facingLeft);
 
         transform.position += move * speed;
     }

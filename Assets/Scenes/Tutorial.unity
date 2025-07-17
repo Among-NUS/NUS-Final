@@ -45860,6 +45860,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 444660387126896546, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 61b1d5ac89d0904418d8b80bb15822be, type: 2}
     - target: {fileID: 1080837241894518036, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -46156,6 +46160,10 @@ PrefabInstance:
       propertyPath: m_margin.y
       value: 1.8355846
       objectReference: {fileID: 0}
+    - target: {fileID: 6937671227431282795, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 8400000, guid: 61b1d5ac89d0904418d8b80bb15822be, type: 2}
     - target: {fileID: 7165336450362443152, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
@@ -46170,11 +46178,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7673598585400716474, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.48
+      value: -10.56
       objectReference: {fileID: 0}
     - target: {fileID: 7673598585400716474, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.69
+      value: -0.74
       objectReference: {fileID: 0}
     - target: {fileID: 7963258190656991774, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_SizeDelta.y

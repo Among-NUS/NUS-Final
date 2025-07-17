@@ -5,18 +5,12 @@ using TMPro;
 public class SettingsUI : MonoBehaviour
 {
     [Header("类别按钮")]
-    public Button buttonSound;
     public Button buttonKeybinds;
     public Button buttonHints;
 
     [Header("面板")]
-    public GameObject soundPanel;
     public GameObject keybindsPanel;
     public GameObject hintsPanel;
-
-    [Header("音量设置")]
-    public Slider gameVolumeSlider;
-    public Slider sfxVolumeSlider;
 
     [Header("按键与提示")]
     public Transform keybindsContent;
@@ -27,33 +21,18 @@ public class SettingsUI : MonoBehaviour
 
     void Start()
     {
-        // 初始化按钮事件
-        buttonSound.onClick.AddListener(() => ShowPanel("sound"));
         buttonKeybinds.onClick.AddListener(() => ShowPanel("keybinds"));
         buttonHints.onClick.AddListener(() => ShowPanel("hints"));
-
-        // 初始化滑动条
-        gameVolumeSlider.onValueChanged.AddListener((value) =>
-        {
-            Debug.Log("游戏音量: " + value);
-            // AudioListener.volume = value;
-        });
-
-        sfxVolumeSlider.onValueChanged.AddListener((value) =>
-        {
-            Debug.Log("音效音量: " + value);
-        });
 
         PopulateKeybinds();
         PopulateHints();
 
         // 默认显示声音面板
-        ShowPanel("sound");
+        ShowPanel("keybinds");
     }
 
     void ShowPanel(string type)
     {
-        soundPanel.SetActive(type == "sound");
         keybindsPanel.SetActive(type == "keybinds");
         hintsPanel.SetActive(type == "hints");
 
@@ -86,7 +65,7 @@ public class SettingsUI : MonoBehaviour
         {"I", "Rewind to timestamp"},
         {"O", "Rewind with movement"},
         {"Esc", "Pause"},
-        {"R", "Restart"}
+        {"Backspace", "Restart"}
         };
 
         foreach (Transform child in keybindsContent)
