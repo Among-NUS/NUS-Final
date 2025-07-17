@@ -21,17 +21,26 @@ public class WorkshopSaveLoad : MonoBehaviour
     /// </summary>
     static string ResolvePath(string f)
     {
+        // 如果输入为空，默认 WorkshopLevel.ana
         if (string.IsNullOrEmpty(f))
-            f = "WorkshopLevel.json";
+            f = "WorkshopLevel.ana";
 
-        if (!f.EndsWith(".json"))
-            f += ".json";
+        // ✅ 去掉已有的 .json 或 .ana 后缀，统一换成 .ana
+        string noExt = Path.Combine(Path.GetDirectoryName(f) ?? "",
+                                    Path.GetFileNameWithoutExtension(f));
+        f = noExt + ".ana";
 
-        // 绝对路径直接用，否则存 persistentDataPath
+        // ✅ 桌面路径
+        string desktopPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
+
+        // ✅ 如果传了绝对路径就直接用，否则存桌面
         return Path.IsPathRooted(f)
             ? f
-            : Path.Combine(Application.persistentDataPath, f);
+            : Path.Combine(desktopPath, f);
     }
+
+
+
 
     /*──────── 保存 ────────*/
     public void SaveLayout(string fileName)

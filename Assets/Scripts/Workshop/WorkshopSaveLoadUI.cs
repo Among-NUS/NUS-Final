@@ -18,14 +18,14 @@ public class WorkshopSaveLoadUI : MonoBehaviour
     {
         // 默认文件名
         if (fileNameField != null && string.IsNullOrEmpty(fileNameField.text))
-            fileNameField.text = "WorkshopLevel.json";
+            fileNameField.text = "WorkshopLevel.ana";
 
         if (saveButton != null)
             saveButton.onClick.AddListener(() =>
             {
                 string name = (fileNameField != null && !string.IsNullOrWhiteSpace(fileNameField.text))
                               ? fileNameField.text.Trim()
-                              : "WorkshopLevel.json";
+                              : "WorkshopLevel.ana";
 
                 saveLoad.SaveLayout(name);
             });
@@ -35,7 +35,7 @@ public class WorkshopSaveLoadUI : MonoBehaviour
             {
                 string name = (fileNameField != null && !string.IsNullOrWhiteSpace(fileNameField.text))
                               ? fileNameField.text.Trim()
-                              : "WorkshopLevel.json";
+                              : "WorkshopLevel.ana";
 
                 saveLoad.LoadLayoutForEditor(name);
             });

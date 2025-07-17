@@ -168,7 +168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnParent: {fileID: 85401386}
-  gridSpacing: 1
   hierarchy: {fileID: 0}
 --- !u!1001 &908688684
 PrefabInstance:
@@ -226,10 +225,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: GamePreset
       objectReference: {fileID: 0}
+    - target: {fileID: 7673598585400716474, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 960
+      objectReference: {fileID: 0}
+    - target: {fileID: 7673598585400716474, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 540
+      objectReference: {fileID: 0}
+    - target: {fileID: 8219944971579997525, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: orthographic size
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4592209280572987250, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
     - {fileID: 7910213714583051465, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+    - {fileID: 2324365722030582678, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
