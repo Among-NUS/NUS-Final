@@ -6,6 +6,7 @@ public class CameraFollow : MonoBehaviour
     public float smoothSpeed = 2f;
     public float horizontalOffset = 2f;
     public float fixedZ = -10f;
+    public float verticalOffset = 2.5f;
 
     private bool facingLeft = false;       // Ö÷½Ç³¯Ïò
     private Component heroScript;          // »º´æ Hero ½Å±¾
@@ -34,7 +35,7 @@ public class CameraFollow : MonoBehaviour
         float offsetX = facingLeft ? -horizontalOffset : horizontalOffset;
         Vector3 offset = new Vector3(offsetX, 0f, 0f);
 
-        Vector3 targetPosition = new Vector3(target.position.x, target.position.y + 2.5f, fixedZ) + offset;
+        Vector3 targetPosition = new Vector3(target.position.x, target.position.y + verticalOffset, fixedZ) + offset;
         transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed * Time.deltaTime);
     }
 }
