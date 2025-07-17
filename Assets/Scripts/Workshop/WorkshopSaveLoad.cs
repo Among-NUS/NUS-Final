@@ -40,8 +40,6 @@ public class WorkshopSaveLoad : MonoBehaviour
     }
 
 
-
-
     /*──────── 保存 ────────*/
     public void SaveLayout(string fileName)
     {
