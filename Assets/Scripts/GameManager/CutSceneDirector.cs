@@ -7,10 +7,16 @@ public class CutSceneDirector : MonoBehaviour
     public HeroActorBehaviour hero;
     public BossBehaviour boss;
     public GameObject choicePanel;
+    public CreditsBehaviour credits;
+    public GameObject myGameManager;
+    private AudioSource gmAudioSource;
+    public AudioClip Invisible;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(PlayCutScene());
+        myGameManager = GameObject.Find("GameManager");
+        gmAudioSource = myGameManager.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -42,6 +48,9 @@ public class CutSceneDirector : MonoBehaviour
             yield return new WaitForSeconds(1f);
             yield return WalkHeroTime(7.5f);
         }
+        gmAudioSource.clip = Invisible;
+        gmAudioSource.Play();
+        credits.StartCredits();
         
         
 
