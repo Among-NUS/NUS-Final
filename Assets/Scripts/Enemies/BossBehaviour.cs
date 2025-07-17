@@ -20,10 +20,10 @@ public class BossBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void BossWalk(float duration,bool facingLeft)
+    public void BossWalk(float duration, bool facingLeft)
     {
 
     }
@@ -35,9 +35,21 @@ public class BossBehaviour : MonoBehaviour
 
     public void BossDie()
     {
-        
+
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        BulletBehaviour bullet = collision.GetComponent<BulletBehaviour>();
+        if (bullet != null && !bullet.isEnemy)
+        {
+            DestroyBoss();
+        }
     }
 
+    public void DestroyBoss()
+    {
+        bossAnimator.SetBool("isDead", true);
+    }
 
 
 }
