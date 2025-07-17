@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CreditsBehaviour : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class CreditsBehaviour : MonoBehaviour
     private bool isRolling = false;
     private Vector3 startPos;
     private float panelHeight;
+    public event Action OnCreditsFinished;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +35,7 @@ public class CreditsBehaviour : MonoBehaviour
         {
             isRolling = false;
             Debug.Log("Credits 滚动结束");
+            OnCreditsFinished?.Invoke();
         }
     }
     
