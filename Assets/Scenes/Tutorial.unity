@@ -45879,11 +45879,11 @@ PrefabInstance:
     - target: {fileID: 1152997910537746743, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: c9fffc258eec2054d94313b4d18af057, type: 2}
+      objectReference: {fileID: 11400000, guid: 83eec80db16565746a7ad2374b76a670, type: 2}
     - target: {fileID: 1152997910537746743, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: -1177333104058501760, guid: c9fffc258eec2054d94313b4d18af057, type: 2}
+      objectReference: {fileID: 6572310388148552502, guid: 83eec80db16565746a7ad2374b76a670, type: 2}
     - target: {fileID: 1152997910537746743, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0

@@ -3,8 +3,8 @@ Hero: I'm here to take you down.我是来干掉你的。
 Doctor: Take me down?! What did I do? Wait, I recognize that machine… Where did you get it from!干掉我？！我做了什么？等等，我认得那台机器……你从哪弄来的！
 Hero: I'm the one asking questions! 现在是我在问问题！
 Hero: I see you remember your time machine, then how can you forget that many deaths you caused in that accident! 既然你还记得你的时间机器，那你又怎么会忘了那场事故造成的无数死亡！
-Doctor: The accident… Did Git send you here? 那场事故……是Git派你来的？
-Hero: Who's Git? 谁是Git？
+Doctor: The accident… Did Zachary send you here? 那场事故……是Zachary派你来的？
+Hero: Who's Zachary? 谁是Zachary？
 Doctor: And you don't even know his name... He was my director when I was still working on time-traveling stuffs. 而你连他的真名都不知道...他是我还在研究时间旅行时的主管。
 Doctor: I kept telling him the prototype wasn't ready, but he couldn't listen. 我一直告诉他机器的原型还没准备好，但他根本听不进去。
 Doctor: Seeing that you have the device similar to mine, and I sure didn't give it to you, it can only be him. I'm the last person that knows his secret.你手上有的设备和我的很相似，而且我确定不是我给你的，那就只有可能是他。我是唯一知道他秘密的人。
@@ -13,4 +13,4 @@ Doctor: Well go ahead and put me out of my misery! 那就动手吧，结束我�
 Doctor: Just when I thought I got rid of a horibble boss, i got captured and forced to work for another evil corporation! 就在我以为可以摆脱一个糟糕的老板时，我又被抓去为另一个邪恶组织工作！
 Doctor: But you can never beat him with something he made! 但你永远不可能用他制造的东西打败他！
 Doctor: Your device can use some upgrades. 你的装置还可以运用一些升级。
-Doctor: Let me prove my innocence and we can take Git down together! 让我证明我的清白，我们可以一起把Git干掉！
+Doctor: Let me prove my innocence and we can take Zachary down together! 让我证明我的清白，我们可以一起把Zachary干掉！
