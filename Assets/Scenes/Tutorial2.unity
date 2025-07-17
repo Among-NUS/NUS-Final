@@ -23745,6 +23745,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+--- !u!1 &1708957239 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5014114860311530087, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+  m_PrefabInstance: {fileID: 1708957238}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1821198744
 GameObject:
   m_ObjectHideFlags: 0
@@ -23800,6 +23805,10 @@ PrefabInstance:
       propertyPath: PauseCanvas
       value: 
       objectReference: {fileID: 233037476}
+    - target: {fileID: 3079618675031969724, guid: f3916c098b65a704ba7aaaf729a8686a, type: 3}
+      propertyPath: InGameUICanvas
+      value: 
+      objectReference: {fileID: 1708957239}
     - target: {fileID: 6373238752979587857, guid: f3916c098b65a704ba7aaaf729a8686a, type: 3}
       propertyPath: m_TargetTexture
       value: 

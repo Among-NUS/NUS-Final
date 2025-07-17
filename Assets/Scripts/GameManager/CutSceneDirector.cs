@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CutSceneDirector : MonoBehaviour
 {
@@ -18,13 +19,16 @@ public class CutSceneDirector : MonoBehaviour
     public TextAsset DialogFile; 
     public GameObject dialogBox; 
     public TextMeshProUGUI englishTextLabel;
-    public TextMeshProUGUI chineseTextLabel; 
+    public TextMeshProUGUI chineseTextLabel;
+    public event Action OnCreditsFinished;
     
     // 简化的对话变量
     private string[] dialogLines;
     private int currentLine = 0;
     private bool isDialogPlaying = false;
     private bool hasAutoShown = false; // 是否已自动显示第一句
+    public GameObject skipHintPanel;
+    public string sceneName;
     
     // Start is called before the first frame update
     void Start()
@@ -58,12 +62,12 @@ public class CutSceneDirector : MonoBehaviour
         yield return BossFrightend();
         yield return BossJump();
         yield return new WaitForSeconds(1f);
-        
+
         if (DialogFile != null)
         {
             yield return PlayDialog();
         }
-        
+
         int playerChoice = 0;
         choicePanel.SetActive(true);
         yield return WaitForPlayerChoice((choice) => playerChoice = choice);
@@ -82,7 +86,22 @@ public class CutSceneDirector : MonoBehaviour
         }
         gmAudioSource.clip = Invisible;
         gmAudioSource.Play();
+        bool creditsFinished = false;
+        credits.OnCreditsFinished += () => creditsFinished = true;
         credits.StartCredits();
+        yield return new WaitForSeconds(10f);
+        if (skipHintPanel != null) skipHintPanel.SetActive(true);
+        bool waitingSkip = true;
+        while (!creditsFinished)
+        {
+            if (Input.GetKeyDown(KeyCode.U))
+            {
+                SceneManager.LoadScene("Congratulations");
+                yield break; // 直接结束协程
+            }
+            yield return null;
+        }
+        SceneManager.LoadScene(sceneName);
     }
     
     IEnumerator PlayDialog()
