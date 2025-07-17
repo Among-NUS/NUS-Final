@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16402afb1b5efc64685ae74aef104297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSceneName: Tutorial2
+  targetSceneName: menu
 --- !u!61 &5077976220876474779
 BoxCollider2D:
   m_ObjectHideFlags: 0

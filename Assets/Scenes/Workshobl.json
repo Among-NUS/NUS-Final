@@ -1,0 +1,60 @@
+{
+    "items": [
+        {
+            "prefabName": "GameObject",
+            "position": {
+                "x": 963.0,
+                "y": 540.0,
+                "z": 1.0
+            }
+        },
+        {
+            "prefabName": "LockedDoor(Switch)",
+            "position": {
+                "x": 962.9800415039063,
+                "y": 540.8694458007813,
+                "z": 1.0
+            }
+        },
+        {
+            "prefabName": "Turret 1",
+            "position": {
+                "x": 966.0,
+                "y": 540.7953491210938,
+                "z": 1.0
+            }
+        },
+        {
+            "prefabName": "Hero",
+            "position": {
+                "x": 964.8898315429688,
+                "y": 540.79541015625,
+                "z": 1.0
+            }
+        },
+        {
+            "prefabName": "Turret 1",
+            "position": {
+                "x": 955.97216796875,
+                "y": 540.75,
+                "z": 1.0
+            }
+        },
+        {
+            "prefabName": "GameObject",
+            "position": {
+                "x": 954.9860229492188,
+                "y": 539.986083984375,
+                "z": 1.0
+            }
+        },
+        {
+            "prefabName": "Turret 1",
+            "position": {
+                "x": 958.6222534179688,
+                "y": 540.74072265625,
+                "z": 1.0
+            }
+        }
+    ]
+}
