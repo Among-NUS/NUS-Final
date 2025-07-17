@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
     {
         if (Time.timeScale == 0) return;
 
+        if (Input.GetKeyDown(KeyCode.Backspace)) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         if (Input.GetKeyDown(KeyCode.U) && currentPhase == GamePhase.Normal)
             StartRecording();
         else if (Input.GetKeyDown(KeyCode.I) && currentPhase == GamePhase.Recording)
