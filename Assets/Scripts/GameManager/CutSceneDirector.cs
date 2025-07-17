@@ -29,7 +29,7 @@ public class CutSceneDirector : MonoBehaviour
     private bool hasAutoShown = false; // 是否已自动显示第一句
     public GameObject skipHintPanel;
     public string sceneName;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,10 +38,11 @@ public class CutSceneDirector : MonoBehaviour
         {
             dialogBox.SetActive(false);
         }
-        
+
         StartCoroutine(PlayCutScene());
         myGameManager = GameObject.Find("GameManager");
         gmAudioSource = myGameManager.GetComponent<AudioSource>();
+        skipHintPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -91,7 +92,6 @@ public class CutSceneDirector : MonoBehaviour
         credits.StartCredits();
         yield return new WaitForSeconds(10f);
         if (skipHintPanel != null) skipHintPanel.SetActive(true);
-        bool waitingSkip = true;
         while (!creditsFinished)
         {
             if (Input.GetKeyDown(KeyCode.U))
