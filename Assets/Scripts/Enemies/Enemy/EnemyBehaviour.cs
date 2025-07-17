@@ -60,7 +60,12 @@ public class EnemyBehaviour : MonoBehaviour
     {   
         /* 1. 退出条件 */
         if (!enemy.isAlive) return;
-        if (GameManager.Instance?.currentPhase == GameManager.GamePhase.TimeStop) return;
+        if (GameManager.Instance?.currentPhase == GameManager.GamePhase.TimeStop)
+        {
+            enemyAnimator.speed = 0f;
+            return;
+        }
+        enemyAnimator.speed = 1f;
 
         if (enemy.isAlive)
         {

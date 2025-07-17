@@ -1,4 +1,4 @@
-(voicemail) （您有一则语音留言）
+You have a voice mail 您有一则语音留言
 I assume you're at the place when you see this voicemail. 你看到我的留言时应该已经到地点了。
 your job is to infiltrate the base while testing out the new time-travelling gadgets I got for you. 你的任务是在入侵建筑的同时测试我给你的时间穿越装置。
 the same one that caused your accident during testing, so don't forget what you're doing this for. 就是同样的装置在测试时导致了你的事故，别忘了你为什么要来做这个工作。

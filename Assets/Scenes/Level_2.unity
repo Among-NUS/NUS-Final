@@ -255,6 +255,46 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1152997910537746743, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_margin.x
+      value: 0.8260765
+      objectReference: {fileID: 0}
+    - target: {fileID: 1152997910537746743, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_margin.y
+      value: 1.8791628
+      objectReference: {fileID: 0}
+    - target: {fileID: 1152997910537746743, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_margin.z
+      value: -0.28013325
+      objectReference: {fileID: 0}
+    - target: {fileID: 1152997910537746743, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: c9fffc258eec2054d94313b4d18af057, type: 2}
+    - target: {fileID: 1152997910537746743, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1177333104058501760, guid: c9fffc258eec2054d94313b4d18af057, type: 2}
+    - target: {fileID: 1152997910537746743, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658635369976223388, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 19.0706
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658635369976223388, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -976.0416
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658635369976223388, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -543.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734176039421381508, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: textFile
+      value: 
+      objectReference: {fileID: 4900000, guid: 1dbd262bef305c74487ffc6e1bc05c35, type: 3}
     - target: {fileID: 1817640103350194308, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.6
@@ -315,6 +355,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5984487947029208576, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_margin.w
+      value: 1.5236461
+      objectReference: {fileID: 0}
+    - target: {fileID: 5984487947029208576, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_margin.x
+      value: 0.7498932
+      objectReference: {fileID: 0}
+    - target: {fileID: 5984487947029208576, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_margin.z
+      value: -0.43249798
+      objectReference: {fileID: 0}
     - target: {fileID: 6010391369405407529, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16.02
@@ -362,6 +414,14 @@ PrefabInstance:
     - target: {fileID: 7673598585400716474, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8044318503740176443, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 3.3431
+      objectReference: {fileID: 0}
+    - target: {fileID: 8044318503740176443, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.0405
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -51611,7 +51671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f45eea1182960540bc46356425512c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 065e6a7b-5787-443c-9855-3bea0b0ec15d
+  uniqueID: 7ad60583-7ea3-4eed-a592-306f86c5316a
 --- !u!114 &4189161154904360583
 MonoBehaviour:
   m_ObjectHideFlags: 0

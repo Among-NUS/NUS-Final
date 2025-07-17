@@ -14,7 +14,7 @@ public class StairsBehaviour : MonoBehaviour
     //public Animator stairsAnimator;
     private GameObject enterPlayer;
 
-    [Tooltip("站在这段楼梯时，按 W 是否算“上楼”")]
+    [Tooltip("站在这段楼梯时，按 W 是否算\"上楼\"")]
     //public bool upwardHere = true;
 
     // --- 私有状态 ---
@@ -29,6 +29,12 @@ public class StairsBehaviour : MonoBehaviour
 
     void Update()
     {
+        // 如果游戏时间暂停（对话期间），不处理传送
+        if (Time.timeScale == 0)
+        {
+            return;
+        }
+        
         if (cooldown > 0f)           // 冷却中
             cooldown -= Time.deltaTime;
 
@@ -102,7 +108,7 @@ public class StairsBehaviour : MonoBehaviour
         // 冷却中直接忽略
         if (!insideEntities.Contains(entity)||cooldown > 0f) return;
         StairsBehaviour target = commandUp ? stairsUp : stairsDown;
-        // commandUp=true 表示来的是 “想往上”
+        // commandUp=true 表示来的是 "想往上"
         
         if (target==null) return;
         insideEntities.Remove(entity);

@@ -31,6 +31,12 @@ public class HeroBehaviour : MonoBehaviour
     }
     void Update()
     {
+        // 如果正在播放对话，不处理输入
+        if (Time.timeScale == 0)
+        {
+            return;
+        }
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             jumpBuffer = true;
@@ -39,6 +45,12 @@ public class HeroBehaviour : MonoBehaviour
 
     void FixedUpdate()
     {
+        // 如果正在播放对话，不处理移动和射击
+        if (Time.timeScale == 0)
+        {
+            return;
+        }
+        
         if (Time.time - lastCooldown > layerChangeCooldown)
         {
             setLayerNear();
