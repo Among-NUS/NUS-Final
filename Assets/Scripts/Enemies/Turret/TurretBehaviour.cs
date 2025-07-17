@@ -26,6 +26,7 @@ public class TurretBehaviour : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        if (GameManager.Instance.currentPhase == GameManager.GamePhase.TimeStop) return;
         Debug.Log("Turret destroyed by interaction.");
         DestroyTurret();
     }

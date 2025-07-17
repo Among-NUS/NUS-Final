@@ -72820,7 +72820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f45eea1182960540bc46356425512c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: e6a7e9b7-0fec-45c1-b8ef-ba899a22873e
+  uniqueID: 0f2200e6-8a58-4e37-9527-d08874d31bd7
 --- !u!61 &1528089741
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -73965,10 +73965,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 813239288643933866, guid: 0cf875a84c209724cba296bc94660cc7, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 8400000, guid: dd5596db06f64884d9bcdf6f56b3a995, type: 2}
     - target: {fileID: 1904272641457429552, guid: 0cf875a84c209724cba296bc94660cc7, type: 3}
       propertyPath: m_Name
       value: TutorialCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2277572013288580820, guid: 0cf875a84c209724cba296bc94660cc7, type: 3}
+      propertyPath: m_VideoClip
+      value: 
+      objectReference: {fileID: 32900000, guid: 68297204d3311904397dfc6ed082781b, type: 3}
+    - target: {fileID: 2277572013288580820, guid: 0cf875a84c209724cba296bc94660cc7, type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: dd5596db06f64884d9bcdf6f56b3a995, type: 2}
     - target: {fileID: 5270896911522358383, guid: 0cf875a84c209724cba296bc94660cc7, type: 3}
       propertyPath: PauseCanvas
       value: 
