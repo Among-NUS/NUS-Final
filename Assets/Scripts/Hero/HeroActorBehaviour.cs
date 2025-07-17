@@ -54,7 +54,7 @@ public class HeroActorBehaviour : MonoBehaviour
         shooter.Fire();
         heroAnimator.SetTrigger("shootAnim");
     }
-    void OnColliEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == groundLayer)
         {
@@ -62,7 +62,7 @@ public class HeroActorBehaviour : MonoBehaviour
             isJumping = false;
         }
     }
-    void OisionExit2D(Collision2D collision)
+    void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.layer == groundLayer)
         {
