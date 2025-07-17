@@ -12,7 +12,7 @@ public class EnemySensorBehaviour : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         enemiesIn.RemoveAll(e => e == null || !e.isAlive);
         aliveCount = enemiesIn.Count;

@@ -245,7 +245,7 @@ public class EnemyBehaviour : MonoBehaviour
                 {
                     enemy.curChasePoint++;
                 }
-                dirMove =  (enemy.lastPriciseTarget - transform.position).normalized;
+                dirMove =  Mathf.Sign(enemy.lastPriciseTarget.x - transform.position.x)*Vector2.right;
                 transform.position += speed * Time.fixedDeltaTime * dirMove;
                 enemy.facingLeft = dirMove.x < 0;
             }
