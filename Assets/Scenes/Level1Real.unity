@@ -234,6 +234,11 @@ Transform:
   - {fileID: 612644268}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &190310254 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5014114860311530087, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+  m_PrefabInstance: {fileID: 866692250}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &220348016
 GameObject:
   m_ObjectHideFlags: 0
@@ -55574,6 +55579,10 @@ PrefabInstance:
       propertyPath: DialogCanvas
       value: 
       objectReference: {fileID: 1022948648}
+    - target: {fileID: 3079618675031969724, guid: f3916c098b65a704ba7aaaf729a8686a, type: 3}
+      propertyPath: InGameUICanvas
+      value: 
+      objectReference: {fileID: 190310254}
     - target: {fileID: 6373238752979587857, guid: f3916c098b65a704ba7aaaf729a8686a, type: 3}
       propertyPath: m_VideoClip
       value: 
