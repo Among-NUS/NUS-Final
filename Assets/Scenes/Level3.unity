@@ -71658,6 +71658,14 @@ PrefabInstance:
       value: 4.3579
       objectReference: {fileID: 0}
     - target: {fileID: 1658635369976223388, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658635369976223388, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658635369976223388, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -993.3827
       objectReference: {fileID: 0}
@@ -72820,7 +72828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f45eea1182960540bc46356425512c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: d9a63603-2f96-48ed-8960-033247a85eaa
+  uniqueID: 6d6b78c7-f368-4e0a-b985-c8c99bae5a0c
 --- !u!61 &1528089741
 BoxCollider2D:
   m_ObjectHideFlags: 0

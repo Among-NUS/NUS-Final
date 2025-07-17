@@ -14745,7 +14745,7 @@ MonoBehaviour:
   playerTag: Player
   panelToShow: {fileID: 1182343852}
   PauseCanvas: {fileID: 1099154051}
-  DialogCanvas: {fileID: 1099154050}
+  DialogCanvas: {fileID: 0}
   InGameUICanvas: {fileID: 1099154049}
 --- !u!61 &824905740
 BoxCollider2D:
@@ -15181,7 +15181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f45eea1182960540bc46356425512c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: e9bbdcfb-beb7-4ee0-97e3-5e857f3d6d5a
+  uniqueID: 094f6413-6923-490a-9b66-0feb96203500
 --- !u!61 &926201272
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15746,18 +15746,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 07e21daa7840f2c4a85c9c275d22a4b9, type: 3}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2324365722030582678, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
 --- !u!1 &1099154049 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5014114860311530087, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
-  m_PrefabInstance: {fileID: 1099154048}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1099154050 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2324365722030582678, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
   m_PrefabInstance: {fileID: 1099154048}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1099154051 stripped
@@ -86537,7 +86533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f45eea1182960540bc46356425512c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 3d47860e-0d1c-4400-8eaa-a97383dfea23
+  uniqueID: 79d33b66-77fc-4e2a-82d6-69714d93ed34
 --- !u!212 &3991431326721802753
 SpriteRenderer:
   m_ObjectHideFlags: 0
