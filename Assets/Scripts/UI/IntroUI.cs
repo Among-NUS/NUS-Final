@@ -5,6 +5,7 @@ using UnityEngine;
 public class IntroUI : MonoBehaviour
 {
     public GameObject IntroduceCanvas;
+    public GameObject PauseCanvas;
     private static bool hasIntroBeenShown = false;
 
     // Start is called before the first frame update
@@ -12,18 +13,18 @@ public class IntroUI : MonoBehaviour
     { 
         if (hasIntroBeenShown)
         {
-            IntroduceCanvas.SetActive(false);
-            Time.timeScale = 1f;
-            return;
+            OnSkipButtonClicked();
         }
 
         Time.timeScale = 0f;
+        PauseCanvas.SetActive(false);
         IntroduceCanvas.SetActive(true);
     }
     public void OnSkipButtonClicked()
     {
         Time.timeScale = 1f;
         hasIntroBeenShown = true;
+        PauseCanvas.SetActive(true);
         IntroduceCanvas.SetActive(false);
     }
 }

@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 13.29, y: -1.3}
+  m_AnchoredPosition: {x: 13.509999, y: -1.3300002}
   m_SizeDelta: {x: 5.7425, y: 0.8977}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &224767385
@@ -294,6 +294,11 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &233037476 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1022702636583381050, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+  m_PrefabInstance: {fileID: 1708957238}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &322672047
 GameObject:
   m_ObjectHideFlags: 0
@@ -3627,7 +3632,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11.86, y: 0.09}
+  m_AnchoredPosition: {x: 12.619999, y: -0.69000024}
   m_SizeDelta: {x: 1.7401, y: 0.5788}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &477491139
@@ -5135,7 +5140,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2063274515, guid: 6dc4171990bb70642a1c6e908f4f17a9, type: 3}
+  m_Sprite: {fileID: 696500666, guid: 6dc4171990bb70642a1c6e908f4f17a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5155,7 +5160,7 @@ Transform:
   m_GameObject: {fileID: 1165505314}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.654034, y: 0.16903606, z: 1.8698555}
+  m_LocalPosition: {x: 11.11, y: -0.62, z: 1.8698555}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23736,6 +23741,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 4592209280572987250, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
     - {fileID: 7910213714583051465, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
+    - {fileID: 2324365722030582678, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48cf1ee7f41d28a468de282db8030783, type: 3}
@@ -23786,6 +23792,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50.000942
       objectReference: {fileID: 0}
+    - target: {fileID: 3079618675031969724, guid: f3916c098b65a704ba7aaaf729a8686a, type: 3}
+      propertyPath: PauseCanvas
+      value: 
+      objectReference: {fileID: 233037476}
     - target: {fileID: 6463008943583125720, guid: f3916c098b65a704ba7aaaf729a8686a, type: 3}
       propertyPath: m_Texture
       value: 
