@@ -6,6 +6,7 @@ public class CutSceneDirector : MonoBehaviour
 {
     public HeroActorBehaviour hero;
     public BossBehaviour boss;
+    public GameObject choicePanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,9 @@ public class CutSceneDirector : MonoBehaviour
         yield return BossJump();
         yield return new WaitForSeconds(1f);
         int playerChoice = 0;
+        choicePanel.SetActive(true);
         yield return WaitForPlayerChoice((choice) => playerChoice = choice);
+        choicePanel.SetActive(false);
         if (playerChoice == 1)
         {
             yield return WalkHeroTime(2.5f);
@@ -39,6 +42,7 @@ public class CutSceneDirector : MonoBehaviour
             yield return new WaitForSeconds(1f);
             yield return WalkHeroTime(7.5f);
         }
+        
         
 
 
@@ -118,17 +122,16 @@ public class CutSceneDirector : MonoBehaviour
 
     IEnumerator WaitForPlayerChoice(System.Action<int> onChoice)
     {
-        Debug.Log("按 1 或 2 进行选择！");
         bool waiting = true;
 
         while (waiting)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            if (Input.GetKeyDown(KeyCode.D))
             {
                 onChoice?.Invoke(1);  // 选择1
                 waiting = false;
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            else if (Input.GetKeyDown(KeyCode.J))
             {
                 onChoice?.Invoke(2);  // 选择2
                 waiting = false;
