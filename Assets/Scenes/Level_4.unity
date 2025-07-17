@@ -14379,7 +14379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f45eea1182960540bc46356425512c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 4aadda3b-14e8-4d49-9412-a9b0cd8b8c26
+  uniqueID: 57586b76-314a-4f8c-8eac-736a427f7fd6
 --- !u!61 &926201272
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14942,7 +14942,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.43739223, y: 5}
+  m_Size: {x: 0.1, y: 1.5}
   m_EdgeRadius: 0
 --- !u!4 &1146954317
 Transform:
@@ -21639,7 +21639,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.43739223, y: 0.7144973}
+  m_Size: {x: 0.1, y: 0.7144973}
   m_EdgeRadius: 0
 --- !u!4 &1563706093
 Transform:
@@ -21942,7 +21942,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.43739223, y: 5}
+  m_Size: {x: 0.1, y: 1.5}
   m_EdgeRadius: 0
 --- !u!4 &1597182134
 Transform:
@@ -84870,7 +84870,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.43739223, y: 0.7144973}
+  m_Size: {x: 0.1, y: 0.7144973}
   m_EdgeRadius: 0
 --- !u!4 &1885171471
 Transform:
@@ -84881,7 +84881,7 @@ Transform:
   m_GameObject: {fileID: 1885171469}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -32.71, y: -2.3, z: 0.18646106}
+  m_LocalPosition: {x: -32.45, y: -2.3, z: 0.18646106}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -85417,7 +85417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f45eea1182960540bc46356425512c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 8ee0da02-29c6-4882-b091-ad63a2f1a817
+  uniqueID: def8f3da-b36d-4cdb-a859-fda6a0811f0e
 --- !u!212 &3991431326721802753
 SpriteRenderer:
   m_ObjectHideFlags: 0
