@@ -9,7 +9,7 @@ public class CutSceneDirector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(WalkHeroTime(10f));
+        StartCoroutine(HeroShoot());
     }
 
     // Update is called once per frame
@@ -31,5 +31,16 @@ public class CutSceneDirector : MonoBehaviour
         hero.MakeStand();
         yield return null;
 
+    }
+
+    IEnumerator HeroShoot()
+    {
+        float t = 0;
+        while (t < 1f)
+        {
+            t += Time.deltaTime;
+            yield return null;
+        }
+        hero.MakeShoot();
     }
 }

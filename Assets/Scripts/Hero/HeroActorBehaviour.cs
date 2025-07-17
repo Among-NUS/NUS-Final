@@ -50,7 +50,7 @@ public class HeroActorBehaviour : MonoBehaviour
 
     public void MakeShoot()
     {
-        shooter.faceLeft = heroFacingRight;
+        shooter.faceLeft = false;
         shooter.Fire();
         heroAnimator.SetTrigger("shootAnim");
     }
