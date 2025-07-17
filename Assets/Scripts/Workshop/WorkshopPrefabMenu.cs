@@ -1,30 +1,39 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
-using TMPro; // ¼æÈİ TMP_Text
+using TMPro; // å…¼å®¹ TMP_Text
 
 public class WorkshopPrefabMenu : MonoBehaviour
 {
     [Header("UI References")]
     public Transform buttonContainer;      // ScrollView/Viewport/Content
-    public Button buttonTemplate;          // °´Å¥Ä£°å£¨Òş²Ø£©
+    public Button buttonTemplate;          // æŒ‰é’®æ¨¡æ¿ï¼ˆéšè—ï¼‰
     public string prefabFolder = "Prefabs/Workshop";
     public WorkshopManager workshopManager;
 
     void Start()
     {
-        // ¼ì²é Content ÊÇ·ñÓĞ²¼¾Ö×é¼ş
+        // æ£€æŸ¥ Content æ˜¯å¦æœ‰å¸ƒå±€ç»„ä»¶
         EnsureLayout(buttonContainer.gameObject);
 
-        // É¨Ãè Prefab
+        // æ‰«æ Prefab
         var prefabs = Resources.LoadAll<GameObject>(prefabFolder);
-        Debug.Log($"[PrefabMenu] ÕÒµ½ {prefabs.Length} ¸ö Prefab");
+        Debug.Log($"[PrefabMenu] æ‰¾åˆ° {prefabs.Length} ä¸ª Prefab");
 
         if (prefabs.Length == 0) return;
 
         foreach (var prefab in prefabs)
-            CreateButtonForPrefab(prefab.name);
+        {
+            // âœ… è·³è¿‡ Hero å’Œ LevelExit
+            if (prefab.name == "Hero" || prefab.name == "LevelExit")
+            {
+                Debug.Log($"[PrefabMenu] è·³è¿‡ç‰¹æ®Šç‰©ä½“ {prefab.name}");
+                continue;
+            }
 
-        // ×îºóÒş²ØÄ£°å
+            CreateButtonForPrefab(prefab.name);
+        }
+
+        // æœ€åéšè—æ¨¡æ¿
         buttonTemplate.gameObject.SetActive(false);
     }
 
@@ -33,7 +42,7 @@ public class WorkshopPrefabMenu : MonoBehaviour
         var btnObj = Instantiate(buttonTemplate, buttonContainer);
         btnObj.gameObject.SetActive(true);
 
-        // Ö§³Ö TextMeshPro
+        // æ”¯æŒ TextMeshPro
         var textComp = btnObj.GetComponentInChildren<Text>();
         if (textComp) textComp.text = prefabName;
         else
@@ -44,14 +53,14 @@ public class WorkshopPrefabMenu : MonoBehaviour
 
         btnObj.onClick.AddListener(() =>
         {
-            Debug.Log($"[PrefabMenu] µã»÷Éú³É {prefabName}");
+            Debug.Log($"[PrefabMenu] ç‚¹å‡»ç”Ÿæˆ {prefabName}");
             workshopManager.SpawnPrefab(prefabName);
         });
     }
 
     void EnsureLayout(GameObject content)
     {
-        // Èç¹ûÃ»ÓĞ VerticalLayoutGroup£¬×Ô¶¯Ìí¼Ó
+        // å¦‚æœæ²¡æœ‰ VerticalLayoutGroupï¼Œè‡ªåŠ¨æ·»åŠ 
         var vlg = content.GetComponent<VerticalLayoutGroup>();
         if (!vlg)
         {
@@ -61,7 +70,7 @@ public class WorkshopPrefabMenu : MonoBehaviour
             vlg.spacing = 10;
         }
 
-        // Èç¹ûÃ»ÓĞ ContentSizeFitter£¬×Ô¶¯Ìí¼Ó
+        // å¦‚æœæ²¡æœ‰ ContentSizeFitterï¼Œè‡ªåŠ¨æ·»åŠ 
         var csf = content.GetComponent<ContentSizeFitter>();
         if (!csf)
         {

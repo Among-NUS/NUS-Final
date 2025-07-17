@@ -4,7 +4,7 @@ using System.Linq;
 
 public class WorkshopManager : MonoBehaviour
 {
-    public string defaultPrefabName = "Circle";
+    public string defaultPrefabName = "Room";
     public GameObject prefabToSpawn;
     public Transform spawnParent;
     public RuntimeHierarchy hierarchy;
@@ -16,39 +16,33 @@ public class WorkshopManager : MonoBehaviour
     Vector3 lastMouse;
     void Start()
     {
-        // ✅ 进入场景时检查是否已有 Hero（Wrapper）
-        bool hasHero = false;
-        foreach (Transform wrapper in spawnParent)
+        // ✅ 直接生成 Hero，然后传送
+        SpawnPrefab("Hero");
+        var heroWrapper = spawnParent.Cast<Transform>().FirstOrDefault(w => w.name.Contains("Hero"));
+        if (heroWrapper)
         {
-            if (wrapper.name.Contains("Hero"))
-            {
-                hasHero = true;
-                break;
-            }
+            heroWrapper.position = new Vector3(956.8f, 538.6f, 0f);
+            Debug.Log("✅ Hero 已传送到 (956.8, 538.6)");
         }
 
-        if (!hasHero)
+        // ✅ 直接生成 LevelExit，然后传送
+        SpawnPrefab("LevelExit");
+        var exitWrapper = spawnParent.Cast<Transform>().FirstOrDefault(w => w.name.Contains("LevelExit"));
+        if (exitWrapper)
         {
-            Debug.Log("✅ 没有 Hero，自动生成一个");
-            SpawnPrefab("Hero"); // ✅ 生成 Wrapper + Hero prefab
+            exitWrapper.position = new Vector3(963.3f, 539.9f, 0f); // 可自行改
+            Debug.Log("✅ LevelExit 已传送到 (936.3, 539.9)");
         }
 
-        bool hasLevelExit = false;
-        foreach (Transform wrapper in spawnParent)
+        SpawnPrefab("Ground");
+        var groundWrapper = spawnParent.Cast<Transform>().FirstOrDefault(w => w.name.Contains("Ground"));
+        if (groundWrapper)
         {
-            if (wrapper.name.Contains("LevelExit"))
-            {
-                hasLevelExit = true;
-                break;
-            }
-        }
-
-        if (!hasLevelExit)
-        {
-            Debug.Log("✅ 没有 exit，自动生成一个");
-            SpawnPrefab("LevelExit"); // ✅ 生成 Wrapper + Hero prefab
+            groundWrapper.position = new Vector3(956.2f, 537.7f, 0f); // 可自行改
+            Debug.Log("✅ Ground 已传送到 (956.2, 537.7)");
         }
     }
+
 
     /*──────── 相机缩放 / 平移 ────────*/
     void Update()
