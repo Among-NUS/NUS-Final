@@ -1,29 +1,45 @@
-// ©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤
-// WorkshopSaveLoadUI.cs
-// ¼òµ¥ UI£º°´Å¥±£´æ/¼ÓÔØ´´Òâ¹¤·»²¼¾Öµ½¹Ì¶¨Â·¾¶
-// ©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
-using System.IO;
+using TMPro;   // âœ… å¼•å…¥ TMP å‘½åç©ºé—´
 
 public class WorkshopSaveLoadUI : MonoBehaviour
 {
-    public WorkshopSaveLoad saveLoad;         // ÍÏÈë½Å±¾ÒıÓÃ
+    [Header("Core")]
+    public WorkshopSaveLoad saveLoad;
+
+    [Header("UI Buttons")]
     public Button saveButton;
     public Button loadButton;
 
-    private string savePath;
+    [Header("TMP Input")]
+    public TMP_InputField fileNameField;  // âœ… æ”¹ä¸º TMP ç‰ˆæœ¬
 
     void Start()
     {
-        string savePath = "WorkshopLevel.json";
+        // é»˜è®¤æ–‡ä»¶å
+        if (fileNameField != null && string.IsNullOrEmpty(fileNameField.text))
+            fileNameField.text = "WorkshopLevel.json";
 
         if (saveButton != null)
-            saveButton.onClick.AddListener(() => saveLoad.SaveLayout(savePath));
+            saveButton.onClick.AddListener(() =>
+            {
+                string name = (fileNameField != null && !string.IsNullOrWhiteSpace(fileNameField.text))
+                              ? fileNameField.text.Trim()
+                              : "WorkshopLevel.json";
+
+                saveLoad.SaveLayout(name);
+            });
 
         if (loadButton != null)
-            loadButton.onClick.AddListener(() => saveLoad.LoadLayoutForEditor(savePath));
+            loadButton.onClick.AddListener(() =>
+            {
+                string name = (fileNameField != null && !string.IsNullOrWhiteSpace(fileNameField.text))
+                              ? fileNameField.text.Trim()
+                              : "WorkshopLevel.json";
 
-        Debug.Log("±£´æÂ·¾¶: " + savePath);
+                saveLoad.LoadLayoutForEditor(name);
+            });
+
+        Debug.Log("âœ… WorkshopSaveLoadUI åˆå§‹åŒ–å®Œæˆ");
     }
 }

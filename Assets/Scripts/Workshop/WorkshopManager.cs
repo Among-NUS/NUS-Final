@@ -38,42 +38,41 @@ public class WorkshopManager : MonoBehaviour
     }
 
     /*──────── 生成新物体 ────────*/
-    public void Spawn()
+
+    public void SpawnPrefab(string prefabName)
     {
-        if (!prefabToSpawn)
-            prefabToSpawn = Resources.Load<GameObject>("Prefabs/Workshop/" + defaultPrefabName);
-        if (!prefabToSpawn) { Debug.LogError("❌ Default prefab missing"); return; }
+        GameObject prefab = Resources.Load<GameObject>("Prefabs/Workshop/" + prefabName);
+        if (!prefab)
+        {
+            Debug.LogError($"❌ Prefab {prefabName} 不在 Resources/Prefabs/Workshop/");
+            return;
+        }
 
-        string baseName = prefabToSpawn.name;
-        GameObject prefab = Resources.Load<GameObject>("Prefabs/Workshop/" + baseName);
-        if (!prefab) { Debug.LogError("❌ Prefab not in Resources"); return; }
-
-        int nextIdx = spawnParent.Cast<Transform>()
-                     .Count(t => t.name.StartsWith(baseName + "_Wrapper_")) + 1;
-
-        string wrapperName = $"{baseName}_Wrapper_{nextIdx}";
-        string childName = $"{baseName}_{nextIdx}";
-
-        // Wrapper
+        // 包装 Wrapper
+        string wrapperName = prefabName + "_Wrapper";
         GameObject wrapper = new GameObject(wrapperName);
         wrapper.transform.SetParent(spawnParent, true);
 
+        // 放到相机中心
         Vector3 center = gizmoCamera.ViewportToWorldPoint(
             new Vector3(0.5f, 0.5f, gizmoCamera.nearClipPlane + 2f));
         center.z = 1f;
         wrapper.transform.position = center;
 
-        // 子 prefab
+        // 实例化 prefab 作为子物体
         GameObject child = Instantiate(prefab, wrapper.transform);
-        child.name = childName;
+        child.name = prefabName;
         child.transform.localPosition = Vector3.zero;
 
+        // 禁用物理脚本 & 添加碰撞盒
         PhysicsScriptDisabler.Disable(child);
         WrapperColliderUtils.AddBoxColliderToWrapper(wrapper, child);
 
+        // 刷新 UI
         hierarchy?.Refresh();
         inspector?.Inspect(wrapper);
 
-        Debug.Log($"✅ 生成 {wrapper.name} + {child.name}");
+        Debug.Log($"✅ 已生成 {wrapper.name}");
     }
+
 }
