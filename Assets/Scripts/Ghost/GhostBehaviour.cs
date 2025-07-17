@@ -278,7 +278,7 @@ public class GhostBehaviour : MonoBehaviour
         if (bullet != null && bullet.isEnemy)
         {
             Debug.Log("Hero hit by enemy bullet");
-            FindObjectOfType<GameOverUI>().ShowGameOver();
+            FindObjectOfType<GameOverUI>().ShowGhostGameOver();
         }
 
         if (collision.GetComponent<StairsBehaviour>() != null)
