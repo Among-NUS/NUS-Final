@@ -20,15 +20,10 @@ public class IntroUI : MonoBehaviour
         Time.timeScale = 0f;
         IntroduceCanvas.SetActive(true);
     }
-
-    // Update is called once per frame
-    void Update()
+    public void OnSkipButtonClicked()
     {
-        if (Input.anyKeyDown)
-        {
-            Time.timeScale = 1f;
-            hasIntroBeenShown = true;
-            IntroduceCanvas.SetActive(false);
-        }
+        Time.timeScale = 1f;
+        hasIntroBeenShown = true;
+        IntroduceCanvas.SetActive(false);
     }
 }
