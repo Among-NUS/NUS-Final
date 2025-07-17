@@ -35,7 +35,18 @@ public class AlertSignBehaviour : MonoBehaviour
         }
         alertSR.enabled = true;
         lastShowTime = Time.time;
-        alertAS.PlayOneShot(alertClip);
+        if (alertClip != null)
+        {
+            alertAS.PlayOneShot(alertClip);
+        }
+    }
+    public void PurelyShowAlert()
+    {
+        alertSR.enabled = true;
+    }
+    public void PurelyUnshowAlert()
+    {
+        alertSR.enabled = false;
     }
     
 }

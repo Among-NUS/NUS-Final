@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class BossBehaviour : MonoBehaviour
@@ -11,10 +12,15 @@ public class BossBehaviour : MonoBehaviour
     public float generalCooldown;
     public float speed = 0.1f;
     public Animator bossAnimator;
+    public AlertSignBehaviour bossAlert;
+    public Rigidbody2D bossRigidBody;
+    public float jumpForce = 5f;
+    public bool bossFacingRight = true;
 
     void Start()
     {
-
+        bossAlert = GetComponentInChildren<AlertSignBehaviour>();
+        bossRigidBody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -23,14 +29,14 @@ public class BossBehaviour : MonoBehaviour
 
     }
 
-    public void BossWalk(float duration, bool facingLeft)
+    public void MakeWalk()
     {
-
+        bossAnimator.SetBool("isWalking", true);
     }
 
-    public void BossStand()
+    public void MakeStand()
     {
-
+        bossAnimator.SetBool("isWalking", false);
     }
 
     public void BossDie()
@@ -49,6 +55,29 @@ public class BossBehaviour : MonoBehaviour
     public void DestroyBoss()
     {
         bossAnimator.SetBool("isDead", true);
+    }
+
+    public void BossTurn()
+    {
+        bossFacingRight = !bossFacingRight;
+        Vector3 turnTo = transform.localScale;
+        turnTo.x *= -1f;
+        transform.localScale = turnTo;
+    }
+
+    public void BossAlert()
+    {
+        bossAlert.PurelyShowAlert();
+    }
+
+    public void BossUnAlert()
+    {
+        bossAlert.PurelyUnshowAlert();
+    }
+
+    public void Jump()
+    {
+        bossRigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
 
