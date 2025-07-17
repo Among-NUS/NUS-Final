@@ -25,9 +25,21 @@ public class CutSceneDirector : MonoBehaviour
         yield return BossFrightend();
         yield return BossJump();
         yield return new WaitForSeconds(1f);
-        yield return WalkHeroTime(2.5f);
-        boss.BossTurn();
-        yield return WalkTogether(3f);
+        int playerChoice = 0;
+        yield return WaitForPlayerChoice((choice) => playerChoice = choice);
+        if (playerChoice == 1)
+        {
+            yield return WalkHeroTime(2.5f);
+            boss.BossTurn();
+            yield return WalkTogether(5f);
+        }
+        else
+        {
+            yield return HeroShoot();
+            yield return new WaitForSeconds(1f);
+            yield return WalkHeroTime(7.5f);
+        }
+        
 
 
 
@@ -66,7 +78,7 @@ public class CutSceneDirector : MonoBehaviour
     IEnumerator HeroShoot()
     {
         float t = 0;
-        while (t < 1f)
+        while (t < 0.5f)
         {
             t += Time.deltaTime;
             yield return null;
@@ -102,5 +114,27 @@ public class CutSceneDirector : MonoBehaviour
         Coroutine heroWalk = StartCoroutine(WalkHeroTime(duration));
         Coroutine bossWalk = StartCoroutine(WalkBossTime(duration));
         yield return new WaitForSeconds(duration);
+    }
+
+    IEnumerator WaitForPlayerChoice(System.Action<int> onChoice)
+    {
+        Debug.Log("按 1 或 2 进行选择！");
+        bool waiting = true;
+
+        while (waiting)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                onChoice?.Invoke(1);  // 选择1
+                waiting = false;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                onChoice?.Invoke(2);  // 选择2
+                waiting = false;
+            }
+
+            yield return null; // 等下一帧继续检测
+        }
     }
 }
