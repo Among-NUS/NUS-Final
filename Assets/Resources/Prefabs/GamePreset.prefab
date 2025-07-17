@@ -751,7 +751,7 @@ MonoBehaviour:
   currentPhase: 0
   ghostPrefab: {fileID: 3794698721212635393, guid: 4f963a9baeb8c804a84b62d51b857e6c, type: 3}
   previewGhostPrefab: {fileID: 3794698721212635393, guid: 4f963a9baeb8c804a84b62d51b857e6c, type: 3}
-  cooldownRing: {fileID: 327348418966216307}
+  cooldownRing: {fileID: 8121664263058093013}
   currentScene:
     m_Handle: 0
   messageDisplay: {fileID: 0}
@@ -982,29 +982,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7145482014984992911, guid: 8368a1c8bc790d7459c07370eb3801ff, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7145482014984992911, guid: 8368a1c8bc790d7459c07370eb3801ff, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7708764613284571855, guid: 8368a1c8bc790d7459c07370eb3801ff, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8138431697640946082, guid: 8368a1c8bc790d7459c07370eb3801ff, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8925427279640545439, guid: 8368a1c8bc790d7459c07370eb3801ff, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8925427279640545439, guid: 8368a1c8bc790d7459c07370eb3801ff, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
+    - target: {fileID: 8302009956314846836, guid: ee0b5f65e9de9614f8336f3ed5b54e1c, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

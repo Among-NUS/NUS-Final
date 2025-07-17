@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class DialogSystem : MonoBehaviour
@@ -18,12 +19,13 @@ public class DialogSystem : MonoBehaviour
     public TextAsset textFile;
     public int index;
 
-    // 用于记录对话是否已经播放过
-   // private static bool hasDialogBeenShown = false;
+    // 用于记录每个场景的对话是否已经播放过
+    private static Dictionary<string, bool> sceneDialogPlayed = new Dictionary<string, bool>();
     
     private List<DialogLine> dialogLines = new List<DialogLine>(); // 存储对话行（英文和中文）
     private bool hasAutoShown = false;// 用于判断是否自动显示了第一句
     private bool dialogFinished = false;// 用于判断对话是否已经结束
+    private string currentSceneName; // 当前场景名称
 
     // 对话行数据结构
     [System.Serializable]
@@ -41,15 +43,19 @@ public class DialogSystem : MonoBehaviour
 
     void Start()
     {
+        // 获取当前场景名称
+        currentSceneName = SceneManager.GetActiveScene().name;
+        
         GetTextFromFile(textFile);
 
-        // 如果对话已经播放过，直接进入游戏状态
-       // if (hasDialogBeenShown)
-        //{
-        //    dialogBox.SetActive(false);
-        //    Time.timeScale = 1f;
-        //    return;
-        //}
+        // 检查当前场景的对话是否已经播放过
+        if (sceneDialogPlayed.ContainsKey(currentSceneName) && sceneDialogPlayed[currentSceneName])
+        {
+            // 如果当前场景的对话已经播放过，直接进入游戏状态
+            dialogBox.SetActive(false);
+            Time.timeScale = 1f;
+            return;
+        }
 
         //禁用所有游戏操作
         Time.timeScale = 0f;
@@ -99,8 +105,8 @@ public class DialogSystem : MonoBehaviour
                 // 标记对话已结束，防止继续响应按键
                 dialogFinished = true;
                 
-                // 标记对话已经播放过，下次重启时不再显示
-                //hasDialogBeenShown = true;
+                // 标记当前场景的对话已经播放过
+                sceneDialogPlayed[currentSceneName] = true;
             }
         }
     }
@@ -196,38 +202,7 @@ public class DialogSystem : MonoBehaviour
             return;
         }
 
-        // 方法1：查找中文括号格式 "英文（中文）" 或 "英文(中文)"
-        int chineseStart = -1;
-        for (int i = 0; i < line.Length; i++)
-        {
-            if (line[i] == '（' || line[i] == '(')
-            {
-                chineseStart = i;
-                break;
-            }
-        }
-        
-        if (chineseStart != -1)
-        {
-            // 找到中文括号，分离英文和中文
-            string englishText = line.Substring(0, chineseStart).Trim();
-            string chineseText = line.Substring(chineseStart).Trim();
-            
-            // 移除中文括号
-            if (chineseText.StartsWith("（") && chineseText.EndsWith("）"))
-            {
-                chineseText = chineseText.Substring(1, chineseText.Length - 2);
-            }
-            else if (chineseText.StartsWith("(") && chineseText.EndsWith(")"))
-            {
-                chineseText = chineseText.Substring(1, chineseText.Length - 2);
-            }
-            
-            dialogLines.Add(new DialogLine(englishText, chineseText));
-            return;
-        }
-
-        // 方法2：查找中文字符，分离英文和中文
+        // 查找中文字符，分离英文和中文
         int firstChineseIndex = -1;
         for (int i = 0; i < line.Length; i++)
         {
@@ -256,27 +231,8 @@ public class DialogSystem : MonoBehaviour
             return;
         }
 
-        // 方法3：检查是否包含中文字符
-        bool containsChinese = false;
-        foreach (char c in line)
-        {
-            if (IsChineseCharacter(c))
-            {
-                containsChinese = true;
-                break;
-            }
-        }
-        
-        if (containsChinese)
-        {
-            // 包含中文字符但没有找到明显的分隔，可能是纯中文
-            dialogLines.Add(new DialogLine("", line));
-        }
-        else
-        {
-            // 纯英文文本
-            dialogLines.Add(new DialogLine(line, ""));
-        }
+        // 如果没有找到中文字符，将整行作为英文处理
+        dialogLines.Add(new DialogLine(line.Trim(), ""));
     }
 
     // 判断字符是否为中文字符
@@ -291,5 +247,26 @@ public class DialogSystem : MonoBehaviour
                (c >= 0x2B820 && c <= 0x2CEAF) || // 扩展E
                (c >= 0xF900 && c <= 0xFAFF) || // 兼容汉字
                (c >= 0x2F800 && c <= 0x2FA1F); // 兼容扩展
+    }
+
+    // 重置指定场景的对话播放状态
+    public static void ResetSceneDialog(string sceneName)
+    {
+        if (sceneDialogPlayed.ContainsKey(sceneName))
+        {
+            sceneDialogPlayed[sceneName] = false;
+        }
+    }
+
+    // 重置所有场景的对话播放状态
+    public static void ResetAllSceneDialogs()
+    {
+        sceneDialogPlayed.Clear();
+    }
+
+    // 检查指定场景的对话是否已播放
+    public static bool IsSceneDialogPlayed(string sceneName)
+    {
+        return sceneDialogPlayed.ContainsKey(sceneName) && sceneDialogPlayed[sceneName];
     }
 }
