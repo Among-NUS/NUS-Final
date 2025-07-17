@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CutSceneDirector : MonoBehaviour
 {
@@ -11,9 +13,28 @@ public class CutSceneDirector : MonoBehaviour
     public GameObject myGameManager;
     private AudioSource gmAudioSource;
     public AudioClip Invisible;
+    
+    [Header("Dialog System")]
+    public TextAsset DialogFile; 
+    public GameObject dialogBox; 
+    public TextMeshProUGUI englishTextLabel;
+    public TextMeshProUGUI chineseTextLabel; 
+    
+    // 简化的对话变量
+    private string[] dialogLines;
+    private int currentLine = 0;
+    private bool isDialogPlaying = false;
+    private bool hasAutoShown = false; // 是否已自动显示第一句
+    
     // Start is called before the first frame update
     void Start()
     {
+        // 确保对话框在游戏开始时隐藏
+        if (dialogBox != null)
+        {
+            dialogBox.SetActive(false);
+        }
+        
         StartCoroutine(PlayCutScene());
         myGameManager = GameObject.Find("GameManager");
         gmAudioSource = myGameManager.GetComponent<AudioSource>();
@@ -22,7 +43,12 @@ public class CutSceneDirector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // 如果正在播放对话，不处理其他输入
+        if (isDialogPlaying)
+        {
+            return;
+        }
+        
     }
 
     IEnumerator PlayCutScene()
@@ -32,6 +58,12 @@ public class CutSceneDirector : MonoBehaviour
         yield return BossFrightend();
         yield return BossJump();
         yield return new WaitForSeconds(1f);
+        
+        if (DialogFile != null)
+        {
+            yield return PlayDialog();
+        }
+        
         int playerChoice = 0;
         choicePanel.SetActive(true);
         yield return WaitForPlayerChoice((choice) => playerChoice = choice);
@@ -51,12 +83,96 @@ public class CutSceneDirector : MonoBehaviour
         gmAudioSource.clip = Invisible;
         gmAudioSource.Play();
         credits.StartCredits();
-        
-        
-
-
-
     }
+    
+    IEnumerator PlayDialog()
+    {
+        // 开始对话播放
+        hasAutoShown = true;
+        isDialogPlaying = true;
+        currentLine = 0;
+        Time.timeScale = 0f; 
+        LoadDialog();
+        if (dialogLines.Length == 0) yield break;
+        
+        if (dialogBox != null)
+            dialogBox.SetActive(true);
+        
+        // 播放所有对话
+        while (currentLine < dialogLines.Length)
+        {
+            // 显示当前对话
+            string line = dialogLines[currentLine].Trim();
+            
+            // 分离英文和中文
+            string english = "";
+            string chinese = "";
+            
+            for (int i = 0; i < line.Length; i++)
+            {
+                if (IsChinese(line[i]))
+                {
+                    english = line.Substring(0, i).Trim();
+                    chinese = line.Substring(i).Trim();
+                    break;
+                }
+            }
+            
+            if (string.IsNullOrEmpty(chinese))
+            {
+                english = line;
+            }
+            
+            // 设置文本
+            if (englishTextLabel != null)
+                englishTextLabel.text = english;
+            
+            if (chineseTextLabel != null)
+                chineseTextLabel.text = chinese;
+            
+            // 等待任意键输入（
+            bool keyPressed = false;
+            while (!keyPressed)
+            {
+                // 检查任意键输入
+                if (Input.anyKeyDown)
+                {
+                    keyPressed = true;
+                }
+                yield return null;
+            }
+            
+            // 短暂延迟避免按键重复触发
+            yield return new WaitForSecondsRealtime(0.1f);
+            
+            currentLine++;
+        }
+        
+        // 完成对话
+        isDialogPlaying = false;
+        if (dialogBox != null)
+            dialogBox.SetActive(false);
+        
+        Time.timeScale = 1f; 
+    }
+    
+    // 加载对话文件
+    void LoadDialog()
+    {
+        if (DialogFile == null) return;
+        
+        // 简单按行分割
+        dialogLines = DialogFile.text.Split('\n');
+        currentLine = 0;
+        isDialogPlaying = false;
+    }
+    
+    // 判断是否为中文字符
+    bool IsChinese(char c)
+    {
+        return c >= 0x4E00 && c <= 0x9FFF;
+    }
+
     IEnumerator WalkHeroTime(float duration)
     {
         float t = 0;

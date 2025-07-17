@@ -49,8 +49,9 @@ public class GameManager : MonoBehaviour
     // ─────────────────────────────────────────────────────────────
     void Update()
     {
+        // 如果游戏时间暂停（对话期间），不处理录制相关输入
         if (Time.timeScale == 0) return;
-
+        
         if (Input.GetKeyDown(KeyCode.Backspace)) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         if (Input.GetKeyDown(KeyCode.U) && currentPhase == GamePhase.Normal)
             StartRecording();
