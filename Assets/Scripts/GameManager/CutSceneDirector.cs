@@ -24,8 +24,9 @@ public class CutSceneDirector : MonoBehaviour
         boss.BossTurn();
         yield return BossFrightend();
         yield return BossJump();
+        yield return new WaitForSeconds(1f);
+        yield return WalkHeroTime(2.5f);
         boss.BossTurn();
-        yield return new WaitForSeconds(2f);
         yield return WalkTogether(3f);
 
 
